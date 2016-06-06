@@ -14,10 +14,10 @@
 Derivatives and topology
 
 \[
-0 \lto \R \to \{F:\R^3 \to \R\} \lto^{\grad} \{\vec{F}: \R^3 \to \R^3\} \lto^{\curl} \vec{0}
+\vec{0} \lto \{\vector{a,b,c}:\R^3\to \R\} \lto \{F:\R^3 \to \R\} \lto^{\grad} \{\vec{F}: \R^3 \to \R^3\} \lto^{\curl} \vec{0}
 \]
 \[
-\vec{0}\lto \R^3\lto \{\vec{F}: \R^3 \to \R^3\}\lto^{\curl} \{\vec{F}:\R^3 \to \R^3\} \lto^{\divergence} 0
+\vec{0}\lto \{\vector{a,b,c}:\R^3\to \R^3\}\lto \{\vec{F}: \R^3 \to \R^3\}\lto^{\curl} \{\vec{F}:\R^3 \to \R^3\} \lto^{\divergence} 0
 \]
 
 \[
@@ -37,6 +37,10 @@ Line integral
 Stokes Theorem
 \[
 \int_{\partial S} \vec{F}(x,y,z)\dotp \d \vec{x} = \iint_S \left(\curl\vec{F}\right)\dotp \d \vec{S}
+\]
+Kelvin-Stokes Theorem
+\[
+\iint_S \left(\curl\vec{F}\right)\dotp \d \vec{S} = \int_{\partial S} \vec{F}(x,y,z)\dotp \d \vec{x}
 \]
 Divergence Theorem
 \[
