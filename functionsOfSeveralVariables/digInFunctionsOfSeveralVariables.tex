@@ -29,13 +29,12 @@ energy, comparable to the energy released by a large nuclear weapon. A
 fireball extended out $10$ kilometers from the center of the impact,
 destroying all life in its wake. It is estimated it took one-hundred
 years for the local plant and animal life to repopulate the area.
-
-
 Fifty-thousand years later, due to Arizon's climate, the remains of
 the impact crater are still present on our ever-changing Earth.
-However, to help us understand events like these, we need to be able
-to precisely describe what we are observing (in this case, the
-crater).  To do this we use a \textit{contour map}, often called a
+
+To help us understand events like these, we need to be able to
+precisely describe what we are observing (in this case, the crater).
+To do this we use a \textit{contour map}, often called a
 \textit{topographical map}:
 \begin{image}[2in]
 \begin{tikzpicture}[y=0.80pt, x=0.80pt, yscale=-1.000000, xscale=1.000000, inner sep=0pt, outer sep=0pt]
@@ -296,10 +295,51 @@ line in the maps above represents a fixed, constant height.  In a
 similar way, we will describe functions of two (and three!)  variables
 using contour lines.
 
-Mathematically, we have a function of two variables
-\[
-F: \R^2 \to \R
-\]
+Mathematically, a contour map describes a \textit{function} of two
+variables. We will now define a function of several variables:
+
+\begin{definition}
+  A \dfn{function of several variables} with \dfn{domain} $D$ is a
+  relation
+  \begin{align*}
+    F: D\subset \R^m  &\to \R\\
+    (x_1,x_2,\dots,x_m) &\mapsto y
+  \end{align*}
+  that assigns every ordered tuple in $D$ (a subset of $\R^m$) a
+  unique real number in $\R$. The set of all outputs of $F$ is the
+  \dfn{range}.
+\end{definition}
+
+\begin{question}
+  Consider
+  \[
+  F(x,y) = \sqrt{1-\frac{x^2}9-\frac{y^2}4},
+  \]
+  and compute $F(2,1)$.
+  \begin{prompt}
+    \[
+    F(2,1) = \answer{\sqrt{11}/6}
+    \]
+  \end{prompt}
+  \begin{question}
+    What is the domain of $F$?
+    \begin{prompt}
+      The domain is all pairs $(x,y)$ allowable as
+      \wordChoice{\choice[correct]{input}\choice{output}} for $F$.
+      Because of the square-root, we need $(x,y)$ such that:
+      \[
+      0 \le 1-\frac{x^2}{9}-\frac{y^2}{4}
+      \]
+      Write
+      \begin{align*}
+        0&\le 1-\frac{x^2}9-\frac{y^2}4\\
+        \frac{x^2}9+\frac{y^2}4&\le 1
+      \end{align*}
+      This inequality describes the interior of an ellipse centered in
+      the $(x,y)$-plane.
+    \end{prompt}
+  \end{question}
+\end{question}
 
 
 
@@ -312,9 +352,13 @@ F: \R^2 \to \R
 
 
 
+\section{Graphs of functions of several variables}
+
+variable dimension plus 1
 
 
-\section{Contour maps}
+
+
 
 
 \section{Quadratic surfaces}
