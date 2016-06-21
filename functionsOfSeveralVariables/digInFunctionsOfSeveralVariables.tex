@@ -2,12 +2,16 @@
 
 \input{../preamble}
 
-\outcome{}
+
+\outcome{Define a function of several variables.}
+\outcome{Recognize a function of several variables as a contour plot.}
 
 \title[Dig-In:]{Functions of several variables}
 
 \begin{document}
 \begin{abstract}
+  We introduce functions that take vectors or points as inputs and
+  output a number.
 \end{abstract}
 \maketitle
 
@@ -23,19 +27,19 @@ northern Arizona:
 This area was once grasslands and woodlands inhabited by bison,
 camels, wooly mammoths, and giant ground sloths. During the
 Pleistocene epoch, a meteor only $40$ meters in diamerter collided
-with the Earth and this changed very quickly. Relatively speaking, the
-collison was small, releasing around $4\times10^{16}$ joules of
-energy, comparable to the energy released by a large nuclear weapon. A
-fireball extended out $10$ kilometers from the center of the impact,
-destroying all life in its wake. It is estimated it took one-hundred
-years for the local plant and animal life to repopulate the area.
-Fifty-thousand years later, due to Arizon's climate, the remains of
-the impact crater are still present on our ever-changing Earth.
+with the Earth and this changed very quickly. The collison released
+around $4\times10^{16}$ joules of energy, comparable to the energy
+released by a large nuclear weapon. A fireball extended out $10$
+kilometers from the center of the impact, destroying all life in its
+wake. It is estimated it took one-hundred years for the local plant
+and animal life to repopulate the area.  Fifty-thousand years later,
+the remains of the impact crater are still intact on our ever-changing
+Earth.
 
-To help us understand events like these, we need to be able to
-precisely describe what we are observing (in this case, the crater).
-To do this we use a \textit{contour map}, often called a
-\textit{topographical map}:
+To help us understand events like these, we need to precisely describe
+what we are observing (in this case, the crater).  To do this we use a
+\textit{contour map}, often called a \textit{topographical map}:
+%% Based on Meteor Crater USGS Topographic Map
 \begin{image}[2in]
 \begin{tikzpicture}[y=0.80pt, x=0.80pt, yscale=-1.000000, xscale=1.000000, inner sep=0pt, outer sep=0pt]
 \path[draw=black,even odd rule] (308.0482,210.3114) -- (266.7601,199.6668) --
@@ -291,10 +295,7 @@ To do this we use a \textit{contour map}, often called a
 \end{tikzpicture}
 \end{image}
 In essence we are looking at the crater from directly above, and each
-line in the maps above represents a fixed, constant height.  In a
-similar way, we will describe functions of two (and three!)  variables
-using contour lines.
-
+line in the maps above represents a fixed, constant height.
 Mathematically, a contour map describes a \textit{function} of two
 variables. We will now define a function of several variables:
 
@@ -305,9 +306,9 @@ variables. We will now define a function of several variables:
     F: D\subset \R^m  &\to \R\\
     (x_1,x_2,\dots,x_m) &\mapsto y
   \end{align*}
-  that assigns every ordered tuple in $D$ (a subset of $\R^m$) a
-  unique real number in $\R$. The set of all outputs of $F$ is the
-  \dfn{range}.
+  that assigns every ordered tuple in $D$ ($D$ is a subset of $\R^m$)
+  a unique real number in $\R$. The set of all outputs of $F$ is the
+  \dfn{range} (a subset of $\R$).
 \end{definition}
 
 \begin{question}
@@ -332,8 +333,8 @@ variables. We will now define a function of several variables:
       \]
       Write
       \begin{align*}
-        0&\le 1-\frac{x^2}9-\frac{y^2}4\\
-        \frac{x^2}9+\frac{y^2}4&\le 1
+        0&\le 1-\frac{x^2}{9}-\frac{y^2}{4}\\
+        \answer{\frac{x^2}{9}+\frac{y^2}{4}}&\le 1
       \end{align*}
       This inequality describes the interior of an ellipse centered in
       the $(x,y)$-plane.
@@ -343,27 +344,94 @@ variables. We will now define a function of several variables:
 
 
 
+\section{Visualizing functions of several variables}
+
+
+The graph of a function of a single variable, $y=f(x)$ is a curve in a
+two-dimensional plane. The graph of a function of two variables, $z =
+F(x,y)$ is a surface in three-dimensinal space. The graph of a
+function of three variables, $w=F(x,y,z)$ is a surface in
+\textit{four}-dimensional space. How can we visualize such functions?
+While technology is readily available to help us graph functions of two
+variables, there is stll a paper-and-pencil approach that is useful.
+This technique is know as sketching \textit{level curves}.
+
+
+\subsection{Level curves}
+
+It is difficult to imagine three-dimensional objects. We as humans
+really think and work in two-dimensions most of the time.
 
 
 
-
-
-
-
-
-
-\section{Graphs of functions of several variables}
 
 variable dimension plus 1
 
+to understand and master as it, combined with high-quality graphics,
+gives one great insight into the behavior of a func on. This technique
+is known as sketching level curves.
 
 
 
+\begin{tikzpicture}
+	\begin{axis}
+	\addplot3[contour gnuplot,samples=100]
+		{exp(0-x^2-y^2)};
+	\end{axis}
+\end{tikzpicture}
 
 
-\section{Quadratic surfaces}
+
+%% http://tex.stackexchange.com/questions/87674/how-to-coherently-combine-3d-and-contour-plots-with-pgfplots
+\begin{tikzpicture}
+\begin{axis}[
+    domain=-2:2,
+    domain y=0:2*pi,
+]
+
+    \newcommand\expr[2]{exp(-#1^2) * sin(deg(#2))}
+
+    \addplot3[
+        contour gnuplot={
+            % cdata should not be affected by z filter:
+            output point meta=rawz,
+            number=10,
+            labels=false,
+        },
+        samples=41,
+        z filter/.code=\def\pgfmathresult{-1.6},
+    ]
+        {\expr{x}{y}};
+
+    \addplot3[
+        samples=41,
+        samples y=10,
+        domain=0:2*pi,
+        domain y=-2:2,
+        % we want 1d (!) individually colored mesh segments:
+        mesh, patch type=line,
+        x filter/.code=\def\pgfmathresult{-2.5},
+    ] 
+        (y,x,{\expr{y}{x}});
+
+    \addplot3[
+        samples=41,
+        samples y=10,
+        % we want 1d (!) individually colored mesh segments:
+        mesh, patch type=line,
+        y filter/.code=\def\pgfmathresult{8},
+    ] 
+        {\expr{x}{y}};
+
+    \addplot3[surf,samples=25]
+        {\expr{x}{y}};
+
+\end{axis}
+\end{tikzpicture}
 
 
+
+\subsection{Level surfaces}
 
 
 \end{document}
