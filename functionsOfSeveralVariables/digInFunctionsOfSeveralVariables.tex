@@ -295,7 +295,7 @@ what we are observing (in this case, the crater).  To do this we use a
 \end{tikzpicture}
 \end{image}
 In essence we are looking at the crater from directly above, and each
-line in the maps above represents a fixed, constant height.
+curve in the maps above represents a fixed, constant height.
 Mathematically, a contour map describes a \textit{function} of two
 variables. We will now define a function of several variables:
 
@@ -359,39 +359,30 @@ This technique is know as sketching \textit{level curves}.
 
 \subsection{Level curves}
 
-It is difficult to imagine three-dimensional objects. We as humans
-really think and work in two-dimensions most of the time.
 
+It may be surprising to find that the problem of representing a three
+dimensional surface on paper is familiar to most people (they just
+don't realize it).  Topographical maps, like the one shown in Figure
+represent the surface of Earth by indicating points with the same
+elevation with \dfn{contour lines}. Another example would be 
 
+Given a function $z=F(x,y)$, we can draw a ``topographical map'' of
+$F$ by drawing \dfn{level curves} (or, contour lines). A level curve
+at $z=c$ is a curve in the $(x,y)$-plane such that for all points
+$(x,y)$ on the curve, $F(x,y) = c$.
 
-
-variable dimension plus 1
-
-to understand and master as it, combined with high-quality graphics,
-gives one great insight into the behavior of a func on. This technique
-is known as sketching level curves.
-
-
-
-\begin{tikzpicture}
-	\begin{axis}
-	\addplot3[contour gnuplot,samples=100]
-		{exp(0-x^2-y^2)};
-	\end{axis}
-\end{tikzpicture}
-
-
-
-%% http://tex.stackexchange.com/questions/87674/how-to-coherently-combine-3d-and-contour-plots-with-pgfplots
+\begin{image}
+  %% Based on: 
+  %% http://tex.stackexchange.com/questions/87674/how-to-coherently-combine-3d-and-contour-plots-with-pgfplots
 \begin{tikzpicture}
 \begin{axis}[
     domain=-2:2,
     domain y=0:2*pi,
 ]
 
-    \newcommand\expr[2]{exp(-#1^2) * sin(deg(#2))}
+    \newcommand\expr[2]{-exp(-#1^2) * sin(deg(#2))}
 
-    \addplot3[
+    \addplot3[%% Contour plot
         contour gnuplot={
             % cdata should not be affected by z filter:
             output point meta=rawz,
@@ -403,31 +394,47 @@ is known as sketching level curves.
     ]
         {\expr{x}{y}};
 
-    \addplot3[
-        samples=41,
-        samples y=10,
-        domain=0:2*pi,
-        domain y=-2:2,
-        % we want 1d (!) individually colored mesh segments:
-        mesh, patch type=line,
-        x filter/.code=\def\pgfmathresult{-2.5},
-    ] 
-        (y,x,{\expr{y}{x}});
-
-    \addplot3[
-        samples=41,
-        samples y=10,
-        % we want 1d (!) individually colored mesh segments:
-        mesh, patch type=line,
-        y filter/.code=\def\pgfmathresult{8},
-    ] 
-        {\expr{x}{y}};
-
-    \addplot3[surf,samples=25]
+        
+    \addplot3[surf,samples=25] %% ACTUAL FUNCTION
         {\expr{x}{y}};
 
 \end{axis}
 \end{tikzpicture}
+\end{image}
+
+\begin{question}
+  Matching level curves to surfaces.
+\end{question}
+
+
+
+When drawing level curves, it is important that the $c$ values are
+spaced equally apart as that gives the best insight to how quickly the
+``elevation'' is changing. Examples will help one understand this
+concept.
+
+\begin{example}
+  Drawing level curves. 
+\end{example}
+
+
+variable dimension plus 1
+
+to understand and master as it, combined with high-quality graphics,
+gives one great insight into the behavior of a func on. This technique
+is known as sketching level curves.
+
+
+
+\begin{tikzpicture}
+  \begin{axis}
+	\addplot3[contour gnuplot,samples=100]
+		{exp(0-x^2-y^2)};
+	\end{axis}
+\end{tikzpicture}
+
+
+
 
 
 
