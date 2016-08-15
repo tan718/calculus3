@@ -16,9 +16,9 @@
 
 \section{Higher dimensions}
 
-In our previous courses, we have studied functions that accepted real
-numbers as inputs and real numbers as outputs. Let's unpack this a
-bit:
+In our previous courses, we studied functions where the input was a
+single real number and the output was a single real number. Note, the
+word ``real'' is being used in a technical sense:
 
 \begin{definition}
   A \dfn{real number} is a number that has a (possibly infinite)
@@ -167,7 +167,13 @@ Of course you will need to ``spin'' your hand around to align your
 pointer-finger with the $x$-axis and your middle-finger with the
 $y$-axis.
 \begin{question}
-   Which of the following axes are aligned according to the right-hand rule?
+  Which of the following axes are aligned according to the right-hand rule?
+  \begin{hint}
+    Point your pointer finger of your right hand in the positive
+    direction of $x$-axis while simultaneously pointing your middle
+    finger in the positive direction of $y$-axis. Your thumb will point
+    in the positive direction of the $z$-axis.
+  \end{hint}
    \begin{multipleChoice}
      \choice[correct]{
        \begin{tikzpicture}[baseline=2ex]
@@ -286,13 +292,36 @@ two others: $(x,z)$-plane, and the $(y,z)$-plane.
 %%   \end{prompt}
 %% \end{question}
 
-\subsection{Circles and spheres}
+\section{Distance and spheres}
+
+Suppose you want to know the distance between two points $(x,y)$ and
+$(a,b)$. To do this, we use the distance formula!
+\begin{theorem}
+  Given two points $(x,y)$ and $(a,b)$ in $\R^2$, the distance between
+  them is given by:
+  \[
+  \sqrt{(x-a)^2 + (y-b)^2}
+  \]
+\end{theorem}
+
+\begin{theorem}
+  Given two points $(x,y,z)$ and $(a,b,c)$ in $\R^3$, the distance between
+  them is given by:
+  \[
+  \sqrt{(x-a)^2 + (y-b)^2 + (z-c)^2}
+  \]
+\end{theorem}
+
+
+
+
+
+
+\subsection{Circles and spheres, disks and balls}
 
 Just as the equation of a circle is related to the distance formula in
 $\R^2$, the equation of a sphere is related to the distance formula in
 $\R^3$:
-\begin{theorem}
-\end{theorem}
 
 
 \begin{theorem}
