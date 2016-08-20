@@ -163,8 +163,7 @@ notation such as
 \vector{a,b,c}
 \]
 completely describes a vector, since we assume the tail is at the
-origin. We should point out that there is also other notation for
-vectors:
+origin. We should point out that there is other notation for vectors:
 \[
 \begin{bmatrix}
   a\\
@@ -177,9 +176,9 @@ vectors:
 \quad
 (a,b,c).
 \]
-
-We can visualize vectors in dimension $1$, $2$, or $3$ as directed
-arrows, where the \textit{magnitude} is the length of the arrow.
+When dealing with a vector in $1$, $2$, or $3$ dimensions, we can
+visualize the vector as a directed arrow, where the \textit{magnitude}
+is the length of the arrow.
 
 \begin{question}
   What is the magnitude of the vector 
@@ -498,7 +497,7 @@ Vectors with magnitude $1$ are particularly important.
   \end{hint}
 \end{question}
 
-Now consider any vector $\vec{v}$. We can now extract its direction
+Now consider any vector $\vec{v}$. We can  extract its direction
 and magnitude in the following way:
 \[
 \vec{v} = \underbrace{|\vec{v}|}_{\text{magnitude}} \cdot \underbrace{\frac{\vec{v}}{|\vec{v}|}}_{\text{direction}}
@@ -506,7 +505,7 @@ and magnitude in the following way:
 This equation illustrates the fact that a vector has both magnitude
 and direction, where we view a unit vector as supplying \textit{only}
 direction information. Identifying unit vectors with direction allows
-us to define \text{parallel vectors}:
+us to define \textit{parallel vectors}:
 \begin{definition}
 Unit vectors $\vec u_1$ and $\vec u_2$ are \dfn{parallel} if
 \[
@@ -714,16 +713,16 @@ Vectors are a great tool for applied mathematics.
 \section{The difference between a point and a vector}
 
 You may be wondering, ``What's the difference between a point and a
-vector?'' Here's the deal: A point specifies \textbf{location}
+vector?'' Here's the deal: A point $P$ specifies \textbf{location}
 alone. This location is denoted by a tuple:
 \[
-(p_1,p_2,\dots,p_n)
+P=(p_1,p_2,\dots,p_n)
 \]
-On the other hand, a vector is also represented by a tuple
+On the other hand, a vector $\vec{v}$ is also represented by a tuple:
 \[
 \vec{v} = \vector{v_1,v_2,\dots,v_n}
 \]
-however, the \textbf{interpretation} of this tuple is quite different
+However, the \textbf{interpretation} of this tuple is quite different
 than that of a point. Here, the tuple represents the location of the
 ``tip'' of the vector while the ``tail'' of the vector is at the
 origin. By thinking of this tuple, $\vector{v}$, as a vector, we have

@@ -6,13 +6,19 @@
 \outcome{Find the equations for planes.}
 \outcome{Give the equation for a sphere or ball.}
 
-\title[Dig-In:]{Two and three dimensional geometry}
+\title[Dig-In:]{Working in two and three dimensions}
 
 \begin{document}
 \begin{abstract}
   We talk about basic geometry in higher dimensions.
 \end{abstract}
 \maketitle
+
+
+The word \textit{geometry} can be broken into \textit{geo} meaning
+``world'' and \textit{metry} meaning ``measure.'' In this section we
+will tell you what our mathematical world is, and how we ``measure''
+it.
 
 \section{Higher dimensions}
 
@@ -174,7 +180,7 @@ $y$-axis.
     finger in the positive direction of $y$-axis. Your thumb will point
     in the positive direction of the $z$-axis.
   \end{hint}
-   \begin{multipleChoice}
+   \begin{selectAll}
      \choice[correct]{
        \begin{tikzpicture}[baseline=2ex]
          \draw[->] (0,0)--(1,0);
@@ -211,8 +217,11 @@ $y$-axis.
          \node[above] at (0,1) {$x$};
          \node[below] at (-.4,-.7) {$y$};
      \end{tikzpicture}}
-   \end{multipleChoice}
+   \end{selectAll}
 \end{question}
+
+
+
 
 \section{Basic planes}
 
@@ -260,37 +269,9 @@ two others: $(x,z)$-plane, and the $(y,z)$-plane.
   \end{hint}
 \end{question}
 
-
-%% \subsection{Lines}
-
-%% Parametric formulas for lines that start at a point when $t=0$ and
-%% progress in a direction given by a vector can be described in
-%% \textit{any} dimension as
-%% \[
-%% \l(t) = \vec{point} + t\cdot\vec{vector}
-%% \]
-%% \begin{question}
-%%   Give a parametric formula $\l(t)$ for a line such that
-%%   \begin{itemize}
-%%   \item $\l(0)=(1,2,3)$,
-%%   \item $\l(1) = (-1,2,-3)$,
-%%   \item $\l(2) = (-5,2,-9)$.
-%%   \end{itemize}
-%%   \begin{hint}
-%%     What is the vector whose tip is at $(-1,2-3)$ and whose tail is at
-%%     $(1,2,3)$?
-%%     \begin{prompt}
-%%     \[
-%%     \vec{vector} = \vector{\answer{-2},\answer{0},\answer{-6}}
-%%     \]
-%%     \end{prompt}
-%%   \end{hint}
-%%   \begin{prompt}
-%%     \[
-%%     \l(t) = \vector{\answer{1},\answer{2},\answer{3}} + t\cdot \vector{\answer{-2},\answer{0},\answer{-6}}
-%%     \]
-%%   \end{prompt}
-%% \end{question}
+%% Lines and planes
+%% Ax+ by=c standard form ANY line.
+%% In 3 D?
 
 \section{Distance and spheres}
 
@@ -302,7 +283,12 @@ $(a,b)$. To do this, we use the distance formula!
   \[
   \sqrt{(x-a)^2 + (y-b)^2}
   \]
+  \begin{explanation}
+  \end{explanation}
 \end{theorem}
+
+\begin{question}
+\end{question}
 
 \begin{theorem}
   Given two points $(x,y,z)$ and $(a,b,c)$ in $\R^3$, the distance between
@@ -310,9 +296,12 @@ $(a,b)$. To do this, we use the distance formula!
   \[
   \sqrt{(x-a)^2 + (y-b)^2 + (z-c)^2}
   \]
+  \begin{explanation}
+  \end{explanation}
 \end{theorem}
 
-
+\begin{question}
+\end{question}
 
 
 
@@ -391,19 +380,18 @@ inputs and multiple outputs. We will try to adhere to the following
     \textbf{inputs}, with lowercase indicating a single input, and uppercase
     indicating multiple inputs.
   \item The \textbf{face} of the function will denote the number of
-    \textbf{outputs}, with normalface indicating a single output, and
-    boldface indicating multiple outputs.
+    \textbf{outputs}, with normalface ($f$ or $F$) indicating a single
+    output, and boldface ($\vec{f}$, and $\vec{F}$) indicating multiple
+    outputs.
 \end{itemize}
-Hence we could have functions that map
+Hence we could have functions that map:
 \begin{itemize}
+\item $f:\R \to \R$
 \item $\vec{f}:\R \to \R^2$
-\item $F:\R^2\to \R$
-\item $\vec{F}:\R^2 \to \R^2$
-\end{itemize}
-When working in three dimensions, we could have functions that map
-\begin{itemize}
 \item $\vec{f}:\R \to \R^3$
+\item $F:\R^2\to \R$
 \item $F:\R^3\to \R$
+\item $\vec{F}:\R^2 \to \R^2$
 \item $\vec{F}:\R^3 \to \R^3$
 \end{itemize}
 \end{document}
