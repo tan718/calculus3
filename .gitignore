@@ -26,3 +26,6 @@
 *.nb
 *.ps
 *.jpg
+*.table
+*.dat
+*.script
