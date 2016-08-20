@@ -1,0 +1,44 @@
+\documentclass{ximera}
+
+\input{../preamble.tex}
+
+\title[Dig-In:]{Quadric surfaces}
+
+\begin{document}
+\begin{abstract}
+  
+\end{abstract}
+\maketitle
+
+As we have seen, if we look at the set of points that satisfy an
+equation
+\[
+F(x,y,z)=0
+\]
+where $F:\R^3\to\R$, we obtain a surface in $\R^3$. A basic class of
+surfaces to know are the \textit{quadric surfaces}.
+\begin{definition}
+A \dfn{quadric surface} in $\R^3$ is a surface of the form
+\[
+\text{I'm NOT SURE WHAT THE BEST THING TO DO HERE IS}
+\]
+\end{definition}
+
+\begin{warning}
+  Do not confuse a \textit{quadric} with a quadratic, or quartic, as
+  these are different beasts entirely.
+\end{warning}
+
+\begin{sageCell}
+var ('x y z')
+A = 3
+B = 4
+C = 1
+implicit_plot3d(A*x+B*y+C*z==1,
+                (x,-6,6), 
+                (y,-6,6), 
+                (z,-6, 6), 
+                axes="true")
+\end{sageCell}
+
+\end{document}
