@@ -359,6 +359,54 @@ The distance formula also extends to higher dimensions:
   \]
   \begin{explanation}
     To see why this is true, draw a picture!
+    \begin{image}
+      \begin{tikzpicture}
+        \begin{axis}[
+            axis lines=none,
+            clip=false,
+            width=6in,
+            height=3in,
+          ]          
+          \addplot [->,textColor] plot coordinates {(0,0) (-2,-4)}; %% x axis
+          \addplot [->,textColor] plot coordinates {(0,0) (4,0)}; %% y axis
+          \addplot [->,textColor] plot coordinates {(0,0) (0,6)}; %% z axis
+          
+          
+          \addplot [dashed] plot coordinates {(-.7,-1.4) (1.4,-1.4)}; %%bottom dashed line
+          \addplot [dashed] plot coordinates {(1.4,-1.4) (2.1,0)}; %% bottom right dashed
+          \addplot [dashed] plot coordinates {(2.1,0) (2.1,4.1)};  %% back right vert dashed
+          \addplot [dashed] plot coordinates {(1.4,-1.4) (1.4,2.7)}; %% front right vert dashed
+          \addplot [dashed] plot coordinates {(2.1,4.1) (1.4,2.7)}; %% top right dashed
+          \addplot [dashed] plot coordinates {(0,4.1) (-.7,2.7)}; %% top left dashed
+          \addplot [dashed] plot coordinates {(-.7,-1.4) (-.7,2.7)}; %% left vert front
+          \addplot [dashed] plot coordinates {(-.7,2.7) (1.4,2.7)}; %% top horz
+          \addplot [dashed] plot coordinates {(0,4.1) (2.1,4.1)}; %% top horz rear
+
+          \addplot [dashed] plot coordinates {(-1.3,-2.6) (2.6,-2.6)}; %%bottom dashed line
+          \addplot [dashed] plot coordinates {(2.6,-2.6) (3.5,0)}; %% bottom right dashed
+          \addplot [dashed] plot coordinates {(3.5,0) (3.5,5.5)};  %% back right vert dashed
+          \addplot [dashed] plot coordinates {(2.6,-2.6) (2.6,2.9)}; %% front right vert dashed
+          \addplot [dashed] plot coordinates {(3.5,5.5) (2.6,2.9)}; %% top right dashed
+          \addplot [dashed] plot coordinates {(0,5.5) (-1.3,2.9)}; %% top left dashed
+          \addplot [dashed] plot coordinates {(-1.3,-2.6) (-1.3,2.9)}; %% left vert front
+          \addplot [dashed] plot coordinates {(-1.3,2.9) (2.6,2.9)}; %% top horz
+          \addplot [dashed] plot coordinates {(0,5.5) (3.5,5.5)}; %% top horz rear
+          
+          \node at (axis cs:-.7,-1.3) [anchor=east] {$a$};          
+          \node at (axis cs:2.1,0) [anchor=south west] {$b$};
+          \node at (axis cs:0,4.1) [anchor=south east] {$c$};
+
+          \node at (axis cs:-1.3,-2.6) [anchor=east] {$x$};          
+          \node at (axis cs:3.5,0) [anchor=south west] {$y$};
+          \node at (axis cs:0,5.5) [anchor=south east] {$z$};
+          
+          \addplot[color=penColor2,fill=penColor2,only marks,mark=*] coordinates{(1.4,2.7)};  %% closed hole
+          \addplot[color=penColor,fill=penColor,only marks,mark=*] coordinates{(2.6,2.9)};  %% closed hole
+
+          
+        \end{axis}
+      \end{tikzpicture}
+    \end{image}
   \end{explanation}
 \end{theorem}
 
@@ -370,10 +418,30 @@ The distance formula also extends to higher dimensions:
 
 \subsection{Circles and spheres, disks and balls}
 
-Just as the equation of a circle is related to the distance formula in
-$\R^2$, the equation of a sphere is related to the distance formula in
-$\R^3$:
+Let me remind you what the defintion of a circle is:
+\begin{definition}
+  A \dfn{circle} is the set of points $(x,y)$ in $\R^2$ that are a
+  fixed, nonzero, equal distance from a given point $C$, where $C$ is
+  the center of the circle.
+\end{definition}
 
+\begin{question}
+  Is the center point of a circle part of the circle?
+  \begin{prompt}
+    \begin{multipleChoice}
+      \choice{yes}
+      \choice[correct]{no}
+    \end{multipleChoice}
+    \begin{feedback}
+      Well, $|CC|=0$, and the radius of a circle is nonzero, so the
+      center is not part of the circle.
+    \end{feedback}
+  \end{prompt}
+\end{question}
+
+From the definition of a circle, we see that it is intimitaly related
+to the distance formula. Indeed, it is also the case the equation of a
+sphere is related to the distance formula in $\R^3$:
 
 \begin{theorem}
   The equation for a circle of radius $r$ centered at the point
@@ -387,13 +455,14 @@ $\R^3$:
   r^2 = (x-a)^2 + (y-b)^2 + (x-c)^2
   \]
   In general, the equation for a $n$-dimensional ``sphere'' of radius
-  $r$ centered at the point $(a_1,a_2,a_3,\dots,a_n)$ is
+  $r$ centered at the point $(c_1,c_2,c_3,\dots,c_n)$ in $\R^n$ is
   \[
-  r^2 = \sum_{i=1}^n(x-a_i)^2
+  r^2 = \sum_{i=1}^n(x-c_i)^2
   \]
   \begin{explanation}
-    This follows directly from the distance formula since a sphere is
-    the set of points that are equidistant from a given point.
+    This follows directly from the distance formula since a $n$-sphere
+    is the set of points that are equidistant from a given point in
+    $\R^n$.
   \end{explanation}
 \end{theorem}
 
@@ -411,7 +480,7 @@ $\R^3$:
 
 \begin{question}
   The equation $(x-1)^2+y^2+(z+2)^2 = 4$ has a solution set in
-  $\R^3$ which is a sphere.  What is the center and
+  $\R^3$ which forms a sphere.  What is the center and
   radius of this sphere?
   \begin{prompt}
   \[
@@ -422,11 +491,12 @@ $\R^3$:
   \]
   \end{prompt}
   \begin{hint}
-    $(x-1)^2+y^2+(z+2)^2$ is the square of the distance from
-    $(1,0,-2)$ to $(x,y,z)$.  If the square of the distance is $4$, then
-    the distance is $2$.  Since the solution set of this equation is all
-    points which are a distance of $2$ away from $(1,0,-2)$, then this
-    is a sphere of radius $2$ centered at $(1,0,-2)$
+    The expression $(x-1)^2+y^2+(z+2)^2$ is the square of the distance
+    from $(1,0,-2)$ to $(x,y,z)$.  If the square of the distance is
+    $4$, then that distance is $2$.  Since the solution set of this
+    equation is all points which are a distance of $2$ away from
+    $(1,0,-2)$, then this is a sphere of radius $2$ centered at
+    $(1,0,-2)$
   \end{hint}
 \end{question}
 
