@@ -278,14 +278,14 @@ $(x,z)$-plane, and the $(y,z)$-plane.
 Suppose you want to know the distance between two points $(x,y)$ and
 $(a,b)$. To do this, we use the distance formula!
 \begin{theorem}
-  Given two points $(x,y)$ and $(a,b)$ in $\R^2$, the distance between
+  Given two points $P=(x,y)$ and $Q=(a,b)$ in $\R^2$, the distance between
   them is given by:
   \[
-  \sqrt{(x-a)^2 + (y-b)^2}
+  |PQ|=\sqrt{(x-a)^2 + (y-b)^2}
   \]
   \begin{explanation}
     This is nothing more than a corollary of the Pythagorean
-    Theorem. Plot the points $(a,b)$ and $(x,y)$:
+    Theorem. Plot the points $P=(a,b)$ and $Q=(x,y)$:
     \begin{image}
       \begin{tikzpicture}
 	\begin{axis}[
@@ -334,15 +334,17 @@ $(a,b)$. To do this, we use the distance formula!
     \end{image}
     By the Pythagorean theorem, the length of this path is given by 
     \[
-    \sqrt{(x-a)^{2}+(y-b)^{2}}.
+    |PQ|=\sqrt{(x-a)^{2}+(y-b)^{2}}.
     \]
   \end{explanation}
 \end{theorem}
 
 \begin{question}
-  What is the distance between the points $(-17,379)$ and $(14,-101)$?
+  What is the distance between the points $P=(-17,379)$ and $Q=(14,-101)$?
   \begin{prompt}
-    The distance is $\answer{481}$ units.
+    \[
+    |PQ|=\answer{481}\unit{units}.
+    \]
   \end{prompt}
 \end{question}
 
@@ -350,12 +352,13 @@ The distance formula also extends to higher dimensions:
 
 
 \begin{theorem}
-  Given two points $(x,y,z)$ and $(a,b,c)$ in $\R^3$, the distance between
+  Given two points $P=(x,y,z)$ and $Q=(a,b,c)$ in $\R^3$, the distance between
   them is given by:
   \[
-  \sqrt{(x-a)^2 + (y-b)^2 + (z-c)^2}
+  |PQ|=\sqrt{(x-a)^2 + (y-b)^2 + (z-c)^2}
   \]
   \begin{explanation}
+    To see why this is true, draw a picture!
   \end{explanation}
 \end{theorem}
 
