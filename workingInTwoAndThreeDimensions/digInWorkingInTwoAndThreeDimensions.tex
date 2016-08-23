@@ -275,6 +275,166 @@ $(x,z)$-plane, and the $(y,z)$-plane.
 
 \section{Distance and spheres}
 
+What's the most famous theorem in mathematics? I'll tell you: The
+Pythagorean Theorem:
+
+\begin{theorem}
+  Given a right triangle,
+  \begin{image}
+    \begin{tikzpicture}
+      \coordinate (A) at (0,2);
+      \coordinate (B) at (0,5);
+      \coordinate (C) at (6.5,2);
+      \tkzMarkRightAngle(C,A,B)
+      \tkzDefMidPoint(A,B) \tkzGetPoint{a}
+      \tkzDefMidPoint(A,C) \tkzGetPoint{b}
+      \tkzDefMidPoint(B,C) \tkzGetPoint{c}
+      \draw (A)--(B)--(C)--cycle;
+      \tkzLabelPoints[above](c)
+      \tkzLabelPoints[below](b)
+      \tkzLabelPoints[left](a)
+    \end{tikzpicture}
+  \end{image}
+  we have that $a^2 + b^2 = c^2.$
+  \begin{explanation}
+    Given a right triangle with legs $a$ and $b$, and hypotenuse $c$,
+    we can make the following squares each with side length $(a+b)$:
+    \begin{image}
+      \begin{tikzpicture}
+        %% First square
+        \coordinate (A) at (0,0);
+        \coordinate (B) at (0,4);
+        \coordinate (C) at (4,4);
+        \coordinate (D) at (4,0);
+        \coordinate (E) at (1,0);
+        \coordinate (F) at (0,3);
+        \coordinate (G) at (3,4);
+        \coordinate (H) at (4,1);
+
+        \tkzMarkRightAngle(A,B,C)
+        \tkzMarkRightAngle(B,C,D)
+        \tkzMarkRightAngle(C,D,A)
+        \tkzMarkRightAngle(D,A,B)
+
+        \tkzMarkRightAngle(E,F,G)
+        \tkzMarkRightAngle(F,G,H)
+        \tkzMarkRightAngle(G,H,E)
+        \tkzMarkRightAngle(H,E,F)
+        
+        
+        \draw (A)--(B)--(C)--(D)--cycle;
+        \draw (E)--(F)--(G)--(H)--cycle;
+        
+        \node[right] at (.5,1.5) {$c$};
+        \node[above] at (2.5,.5) {$c$};
+        \node[left] at (3.5,2.5) {$c$};
+        \node[below] at (1.5,3.5) {$c$};
+
+        \node[left] at (0,1.5) {$b$};
+        \node[below] at (2.5,0) {$b$};
+        \node[right] at (4,2.5) {$b$};
+        \node[above] at (1.5,4) {$b$};
+
+        
+        %% Second square
+        \coordinate (AA) at (6,0);
+        \coordinate (BB) at (6,4);
+        \coordinate (CC) at (10,4);
+        \coordinate (DD) at (10,0);
+        \coordinate (EE) at (7,0);
+        \coordinate (FF) at (6,3);
+        \coordinate (GG) at (7,4);
+        \coordinate (HH) at (10,3);
+        \coordinate (II) at (7,3);
+
+        \tkzMarkRightAngle(II,GG,CC)
+        \tkzMarkRightAngle(II,HH,CC)
+        \tkzMarkRightAngle(FF,II,EE)
+        \tkzMarkRightAngle(FF,AA,EE)
+        
+        \draw (AA)--(BB)--(CC)--(DD)--cycle;
+        \draw (EE)--(FF);
+        \draw (II)--(CC);
+        \draw (EE)--(GG);
+        \draw (FF)--(HH);
+        
+        \node[below] at (6.5,3) {$a$};
+        \node[right] at (7,3.5) {$a$};
+        \node[left] at (6,3.5) {$a$};
+        \node[above] at (6.5,4) {$a$};
+        \node[below] at (6.5,0) {$a$};
+        \node[right] at (10,3.5) {$a$};
+        
+        \node[below] at (8.5,3) {$b$};
+        \node[left] at (10,1.5) {$b$};
+        \node[right] at (7,1.5) {$b$};
+        \node[above] at (8.5,0) {$b$};
+
+        \node[left] at (6,1.5) {$b$};
+        \node[above] at (8.5,4) {$b$};
+      \end{tikzpicture}
+    \end{image}
+    Since both squares above have side length $(a+b)$, both large
+    squares have the same area. Moreover, if we remove the triangles:
+    \begin{image}
+      \begin{tikzpicture}
+        %% First square
+        \coordinate (E) at (1,0);
+        \coordinate (F) at (0,3);
+        \coordinate (G) at (3,4);
+        \coordinate (H) at (4,1);
+
+        \draw (E)--(F)--(G)--(H)--cycle;
+        
+        \node[right] at (.5,1.5) {$c$};
+        \node[above] at (2.5,.5) {$c$};
+        \node[left] at (3.5,2.5) {$c$};
+        \node[below] at (1.5,3.5) {$c$};
+
+        \tkzMarkRightAngle(E,F,G)
+        \tkzMarkRightAngle(F,G,H)
+        \tkzMarkRightAngle(G,H,E)
+        \tkzMarkRightAngle(H,E,F)
+        
+        %% Second square
+        \coordinate (BB) at (6,4);
+        \coordinate (DD) at (10,0);
+        \coordinate (EE) at (7,0);
+        \coordinate (FF) at (6,3);
+        \coordinate (GG) at (7,4);
+        \coordinate (HH) at (10,3);
+        \coordinate (II) at (7,3);
+        
+        \tkzMarkRightAngle(AA,BB,CC)
+        \tkzMarkRightAngle(CC,DD,AA)
+        \tkzMarkRightAngle(BB,FF,II)
+        \tkzMarkRightAngle(BB,GG,II)
+        \tkzMarkRightAngle(FF,II,GG)
+        \tkzMarkRightAngle(EE,II,HH)
+        \tkzMarkRightAngle(II,HH,DD)
+        \tkzMarkRightAngle(II,EE,DD)
+
+        
+        \draw (EE)--(GG)--(BB)--(FF)--(HH)--(DD)--cycle;
+
+        \node[below] at (6.5,3) {$a$};
+        \node[right] at (7,3.5) {$a$};
+        \node[left] at (6,3.5) {$a$};
+        \node[above] at (6.5,4) {$a$};
+        
+        \node[below] at (8.5,3) {$b$};
+        \node[left] at (10,1.5) {$b$};
+        \node[right] at (7,1.5) {$b$};
+        \node[above] at (8.5,0) {$b$};
+      \end{tikzpicture}
+    \end{image}
+    Both diagrams must still have the same area, since we removed an
+    equal amount from each diagram.  Hence $c^2=a^2+b^2$.
+  \end{explanation}
+\end{theorem}
+  
+  
+
 Suppose you want to know the distance between two points $(x,y)$ and
 $(a,b)$. To do this, we use the distance formula!
 \begin{theorem}
@@ -301,7 +461,7 @@ $(a,b)$. To do this, we use the distance formula!
           \addplot[penColor,dashed] plot coordinates {(0,2) (1,2)};
           \addplot[penColor,dashed] plot coordinates {(3,0) (3,3)};
           \addplot[penColor,dashed] plot coordinates {(0,3) (3,3)};
-          \addplot[penColor,only marks,mark=*] coordinates{(1,2)};  %% closed hole          
+          \addplot[penColor2,only marks,mark=*] coordinates{(1,2)};  %% closed hole          
           \addplot[penColor,only marks,mark=*] coordinates{(3,3)};  %% closed hole          
         \end{axis}
       \end{tikzpicture}
@@ -324,15 +484,15 @@ $(a,b)$. To do this, we use the distance formula!
           \node at (axis cs:2,1.75) {$(x-a)$}; 
           \node at (axis cs:3.5,2.5) {$(y-b)$}; 
           \addplot[dashed] plot coordinates {(1,2) (3,3)};
-          \addplot[penColor] plot coordinates {(1,2) (3,2)};
-          \addplot[penColor] plot coordinates {(3,2) (3,3)};
-          \addplot[penColor] plot coordinates {(2.83,2) (2.83,2.2) (3,2.2)};
-          \addplot[penColor,only marks,mark=*] coordinates{(1,2)};  %% closed hole          
+          \addplot[textColor] plot coordinates {(1,2) (3,2)};
+          \addplot[textColor] plot coordinates {(3,2) (3,3)};
+          \addplot[textColor] plot coordinates {(2.83,2) (2.83,2.2) (3,2.2)};
+          \addplot[penColor2,only marks,mark=*] coordinates{(1,2)};  %% closed hole          
           \addplot[penColor,only marks,mark=*] coordinates{(3,3)};  %% closed hole          
         \end{axis}
       \end{tikzpicture}
     \end{image}
-    By the Pythagorean theorem, the length of this path is given by 
+    By the Pythagorean Theorem, the length of this path is given by 
     \[
     |PQ|=\sqrt{(x-a)^{2}+(y-b)^{2}}.
     \]
@@ -340,7 +500,8 @@ $(a,b)$. To do this, we use the distance formula!
 \end{theorem}
 
 \begin{question}
-  What is the distance between the points $P=(-17,379)$ and $Q=(14,-101)$?
+  What is the distance between the points $P=(-17,379)$ and
+  $Q=(14,-101)$ in $\R^2$?
   \begin{prompt}
     \[
     |PQ|=\answer{481}\unit{units}.
@@ -349,7 +510,6 @@ $(a,b)$. To do this, we use the distance formula!
 \end{question}
 
 The distance formula also extends to higher dimensions:
-
 
 \begin{theorem}
   Given two points $P=(x,y,z)$ and $Q=(a,b,c)$ in $\R^3$, the distance between
@@ -364,14 +524,13 @@ The distance formula also extends to higher dimensions:
         \begin{axis}[
             axis lines=none,
             clip=false,
-            width=6in,
-            height=3in,
+            width=5in,
+            height=2.5in,
           ]          
           \addplot [->,textColor] plot coordinates {(0,0) (-2,-4)}; %% x axis
           \addplot [->,textColor] plot coordinates {(0,0) (4,0)}; %% y axis
           \addplot [->,textColor] plot coordinates {(0,0) (0,6)}; %% z axis
-          
-          
+                   
           \addplot [dashed] plot coordinates {(-.7,-1.4) (1.4,-1.4)}; %%bottom dashed line
           \addplot [dashed] plot coordinates {(1.4,-1.4) (2.1,0)}; %% bottom right dashed
           \addplot [dashed] plot coordinates {(2.1,0) (2.1,4.1)};  %% back right vert dashed
@@ -400,18 +559,173 @@ The distance formula also extends to higher dimensions:
           \node at (axis cs:3.5,0) [anchor=south west] {$y$};
           \node at (axis cs:0,5.5) [anchor=south east] {$z$};
           
-          \addplot[color=penColor2,fill=penColor2,only marks,mark=*] coordinates{(1.4,2.7)};  %% closed hole
-          \addplot[color=penColor,fill=penColor,only marks,mark=*] coordinates{(2.6,2.9)};  %% closed hole
+          \addplot[penColor2,only marks,mark=*] coordinates{(1.4,2.7)};  %% closed hole
+          \addplot[penColor,only marks,mark=*] coordinates{(2.6,2.9)};  %% closed hole
 
           
         \end{axis}
       \end{tikzpicture}
     \end{image}
+    Ignoring the vertical components of the points, we can make a
+    right-triangle whose legs have lengths $(x-a)$ and $(y-b)$.
+    \begin{image}
+      \begin{tikzpicture}
+        \begin{axis}[
+            axis lines=none,
+            clip=false,
+            width=5in,
+            height=2.5in,
+          ]          
+          \addplot [->,textColor] plot coordinates {(0,0) (-2,-4)}; %% x axis
+          \addplot [->,textColor] plot coordinates {(0,0) (4,0)}; %% y axis
+          \addplot [->,textColor] plot coordinates {(0,0) (0,6)}; %% z axis
+                   
+          \addplot [dashed] plot coordinates {(-.7,-1.4) (1.4,-1.4)}; %%bottom dashed line
+          \addplot [dashed] plot coordinates {(1.4,-1.4) (2.1,0)}; %% bottom right dashed
+          \addplot [dashed] plot coordinates {(2.1,0) (2.1,4.1)};  %% back right vert dashed
+          \addplot [dashed] plot coordinates {(1.4,-1.4) (1.4,2.7)}; %% front right vert dashed
+          \addplot [dashed] plot coordinates {(2.1,4.1) (1.4,2.7)}; %% top right dashed
+          \addplot [dashed] plot coordinates {(0,4.1) (-.7,2.7)}; %% top left dashed
+          \addplot [dashed] plot coordinates {(-.7,-1.4) (-.7,2.7)}; %% left vert front
+          \addplot [dashed] plot coordinates {(-.7,2.7) (1.4,2.7)}; %% top horz
+          \addplot [dashed] plot coordinates {(0,4.1) (2.1,4.1)}; %% top horz rear
+
+          \addplot [dashed] plot coordinates {(-1.3,-2.6) (2.6,-2.6)}; %%bottom dashed line
+          \addplot [dashed] plot coordinates {(2.6,-2.6) (3.5,0)}; %% bottom right dashed
+          \addplot [dashed] plot coordinates {(3.5,0) (3.5,5.5)};  %% back right vert dashed
+          \addplot [dashed] plot coordinates {(2.6,-2.6) (2.6,2.9)}; %% front right vert dashed
+          \addplot [dashed] plot coordinates {(3.5,5.5) (2.6,2.9)}; %% top right dashed
+          \addplot [dashed] plot coordinates {(0,5.5) (-1.3,2.9)}; %% top left dashed
+          \addplot [dashed] plot coordinates {(-1.3,-2.6) (-1.3,2.9)}; %% left vert front
+          \addplot [dashed] plot coordinates {(-1.3,2.9) (2.6,2.9)}; %% top horz
+          \addplot [dashed] plot coordinates {(0,5.5) (3.5,5.5)}; %% top horz rear
+
+          \addplot [ultra thick] plot coordinates {(0.8,-2.6) (1.4,-1.4)}; %% left side bottom tri
+          \addplot [ultra thick] plot coordinates {(0.8,-2.6) (2.6,-2.6)}; %% bottom side bottom tri
+          \addplot [ultra thick] plot coordinates {(1.4,-1.4) (2.6,-2.6)}; %% hyp bottom tri
+          \addplot [thick] plot coordinates {(0.8,-2.6) (1,-2.2) (1.4,-2.2) (1.2,-2.6)}; %% 90 deg box
+
+
+          
+          \node at (axis cs:-.7,-1.3) [anchor=east] {$a$};          
+          \node at (axis cs:2.1,0) [anchor=south west] {$b$};
+          \node at (axis cs:0,4.1) [anchor=south east] {$c$};
+
+          \node at (axis cs:-1.3,-2.6) [anchor=east] {$x$};          
+          \node at (axis cs:3.5,0) [anchor=south west] {$y$};
+          \node at (axis cs:0,5.5) [anchor=south east] {$z$};
+
+          \node at (axis cs:1.7,-2.6) [anchor=north] {$(y-b)$};
+          \node at (axis cs:1,-2) [anchor=east] {$(x-a)$};
+          
+          \addplot[penColor2,only marks,mark=*] coordinates{(1.4,2.7)};  %% closed hole
+          \addplot[penColor,only marks,mark=*] coordinates{(2.6,2.9)};  %% closed hole
+        \end{axis}
+      \end{tikzpicture}
+    \end{image}
+    Thus by the Pythagorean Theorem, the length of the hypotenuse of
+    the right-triangle above is:
+    \[
+    \answer[given]{\sqrt{(x-a)^2+(y-b)^2}}
+    \]
+    Now, moving this segment up, we can form another right-triangle
+    where the legs have lengths $\sqrt{(x-a)^2+(y-b)^2}$ and $(z-c)$:
+    \begin{image}
+      \begin{tikzpicture}
+        \begin{axis}[
+            axis lines=none,
+            clip=false,
+            width=5in,
+            height=2.5in,
+          ]          
+          \addplot [->,textColor] plot coordinates {(0,0) (-2,-4)}; %% x axis
+          \addplot [->,textColor] plot coordinates {(0,0) (4,0)}; %% y axis
+          \addplot [->,textColor] plot coordinates {(0,0) (0,6)}; %% z axis
+                   
+          \addplot [dashed] plot coordinates {(-.7,-1.4) (1.4,-1.4)}; %%bottom dashed line
+          \addplot [dashed] plot coordinates {(1.4,-1.4) (2.1,0)}; %% bottom right dashed
+          \addplot [dashed] plot coordinates {(2.1,0) (2.1,4.1)};  %% back right vert dashed
+          \addplot [dashed] plot coordinates {(1.4,-1.4) (1.4,2.7)}; %% front right vert dashed
+          \addplot [dashed] plot coordinates {(2.1,4.1) (1.4,2.7)}; %% top right dashed
+          \addplot [dashed] plot coordinates {(0,4.1) (-.7,2.7)}; %% top left dashed
+          \addplot [dashed] plot coordinates {(-.7,-1.4) (-.7,2.7)}; %% left vert front
+          \addplot [dashed] plot coordinates {(-.7,2.7) (1.4,2.7)}; %% top horz
+          \addplot [dashed] plot coordinates {(0,4.1) (2.1,4.1)}; %% top horz rear
+
+          \addplot [dashed] plot coordinates {(-1.3,-2.6) (2.6,-2.6)}; %%bottom dashed line
+          \addplot [dashed] plot coordinates {(2.6,-2.6) (3.5,0)}; %% bottom right dashed
+          \addplot [dashed] plot coordinates {(3.5,0) (3.5,5.5)};  %% back right vert dashed
+          \addplot [dashed] plot coordinates {(2.6,-2.6) (2.6,2.9)}; %% front right vert dashed
+          \addplot [dashed] plot coordinates {(3.5,5.5) (2.6,2.9)}; %% top right dashed
+          \addplot [dashed] plot coordinates {(0,5.5) (-1.3,2.9)}; %% top left dashed
+          \addplot [dashed] plot coordinates {(-1.3,-2.6) (-1.3,2.9)}; %% left vert front
+          \addplot [dashed] plot coordinates {(-1.3,2.9) (2.6,2.9)}; %% top horz
+          \addplot [dashed] plot coordinates {(0,5.5) (3.5,5.5)}; %% top horz rear
+
+          \addplot [ultra thick,gray] plot coordinates {(0.8,-2.6) (1.4,-1.4)}; %% left side bottom tri
+          \addplot [ultra thick,gray] plot coordinates {(0.8,-2.6) (2.6,-2.6)}; %% bottom side bottom tri
+          \addplot [ultra thick,gray] plot coordinates {(1.4,-1.4) (2.6,-2.6)}; %% hyp bottom tri
+          \addplot [thick,gray] plot coordinates {(0.8,-2.6) (1,-2.2) (1.4,-2.2) (1.2,-2.6)}; %% 90 deg box
+
+          \addplot [ultra thick] plot coordinates {(1.4,2.7) (2.6,1.5) (2.6,2.9) (1.4,2.7)}; %% New tri
+          \addplot [thick] plot coordinates {(2.4,1.7) (2.4,2.2) (2.6,2)}; %% 90 deg box
+          
+          \node at (axis cs:-.7,-1.3) [anchor=east] {$a$};          
+          \node at (axis cs:2.1,0) [anchor=south west] {$b$};
+          \node at (axis cs:0,4.1) [anchor=south east] {$c$};
+
+          \node at (axis cs:-1.3,-2.6) [anchor=east] {$x$};          
+          \node at (axis cs:3.5,0) [anchor=south west] {$y$};
+          \node at (axis cs:0,5.5) [anchor=south east] {$z$};
+
+          \node at (axis cs:1.7,-2.6) [anchor=north] {$(y-b)$};
+          \node at (axis cs:1,-2) [anchor=east] {$(x-a)$};
+          \node at (axis cs:2.6,2.3) [anchor=west] {$(z-c)$};
+          
+          \addplot[penColor2,only marks,mark=*] coordinates{(1.4,2.7)};  %% closed hole
+          \addplot[penColor,only marks,mark=*] coordinates{(2.6,2.9)};  %% closed hole
+        \end{axis}
+      \end{tikzpicture}
+    \end{image}
+    The length of the hypotenuse of this new triangle is the distance between $P$ and $Q$. Again by the Pythagorean Theorem, we see
+    \begin{align*}
+      |PQ|^2 &= \left(\sqrt{(x-a)^2+(y-b)^2}\right)^2 + (z-c)^2\\
+      |PQ| &=  \sqrt{(x-a)^2+(y-b)^2 + (z-c)^2}
+    \end{align*}
+    Thus the distance formula in $\R^3$ is indeed what we claimed.
   \end{explanation}
 \end{theorem}
 
 \begin{question}
+  What is the distance between the points $P=(0,0,0)$ and $Q=(1,1,1)$
+  in $\R^3$?
+  \begin{prompt}
+    \[
+    |PQ|=\answer{\sqrt{3}}\unit{units}.
+    \]
+  \end{prompt}
 \end{question}
+
+
+In general we can extend this notion of distance to $\R^n$:
+
+\begin{theorem}
+  Given two points $P=(x_1,x_2,\dots,x_n)$ and $Q=(a_1,a_2,\dots,a_n)$
+  in $\R^n$, the distance between them is given by:
+  \[
+  |PQ|=\sqrt{(x_1-a_1)^2 + (x_2-a_2)^2 + \dots + (x_n-a_n)^2}
+  \]
+\end{theorem}
+
+\begin{question}
+  What is the distance between the points $P=(0,0,0,0)$ and $Q=(1,1,1,1)$ in $\R^4$?
+  \begin{prompt}
+    \[
+    |PQ|=\answer{2}\unit{units}.
+    \]
+  \end{prompt}
+\end{question}
+
 
 
 
