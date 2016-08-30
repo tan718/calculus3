@@ -621,7 +621,7 @@ an identity:
 \begin{theorem}[Lagrange's Idenitity]\index{Lagrange's identity}
   Given two vectors $\vec{a}$ and $\vec{b}$,
   \[
-  |\vec{a}\cross\vec{b}|^2 = |\vec{a}|^2 |\vec{b}|^2 - |\vec{a}\cdot\vec{b}|^2.
+  |\vec{a}\cross\vec{b}|^2 = |\vec{a}|^2 |\vec{b}|^2 - (\vec{a}\dotp\vec{b})^2.
   \]
   \begin{explanation}
     Set $\vec{a}=\vector{a_1,a_2,a_3}$ and
@@ -644,15 +644,15 @@ an identity:
   \begin{explanation}
     By Lagrange's identity, we have that
     \[
-    |\vec{a}\cross\vec{b}|^2 = |\vec{a}|^2 |\vec{b}|^2 - |\vec{a}\cdot\vec{b}|^2.
+    |\vec{a}\cross\vec{b}|^2 = |\vec{a}|^2 |\vec{b}|^2 - (\vec{a}\dotp\vec{b})^2.
     \]
     However, we also know that
     \[
-    |\vec{a} \cdot\vec{b}| = |\vec{a}| |\vec{b}|\cos(\theta)
+    \vec{a} \dotp\vec{b} = |\vec{a}| |\vec{b}|\cos(\theta)
     \]
     and so, write with me:
     \begin{align*}
-      |\vec{a}\cross\vec{b}|^2 &= |\vec{a}|^2 |\vec{b}|^2 - |\vec{a}\cdot\vec{b}|^2\\
+      |\vec{a}\cross\vec{b}|^2 &= |\vec{a}|^2 |\vec{b}|^2 - (\vec{a}\dotp\vec{b})^2\\
       &= |\vec{a}|^2 |\vec{b}|^2 - |\vec{a}|^2 |\vec{b}|^2\cos^2(\theta)\\
       &= |\vec{a}|^2 |\vec{b}|^2(1 - \cos^2(\theta))\\
       &= |\vec{a}|^2 |\vec{b}|^2\sin^2(\theta).
