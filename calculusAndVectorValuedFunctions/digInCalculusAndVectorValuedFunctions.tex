@@ -187,22 +187,50 @@ interval $I$. $\vec f(t)$ is \dfn{smooth} on $I$ if
 \end{question}
 
 
-Finally, we should point out that if a vector-valued function has constant length, then it traces out part of a circle.
+Finally, we should point out that if a vector-valued function has
+constant length, then it traces out part of a circle.
 \begin{theorem}
-  Let $\vec f(t)$ be a differentiable vector-valued function on an open interval $I$ of constant length. That is,
-  \[
-  |\vec f(t)| = c \quad\Leftrightarrow\quad \vec f(t)\dotp \vec f(t) = c^2
-  \]
-  for all $t$ in $I$. Then
-  \[
-  \vec f(t)\dotp\vec{f}'(t) = 0
-  \]
-  for all $t$ in $I$.
+  Let $\vec f(t)$ be a differentiable vector-valued function on an
+  open interval $I$. $\vec(f)(t)$ is of constant length if and only if
+  the vector-value of the function and its tangent vector are
+  orthogonal.
+  \begin{explanation}
+    Suppose that $|\vec f(t)| = c$ for all $t$ in $I$. In particular,
+    we see
+    \[
+    \vec{f}(t) \dotp \vec{f}(t) = c^2.
+    \]
+    Now take the derivative of both sides. Write with me
+    \begin{align*}
+      \vec{f}'(t) \dotp \vec{f}(t) + \vec{f}(t)\dotp \vec{f}'(t) &= 0\\
+      2\vec{f}'(t) \dotp \vec{f}(t) &= 0\\
+      \vec{f}'(t) \dotp \vec{f}(t) &= 0
+    \end{align*}
+    and this means that the vectors $\vec{f}'(t)$ and $\vec{f}(t)$ are
+    \wordChoice{\choice{parallel}\choice[correct]{perpendicular}}.
+
+    Now suppose that for all $t$ in $I$, $\vec{f}'(t)$ and
+    $\vec{f}(t)$ are orthogonal. This means
+    \begin{align*}
+      \vec{f}'(t) \dotp \vec{f}(t) &= 0\\
+      2\vec{f}'(t) \dotp \vec{f}(t) &= 0\\
+      \vec{f}'(t) \dotp \vec{f}(t) + \vec{f}(t)\dotp \vec{f}'(t) &= 0,
+    \end{align*}
+    but we know where the derivative on the left came from! So we may
+    write
+    \[
+    \vec{f}(t) \dotp \vec{f}(t) = c^2
+    \]
+    for some constant $c$. Now we see that $\vec{f}$ is a
+    vector-valued function of constant length on an open interval
+    $I$.
+  \end{explanation}
 \end{theorem}
-This theorem says a lot in a very little. To start, it says that if the
-magnitude of a vector-valued function is constant, then the value of
-the function, and its tangent vector are orthogonal. Moreover, this
-means that the curve looks locally like a circle.
+The theorem above says a lot in a very little. To start, it says that
+if the magnitude of a vector-valued function is constant, then the
+vector-value of the function and its tangent vector are
+orthogonal. Moreover, this means that the curve looks locally like a
+circle.
 
 
 
