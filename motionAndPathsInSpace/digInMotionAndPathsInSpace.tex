@@ -64,13 +64,15 @@ Let $\vec{p}(t)$ be the position of some object in $\R^2$ or $\R^3$:
   \end{question}
 \end{question}
 
+Now let's see an example.
+
 \begin{example}
   Two objects follow an identical path at different rates on
-  $[-1,1]$. The position function for Object 1 is $\vec{p}_1(t) = \vector{
-  t, t^2}$; the position function for Object 2 is $\vec{p}_2(t) = \vector{
-  t^3, t^6}$, where distances are measured in feet and time is
-  measured in seconds. Compare the velocity, speed and acceleration of
-  the two objects on the path.
+  $[-1,1]$. The position function for Object 1 is $\vec{p}_1(t) =
+  \vector{t, t^2}$; the position function for Object 2 is
+  $\vec{p}_2(t) = \vector{t^3, t^6}$, where distances are measured in
+  feet and time is measured in seconds. Compare the velocity, speed
+  and acceleration of the two objects on the path.
   \begin{explanation}
     We begin by computing the velocity and acceleration function for
     each object:
@@ -222,7 +224,7 @@ We integrate once more to find $\vrt$:
 \begin{align*}
 \vrt &= \int \vvt\d t \\
 \vrt &= \int \vector{\rule{0pt}{9pt} v_0\cos \theta, -gt+v_0\sin\theta}\d t\\
-\vrt &= \vector{ \big(v_0\cos \theta\big)t, -\frac12gt^2+\big(v_0\sin\theta\big)t} + \vec C
+\vrt &= \vector{\big(v_0\cos \theta\big)t, -\frac12gt^2+\big(v_0\sin\theta\big)t} + \vec C
 \intertext{Knowing $\vec{p}(0) = \vector{x_0,y_0}$, we conclude $\vec C = \vector{x_0,y_0}$ and }
 \vrt &= \vector{\big(v_0\cos \theta\big)t+x_0\ , -\frac12gt^2+\big(v_0\sin\theta\big)t+y_0\ } %\\
 %\vrt &= \vector{0,-\frac12g} t^2 + v_0\vector{\cos\theta,\sin \theta} t + \vector{x_0,y_0}.
