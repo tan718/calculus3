@@ -1,0 +1,75 @@
+\documentclass{ximera}
+
+\input{../preamble.tex}
+
+\title[Dig-In:]{Implicit curves in space}
+
+\begin{document}
+\begin{abstract}
+We learn how to plot implicit curves in space. 
+\end{abstract}
+\maketitle
+
+We know that the values of $x$ and $y$ that satisfy the following
+equation
+\[
+y=x^2
+\]
+will plot a parabola the $(x,y)$-plane centered at the origin. We will
+use \link[\sage]{http://www.sagemath.org/} to plot this:
+
+\begin{sageCell}
+var('x,y')
+implicit_plot(y==x^2, (x,-2,2),(y,-2,2),axes=true)
+\end{sageCell}
+
+Let's think deeply about what it means to ``graph'' a function. When
+you graph, you
+\begin{enumerate}
+\item Find pairs of numbers $x$ and $y$ that satisfy a certain
+  equation.
+\item Take the $x$ value, multiply it by the vector $\veci$, and plot
+  this point.
+\item Take the $y$-value, multiply it by the vector $\vecj$, and AGGAGAGA
+\end{enumerate}
+
+
+So if you have an expression:
+
+\[
+F(x,y) = 0
+\]
+then, you compute
+\[
+\vector{x,y,z}\dotp 
+\]
+
+\begin{sageCell}
+var('x,y')
+xy=vector([x,y])
+ii=vector([1/sqrt(2),1/sqrt(2)])
+jj=vector([-1/sqrt(2),1/sqrt(2)])
+vectori=plot(vector([1,0]),color="lightgrey")
+vectorj=plot(vector([0,1]),color="lightgrey")
+vectorii=plot(ii,color="dimgrey")
+vectorjj=plot(jj,color="dimgrey")
+curve=implicit_plot(xy.dot_product(jj)==(xy.dot_product(ii))^2, (x,-2,2),(y,-2,2))
+show(vectori+vectorj+vectorii+vectorjj+curve)
+\end{sageCell}
+
+
+\begin{sageCell}
+var('x,y,z')
+xy=vector([x,y])
+ii=vector([1,0,0])
+jj=vector([0,1,0])
+kk=vector([0,0,1])
+surface1=implicit_plot3d(x^2+y^2+z^2==3, (x,-2,2),(y,-2,2),(z,-2,2))
+surface2=implicit_plot3d(z==0, (x,-2,2),(y,-2,2),(z,-2,2),color="red")
+show(surface1+surface2)
+\end{sageCell}
+
+
+
+
+\end{document}
