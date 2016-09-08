@@ -65,123 +65,105 @@ Let $\vec{p}(t)$ be the position of some object in $\R^2$ or $\R^3$:
 \end{question}
 
 Now let's see an example.
-
 \begin{example}
-  Two objects follow an identical path at different rates on
-  $[-1,1]$. The position function for Object 1 is $\vec{p}_1(t) =
-  \vector{t, t^2}$; the position function for Object 2 is
-  $\vec{p}_2(t) = \vector{t^3, t^6}$, where distances are measured in
-  feet and time is measured in seconds. Compare the velocity, speed
-  and acceleration of the two objects on the path.
-  \begin{explanation}
-    We begin by computing the velocity and acceleration function for
-    each object:
-    \begin{align*}
-      \vec v_1(t) &= \vector{1,2t} & \vec v_2(t) &= \vector{3t^2,6t^5} \\
-      \vec a_1(t) &= \vector{0,2} & \vec a_2(t) &=\vector{6t,30t^4}
-    \end{align*}
-    We immediately see that Object 1 has constant acceleration, whereas Object 2 does not. 
-    
-    At $t=-1$, we have $\vec v_1(-1) = \vector{1,-2}$ and $\vec v_2(-1) =
-    \vector{3,-6}$; the velocity of Object 2 is three times that of Object 1
-    and so it follows that the speed of Object 2 is three times that of
-    Object 1 ($3\sqrt{5}$ ft/s compared to $\sqrt{5}$ ft/s.)
-    %\mfigure{.35}{Plotting velocity and acceleration vectors for Object 1
-      %in Example \ref{ex_motion2}.}{fig:motion2a}{figures/figmotion2a}
-
-    At $t=0$, the velocity of Object 1 is $\vec v(1) = \vector{1,0}$ and the
-    velocity of Object 2 is $\vec 0$! This tells us that Object 2 comes to
-a complete stop at $t=0$.
-
-In Figure \ref{fig:motion2a}, we see the velocity and acceleration
-vectors for Object 1 plotted for $t=-1, -1/2, 0, 1/2$ and $t=1$. Note
-again how the constant acceleration vector seems to ``pull'' the
-velocity vector from pointing down, right to up, right. We could plot
-the analogous picture for Object 2, but the velocity and acceleration
-vectors are rather large ($\vec a_2(-1) = \vector{-6,30}$!)
-
-Instead, we simply plot the locations of Object 1 and 2 on intervals
-of $1/10$ of a second, shown in Figure \ref{fig:motion2b}
-(a) and (b). Note how the $x$-values of Object 1 increase at a steady
-rate. This is because the $x$-component of $\vec a(t)$ is 0; there is
-no acceleration in the $x$-component. The dots are not evenly spaced;
-the object is moving faster near $t=-1$ and $t=1$ than near $t=0$.
-%\mtable{.7}{Comparing the positions of Objects 1 and 2 in Example
-%  \ref{ex_motion2}.}{fig:motion2b}{%
-%  \begin{tabular}{c}
-    %\myincludegraphics{figures/figmotion2c}\\
-%    (a)\\[10pt]
-    %\myincludegraphics{figures/figmotion2b}\\
- %   (b)
- % \end{tabular}
-
-In part (b) of the Figure, we see the points plotted for Object
-2. Note the large change in position from $t=-1$ to $t=-0.9$; the
-object starts moving very quickly. However, it slows considerably at
-it approaches the origin, and comes to a complete stop at $t=0$. While
-it looks like there are 3 points near the origin, there are in reality
-5 points there.
-
-Since the objects begin and end at the same location, the have the
-same displacement. Since they begin and end at the same time, with the
-same displacement, they have they have the same average rate of change
-(i.e, they have the same average velocity). Since they follow the same
-path, they have the same distance traveled. Even though these three
-measurements are the same, the objects obviously travel the path in
-very different ways.
-  \end{explanation}
-\end{example}
-\end{document}
-
-
-
-\example{ex_motion3}{Analyzing the motion of a whirling ball on a string}{
-A young boy whirls a ball, attached to a string, above his head in a counter-clockwise circle. The ball follows a circular path and makes 2 revolutions per second. The string has length 2ft.
+  You whirl a ball, attached to a string, above your head in a
+  counter-clockwise circle. The ball follows a circular path and makes
+  $2$ revolutions per second. The string has length $2$ft.
 \begin{enumerate}
-	\item Find the position function $\vec{p}(t)$ that describes this situation.
-	\item	Find the acceleration of the ball and derive a physical interpretation of it.
-	\item	A tree stands 10ft in front of the boy. At what $t$-values should the boy release the string so that the ball hits the tree?
+\item Find the position function $\vec{p}(t)$ that describes this
+  situation.
+\item Find the acceleration of the ball and derive a physical
+  interpretation of it.
+\item A tree stands 10ft in front of you. At what $t$-values should
+  you release the string so that the ball hits the tree?
 \end{enumerate}
-}
-{\begin{enumerate}
-	\item The ball whirls in a  circle. Since the string is 2ft long, the radius of the circle is 2. The position function $\vrt = \vector{2\cos t, 2\sin t}$ describes a circle with radius 2, centered at the origin, but makes a full revolution every $2\pi$ seconds, not two revolutions per second. We modify the period of the trigonometric functions to be 1/2 by multiplying $t$ by $4\pi$. The final position function is thus $$\vrt = \vector{2\cos (4\pi t), 2\sin (4\pi t)}.$$
-	(Plot this for $0\leq t\leq 1/2$ to verify that one revolution is made in 1/2 a second.)
+\begin{explanation}
+  \begin{enumerate}
+  \item The ball whirls in a circle. Since the string is $2$ft long,
+    the radius of the circle is $2$. We start by writing down a
+    position function that describes
+    \begin{enumerate}
+    \item a circle with radius $2$,
+    \item centered at the origin of the $(x,y)$-plane,
+    \item that makes a full revolution every $2\pi$ seconds.
+    \end{enumerate}
+    \[
+    \vector{\answer[given]{2\cos(t)}, \answer[given]{2\sin t}}
+    \]
+    However, we want HERE HERE HERE HERE
+    not two revolutions
+    per second. We modify the period of the trigonometric functions to
+    be 1/2 by multiplying $t$ by $4\pi$. The final position function
+    is thus $$\vrt = \vector{2\cos (4\pi t), 2\sin (4\pi t)}.$$ (Plot
+    this for $0\leq t\leq 1/2$ to verify that one revolution is made
+    in 1/2 a second.)
+  \item To find $\vat$, we derive $\vrt$ twice.
+    \begin{align*}
+      \vvt = \vrp(t) &= \vector{-8\pi \sin (4\pi t), 8\pi \cos (4\pi t)}\\
+      \vat =\vrp'(t) &= \vector{-32\pi^2 \cos (4\pi t), -32\pi^2 \sin (4\pi t) } \\
+      &= -32\pi^2\vector{\cos (4\pi t), \sin (4\pi t)}.
+    \end{align*}
+    Note how $\vat$ is parallel to \vrt, but has a different magnitude
+    and points in the opposite direction. Why is this?
+    
+    Recall the classic phyics equation, ``Force $=$ mass $\times$
+    acceleration.'' A force acting on a mass induces acceleration
+    (i.e., the mass moves); acceleration acting on a mass induces a
+    force (gravity gives our mass a \emph{weight}). Thus force and
+    acceleration are closely related. A moving ball ``wants'' to
+    travel in a straight line. Why does the ball in our example move
+    in a circle? It is attached to the boy's hand by a string. The
+    string applies a force to the ball, affecting it's motion: the
+    string \emph{accelerates} the ball. This is not acceleration in
+    the sense of ``it travels faster;'' rather, this acceleration is
+    \textbf{changing the velocity} of the ball. In what direction is
+    this force/acceleration being applied? In the direction of the
+    string, towards the boy's hand.
 	
-	\item		To find $\vat$, we derive $\vrt$ twice.
-	\begin{align*}
-	\vvt = \vrp(t) &= \vector{-8\pi \sin (4\pi t), 8\pi \cos (4\pi t)}\\
-	\vat =\vrp'(t) &= \vector{-32\pi^2 \cos (4\pi t), -32\pi^2 \sin (4\pi t) } \\
-				&= -32\pi^2\vector{\cos (4\pi t), \sin (4\pi t)}.
-	\end{align*}
-	Note how $\vat$ is parallel to \vrt, but has a different magnitude and points in the opposite direction. Why is this?
+    The magnitude of the acceleration is related to the speed at which
+    the ball is traveling. A ball whirling quickly is rapidly changing
+    direction/velocity. When velocity is changing rapidly, the
+    acceleration must be ``large.''
 	
-	Recall the classic phyics equation, ``Force $=$ mass $\times$ acceleration.'' A force acting on a mass induces acceleration (i.e., the mass moves); acceleration acting on a mass induces a force (gravity gives our mass a \emph{weight}). Thus force and acceleration are closely related. A moving ball ``wants'' to travel in a straight line. Why does the ball in our example move in a circle? It is attached to the boy's hand by a string. The string applies a force to the ball, affecting it's motion: the string \emph{accelerates} the ball. This is not acceleration in the sense of ``it travels faster;'' rather, this acceleration is changing the velocity of the ball. In what direction is this force/acceleration being applied? In the direction of the string, towards the boy's hand.
+  \item When the boy releases the string, the string no longer applies
+    a force to the ball, meaning acceleration is $\vec 0$ and the ball
+    can now move in a straight line in the direction of $\vec v(t)$.
+    \drawexampleline
 	
-	The magnitude of the acceleration is related to the speed at which the ball is traveling. A ball whirling quickly is rapidly changing direction/velocity. When velocity is changing rapidly, the acceleration must be ``large.''
+    Let $t=t_0$ be the time when the boy lets go of the string. The
+    ball will be at $\vec{p}(t_0)$, traveling in the direction of
+    $\vec v(t_0)$. We want to find $t_0$ so that this line contains
+    the point $(0,10)$ (since the tree is 10ft directly in front of
+    the boy).  \mfigure{.45}{Modeling the flight of a ball in Example
+      \ref{ex_motion3}.}{fig:motion3}{figures/figmotion3}
 	
-	\item		When the boy releases the string, the string no longer applies a force to the ball, meaning acceleration is $\vec 0$ and the ball can now move in a straight line in the direction of $\vec v(t)$. 
-	\drawexampleline
-	
-	Let $t=t_0$ be the time when the boy lets go of the string. The ball will be at $\vec{p}(t_0)$, traveling in the direction of $\vec v(t_0)$. We want to find $t_0$ so that this line contains the point $(0,10)$ (since the tree is 10ft directly in front of the boy).
-	\mfigure{.45}{Modeling the flight of a ball in Example \ref{ex_motion3}.}{fig:motion3}{figures/figmotion3}
-	
-	There are many ways to find this time value. We choose one that is relatively simple computationally. As shown in Figure \ref{fig:motion3}, the vector from the release point to the tree is $\vector{0,10} - \vec{p}(t_0)$. This line segment is tangent to the circle, which means it is also perpendicular to $\vec{p}(t_0)$ itself, so their dot product is 0.
-	
-	\begin{align*}
-	\vec{p}(t_0) \cdot \big(\vector{0,10} - \vec{p}(t_0)\big) &=0\\
-	\vector{2\cos (4\pi t_0), 2\sin (4\pi t_0)} \cdot \vector{-2\cos(4\pi t_0),10-2\sin (4\pi t_0)} &=0\\
-	-4\cos^2(4\pi t_0) + 20\sin (4\pi t_0)-4\sin^2(4\pi t_0) &= 0\\
-	20\sin (4\pi t_0) - 4 &=0\\
-	\sin (4\pi t_0) &=1/5\\
-	4\pi t_0 &= \sin^{-1}(1/5)\\
-	4\pi t_0 &\approx 0.2 + 2\pi n,\intertext{where $n$ is an integer. Solving for $t_0$ we have:}
-	t_0 &\approx 0.016 + n/2
-	\end{align*}
-	This is a wonderful formula. Every 1/2 second after $t=0.016$s the boy can release the string (since the ball makes 2 revolutions per second, he has two chances each second to release the ball).
+    There are many ways to find this time value. We choose one that is
+    relatively simple computationally. As shown in Figure
+    \ref{fig:motion3}, the vector from the release point to the tree
+    is $\vector{0,10} - \vec{p}(t_0)$. This line segment is tangent to
+    the circle, which means it is also perpendicular to $\vec{p}(t_0)$
+    itself, so their dot product is 0.
+    
+    \begin{align*}
+      \vec{p}(t_0) \cdot \big(\vector{0,10} - \vec{p}(t_0)\big)&=0\\
+      \vector{2\cos (4\pi t_0), 2\sin (4\pi t_0)} \cdot\vector{-2\cos(4\pi t_0),10-2\sin (4\pi t_0)}&=0\\
+      -4\cos^2(4\pi t_0) + 20\sin (4\pi t_0)-4\sin^2(4\pi t_0)&= 0\\
+      20\sin (4\pi t_0) - 4 &=0\\ \sin (4\pi t_0) &=1/5\\
+      4\pi t_0 &= \sin^{-1}(1/5)\\
+      4\pi t_0 &\approx 0.2 + 2\pi n,
+    \end{align*}
+    where $n$ is an integer. Solving for $t_0$ we have:
+    \[
+    t_0 &\approx 0.016 + n/2
+    \]
+    This is a wonderful formula. Every 1/2 second after $t=0.016$s the
+    boy can release the string (since the ball makes 2 revolutions per
+    second, he has two chances each second to release the ball).
 \end{enumerate}
-\vskip-1.5\baselineskip
-}\\
+\end{explanation}
+\end{example}
 
+\end{document}
 \example{ex_motion4}{Analyzing motion in space}{
 An object moves in spiral with position function $\vrt = \vector{\cos t, \sin t, t}$, where distances are measured in meters and time is in minutes. Describe the object's speed and acceleration at time $t$.
 }
@@ -204,15 +186,32 @@ There is an intuitive understanding of this. If acceleration is parallel to velo
 }
 
 
-\noindent\textbf{\vector{rge Projectile Motion}\\
+\section{Projectile Motion}
 
-An important application of vector-valued position functions is \emph{projectile motion}: the motion of objects under the influence of gravity. We will measure time in seconds, and distances will either be in meters or feet. We will show that we can completely describe the path of such an object knowing its initial position and initial velocity (i.e., where it \emph{is} and where it \emph{is going.})
-\index{vector-valued function!projectile motion}\index{projectile motion}
+An important application of vector-valued position functions is
+\emph{projectile motion}: the motion of objects under the influence of
+gravity. We will measure time in seconds, and distances will either be
+in meters or feet. We will show that we can completely describe the
+path of such an object knowing its initial position and initial
+velocity (i.e., where it \emph{is} and where it \emph{is going.})
+\index{vector-valued function!projectile motion}\index{projectile
+  motion}
 
-Suppose an object has initial position $\vec{p}(0) = \vector{x_0,y_0}$ and initial velocity $\vec v(0) = \vector{v_x,v_y}$. It is customary to rewrite $\vec v(0)$ in terms of its speed $v_0$ and direction $\vec u$, where $\vec u$ is a unit vector. Recall all unit vectors in $\mathbb{R}^2$ can be written as $\vector{\cos \theta,\sin \theta}$, where $\theta$ is an angle measure counter-clockwise from the $x$-axis. (We refer to $\theta$ as the \textbf{angle of elevation.}\index{angle of elevation}) Thus $\vec v(0) = v_0\vector{\cos \theta,\sin \theta}.$ 
+Suppose an object has initial position $\vec{p}(0) = \vector{x_0,y_0}$
+and initial velocity $\vec v(0) = \vector{v_x,v_y}$. It is customary
+to rewrite $\vec v(0)$ in terms of its speed $v_0$ and direction $\vec
+u$, where $\vec u$ is a unit vector. Recall all unit vectors in
+$\mathbb{R}^2$ can be written as $\vector{\cos \theta,\sin \theta}$,
+where $\theta$ is an angle measure counter-clockwise from the
+$x$-axis. (We refer to $\theta$ as the \textbf{angle of
+  elevation.}\index{angle of elevation}) Thus $\vec v(0) =
+v_0\vector{\cos \theta,\sin \theta}.$
 
-Since the acceleration of the object is known, namely $\vat = \vector{0,-g}$, where $g$ is the gravitational constant, we can find $\vrt$ knowing our two initial conditions. We first find $\vvt$:
-\mnote{.5}{\textbf{Note:} In this text we use $g=32$ft/s when using Imperial units, and $g=9.8$m/s when using SI units.}
+Since the acceleration of the object is known, namely $\vat =
+\vector{0,-g}$, where $g$ is the gravitational constant, we can find
+$\vrt$ knowing our two initial conditions. We first find $\vvt$:
+\mnote{.5}{\textbf{Note:} In this text we use $g=32$ft/s when using
+  Imperial units, and $g=9.8$m/s when using SI units.}
 \begin{align*}
 \vec v(t) &= \int \vat \d t\\
 \vvt &= \int \vector{0,-g} \d t\\

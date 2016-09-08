@@ -26,11 +26,27 @@ scalars.
 We have not yet defined how to multiply a vector by a vector.  You
 might think it is reasonable to define
 \[
-\begin{bmatrix}x_1\\x_2\\\vdots\\x_n\end{bmatrix} \cdot  \begin{bmatrix}y_1\\y_2\\\vdots\\y_n\end{bmatrix}=\begin{bmatrix}x_1y_1\\x_2y_2\\\vdots\\x_ny_n\end{bmatrix}
+\begin{bmatrix}
+  x_1\\
+  x_2\\
+  \vdots\\
+  x_n
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+  y_1\\
+  y_2\\
+  \vdots\\
+  y_n
+\end{bmatrix}
+=
+\begin{bmatrix}
+  x_1y_1\\
+  x_2y_2\\
+  \vdots\\
+  x_ny_n
+\end{bmatrix}
 \] 
-%% \begin{quote}
-%%   \textbf{Wrong Definition of Product}
-%% \end{quote}
 but this operation is not especially useful, and will \textbf{never be
   utilized in this course}.
 \end{warning}
@@ -375,13 +391,20 @@ product:
 \subsection{Components}
 
 \begin{definition}
-  The \dfn{scalar component}\index{component} in the direction of
-  $\vec{w}$ of a vector $\vec{v}$ is denoted $\scal_\vec{w}(\vec{v})$,
-  and is the magnitude of $\proj_\vec{w}(\vec{v})$.
+  Let $\vec{v}$ and $\vec{w}$ be vectors and let $0\le\theta\le\pi$ be
+  the angle between them.  The \dfn{scalar component}\index{component}
+  in the direction of $\vec{w}$ of a vector $\vec{v}$ is denoted
+  \[
+  \scal_\vec{w}(\vec{v})=
+  \begin{cases}
+    |\proj_\vec{w}(\vec{v})| &\text{when $0\le\theta\le \pi/2$}\\
+    -|\proj_\vec{w}(\vec{v})| &\text{when $\pi/2<\theta\le \pi$.}\\
+  \end{cases}
+  \]
 \end{definition}
 
 \begin{question}
-  Let $\vec{v} = \vector{3,2,1}$. Compute $\scal_\veci(\vec{v})$.
+  Let $\vec{v} = \vector{3,-2,1}$. Compute $\scal_\veci(\vec{v})$.
   \begin{prompt}
     \[
     \scal_\veci(\vec{v}) = \answer{3}
@@ -391,7 +414,7 @@ product:
     Compute $\scal_\vecj(\vec{v})$.
     \begin{prompt}
       \[
-      \scal_\vecj(\vec{v}) = \answer{2}
+      \scal_\vecj(\vec{v}) = \answer{-2}
       \]
     \end{prompt}
     \begin{question}
@@ -418,7 +441,8 @@ another, you use the dot product:
   Let $\vec{v}$ and $\vec{w}$ be nonzero vectors and let $\theta$ be
   the angle between them. Which of the following are true?
   \begin{selectAll}
-    \choice[correct]{$|\proj_\vec{w}(\vec{v})| = \scal_{\vec{w}}(\vec{v})$}
+    \choice{$|\proj_\vec{w}(\vec{v})| = \scal_{\vec{w}}(\vec{v})$}
+    \choice[correct]{$|\proj_\vec{w}(\vec{v})| = |\scal_{\vec{w}}(\vec{v})|$}
     \choice[correct]{$\proj_\vec{w}(\vec{v}) =|\vec{v}|\cos(\theta)\left(\frac{\vec{w}}{|\vec{w}|}\right)$}
     \choice[correct]{$\scal_\vec{w}(\vec{v}) = |\vec{v}|\cos(\theta)$}
   \end{selectAll}
