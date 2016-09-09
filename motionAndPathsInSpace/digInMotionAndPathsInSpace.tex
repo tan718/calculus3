@@ -5,20 +5,26 @@
 \title[Dig-In:]{Motion and paths in space}
 
 
-\outcome{}
-
-
+\outcome{View a vector valued function as a position function.}
+\outcome{Compute the length of a parametric curve.}
+\outcome{For a position vector function of time, interpret
+  the derivative as velocity.}
+\outcome{For a position vector function of time, interpret the second
+  derivative as acceleration.}
+\outcome{Compute the length of a parametric curve.}
+    
 \begin{document}
 \begin{abstract}
+  We interpret vector-valued functions as paths of objects in space.
 \end{abstract}
 \maketitle
 
 \section{Position, velocity, and acceleration}
 
-We know that if $v$ is a function that represents the \dfn{veloctiy}
+We know that if $v$ is a function that represents the \dfn{velocity}
 (signed speed) of an object at time $t$, then
 \begin{itemize}
-\item $v'(t)$ tells us the \dfn{acceleration} (instaneous change in
+\item $v'(t)$ tells us the \dfn{acceleration} (instantaneous change in
   velocity) of the object, and
 \item $\int_a^b v(t) \d t$ tells us the \dfn{displacement} (position
   with respect to an origin) of the object.
@@ -106,7 +112,7 @@ $2$ revolutions per second. The string has length $2$ft.
   different magnitude and points in the opposite direction. Why is
   this?
   
-  Recall the classic phyics equation, ``Force $=$ mass $\times$
+  Recall the classic physics equation, ``Force $=$ mass $\times$
   acceleration.'' A force acting on a mass induces acceleration (i.e.,
   the mass moves); acceleration acting on a mass induces a force
   (gravity gives our mass a \emph{weight}). Thus force and
@@ -280,70 +286,154 @@ arc length:
   \]
   is given by
   \[
-  L = \int_a^b |\vec{f}(t)|\d t.
+  \text{arc length} = \int_a^b |\vec{f}(t)|\d t.
   \]
 \end{theorem}
 
 
-\end{document}
-Note that this is just a restatement of Theorem
-\ref{thm:vvf_arc_length}: arc length is the same as distance traveled,
-just viewed in a different context.
+\begin{question}
+  Knowing that
+  \[
+  \vector{R\cdot \cos(\theta), R \cdot \sin(\theta)}
+  \]
+  is a vector valued function that plots a circle of radius $R$ for
+  $0\le \theta < 2\pi$, can you use an arc length integral to confirm
+  its circumference is $2\pi R$?
+  \begin{prompt}
+    First note that
+    \[
+    |\vector{R\cdot \cos(\theta), R \cdot \sin(\theta)}| = \answer{R},
+    \]
+    and now compute
+    \[
+    \int_0^{2\pi} R \d \theta = \answer{2\pi R}.
+    \]
+  \end{prompt}
+\end{question}
 
-%Given a position function $\vec{p}(t) = \vector{f(t),g(t)}$, Theorem \ref{thm:distance_traveled}
- %states that the distance traveled is
-%$$\int_a^b \sqrt{\big(\fp(t)\big)^2+\big(g'(t)\big)^2}\d t.$$
-%Comparing this to Key Idea \ref{idea:arc_length_parametric} we see that \emph{distance traveled} measures the same thing as \emph{arc length}, just in different contexts.\\
+One more example, again interpreting our vector-valued function as
+giving the position of an object in space.
 
-\enlargethispage{2\baselineskip}
-\example{ex_motion6}{Distance Traveled, Displacement, and Average Speed}{
-A particle moves in space with position function $\vec{p}(t) = \vector{t,t^2,\sin (\pi t)}$ on $[-2,2]$, where $t$ is measured in seconds and distances are in meters. Find:
+\begin{example}
+  A particle moves in space with position function
+  \[
+  \vec{p}(t) =\vector{t,t^2,\sin (\pi t)}
+  \]
+  on $[-2,2]$, where $t$ is measured in seconds and distances are in
+  meters.
+  \begin{image}
+    \begin{tikzpicture}
+      \begin{axis}%
+        [width=175pt,tick label style={font=\scriptsize},axis on top,
+	  axis lines=center,
+	  view={115}{25},
+	  name=myplot,
+	  %xtick={-3,3},minor tick num=2,
+	  %ytick={-3,3},
+	  %ztick={-3,3},
+	  ymin=-.5,ymax=4.5,
+	  xmin=-3.5,xmax=3.5,
+	  zmin=-1.5, zmax=1.5,
+	  every axis x label/.style={at={(axis cs:\pgfkeysvalueof{/pgfplots/xmax},0,0)},xshift=-3pt,yshift=-3pt},
+	  xlabel={\scriptsize $x$},
+	  every axis y label/.style={at={(axis cs:0,\pgfkeysvalueof{/pgfplots/ymax},0)},xshift=0pt,yshift=-5pt},
+	  ylabel={\scriptsize $y$},
+	  every axis z label/.style={at={(axis cs:0,0,\pgfkeysvalueof{/pgfplots/zmax})},xshift=0pt,yshift=4pt},
+	  zlabel={\scriptsize $z$}
+	]
+        
+        \addplot3[domain=-2:2,,thick,smooth,samples y=0,penColor,samples=30,] ({x},{x^2},{sin(180*x)});
+        
+        \draw[thick,->] (axis cs: 1,1,0) -- (axis cs: 1.01,1.02,-.0314);
+        %\draw[thick,->,{\colortwo}] (axis cs: 0,0,0) -- (axis cs: -1,0,1) node (B) {};
+      \end{axis}
+    \end{tikzpicture}
+\end{image}
+
+  Find:
 \begin{enumerate}
-	\item The distance traveled by the particle on $[-2,2]$.
-	\item	The displacement of the particle on $[-2,2]$.
-	\item	The particle's average speed.
+\item An integral that computes the distance traveled by the particle
+  on $[-2,2]$.
+\item The displacement of the particle on $[-2,2]$.
+\item An integral that computes the particle's average speed.
 \end{enumerate}
-}
-{\begin{enumerate}
-	\item We use Theorem \ref{thm:distance_traveled} to establish the integral:
-	\begin{align*}
-	\text{distance traveled} &= \int_{-2}^2 \norm{\vec{v}(t)}\d t \\
-							&= \int_{-2}^2 \sqrt{1+(2t)^2+ \pi^2\cos^2(\pi t)}\d t.
-	\end{align*}
-	This cannot be solved in terms of elementary functions so we turn to numerical integration, finding the distance to be 12.88m.
-	
-	\item		The displacement is the vector $$\vec{p}(2)-\vec{p}(-2) = \vector{2,4,0} - \vector{-2,4,0} = \vector{4,0,0}.$$ That is, the particle ends with an $x$-value increased by 4 and with $y$- and $z$-values the same (see Figure \ref{fig:motion6}).
-	
-	\item		We found above that the particle traveled 12.88m over 4 seconds. We can compute average speed by dividing: 12.88/4 = 3.22m/s. 
-	
-	\mtable{.7}{The path of the particle, from two perspectives, in Example \ref{ex_motion6}.}{fig:motion6}{%
-	\begin{tabular}{c}
-	\myincludegraphics[scale=1.25]{figures/figmotion6}\\[-20pt]
-	(a)\\[20pt]
-	\myincludegraphics[scale=1.25]{figures/figmotion6b}\\[-20pt]
-	(b)
-	\end{tabular}
-	}
-	We should also consider Definition \ref{def:av_val} of Section \ref{sec:FTC}, which says that the average value of a function $f$ on $[a,b]$ is $\frac{1}{b-a}\int_a^b f(x)\d x$. In our context, the average value of the speed is
-	$$\text{average speed} = \frac{1}{2-(-2)}\int_{-2}^2 \norm{\vec{v}(t)}\d t \approx \frac14 12.88 = 3.22\text{m/s}.$$
-	Note how the physical context of a particle traveling gives meaning to a more abstract concept learned earlier.
-\end{enumerate}
-\vskip-1.5\baselineskip
-}\\
+\begin{explanation}
+  First we'll compute the distance traveled.
+  \begin{align*}
+    \text{distance traveled} &= \int_{-2}^2 |\vec{v}(t)|\d t \\
+    &= \int_{-2}^2 \sqrt{\vec{v}(t)\dotp \vec{v}(t)}\d t.\\
+    &= \int_{-2}^2 \answer[given]{\sqrt{1+(2t)^2+ \pi^2\cos^2(\pi t)}}\d t.
+  \end{align*}
+  This cannot be solved in terms of elementary functions so we turn
+  to numerical integration, finding the distance to be
+  $12.88\unit{m}$.
+  
+  The displacement is the vector
+  \begin{align*}
+    \vec{p}(2)-\vec{p}(-2) &= \vector{\answer[given]{2},\answer[given]{4},\answer[given]{0}} - \vector{\answer[given]{-2},\answer[given]{4},\answer[given]{0}}\\
+      &= \vector{\answer[given]{4},\answer[given]{0},\answer[given]{0}}.
+  \end{align*}
+  That is, the particle ends with an $x$-value increased by $4$ and
+  with unchanged $(y,z)$-values the same.
+  
+  We found above that the particle traveled $12.88\unit{m}$ over $4$
+  seconds. We can compute average speed by dividing: $12.88/4 =
+  \answer[given]{3.22}\unit{m/s}$.
+\end{explanation}
+\end{example}
+    
+\section{Looking back}
+    
+Finally, let's think about what we learned in our previous calculus
+courses, in terms of what we know now.
 
-In Definition \ref{def:av_val} we defined the average value of a function $f(x)$ on $[a,b]$ to be $$ \frac{1}{b-a}\int_a^bf(x)\d x.$$
-Note how in Example \ref{ex_motion6} we computed the average speed as
-$$\frac{\text{distance traveled}}{\text{travel time}} = \frac1{2-(-2)}\int_{-2}^2\norm{\vec{v}(t)}\d t;$$
-that is, we just found the average value of $\norm{\vec{v}(t)}$ on $[-2,2]$.
+\subsection{Arc length}
 
-Likewise, given position function $\vec{p}(t)$, the average velocity on $[a,b]$ is
-$$\frac{\text{displacement}}{\text{travel time}} = \frac1{b-a}\int_a^b \vec{r}'(t)\d t = \frac{\vec{p}(b)-\vec{p}(a)}{b-a};$$
-that is, it is the average value of $\vec{p}'(t)$, or $\vec{v}(t)$, on $[a,b]$.\\
+When you first learned how to compute arc length in calculus, you
+probably use a formula like
+\[
+\text{arc length} = \int_a^b \sqrt{1+ f'(x)^2} \d x
+\]
+next you learned that for parametric functions, the arc length was
+\[
+\text{arc length} = \int_a^b \sqrt{x'(t)^2+ y'(x)^2} \d x
+\]
+Note, the first formula, is really just the second one, where $x(t) =
+t$, and $y(t) = f(t)$. Finally in this class, we view arc length as
+\[
+\text{arc length} = \int_a^b |\vec{f}(t)|\d t.
+\]
+Since the magnitude of a vector can be given via the dot product, this
+is a very general formula.
 
-The next two sections investigate more properties of the graphs of vector-valued functions and we'll apply these new ideas to what we just learned about motion.
 
 
 
-Cycloid as motivating example? Given a wheel of radius $R$... 
+\subsection{Average value}
+
+
+In your first calculus course, you defined the \dfn{average value of a
+  function} to be
+\[
+\frac{1}{b-a}\int_a^bf(x)\d x.
+\]
+Note how in Example \ref{ex_motion6} we computed the \dfn{average speed} as
+\[
+\frac{\text{distance traveled}}{\text{travel time}} =
+\frac1{2-(-2)}\int_{-2}^2|\vec{v}(t)|\d t;
+\]
+that is, we just found the average value of $|\vec{v}(t)|$ on
+$[-2,2]$.
+
+Likewise, given position function $\vec{p}(t)$, the \dfn{average velocity} on $[a,b]$ is
+\begin{align*}
+  \frac{\text{displacement}}{\text{travel time}} &= \frac1{b-a}\int_a^b \vec{p}'(t)\d t\\
+  &= \frac{\vec{p}(b)-\vec{p}(a)}{b-a};
+\end{align*}
+that is, it is the average value of $\vec{p}'(t)$, or $\vec{v}(t)$, on
+$[a,b]$.
+
+As we learn new material, we must constantly reconcile, and
+reintegrate what have learned before.
 
 \end{document}
