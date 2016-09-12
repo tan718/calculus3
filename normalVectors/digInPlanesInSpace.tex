@@ -86,12 +86,12 @@ with normal vector $\vec{v}$.
   Find the implicit equation of a plane that passes through the point
   $(5,-5,-1)$ and with normal vector $\vector{-5,5,5}$.
   \begin{onlineOnly}
-    Check your answer by modifiying the definition of the \sage code
-    for $F(x,y,z)$ below:
+    Check your answer by modifying the definition of $F(x,y,z)$ in
+    the \sage\ code below:
   \begin{sageCell}
 vector=arrow3d((3,-5,-1),(-2,0,4),5,color='blue');
 
-F(x,y,z) = -5*(x-3)+5*(y+5)+5*(z+1)
+F(x,y,z) = 1*(x+2)+1*(y+2)+1*(z+2)
 
 plane=implicit_plot3d(F(x,y,z)==1,(x,-10,10),(y,-10,10),(z,-10,10),color='red');
 plane+vector
@@ -99,6 +99,44 @@ plane+vector
   \end{onlineOnly}
 \end{question}
 
+Normal vectors not only allow us to define equations for planes but also 
+they help us describe properties of planes.
+
+\begin{definition}
+  Two planes are said to be \dfn{parallel} if their normal vectors are
+  parallel. Two planes are said to be \dfn{orthogonal} if their normal
+  vectors are orthogonal.
+\end{definition}
+
+\begin{question}
+  What is the (most obvious) normal vector for the plane
+  \[
+  -6x+10y-2z = 4?
+  \]
+  \begin{prompt}
+    \[
+    \vec{n} = \vector{\answer{-6},\answer{10},\answer{-2}}
+    \]
+  \end{prompt}
+  \begin{question}
+    Which of the following planes are parallel to the plane $-6x+10y-2z = 4$?
+    \begin{selectAll}
+      \choice{}
+      \choice[correct]{}
+      \choice[correct]{}
+      \choice{}
+    \end{selectAll}
+      \begin{question}
+    Which of the following planes are orthogonal to the plane $-6x+10y-2z = 4$?
+    \begin{selectAll}
+      \choice{}
+      \choice[correct]{}
+      \choice[correct]{}
+      \choice{}
+    \end{selectAll}
+  \end{question}
+  \end{question}
+\end{question}
 
 
 \section{Parametric planes}
