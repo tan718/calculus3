@@ -22,18 +22,18 @@ Let $\vec{p}(t)$ be a smooth function on an open interval $I$. The
 \dfn{unit tangent vector} $\vec{t}(t)$ is \index{unit tangent
   vector!definition} \index{unit vector!unit tangent vector}
 \[
-\vec{t}(t) = \frac{\vec{p}'(t)}{|\vec{p}'(t)|}.
+\utan(t) = \frac{\vec{p}'(t)}{|\vec{p}'(t)|}.
 \]
 \end{definition}
 
 \begin{question}
-  Let $\vec{p}(t) = \vector{3\cos(t), 3\sin(t), 4t}$. Find $\vec{t}(t)$.
+  Let $\vec{p}(t) = \vector{3\cos(t), 3\sin(t), 4t}$. Find $\utan(t)$.
   \begin{prompt}
     \[
-    \vec{t}(t) = \vector{\answer{\frac{-3}{5}\sin(t)},\answer{\frac{3}{5}\cos(t)},\answer{\frac{4}{5}}}
+    \utan(t) = \vector{\answer{\frac{-3}{5}\sin(t)},\answer{\frac{3}{5}\cos(t)},\answer{\frac{4}{5}}}
     \]
     \begin{feedback}
-      The unit tangent vector $\vec{t}(t)$ \textbf{always} has a constant
+      The unit tangent vector $\utan(t)$ \textbf{always} has a constant
       magnitude of $1$.
     \end{feedback}
   \end{prompt}
@@ -88,37 +88,37 @@ that is preferable, and it is the `right' one to choose!'' Recall
 If $\vec{p}(t)$ has constant length, then $\vec{p}(t)$ is orthogonal
 to $\vec{p}'(t)$ for all $t$.
 \end{quote}
-Since $\vec{t}(t)$, the unit tangent vector, it necessarily has
+Since $\utan(t)$, the unit tangent vector, it necessarily has
 constant length. Therefore
 \[\index{vector-valued function!of constant length}
-\vec{t}(t)\text{ is orthogonal to }\vec{t}'(t).
+\utan(t)\text{ is orthogonal to }\utan'(t).
 \]
 
-The vector-valued function $\vec{t}'(t)$ is more than just a
+The vector-valued function $\utan'(t)$ is more than just a
 convenient choice of vector that is orthogonal to $\vec{p}'(t)$;
 rather, it is the ``right'' choice. We will use this to construct our
 \textit{unit normal vector}:
 
 \begin{definition}
 Let $\vec{p}(t)$ be a vector-valued function where the unit tangent
-vector, $\vec{t}(t)$, is smooth on an open interval $I$. The
-\dfn{unit normal vector} $\vec{n}(t)$ is \index{unit normal
+vector, $\utan(t)$, is smooth on an open interval $I$. The
+\dfn{unit normal vector} $\unormal(t)$ is \index{unit normal
   vector!definition}\index{unit vector!unit normal vector}
 \[
-\vec{n}(t) = \frac{\vec{t}'(t)}{|\vec{t}'(t)|}.
+\unormal(t) = \frac{\utan'(t)}{|\utan'(t)|}.
 \]
 \end{definition}
 \begin{warning}
-  Even though $\vec{t}(t)$ is a unit vector, this \textbf{does not}
-  imply that $\vec{t}'(t)$ is also a unit vector.
+  Even though $\utan(t)$ is a unit vector, this \textbf{does not}
+  imply that $\utan'(t)$ is also a unit vector.
 \end{warning}
 
 \begin{question}
   Let $\vec{p}(t) = \vector{3\cos t, 3\sin t, 4t}$ as before. Find
-  $\vec{n}(t)$.
+  $\unormal(t)$.
   \begin{prompt}
     \[
-    \vec{n}(t) =\vector{\answer{-\cos(t)},\answer{-\sin(t)},\answer{0}}.
+    \unormal(t) =\vector{\answer{-\cos(t)},\answer{-\sin(t)},\answer{0}}.
     \]
     \begin{feedback}
       As a gesture of friendship, we present you with the following
