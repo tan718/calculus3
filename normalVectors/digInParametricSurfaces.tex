@@ -6,13 +6,117 @@
 
 \begin{document}
 \begin{abstract}
+  Tangent and normal vectors can help model surfaces in space.
 \end{abstract}
 \maketitle
 
 Unit tangent vectors and unit normal vectors can help us use
 mathematics to model surfaces in space.
 
+\section{Thickened curves}
 
+\begin{example}[Thickening a curve]
+  You have been given a curve in space, meaning that you have been given a function
+  \begin{multipleChoice}
+    \choice{$f: \R \to \R$}
+    \choice{$F: \R^3 \to \R$}
+    \choice[correct]{$\vec{f}: \R \to \R^3$}
+  \end{multipleChoice}
+  and your task is to build a parameterized surface which is a ``thickened'' version.
+
+  In other words, we want to convert a curve like
+  \begin{sageOutput}
+t = var('t')
+x = sin(t)
+y = sin(2*t + pi/5)
+z = sin(3*t + pi/7)
+f = vector([x,y,z])
+parametric_plot3d( f, (t,0,2*pi) )
+  \end{sageOutput}
+  into a thickened ``tube'' like
+  \begin{sageOutput}
+t = var('t')
+x = sin(t)
+y = sin(2*t + pi/5)
+z = sin(3*t + pi/7)
+f = vector([x,y,z])
+df = derivative(f,t)
+ut = df / df.norm()
+ddf = derivative(ut,t)
+n = ddf / ddf.norm()
+bn = (n.cross_product(ut)) / ( (n.cross_product(ut)).norm() )
+thickness = 0.10
+s = var('s')
+parametric_plot3d( f + (n * cos(s) + bn * sin(s)) * thickness, (t,0,2*pi), (s,0,2*pi), plot_points=[100,100] )
+  \end{sageOutput}
+
+  Our tube around $\vec{f}$ will be a parametrized surface given by 
+  \begin{multipleChoice}
+    \choice{$\vec{f}: \R \to \R^2$}
+    \choice{$F: \R^2 \to \R$}
+    \choice[correct]{$\vec{F}: \R^2 \to \R^3$}
+    \choice{$\vec{F}: \R^3 \to \R^2$}
+  \end{multipleChoice}
+
+  We can parametrize a circle with
+  \begin{multipleChoice}
+    \choice{$t \mapsto (x^2, y^2)$}
+    \choice{$t \mapsto (\cos^2(t), \sin^2(t))$}
+    \choice[correct]{$t \mapsto (\cos(t), \sin(t))$}
+  \end{multipleChoice}
+  so we could try
+  \[
+    \vec{F}(t,s) = \vec{f}(t) + 0.25 \langle \cos s, \sin s, 0 \rangle.
+  \]
+  Note that we are using \textbf{vector operations}---we are taking the
+\wordChoice{\choice[correct]{sum}\choice{dot product}} of two vectors to build our parametrized surface.  We want the vector $\vec{f}(t)$ to sit \wordChoice{\choice{on the surface}\choice[correct]{inside the tube}} and the second term pushes us away from $\vec{f}(t)$ in a different direction as $s$ varies.  The factor of 0.25 is included to \wordChoice{\choice[correct]{shrink the circle}\choice{expand the circle}}.  Putting this together, we can ``Evaluate'' to see a picture:
+  \begin{sageCell}
+t = var('t')
+x = sin(t) ; y = sin(2*t + pi/5) ; z = sin(3*t + pi/7)
+f = vector([x,y,z])
+
+s = var('s')
+parametric_plot3d( f + 0.25 * vector([cos(s), sin(s), 0]), (t,0,2*pi), (s,0,2*pi) )
+\end{sageCell}
+and that doesn't look awful, but it also certainly doesn't quite look
+right!  The trouble is the circle we sweep out with
+$\langle \cos s, \sin s, 0 \rangle$ is not always
+\wordChoice{\choice[correct]{perpendicular}\choice{parallel}} to the
+unit tangent vector
+\begin{multipleChoice}
+  \choice{$\utan(t) = \frac{\vec{f}'(t)}{|\vec{f}'(t)|^2}$}
+  \choice[correct]{$\utan(t) = \frac{\vec{f}'(t)}{|\vec{f}'(t)|}$}
+\end{multipleChoice}
+
+To improve our tube, we want to sweep out a circle in the plane given by
+\begin{multipleChoice}
+  \choice{$\utan(t)$ and $\unormal(t)$}
+  \choice{$\utan(t)$ and $\unormal(t) \times \utan(t)$}
+  \choice[correct]{$\unormal(t)$ and $\unormal(t) \times \utan(t)$}
+\end{multipleChoice}
+Let $\vec{b} = \unormal(t) \times \utan(t)$ and $\ubinormal = \frac{\vec{b}}{| \vec{b} |}$.
+
+Then we can sweep out a tube with
+  \[
+    \vec{F}(t,s) = \vec{f}(t) + 0.25 \left( \left( \cos s \right) \unormal(t) + \left( \sin s \right) \ubinormal(t) \right).
+  \]
+  Try it!
+\begin{sageCell}
+t = var('t')
+x = sin(t) ; y = sin(2*t + pi/5) ; z = sin(3*t + pi/7)
+
+f = vector([x,y,z])
+df = derivative(f,t)
+u = df.normalized()
+n = derivative(u,t).normalized()
+b = n.cross_product(u).normalized()
+
+thickness = 0.25
+s = var('s')
+parametric_plot3d( f + (n * cos(s) + b * sin(s)) * thickness, (t,0,2*pi), (s,0,2*pi), plot_points=[100,100] )
+\end{sageCell}
+
+\end{example}  
 
 \section{Mirrored surfaces}
 
@@ -20,6 +124,7 @@ SPOON
 
 PARABOLIC
 upside down
+
 
 
 
