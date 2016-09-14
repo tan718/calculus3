@@ -14,38 +14,37 @@ Unit tangent vectors and unit normal vectors can help us to model
 surfaces in space.
 
 \begin{example}[Thickening a curve]
-  You have been given a curve in space, meaning that you have been given a function
+  You have been given a curve in space, meaning that you have been
+  given a function
   \begin{multipleChoice}
     \choice{$f: \R \to \R$}
     \choice{$F: \R^3 \to \R$}
     \choice[correct]{$\vec{f}: \R \to \R^3$}
   \end{multipleChoice}
-  and your task is to build a parameterized surface which is a ``thickened'' version.
-
+  and your task is to build a parameterized surface which is a
+  ``thickened'' version.
+  
   In other words, we want to convert a curve like
   \begin{sageOutput}
-t = var('t')
-x = sin(t)
-y = sin(2*t + pi/5)
-z = sin(3*t + pi/7)
-f = vector([x,y,z])
-parametric_plot3d( f, (t,0,2*pi) )
+x(t) = sin(t)
+y(t) = sin(2*t + pi/5)
+z(t) = sin(3*t + pi/7)
+f(t) = (x(t),y(t),z(t))
+parametric_plot3d(f(t), (t,0,2*pi))
   \end{sageOutput}
   into a thickened ``tube'' like
   \begin{sageOutput}
-t = var('t')
-x = sin(t)
-y = sin(2*t + pi/5)
-z = sin(3*t + pi/7)
-f = vector([x,y,z])
-df = derivative(f,t)
+x(t) = sin(t)
+y(t) = sin(2*t + pi/5)
+z(t) = sin(3*t + pi/7)
+f(t) = (x(t),y(t),z(t))
+df=derivative(f,t)
 ut = df / df.norm()
 ddf = derivative(ut,t)
 n = ddf / ddf.norm()
-bn = (n.cross_product(ut)) / ( (n.cross_product(ut)).norm() )
+bn = n.cross_product(ut)
 thickness = 0.10
-s = var('s')
-parametric_plot3d( f + (n * cos(s) + bn * sin(s)) * thickness, (t,0,2*pi), (s,0,2*pi), plot_points=[100,100] )
+parametric_plot3d(f(t) + (n * cos(s) + bn * sin(s)) * thickness, (t,0,2*pi), (s,0,2*pi), plot_points=[100,100])
   \end{sageOutput}
 
   Our tube around $\vec{f}$ will be a parametrized surface given by 
@@ -64,7 +63,7 @@ parametric_plot3d( f + (n * cos(s) + bn * sin(s)) * thickness, (t,0,2*pi), (s,0,
   \end{multipleChoice}
   so we \textit{could} try
   \[
-    \vec{F}(t,s) = \vec{f}(t) + 0.25 \langle \cos s, \sin s, 0 \rangle.
+    \vec{F}(t,s) = \vec{f}(t) + 0.25 \vector{\cos s, \sin s, 0}.
   \]
   Note that we are using \textbf{vector operations}---we are taking the
 \wordChoice{\choice[correct]{sum}\choice{dot product}} of two vectors to build up our parametrized surface.  We want the vector $\vec{f}(t)$ to sit \wordChoice{\choice{on the surface}\choice[correct]{inside the tube}} and the second term pushes us away from $\vec{f}(t)$ in a different direction as $s$ varies.  The factor of 0.25 is included to \wordChoice{\choice[correct]{shrink the circle}\choice{expand the circle}}.  Putting this together, we can see a picture emerging:
@@ -78,7 +77,7 @@ parametric_plot3d( f + 0.25 * vector([cos(s), sin(s), 0]), (t,0,2*pi), (s,0,2*pi
 \end{sageCell}
 and that doesn't look awful, but it also certainly doesn't quite look
 right!  The trouble is the circle we sweep out with
-$\langle \cos s, \sin s, 0 \rangle$ is not always
+$\vector{\cos s, \sin s, 0}$ is not always
 \wordChoice{\choice[correct]{perpendicular}\choice{parallel}} to the
 unit tangent vector, defined as
 \begin{multipleChoice}
@@ -201,28 +200,28 @@ parametric_plot3d( f, (a,-1,1), (b,-1,1) ) + parametric_plot3d( ell0 + t * v, (t
 
   Let $\vec{F}(x,y) = (x,y,x^2 + y^2)$, so that
   \begin{align*}
-    \pp{\vec{F}}{x} &= \langle 1, 0, \answer{2x} \rangle \\
-    \pp{\vec{F}}{y} &= \langle 0, 1, \answer{2y} \rangle \\
-    \vec{n} &= \pp{\vec{F}}{x} \cross \pp{\vec{F}}{y} &= \langle -2x, -2y, \answer{1} \rangle. \\
+    \pp{\vec{F}}{x} &= \vector{ 1, 0, \answer{2x}} \\
+    \pp{\vec{F}}{y} &= \vector{0, 1, \answer{2y}} \\
+    \vec{n} &= \pp{\vec{F}}{x} \cross \pp{\vec{F}}{y} &= \vector{-2x, -2y, \answer{1}}. \\
   \end{align*}
 
   We want to focus in on the case of ``vertical light'' which arrives directly from above.  One way to 
   restrict to this situation would be to assume that both $\vec{v} \dotp \langle 1, 0, 0 \rangle = 0$ and
-  $\vec{v} \dotp \langle 0, 1, 0 \rangle = 0$, but to simplify the situation further, simply suppose
-  that $\vec{v} = \langle 0, 0, -1 \rangle$.  Then
+  $\vec{v} \dotp \vector{ 0, 1, 0 } = 0$, but to simplify the situation further, simply suppose
+  that $\vec{v} = \vector{ 0, 0, -1 }$.  Then
   \begin{align*}
-    \vec{v} - 2 \proj_{\vec{n}} \vec{v} 
+    \vec{v} - 2 \proj_{\vec{n}} (\vec{v}) 
     &= \vec{v} - 2 \frac{\vec{v} \dotp \vec{n}}{\vec{n} \dotp \vec{n}} \vec{n} \\
     &= \vec{v} - 2 \frac{\answer{-1}}{\vec{n} \dotp \vec{n}} \vec{n} \\
   \end{align*}
   This reflected vector simplies further to
   \[
-    \frac{-4}{1 + 4x^2 + 4y^2} \langle \answer{x}, \answer{y}, \answer{x^2 + y^2 - 1/4} \rangle.
+    \frac{-4}{1 + 4x^2 + 4y^2} \vector{\answer{x}, \answer{y}, \answer{x^2 + y^2 - 1/4}}.
   \]
   The significance of this is that, starting at the point
   $(x,y,x^2 + y^2)$ and moving in the direction of this vector, we pass through the point 
   \[
-    \left( 0, 0, \answer{1/4} \right),
+    \left( 0, 0, \answer[given]{1/4} \right),
   \]
   meaning that \textit{every} vertical beam of light reflects off the
   paraboloid and is focused on common point!  This fact is what makes
