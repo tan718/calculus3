@@ -167,7 +167,7 @@ $\vec{v}$ and $\vec{w}$ are in the plane.
 
 This formula is very similar to our formula for a line,
 \[
-\vecl(t) = \vec{p} + t\vec{v}
+\vec{L}(t) = \vec{p} + t\vec{v}
 \]
 where $\vec{v}$ is a vector that points in the direction of the line,
 both represent linear relationships, and hence we use similar notation
@@ -199,6 +199,17 @@ plane=implicit_plot3d(F(x,y,z)==1,(x,-10,10),(y,-10,10),(z,-10,10),color='red');
 plane+vector
       \end{sageCell}
     \end{onlineOnly}
+    \begin{question}
+      Now give a parametric formula for the same plane using the vectors given above.
+      \begin{sageCell}
+vector=arrow3d((1,2,3),(1,-2,-4),5,color='blue');
+
+L(s,t) = (1,2,3) + t*(1-2,1) + s*(-1,-2,1)
+
+paraPlane = parametric_plot(L(s,t),(s,-2,3),(t,-2,3))
+paraPlane+vector
+      \end{sageCell}
+    \end{question}
   \end{question}
 \end{question}
 
