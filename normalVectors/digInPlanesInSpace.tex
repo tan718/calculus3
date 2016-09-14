@@ -121,18 +121,18 @@ they help us describe properties of planes.
   \begin{question}
     Which of the following planes are parallel to the plane $-6x+10y-2z = 4$?
     \begin{selectAll}
-      \choice{}
-      \choice[correct]{}
-      \choice[correct]{}
-      \choice{}
+      \choice{$-2.46x+3.9y-0.82z=3$}
+      \choice[correct]{$-2.07x+3.45y-0.69z = 8$}
+      \choice[correct]{$10.38x-17.3y+3.46z=0$}
+      \choice{$15.03x-25.1y+5.02z=0$}
     \end{selectAll}
       \begin{question}
     Which of the following planes are orthogonal to the plane $-6x+10y-2z = 4$?
     \begin{selectAll}
-      \choice{}
-      \choice[correct]{}
-      \choice[correct]{}
-      \choice{}
+      \choice[correct]{$34x+16y-2z=0$}
+      \choice{$-54x-32y+8z=-3$}
+      \choice[correct]{$-36x-42y-102z=-17$}
+      \choice{$54x+31y-2z=4$}
     \end{selectAll}
   \end{question}
   \end{question}
@@ -140,5 +140,67 @@ they help us describe properties of planes.
 
 
 \section{Parametric planes}
+
+
+Given \textbf{any} two nonzero vectors, $\vec{v}$ and $\vec{w}$ such that
+\[
+\vec{v}\cross \vec{w} \ne \vec{0}
+\]
+we can produce a parametric formula for a plane by writing
+\[
+\vecl(s,t) = \vec{p} + s\vec{v} + t\vec{w},
+\]
+where $\vec{p}$ is a vector whose ``tip'' is on the plane, and
+$\vec{v}$ and $\vec{w}$ are in the plane.
+\begin{question}
+  Given two nonzero vectors, $\vec{v}$ and $\vec{w}$, what does it
+  mean for $\vec{v}\cross \vec{w} \ne \vec{0}$?
+  \begin{prompt}
+    \begin{multipleChoice}
+      \choice{It means these vectors are parallel.}
+      \choice[correct]{It means these vectors are not parallel.}
+      \choice{It means these vectors are orthogonal.}
+      \choice{It means these vectors are not orthogonal.}
+    \end{multipleChoice}
+  \end{prompt}
+\end{question}
+
+This formula is very similar to our formula for a line,
+\[
+\vecl(t) = \vec{p} + t\vec{v}
+\]
+where $\vec{v}$ is a vector that points in the direction of the line,
+both represent linear relationships, and hence we use similar notation
+for both.
+
+Now that we have \textbf{two} methods of graphing planes, let's use
+both of the representations at once!
+
+\begin{question}
+  Let $\vec{v} = \vector{1,-2,1}$ and $\vector{w} =
+  \vector{-1,-2,1}$. Compute $\vec{v}\cross\vec{w}$.
+  \begin{prompt}
+    \[
+    \vec{v}\cross\vec{w} = \vector{\answer{0},\answer{-2},\answer{-4}}
+    \]
+  \end{prompt}
+  \begin{question}
+    Use your answer above to give an \textbf{implicit} equation for
+    the plane that passes through the point $(1,2,3)$.
+    \begin{onlineOnly}
+      Check your answer by modifying the definition of $F(x,y,z)$ in
+      the \sage\ code below:
+      \begin{sageCell}
+vector=arrow3d((1,2,3),(1,-2,-4),5,color='blue');
+        
+F(x,y,z) = 1*(x+2)+1*(y+2)+1*(z+2)
+
+plane=implicit_plot3d(F(x,y,z)==1,(x,-10,10),(y,-10,10),(z,-10,10),color='red');
+plane+vector
+      \end{sageCell}
+    \end{onlineOnly}
+  \end{question}
+\end{question}
+
 
 \end{document}
