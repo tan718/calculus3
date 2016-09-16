@@ -13,6 +13,56 @@
 Unit tangent vectors and unit normal vectors can help us to model
 surfaces in space.
 
+\section{Thickening a curve}
+
+Suppose you have been a curve in space, and you want to build a
+parameterized surface which is a ``thickened'' version.  In other
+words, we want to convert a curve like
+\begin{image}
+  \includegraphics{curve.jpg}
+\end{image}
+%% \begin{sageOutput}
+%% x(t) = sin(t)
+%% y(t) = sin(2*t + pi/5)
+%% z(t) = sin(3*t + pi/7)
+%% f(t) = (x(t),y(t),z(t))
+%% parametric_plot3d(f(t), (t,0,2*pi))
+%%   \end{sageOutput}
+into a thickened ``tube'' like
+\begin{image}
+  \includegraphics{tube.jpg}
+\end{image}
+%% \begin{sageOutput}
+%% var('s')
+%% x(t) = sin(t)
+%% y(t) = sin(2*t + pi/5)
+%% z(t) = sin(3*t + pi/7)
+%% f(t) = (x(t),y(t),z(t))
+%% df=derivative(f,t)
+%% ut = df / df.norm()
+%% ddf = derivative(ut,t)
+%% n = ddf / ddf.norm()
+%% bn = n.cross_product(ut)
+%% thickness = 0.10
+%% parametric_plot3d(f(t) + (n * cos(s) + bn * sin(s)) * thickness, (t,0,2*pi), (s,0,2*pi), plot_points=[100,100])
+%%   \end{sageOutput}
+  
+\begin{image}
+  \begin{tikzpicture}
+    \begin{axis}[tick label style={font=\scriptsize},axis on top,view={-30}{30},no markers,zmax=1,axis lines=center,
+        ymax=1.5,ymin=-1.5,clip=false,
+        xmax=1.5,xmin=-1.5,
+        every axis x label/.style={at={(axis cs:\pgfkeysvalueof{/pgfplots/xmax},0,0)},xshift=-3pt,yshift=-3pt},
+	xlabel={\scriptsize $x$},
+	every axis y label/.style={at={(axis cs:0,\pgfkeysvalueof{/pgfplots/ymax},0)},xshift=0pt,yshift=-5pt},
+	ylabel={\scriptsize $y$},
+	every axis z label/.style={at={(axis cs:0,0,\pgfkeysvalueof{/pgfplots/zmax})},xshift=0pt,yshift=4pt},
+	zlabel={\scriptsize $z$}]
+      \addplot3+[domain=-0:360,samples=200,samples y=0,ultra thick](sin(x),{sin(2*x+36},{sin(3*x+25)});
+    \end{axis}
+  \end{tikzpicture}
+\end{image}
+
 \begin{example}[Thickening a curve]
   You have been given a curve in space, meaning that you have been
   given a function
@@ -25,13 +75,13 @@ surfaces in space.
   ``thickened'' version.
   
   In other words, we want to convert a curve like
-  \begin{sageOutput}
+  \begin{sageCell}
 x(t) = sin(t)
 y(t) = sin(2*t + pi/5)
 z(t) = sin(3*t + pi/7)
 f(t) = (x(t),y(t),z(t))
 parametric_plot3d(f(t), (t,0,2*pi))
-  \end{sageOutput}
+  \end{sageCell}
   into a thickened ``tube'' like
   \begin{sageOutput}
 x(t) = sin(t)
