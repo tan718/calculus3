@@ -202,12 +202,17 @@ plane+vector
     \begin{question}
       Now give a parametric formula for the same plane using the vectors given above.
       \begin{sageCell}
-vector=arrow3d((1,2,3),(1,-2,-4),5,color='blue');
+var('t s')
+normal=arrow3d((1,2,3),(1,-2,-4),5,color='blue')
 
-L(s,t) = (1,2,3) + t*(1-2,1) + s*(-1,-2,1)
+point = vector([1,2,3])
 
-paraPlane = parametric_plot(L(s,t),(s,-2,3),(t,-2,3))
-paraPlane+vector
+dir1 = vector([t,t,t])
+
+dir2 = vector([0,s,s])
+
+paraPlane = parametric_plot(point+dir1+dir2,(s,-2,3),(t,-2,3))
+paraPlane+normal
       \end{sageCell}
     \end{question}
   \end{question}
