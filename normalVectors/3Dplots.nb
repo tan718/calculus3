@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       157,          7]
-NotebookDataLength[    713959,      11971]
-NotebookOptionsPosition[    713015,      11938]
-NotebookOutlinePosition[    713350,      11953]
-CellTagsIndexPosition[    713307,      11950]
+NotebookDataLength[    714383,      11990]
+NotebookOptionsPosition[    713477,      11958]
+NotebookOutlinePosition[    713816,      11973]
+CellTagsIndexPosition[    713773,      11970]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -11306,19 +11306,18 @@ Cell[BoxData[{
          RowBox[{"-", "2"}], ",", "3"}], "}"}]}], "}"}]}]}], 
    "]"}]}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{
-   RowBox[{"unitTan", "[", "t_", "]"}], "=", 
-   RowBox[{"Simplify", "[", 
+  RowBox[{"unitTan", "[", "t_", "]"}], "=", 
+  RowBox[{"Simplify", "[", 
+   RowBox[{
     RowBox[{
+     RowBox[{"p", "'"}], "[", "t", "]"}], "/", 
+    RowBox[{"Sqrt", "[", 
      RowBox[{
-      RowBox[{"p", "'"}], "[", "t", "]"}], "/", 
-     RowBox[{"Sqrt", "[", 
       RowBox[{
-       RowBox[{
-        RowBox[{"p", "'"}], "[", "t", "]"}], ".", 
-       RowBox[{
-        RowBox[{"p", "'"}], "[", "t", "]"}]}], "]"}]}], "]"}]}], 
-  ";"}], "\[IndentingNewLine]", 
+       RowBox[{"p", "'"}], "[", "t", "]"}], ".", 
+      RowBox[{
+       RowBox[{"p", "'"}], "[", "t", "]"}]}], "]"}]}], 
+   "]"}]}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"unitNormal", "[", "t_", "]"}], "=", 
@@ -11385,13 +11384,17 @@ Cell[BoxData[{
   RowBox[{"Show", "[", 
    RowBox[{"curve", ",", "normalArrows", ",", "binormalArrows"}], 
    "]"}]}], "\[IndentingNewLine]", 
- RowBox[{"Export", "[", 
-  RowBox[{"\"\<paraCurve.jpg\>\"", ",", "paraCurve", ",", 
-   RowBox[{"ImageResolution", "\[Rule]", "300"}]}], 
-  "]"}], "\[IndentingNewLine]", 
- RowBox[{"Export", "[", 
-  RowBox[{"\"\<paraArrows.jpg\>\"", ",", "paraArrows", ",", 
-   RowBox[{"ImageResolution", "\[Rule]", "300"}]}], "]"}]}], "Input",
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"Export", "[", 
+     RowBox[{"\"\<paraCurve.jpg\>\"", ",", "paraCurve", ",", 
+      RowBox[{"ImageResolution", "\[Rule]", "300"}]}], "]"}], 
+    "\[IndentingNewLine]", 
+    RowBox[{"Export", "[", 
+     RowBox[{"\"\<paraArrows.jpg\>\"", ",", "paraArrows", ",", 
+      RowBox[{"ImageResolution", "\[Rule]", "300"}]}], "]"}]}], 
+   "*)"}]}]}], "Input",
  CellChangeTimes->{{3.683014758886015*^9, 3.683014836601668*^9}, {
    3.683015203916286*^9, 3.683015205882289*^9}, {3.683015846924271*^9, 
    3.6830158690673733`*^9}, 3.683015908346447*^9, {3.683015944477474*^9, 
@@ -11407,7 +11410,8 @@ Cell[BoxData[{
    3.683384769789901*^9}, {3.683384823170844*^9, 3.68338483751941*^9}, {
    3.683384902890148*^9, 3.683385032522336*^9}, {3.6833850830511923`*^9, 
    3.683385090863121*^9}, {3.6833851463707848`*^9, 3.683385152280032*^9}, {
-   3.683385184139184*^9, 3.683385253825425*^9}}],
+   3.683385184139184*^9, 3.683385253825425*^9}, {3.683385418604797*^9, 
+   3.683385434026086*^9}}],
 
 Cell[BoxData[
  Graphics3DBox[{{}, {}, 
@@ -11476,7 +11480,8 @@ HmDON2um4SMnQwGzvygUC33GOBi0xcOXuMy+4//f42p9DXv/eY79F6I2hbA=
  CellChangeTimes->{
   3.683385059543891*^9, 3.6833850924166603`*^9, {3.683385136096315*^9, 
    3.683385152839036*^9}, 3.683385195199047*^9, {3.6833852454710703`*^9, 
-   3.683385254479381*^9}},ImageCache->GraphicsData["CompressedBitmap", "\<\
+   3.683385254479381*^9}, {3.683385423398107*^9, 
+   3.683385434475667*^9}},ImageCache->GraphicsData["CompressedBitmap", "\<\
 eJy1nWmQVcUVx5tlBmSRXRaBYXFAUDYXRBAGRBgWBUQEFQUJgiwqCCgGFRAI
 atRgRBJNTESiiWiMCTEkClGiQY0YjcEyoajyk19SWlal8sWllMzt7ve//R6/
 vvMuo694vHnn9vn/T/ddus/p0/0uWbBmyaIbF6xZunBBr9pVC1YuWbpwda+J
@@ -11589,6 +11594,32 @@ MC3k7yTcl8IrkkNMNIdIeS3tBPpy8aUaplCnsROCaKXmebUYIoz5FH65NrQn
 eSdALWTDG8FVXxK/aQO3X51GpXQPhY3NARmf82F8prZVe7dYjUIp4e4+ib3J
 +3DxQ6EkEvIfd9RaWc+PLId/m0b/B11lCXA=\
 \>"]],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   FractionBox[
+    RowBox[{"2", " ", "t"}], 
+    SqrtBox[
+     RowBox[{"1", "+", 
+      RowBox[{"8", " ", 
+       SuperscriptBox["t", "2"]}]}]]], ",", 
+   FractionBox[
+    RowBox[{"2", " ", "t"}], 
+    SqrtBox[
+     RowBox[{"1", "+", 
+      RowBox[{"8", " ", 
+       SuperscriptBox["t", "2"]}]}]]], ",", 
+   RowBox[{"-", 
+    FractionBox["1", 
+     SqrtBox[
+      RowBox[{"1", "+", 
+       RowBox[{"8", " ", 
+        SuperscriptBox["t", "2"]}]}]]]}]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.683385059543891*^9, 3.6833850924166603`*^9, {3.683385136096315*^9, 
+   3.683385152839036*^9}, 3.683385195199047*^9, {3.6833852454710703`*^9, 
+   3.683385254479381*^9}, {3.683385423398107*^9, 3.6833854344835587`*^9}}],
 
 Cell[BoxData[
  Graphics3DBox[{{{}, {}, 
@@ -11745,7 +11776,8 @@ HmDON2um4SMnQwGzvygUC33GOBi0xcOXuMy+4//f42p9DXv/eY79F6I2hbA=
  CellChangeTimes->{
   3.683385059543891*^9, 3.6833850924166603`*^9, {3.683385136096315*^9, 
    3.683385152839036*^9}, 3.683385195199047*^9, {3.6833852454710703`*^9, 
-   3.6833852545937366`*^9}},ImageCache->GraphicsData["CompressedBitmap", "\<\
+   3.683385254479381*^9}, {3.683385423398107*^9, 
+   3.683385434608952*^9}},ImageCache->GraphicsData["CompressedBitmap", "\<\
 eJy1XQm8lVW1396RUZBBxIFRMERAU9FEJkEG0bwiDigqZCA4i5bPISAh0lLJ
 1JelhZmlZFaiUuJEGmJhUmEoWfqcn0POKYNw31l7rf3f+xz+33fP4fbuj+9y
 zzp7rfVfe95rr72/o6ZdNHP6OdMumnX6tB5jZ087f+as0y/sMea82QVS9Q7O
@@ -11921,23 +11953,11 @@ hyXvi+T6wjTsWqd6mJuhFxj1LXbak3o9mRfoe3v07YR6gscnZ1eTxstj9f2T
 dmwx06PJxmB2cWtnyF2e1kjucWSxCZkXAXuhjxRX1fRcVvRZMRFtkD2PFYtI
 PXHhBqEUjzwiqBUwrEpqvSv2m7UjzW+GnSryvKvTzOYOLovAc3bey7OtKWZj
 Lqf0NReCV561xZ1CiSfoTf3Wo5xV/t9uh/8DBC54Dw==\
-\>"]],
-
-Cell[BoxData["\<\"paraCurve.jpg\"\>"], "Output",
- CellChangeTimes->{
-  3.683385059543891*^9, 3.6833850924166603`*^9, {3.683385136096315*^9, 
-   3.683385152839036*^9}, 3.683385195199047*^9, {3.6833852454710703`*^9, 
-   3.68338525540308*^9}}],
-
-Cell[BoxData["\<\"paraArrows.jpg\"\>"], "Output",
- CellChangeTimes->{
-  3.683385059543891*^9, 3.6833850924166603`*^9, {3.683385136096315*^9, 
-   3.683385152839036*^9}, 3.683385195199047*^9, {3.6833852454710703`*^9, 
-   3.683385256871479*^9}}]
+\>"]]
 }, Open  ]]
 },
-WindowSize->{960, 1020},
-WindowMargins->{{0, Automatic}, {Automatic, 0}},
+WindowSize->{1440, 777},
+WindowMargins->{{Automatic, 364}, {Automatic, -35}},
 FrontEndVersion->"9.0 for Linux x86 (64-bit) (February 7, 2013)",
 StyleDefinitions->"Default.nb"
 ]
@@ -11959,19 +11979,18 @@ Cell[2022, 62, 31584, 525, 421, 21758, 362, "CachedBoxData", "BoxData", \
 Cell[33609, 589, 239, 4, 32, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[33885, 598, 3921, 113, 209, "Input"],
+Cell[33885, 598, 3921, 113, 165, "Input"],
 Cell[37809, 713, 639335, 10549, 415, 550370, 9089, "CachedBoxData", \
 "BoxData", "Output"],
 Cell[677147, 11264, 314, 5, 32, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[677498, 11274, 5007, 135, 275, "Input"],
-Cell[682508, 11411, 10593, 179, 383, 3597, 63, "CachedBoxData", "BoxData", \
+Cell[677498, 11274, 5104, 139, 231, "Input"],
+Cell[682605, 11415, 10643, 180, 383, 3597, 63, "CachedBoxData", "BoxData", \
 "Output"],
-Cell[693104, 11592, 19407, 331, 383, 8497, 151, "CachedBoxData", "BoxData", \
-"Output"],
-Cell[712514, 11925, 240, 4, 32, "Output"],
-Cell[712757, 11931, 242, 4, 32, "Output"]
+Cell[693251, 11597, 752, 24, 54, "Output"],
+Cell[694006, 11623, 19455, 332, 415, 8497, 151, "CachedBoxData", "BoxData", \
+"Output"]
 }, Open  ]]
 }
 ]
