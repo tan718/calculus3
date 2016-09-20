@@ -10,8 +10,6 @@
 \end{abstract}
 \maketitle
 
-Unit tangent vectors and unit normal vectors can help us to model
-surfaces in space.
 
 \section{Thickening a curve}
 
@@ -46,56 +44,81 @@ into a thickened ``tube'' like
 %% thickness = 0.10
 %% parametric_plot3d(f(t) + (n * cos(s) + bn * sin(s)) * thickness, (t,0,2*pi), (s,0,2*pi), plot_points=[100,100])
 %%   \end{sageOutput}
-  
-\begin{image}
-  \begin{tikzpicture}
-    \begin{axis}[tick label style={font=\scriptsize},axis on top,view={-30}{30},no markers,zmax=1,axis lines=center,
-        ymax=1.5,ymin=-1.5,clip=false,
-        xmax=1.5,xmin=-1.5,
-        every axis x label/.style={at={(axis cs:\pgfkeysvalueof{/pgfplots/xmax},0,0)},xshift=-3pt,yshift=-3pt},
-	xlabel={\scriptsize $x$},
-	every axis y label/.style={at={(axis cs:0,\pgfkeysvalueof{/pgfplots/ymax},0)},xshift=0pt,yshift=-5pt},
-	ylabel={\scriptsize $y$},
-	every axis z label/.style={at={(axis cs:0,0,\pgfkeysvalueof{/pgfplots/zmax})},xshift=0pt,yshift=4pt},
-	zlabel={\scriptsize $z$}]
-      \addplot3+[domain=-0:360,samples=200,samples y=0,ultra thick](sin(x),{sin(2*x+36},{sin(3*x+25)});
-    \end{axis}
-  \end{tikzpicture}
-\end{image}
+%% \begin{image}
+%%   \begin{tikzpicture}
+%%     \begin{axis}[tick label style={font=\scriptsize},axis on top,view={-30}{30},no markers,zmax=1,axis lines=center,
+%%         ymax=1.5,ymin=-1.5,clip=false,
+%%         xmax=1.5,xmin=-1.5,
+%%         every axis x label/.style={at={(axis cs:\pgfkeysvalueof{/pgfplots/xmax},0,0)},xshift=-3pt,yshift=-3pt},
+%% 	xlabel={\scriptsize $x$},
+%% 	every axis y label/.style={at={(axis cs:0,\pgfkeysvalueof{/pgfplots/ymax},0)},xshift=0pt,yshift=-5pt},
+%% 	ylabel={\scriptsize $y$},
+%% 	every axis z label/.style={at={(axis cs:0,0,\pgfkeysvalueof{/pgfplots/zmax})},xshift=0pt,yshift=4pt},
+%% 	zlabel={\scriptsize $z$}]
+%%       \addplot3+[domain=-0:360,samples=200,samples y=0,ultra thick](sin(x),{sin(2*x+36},{sin(3*x+25)});
+%%     \end{axis}
+%%   \end{tikzpicture}
+%% \end{image}
 
-\begin{example}[Thickening a curve]
-  You have been given a curve in space, meaning that you have been
-  given a function
-  \begin{multipleChoice}
-    \choice{$f: \R \to \R$}
-    \choice{$F: \R^3 \to \R$}
-    \choice[correct]{$\vec{f}: \R \to \R^3$}
-  \end{multipleChoice}
-  and your task is to build a parameterized surface which is a
-  ``thickened'' version.
-  
-  In other words, we want to convert a curve like
+\begin{example}
+  You have been given a curve in space, say
+  \[
+  \vec{f}(t) = \langle t^2-2, t^2-2, 1-t\rangle.
+  \]
+  We want to make a tube around it of radius $0.5$.
+  \begin{explanation}
+    Here is the idea, we want to take our curve and attach two
+    orthogonal vectors to every point
+    \begin{image}
+      \includegraphics{paraArrows.jpg}
+    \end{image}
+    We'll start by computing the
+    \wordChoice{\choice[correct]{unit tangent}\choice{unit normal}\choice{unit binormal}}
+    vectors. Write with me
+    \[
+    \utan(t) = \frac{\vec{f}'(t)}{|\vec{f}'(t)|}
+    \]
+    From these vectors we can obtain the \wordChoice{\choice{unit
+        tangent}\choice[correct]{unit normal}\choice{unit binormal}}
+    vectors by differentiating:
+    \[
+    \unormal(t) = \frac{\utan'(t)}{|\utan'(t)|}
+    \]
+    Finally we can obtain the \wordChoice{\choice{unit
+        tangent}\choice{unit normal}\choice[correct]{unit binormal}}
+    vectors via the cross product:
+    \[
+    \ubinormal(t) = \utan(t) \cross \unormal(t)
+    \]
+    Looking again at
+    \begin{image}
+      \includegraphics{paraArrows.jpg}
+    \end{image}
+    we see the unit normal vectors in red, and the unit binormal
+    vectors in blue. So we now can plot our tube:
+    \[
+    \vec{F}(s,t) = \vec{f}(t) + 0.5 \unormal(t)\cos(s) + 0.5 \ubinormal(t)\sin(s)
+    \]
+    \begin{onlineOnly}
+      We can check our work with \sage.
   \begin{sageCell}
-x(t) = sin(t)
-y(t) = sin(2*t + pi/5)
-z(t) = sin(3*t + pi/7)
-f(t) = (x(t),y(t),z(t))
-parametric_plot3d(f(t), (t,0,2*pi))
-  \end{sageCell}
-  into a thickened ``tube'' like
-  \begin{sageOutput}
-x(t) = sin(t)
-y(t) = sin(2*t + pi/5)
-z(t) = sin(3*t + pi/7)
+x(t) = t^2-2
+y(t) = t^2-2
+z(t) = 1-t
 f(t) = (x(t),y(t),z(t))
 df=derivative(f,t)
 ut = df / df.norm()
 ddf = derivative(ut,t)
 n = ddf / ddf.norm()
-bn = n.cross_product(ut)
-thickness = 0.10
+bn = ut.cross_product(n)
+thickness = 0.50
 parametric_plot3d(f(t) + (n * cos(s) + bn * sin(s)) * thickness, (t,0,2*pi), (s,0,2*pi), plot_points=[100,100])
-  \end{sageOutput}
+  \end{sageCell}
+    \end{onlineOnly}
+  \end{explanation}
+\end{example}
+
+
 
   Our tube around $\vec{f}$ will be a parametrized surface given by 
   \begin{multipleChoice}
@@ -159,7 +182,7 @@ thickness = 0.25
 s = var('s')
 parametric_plot3d( f + (n * cos(s) + b * sin(s)) * thickness, (t,0,2*pi), (s,0,2*pi), plot_points=[100,100] )
 \end{sageCell}
-\end{example}  
+
 
 \begin{example}[Mirrored surfaces]
   We have a parametrized surface 
