@@ -111,7 +111,7 @@ ut = df / df.norm()
 ddf = derivative(ut,t)
 n = ddf / ddf.norm()
 bn = ut.cross_product(n)
-parametric_plot3d(f(t) + 0.5*n*cos(s) + 0.5*bn*sin(s), (t,0,2*pi), (s,0,2*pi))
+parametric_plot3d(f(t) + 0.5*n*cos(s) + 0.5*bn*sin(s), (t,-3,3), (s,0,2*pi))
   \end{sageCell}
     \end{onlineOnly}
   \end{explanation}
