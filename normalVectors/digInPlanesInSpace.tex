@@ -177,7 +177,7 @@ Now that we have \textbf{two} methods of graphing planes, let's use
 both of the representations at once!
 
 \begin{question}
-  Let $\vec{v} = \vector{1,-2,1}$ and $\vector{w} =
+  Let $\vec{v} = \vector{1,-2,1}$ and $\vecCros{w} =
   \vector{-1,-2,1}$. Compute $\vec{v}\cross\vec{w}$.
   \begin{prompt}
     \[
@@ -186,10 +186,12 @@ both of the representations at once!
   \end{prompt}
   \begin{question}
     Use your answer above to give an \textbf{implicit} equation for
-    the plane that passes through the point $(1,2,3)$.
+    the plane that passes through the point $(1,2,3)$ that is normal
+    to $\vec{v}\cross\vec{w}$.
     \begin{onlineOnly}
-      Check your answer by modifying the definition of $F(x,y,z)$ in
-      the \sage\ code below:
+      Check your answer by modifying the \sage\ code below to show
+      approperate normal vector and modifying the definition of
+      $F(x,y,z)$:
       \begin{sageCell}
 vector=arrow3d((1,2,3),(1,-2,-4),5,color='blue');
         
@@ -203,7 +205,7 @@ plane+vector
       Now give a parametric formula for the same plane using the vectors given above.
       \begin{sageCell}
 var('t s')
-normal=arrow3d((1,2,3),(1,-2,-4),5,color='blue')
+normal=arrow3d((1,2,3),(1,0,-1),5,color='blue')
 
 point = vector([1,2,3])
 
