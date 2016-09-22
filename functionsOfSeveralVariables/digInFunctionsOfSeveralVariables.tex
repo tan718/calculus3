@@ -528,7 +528,7 @@ If one example is good, two is better.
       \]
     \end{onlineOnly}
     \begin{image}
-      \begin{tikzpicture}[>=stealth]
+      \begin{tikzpicture}
         \begin{axis}%
           [tick label style={font=\scriptsize},axis on top,
 	    axis lines=center,
@@ -549,15 +549,15 @@ If one example is good, two is better.
 	    zlabel={\scriptsize $z$},
             colormap/cool
 	  ]
-          \addplot3[domain=-6.5:6.5,y domain=-6.5:6.5,mesh,samples y=40,very thin,z buffer=sort,
+          \addplot3[domain=-6.5:6.5,y domain=-6.5:6.5,mesh,samples y=30,very thin,z buffer=sort,
             samples=30,] {(x+y)/(x^2+y^2+1)};
           \addplot3 [very thick,penColor, smooth,domain=0:360,samples=60,samples y=0] ({-0.833333 + 0.62361*cos(x)},{-0.833333 + 0.62361*sin(x)},-.6);
-          \addplot3 [very thick,penColor, smooth,domain=0:360,samples=60,samples y=0] ({-1.25 + 1.45774*cos(x)}, {-1.25 + 1.45774*sin(x)},-.4);
-          \addplot3 [very thick,penColor, smooth,domain=0:360,samples=60,samples y=0] ({-2.5 + 3.39116*cos(x)},{-2.5 + 3.39116*sin(x)},-.2);
-          \addplot3 [very thick,penColor, smooth,domain=-5:5,samples=60] (x,-x,0);
-          \addplot3 [very thick,penColor, smooth,domain=0:360,samples=60,samples y=0] ({2.5 + 3.39116*cos(x)}, {2.5 + 3.39116*sin(x)},.2);
-          \addplot3 [very thick,penColor, smooth,domain=0:360,samples=60,samples y=0] ({1.25 + 1.45774*cos(x)},{1.25 + 1.45774*sin(x)},.4);
-          \addplot3 [very thick,penColor, smooth,domain=0:360,samples=60,samples y=0] ({0.833333 + 0.62361*cos(x)},{0.833333 + 0.62361*sin(x)},.6);
+          \addplot3 [very thick,penColor, smooth,domain=0:360,] ({-1.25 + 1.45774*cos(x)}, {-1.25 + 1.45774*sin(x)},-.4);
+          \addplot3 [very thick,penColor, smooth,domain=0:360,] ({-2.5 + 3.39116*cos(x)},{-2.5 + 3.39116*sin(x)},-.2);
+          \addplot3 [very thick,penColor,domain=-5:5] (x,-x,0);
+          \addplot3 [very thick,penColor, smooth,domain=0:360,] ({2.5 + 3.39116*cos(x)}, {2.5 + 3.39116*sin(x)},.2);
+          \addplot3 [very thick,penColor, smooth,domain=0:360,] ({1.25 + 1.45774*cos(x)},{1.25 + 1.45774*sin(x)},.4);
+          \addplot3 [very thick,penColor, smooth,domain=0:360,] ({0.833333 + 0.62361*cos(x)},{0.833333 + 0.62361*sin(x)},.6);
           %\filldraw [penColor] (axis cs: 0,0,1) circle (1pt);
         \end{axis}
       \end{tikzpicture}
