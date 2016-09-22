@@ -440,15 +440,14 @@ concept.
         c^2 &= 1-\frac{x^2}{9}-\frac{y^2}{4}\\
         1-c^2 &= \frac{x^2}{9}+\frac{y^2}{4}      
     \end{align*}
-    Now we just need to plot for $c=0$, $0.2$, $0.4$, $0.6$, $0.8$ and
-    $1$
+    Now we just need to plot each of the following implicit functions:
     \begin{align*}
-      1 - 0^2   &= \frac{x^2}{9}+\frac{y^2}{4} \\
-      1 - 0.2^2 &= \frac{x^2}{9}+\frac{y^2}{4} \\
-      1 - 0.4^2 &= \frac{x^2}{9}+\frac{y^2}{4} \\
-      1 - 0.6^2 &= \frac{x^2}{9}+\frac{y^2}{4} \\
-      1 - 0.8^2 &= \frac{x^2}{9}+\frac{y^2}{4} \\
-      1 - 0 &= \frac{x^2}{9}+\frac{y^2}{4}   
+      1 - 0^2   &= \frac{x^2}{9}+\frac{y^2}{4}, \\
+      1 - 0.2^2 &= \frac{x^2}{9}+\frac{y^2}{4}, \\
+      1 - 0.4^2 &= \frac{x^2}{9}+\frac{y^2}{4}, \\
+      1 - 0.6^2 &= \frac{x^2}{9}+\frac{y^2}{4}, \\
+      1 - 0.8^2 &= \frac{x^2}{9}+\frac{y^2}{4}, \\
+        1 - 1^2 &= \frac{x^2}{9}+\frac{y^2}{4}.   
     \end{align*}
     You can now plot these implicit functions with your favorite
     graphing device.
@@ -456,9 +455,11 @@ concept.
       As a gesture of friendship, we have included a graph of these
       level curves:
       \[
-      \graph[xmin=-5, xmax=5, ymin=-2.3, ymax=2.3]{1-0^2= \frac{x^2}{9}+\frac{y^2}{4}, 1 - 0.2^2 = \frac{x^2}{9}+\frac{y^2}{4},1 - 0.4^2 = \frac{x^2}{9}+\frac{y^2}{4},1 - 0.6^2 = \frac{x^2}{9}+\frac{y^2}{4},1 - 0.8^2 = \frac{x^2}{9}+\frac{y^2}{4},1 - 0 = \frac{x^2}{9}+\frac{y^2}{4}}
+      \graph[xmin=-5, xmax=5, ymin=-2.3, ymax=2.3]{1-0^2= \frac{x^2}{9}+\frac{y^2}{4}, 1 - 0.2^2 = \frac{x^2}{9}+\frac{y^2}{4},1 - 0.4^2 = \frac{x^2}{9}+\frac{y^2}{4},1 - 0.6^2 = \frac{x^2}{9}+\frac{y^2}{4},1 - 0.8^2 = \frac{x^2}{9}+\frac{y^2}{4},1 - 1^2 = \frac{x^2}{9}+\frac{y^2}{4}}
       \]
     \end{onlineOnly}
+    In the image below, the level curves are drawn on a graph of $F$
+    in space.
     \begin{image}
       \begin{tikzpicture}
         \begin{axis}%
@@ -481,13 +482,13 @@ concept.
 	  ]
           \addplot3[domain=0:180,mesh,y domain=0:180,samples y=30,very thin,z buffer=sort,samples=30,] ({3*cos(x)*cos(y)},{2*sin(x)*cos(y)},{sin(y)});
           
-          \addplot3 [very thick,penColor, smooth,domain=-30:170,samples=60,samples y=0] ({3*(cos(x))},{2*(sin(x))},0);
+          \addplot3 [very thick,penColor, smooth,domain=-40:170,samples=60,samples y=0] ({3*(cos(x))},{2*(sin(x))},0);
+
+          \addplot3 [very thick,penColor, smooth,domain=-40:170,samples=60,samples y=0] ({2.93*(cos(x))},{1.96*(sin(x))},.2);
           
-          \addplot3 [very thick,penColor, smooth,domain=-30:170,samples=60,samples y=0] ({2.93*(cos(x))},{1.96*(sin(x))},.2);
+          \addplot3 [very thick,penColor, smooth,domain=-40:170,samples=60,samples y=0] ({2.75*(cos(x))},{1.83*(sin(x))},.4);
           
-          \addplot3 [very thick,penColor, smooth,domain=-30:170,samples=60,samples y=0] ({2.75*(cos(x))},{1.83*(sin(x))},.4);
-          
-          \addplot3 [very thick,penColor, smooth,domain=-35:170,samples=60,samples y=0] ({2.4*(cos(x))},{1.6*(sin(x))},.6);
+          \addplot3 [very thick,penColor, smooth,domain=-40:170,samples=60,samples y=0] ({2.4*(cos(x))},{1.6*(sin(x))},.6);
           
           \addplot3 [very thick,penColor, smooth,domain=-40:170,samples=60,samples y=0] ({1.8*(cos(x))},{1.2*(sin(x))},.8);
           
@@ -495,10 +496,9 @@ concept.
         \end{axis}
       \end{tikzpicture}
     \end{image}
-      In the image above, the level curves are drawn on a graph of $F$
-      in space. Note how the elevations are evenly spaced. Near the
-      level curves of $c=0$ and $c=0.2$ we can see that $F$ indeed is
-      growing quickly.
+    Note how the elevations are evenly spaced. Near the
+    level curves of $c=0$ and $c=0.2$ we can see that $F$ indeed is
+    growing quickly.
   \end{explanation}
 \end{example}
 
@@ -524,7 +524,7 @@ If one example is good, two is better.
       As a gesture of friendship, we have included a graph of these
       level curves:
       \[
-      \graph{x+y = 0.6(x^2+y^2+1),x+y = 0.4(x^2+y^2+1), x+y = 0.2(x^2+y^2+1),x+y = 0,x+y = -0.2(x^2+y^2+1),x+y = -0.4(x^2+y^2+1),x+y = -0.6(x^2+y^2+1)}
+      \graph[xmin=-15, xmax=15, ymin=-7, ymax=7]{x+y = 0.6(x^2+y^2+1),x+y = 0.4(x^2+y^2+1), x+y = 0.2(x^2+y^2+1),x+y = 0,x+y = -0.2(x^2+y^2+1),x+y = -0.4(x^2+y^2+1),x+y = -0.6(x^2+y^2+1)}
       \]
     \end{onlineOnly}
     \begin{image}
@@ -534,11 +534,12 @@ If one example is good, two is better.
 	    axis lines=center,
 	    view={30}{30},
 	    name=myplot,
+            width=5in,
 	    %xtick=\empty,
-	    ytick={5},
-	    ztick={.7,-.7},
-	    ymin=-5.1,ymax=5.1,
-	    xmin=-5.1,xmax=5.1,
+	    %ytick={5},
+	    %ztick={.7,-.7},
+	    ymin=-6.6,ymax=6.6,
+	    xmin=-6.6,xmax=6.6,
 	    zmin=-.8, zmax=.8,
 	    every axis x label/.style={at={(axis cs:\pgfkeysvalueof{/pgfplots/xmax},0,0)},xshift=5pt,yshift=0pt},
 	    xlabel={\scriptsize $x$},
@@ -548,13 +549,15 @@ If one example is good, two is better.
 	    zlabel={\scriptsize $z$},
             colormap/cool
 	  ]
-          \addplot3[domain=-5:5,y domain=-5:5,mesh,samples y=30,very thin,z buffer=sort,
-            samples=25,] {(x+y)/(x^2+y^2+1)};
-          \addplot3 [very thick,penColor, smooth,domain=-30:170,samples=60,samples y=0] ({3*(cos(x))},{2*(sin(x))},0);
-          \addplot3 [very thick,penColor, smooth,domain=-30:170,samples=60,samples y=0] ({2.93*(cos(x))},{1.96*(sin(x))},.2);
-          \addplot3 [very thick,penColor, smooth,domain=-30:170,samples=60,samples y=0] ({2.75*(cos(x))},{1.83*(sin(x))},.4);
-          \addplot3 [very thick,penColor, smooth,domain=-35:170,samples=60,samples y=0] ({2.4*(cos(x))},{1.6*(sin(x))},.6);
-          \addplot3 [very thick,penColor, smooth,domain=-40:170,samples=60,samples y=0] ({1.8*(cos(x))},{1.2*(sin(x))},.8);
+          \addplot3[domain=-6.5:6.5,y domain=-6.5:6.5,mesh,samples y=40,very thin,z buffer=sort,
+            samples=30,] {(x+y)/(x^2+y^2+1)};
+          \addplot3 [very thick,penColor, smooth,domain=0:360,samples=60,samples y=0] ({-0.833333 + 0.62361*cos(x)},{-0.833333 + 0.62361*sin(x)},-.6);
+          \addplot3 [very thick,penColor, smooth,domain=0:360,samples=60,samples y=0] ({-1.25 + 1.45774*cos(x)}, {-1.25 + 1.45774*sin(x)},-.4);
+          \addplot3 [very thick,penColor, smooth,domain=0:360,samples=60,samples y=0] ({-2.5 + 3.39116*cos(x)},{-2.5 + 3.39116*sin(x)},-.2);
+          \addplot3 [very thick,penColor, smooth,domain=-5:5,samples=60] (x,-x,0);
+          \addplot3 [very thick,penColor, smooth,domain=0:360,samples=60,samples y=0] ({2.5 + 3.39116*cos(x)}, {2.5 + 3.39116*sin(x)},.2);
+          \addplot3 [very thick,penColor, smooth,domain=0:360,samples=60,samples y=0] ({1.25 + 1.45774*cos(x)},{1.25 + 1.45774*sin(x)},.4);
+          \addplot3 [very thick,penColor, smooth,domain=0:360,samples=60,samples y=0] ({0.833333 + 0.62361*cos(x)},{0.833333 + 0.62361*sin(x)},.6);
           %\filldraw [penColor] (axis cs: 0,0,1) circle (1pt);
         \end{axis}
       \end{tikzpicture}
@@ -583,10 +586,82 @@ is known as sketching level curves.
 \end{tikzpicture}
 
 
+\subsection{Level surfaces}
+
+
+\noindent\textbf{\large Level Surfaces}\\
+
+It is very difficult to produce a meaningful graph of a function of
+three variables. A function of \textit{one} variable is a
+\textit{curve} drawn in \textit{two} dimensions; a function of
+\textit{two} variables is a \textit{surface} drawn in \textit{three}
+dimensions; a function of \textit{three} variables is a
+\textit{hypersurface} drawn in \textit{four} dimensions.
+
+There are a few techniques one can employ to try to ``picture'' a
+graph of three variables. One is an analogue of level curves:
+\dfn{level surfaces}. Given $w=f(x,y,z)$, the level surface at $w=c$
+is the surface in space formed by all points $(x,y,z)$ where
+$f(x,y,z)=c$. 
+
+\begin{example}
+  If a point source $S$ is radiating energy, the intensity $I$ at a
+  given point $P$ in space is inversely proportional to the square of
+  the distance between $S$ and $P$. That is, when $S=(0,0,0)$,
+  \[
+  I(x,y,z) = \frac{k}{x^2+y^2+z^2}
+  \]
+  for some constant $k$.  Let $k=1$; find the level surfaces of $I$.
+  \begin{explanation}
+    We can (mostly) answer this question using ``common sense.'' If energy
+    (say, in the form of light) is emanating from the origin, its
+    intensity will be the same all a points equidistant from the
+    origin. That is, at any point on the surface of a sphere centered at
+    the origin, the intensity should be the same. Therefore, the level
+    surfaces are spheres.
+    
+    We now find this mathematically. The level surface at $I=c$ is defined by 
+    \[
+    c = \frac{1}{x^2+y^2+z^2}.
+    \]
+    Algebra reveals
+    \[
+    x^2+y^2+z^2 = \frac1c.
+    \]
+    Given an intensity $c$, the level surface $I=c$ is a sphere of
+    radius $1/\sqrt{c}$, centered at the origin.
+    
+    Here is a table of $c$ values and the corresponding radius $r$ of
+    the spheres of constant value.
+      \begin{tabular}{cc}
+        $c$ & $r$ \\ \hline
+        16. & 0.25 \\
+        8. & 0.35 \\
+        4. & 0.5 \\
+        2. & 0.71 \\
+        1. & 1. \\
+        0.5 & 1.41 \\
+        0.25 & 2. \\
+        0.125 & 2.83 \\
+        0.0625 & 4. \\
+      \end{tabular}
+    
+    Here we see table of the radii of the spheres for given $c$
+    values. Normally one would use equally spaced $c$ values, but
+    these values have been chosen purposefully. At a distance of
+    $0.25$ from the point source, the intensity is $16$; to move to a
+    point of half that intensity, one just moves out $0.1$ to $0.35$,
+    not much at all. To again halve the intensity, one moves $0.15$, a
+    little more than before.
+ 
+    Note how each time the intensity if halved, the distance required
+    to move away grows. We conclude that the closer one is to the
+    source, the more rapidly the intensity changes.
+  \end{explanation}
+\end{example}
 
 
 
 
- \subsection{Level surfaces}
 
 \end{document}
