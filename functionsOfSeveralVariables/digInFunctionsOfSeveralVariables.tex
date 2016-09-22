@@ -478,7 +478,7 @@ concept.
 	    every axis z label/.style={at={(axis cs:0,0,\pgfkeysvalueof{/pgfplots/zmax})},xshift=0pt,yshift=4pt},
 	    zlabel={\scriptsize $z$}
 	  ]
-          \addplot3[domain=0:180,y domain=0:180,surf,faceted color=black!40,samples y=30,very thin,z buffer=sort,
+          \addplot3[domain=0:180,y domain=0:180,samples y=30,very thin,z buffer=sort,
             samples=30,] ({3*cos(x)*cos(y)},{2*sin(x)*cos(y)},{sin(y)});
           
           \addplot3 [thick,penColor, smooth,domain=-30:170,samples=60,samples y=0] ({3*(cos(x))},{2*(sin(x))},0);
