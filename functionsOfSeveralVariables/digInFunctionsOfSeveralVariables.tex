@@ -16,7 +16,7 @@
 
 
 The world is constantly changing. Sometimes this change is very slow,
-othertimes it is shockingly fast. Consider \textit{Meteor Crater} in
+other times it is shockingly fast. Consider \textit{Meteor Crater} in
 northern Arizona:
 %% http://commons.wikimedia.org/wiki/File:Meteorcrater.jpg
 %% CC-BY-3.0 Shane Torgerson http://commons.wikimedia.org/wiki/User:Shane.torgerson
@@ -25,8 +25,8 @@ northern Arizona:
 \end{image}
 This area was once grasslands and woodlands inhabited by bison,
 camels, wooly mammoths, and giant ground sloths. During the
-Pleistocene epoch, a meteor only $40$ meters in diamerter collided
-with the Earth and this changed very quickly. The collison released
+Pleistocene epoch, a meteor only $40$ meters in diameter collided
+with the Earth and this changed very quickly. The collision released
 around $4\times10^{16}$ joules of energy, comparable to the energy
 released by a large nuclear weapon. A fireball extended out $10$
 kilometers from the center of the impact, destroying all life in its
@@ -360,11 +360,11 @@ variables. We will now define a function of several variables:
 
 The graph of a function of a single variable, $y=f(x)$ is a curve in a
 two-dimensional plane. The graph of a function of two variables, $z =
-F(x,y)$ is a surface in three-dimensinal space. The graph of a
+F(x,y)$ is a surface in three-dimensional space. The graph of a
 function of three variables, $w=F(x,y,z)$ is a surface in
 \textit{four}-dimensional space. How can we visualize such functions?
 While technology is readily available to help us graph functions of two
-variables, there is stll a paper-and-pencil approach that is useful.
+variables, there is still a paper-and-pencil approach that is useful.
 This technique is know as sketching \textit{level curves}.
 
 
@@ -385,7 +385,8 @@ elevation with \dfn{contour lines}. Another example would be
 Given a function $z=F(x,y)$, we can draw a ``topographical map'' of
 $F$ by drawing \dfn{level curves} (or, contour lines). A level curve
 at $z=c$ is a curve in the $(x,y)$-plane such that for all points
-$(x,y)$ on the curve, $F(x,y) = c$.
+$(x,y)$ on the curve, $F(x,y) = c$. Below we see a surface with level
+curves drawn beneath the surface:
 
 \begin{image}
   %% Based on: 
@@ -476,22 +477,21 @@ concept.
 	    every axis y label/.style={at={(axis cs:0,\pgfkeysvalueof{/pgfplots/ymax},0)},xshift=5pt,yshift=-2pt},
 	    ylabel={\scriptsize $y$},
 	    every axis z label/.style={at={(axis cs:0,0,\pgfkeysvalueof{/pgfplots/zmax})},xshift=0pt,yshift=4pt},
-	    zlabel={\scriptsize $z$}
+	    zlabel={\scriptsize $z$},colormap/cool
 	  ]
-          \addplot3[domain=0:180,y domain=0:180,samples y=30,very thin,z buffer=sort,
-            samples=30,] ({3*cos(x)*cos(y)},{2*sin(x)*cos(y)},{sin(y)});
+          \addplot3[domain=0:180,mesh,y domain=0:180,samples y=30,very thin,z buffer=sort,samples=30,] ({3*cos(x)*cos(y)},{2*sin(x)*cos(y)},{sin(y)});
           
-          \addplot3 [thick,penColor, smooth,domain=-30:170,samples=60,samples y=0] ({3*(cos(x))},{2*(sin(x))},0);
+          \addplot3 [very thick,penColor, smooth,domain=-30:170,samples=60,samples y=0] ({3*(cos(x))},{2*(sin(x))},0);
           
-          \addplot3 [thick,penColor, smooth,domain=-30:170,samples=60,samples y=0] ({2.93*(cos(x))},{1.96*(sin(x))},.2);
+          \addplot3 [very thick,penColor, smooth,domain=-30:170,samples=60,samples y=0] ({2.93*(cos(x))},{1.96*(sin(x))},.2);
           
-          \addplot3 [thick,penColor, smooth,domain=-30:170,samples=60,samples y=0] ({2.75*(cos(x))},{1.83*(sin(x))},.4);
+          \addplot3 [very thick,penColor, smooth,domain=-30:170,samples=60,samples y=0] ({2.75*(cos(x))},{1.83*(sin(x))},.4);
           
-          \addplot3 [thick,penColor, smooth,domain=-35:170,samples=60,samples y=0] ({2.4*(cos(x))},{1.6*(sin(x))},.6);
+          \addplot3 [very thick,penColor, smooth,domain=-35:170,samples=60,samples y=0] ({2.4*(cos(x))},{1.6*(sin(x))},.6);
           
-          \addplot3 [thick,penColor, smooth,domain=-40:170,samples=60,samples y=0] ({1.8*(cos(x))},{1.2*(sin(x))},.8);
+          \addplot3 [very thick,penColor, smooth,domain=-40:170,samples=60,samples y=0] ({1.8*(cos(x))},{1.2*(sin(x))},.8);
           
-          \filldraw [penColor] (axis cs: 0,0,1) circle (1pt);          
+          %\filldraw [penColor] (axis cs: 0,0,1) circle (1pt);          
         \end{axis}
       \end{tikzpicture}
     \end{image}
@@ -502,29 +502,26 @@ concept.
   \end{explanation}
 \end{example}
 
-\end{document}
+variable dimension plus 1
 
-%% variable dimension plus 1
-
-%% to understand and master as it, combined with high-quality graphics,
-%% gives one great insight into the behavior of a func on. This technique
-%% is known as sketching level curves.
+to understand and master as it, combined with high-quality graphics,
+gives one great insight into the behavior of a function. This technique
+is known as sketching level curves.
 
 
 
-%% \begin{tikzpicture}
-%%   \begin{axis}
-%% 	\addplot3[contour gnuplot,samples=100]
-%% 		{exp(0-x^2-y^2)};
-%% 	\end{axis}
-%% \end{tikzpicture}
+\begin{tikzpicture}
+  \begin{axis}
+	\addplot3[contour gnuplot,samples=100]
+		{exp(0-x^2-y^2)};
+	\end{axis}
+\end{tikzpicture}
 
 
 
 
 
 
-%% \subsection{Level surfaces}
-
+ \subsection{Level surfaces}
 
 \end{document}
