@@ -2,7 +2,6 @@
 
 \input{../preamble}
 
-
 \outcome{Define a function of several variables.}
 \outcome{Recognize a function of several variables as a contour plot.}
 
@@ -303,10 +302,11 @@ variables. We will now define a function of several variables:
   A \dfn{function of several variables} with \dfn{domain} $D$ is a
   relation
   \begin{align*}
-    F: D\subset \R^m  &\to \R\\
-    (x_1,x_2,\dots,x_m) &\mapsto y
+    F: D\subset \R^n  &\to \R\\
+    \vec{x} &\mapsto y\\
+    \vector{x_1,x_2,\dots,x_n} &\mapsto y
   \end{align*}
-  that assigns every ordered tuple in $D$ ($D$ is a subset of $\R^m$)
+  that assigns every ordered tuple in $D$ ($D$ is a subset of $\R^n$)
   a unique real number in $\R$. The set of all outputs of $F$ is the
   \dfn{range} (a subset of $\R$).
 \end{definition}
@@ -314,7 +314,7 @@ variables. We will now define a function of several variables:
 \begin{question}
   Consider
   \[
-  F(x,y) = \sqrt{1-\frac{x^2}9-\frac{y^2}4},
+  F(x,y) = \sqrt{1-\frac{x^2}{9}-\frac{y^2}{4}},
   \]
   and compute $F(2,1)$.
   \begin{prompt}
@@ -340,8 +340,19 @@ variables. We will now define a function of several variables:
       the $(x,y)$-plane.
     \end{prompt}
   \end{question}
+  \begin{question}
+    What is the range of $F$?
+    \begin{prompt}
+      The range is the set of all possible
+      \wordChoice{\choice{input}\choice[correct]{output}} values. The
+      square-root ensures that all output is $\geq \answer{0}$. Since
+      the $x$ and $y$ terms are squared, then subtracted, inside the
+      square-root, the largest output value comes at $x=\answer{0}$,
+      $y=\answer{0}$: $F(0,0) = \answer{1}$. Thus the range $R$ is the
+      interval $[\answer{0},\answer{1}]$.
+    \end{prompt}
+  \end{question}
 \end{question}
-
 
 
 \section{Visualizing functions of several variables}
@@ -364,7 +375,12 @@ It may be surprising to find that the problem of representing a three
 dimensional surface on paper is familiar to most people (they just
 don't realize it).  Topographical maps, like the one shown in Figure
 represent the surface of Earth by indicating points with the same
-elevation with \dfn{contour lines}. Another example would be 
+elevation with \dfn{contour lines}. Another example would be
+\textit{isotherms}, we see these in weather maps:
+
+\begin{image}
+  \includegraphics{isotherm.jpg}
+\end{image}
 
 Given a function $z=F(x,y)$, we can draw a ``topographical map'' of
 $F$ by drawing \dfn{level curves} (or, contour lines). A level curve
@@ -407,38 +423,80 @@ $(x,y)$ on the curve, $F(x,y) = c$.
 \end{question}
 
 
-
 When drawing level curves, it is important that the $c$ values are
 spaced equally apart as that gives the best insight to how quickly the
 ``elevation'' is changing. Examples will help one understand this
 concept.
 
 \begin{example}
-  Drawing level curves. 
+  Let $F(x,y) = \sqrt{1-\frac{x^2}{9}-\frac{y^2}{4}}$. Find the level
+  curves of $f$ for $c=0$, $0.2$, $0.4$, $0.6$, $0.8$ and $1$.
+  \begin{explanation}
+    Let's work somewhat generally. Each of our level curves will be of
+    the form
+    \begin{align*}
+      c &= \sqrt{1-\frac{x^2}{9}-\frac{y^2}{4}}\\
+        c^2 &= 1-\frac{x^2}{9}-\frac{y^2}{4}\\
+        1-c^2 &= \frac{x^2}{9}+\frac{y^2}{4}      
+    \end{align*}
+    Now we just need to plot for $c=0$, $0.2$, $0.4$, $0.6$, $0.8$ and
+    $1$
+    \begin{align*}
+      1 - 0^2   &= \frac{x^2}{9}+\frac{y^2}{4} \\
+      1 - 0.2^2 &= \frac{x^2}{9}+\frac{y^2}{4} \\
+      1 - 0.4^2 &= \frac{x^2}{9}+\frac{y^2}{4} \\
+      1 - 0.6^2 &= \frac{x^2}{9}+\frac{y^2}{4} \\
+      1 - 0.8^2 &= \frac{x^2}{9}+\frac{y^2}{4} \\
+      1 - 0 &= \frac{x^2}{9}+\frac{y^2}{4}   
+    \end{align*}
+    You can now plot these implicit functions with your favorite
+    graphing device.
+    %% \begin{onlineOnly}
+    %%   As a gesture of friendship, we have included a graph of these
+    %%   level curves
+    %%   \[
+    %%   \graph{1-0^2= \frac{x^2}{9}+\frac{y^2}{4}, 1 - 0.2^2 = \frac{x^2}{9}+\frac{y^2}{4},1 - 0.4^2 = \frac{x^2}{9}+\frac{y^2}{4},1 - 0.6^2 = \frac{x^2}{9}+\frac{y^2}{4},1 - 0.8^2 = \frac{x^2}{9}+\frac{y^2}{4},1 - 0 = \frac{x^2}{9}+\frac{y^2}{4}}
+    %%   \]
+    %% \end{onlineOnly}
+
+        %% \begin{tabular}{c}
+        %%   \myincludegraphics{figures/figlevelcurve1b}\\
+        %%   (a)\\
+        %%   \myincludegraphics[scale=1.25,trim=3mm 0mm 3mm 0mm,clip]{figures/figlevelcurve1}\\
+        %%   (b)
+        %% \end{tabular}
+      %% }
+      
+      %% In Figure \ref{fig:levelcurves1}(b), the curves are drawn on a
+      %% graph of $f$ in space. Note how the elevations are evenly
+      %% spaced. Near the level curves of $c=0$ and $c=0.2$ we can see
+      %% that $f$ indeed is growing quickly.
+  \end{explanation}
 \end{example}
 
+\end{document}
 
-variable dimension plus 1
+%% variable dimension plus 1
 
-to understand and master as it, combined with high-quality graphics,
-gives one great insight into the behavior of a func on. This technique
-is known as sketching level curves.
-
-
-
-\begin{tikzpicture}
-  \begin{axis}
-	\addplot3[contour gnuplot,samples=100]
-		{exp(0-x^2-y^2)};
-	\end{axis}
-\end{tikzpicture}
+%% to understand and master as it, combined with high-quality graphics,
+%% gives one great insight into the behavior of a func on. This technique
+%% is known as sketching level curves.
 
 
 
+%% \begin{tikzpicture}
+%%   \begin{axis}
+%% 	\addplot3[contour gnuplot,samples=100]
+%% 		{exp(0-x^2-y^2)};
+%% 	\end{axis}
+%% \end{tikzpicture}
 
 
 
-\subsection{Level surfaces}
+
+
+
+%% \subsection{Level surfaces}
 
 
 \end{document}
