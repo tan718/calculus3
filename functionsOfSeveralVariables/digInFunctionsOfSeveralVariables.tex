@@ -311,6 +311,8 @@ variables. We will now define a function of several variables:
   \dfn{range} (a subset of $\R$).
 \end{definition}
 
+Let's investigate functions of two variables, $F:\R^2\to\R$:
+
 \begin{question}
   Consider
   \[
@@ -325,11 +327,11 @@ variables. We will now define a function of several variables:
   \begin{question}
     What is the domain of $F$?
     \begin{prompt}
-      The domain is all pairs $(x,y)$ allowable as
+      The domain is all vectors $\vector{x,y}$ allowable as
       \wordChoice{\choice[correct]{input}\choice{output}} for $F$.
-      Because of the square-root, we need $(x,y)$ such that:
+      Because of the square-root, we need $\vector{x,y}$ such that:
       \[
-      0 \le 1-\frac{x^2}{9}-\frac{y^2}{4}
+      0 \le \answer{1-\frac{x^2}{9}-\frac{y^2}{4}}
       \]
       Write
       \begin{align*}
@@ -339,20 +341,68 @@ variables. We will now define a function of several variables:
       This inequality describes the interior of an ellipse centered in
       the $(x,y)$-plane.
     \end{prompt}
-  \end{question}
-  \begin{question}
-    What is the range of $F$?
-    \begin{prompt}
-      The range is the set of all possible
-      \wordChoice{\choice{input}\choice[correct]{output}} values. The
-      square-root ensures that all output is $\geq \answer{0}$. Since
-      the $x$ and $y$ terms are squared, then subtracted, inside the
-      square-root, the largest output value comes at $x=\answer{0}$,
-      $y=\answer{0}$: $F(0,0) = \answer{1}$. Thus the range $R$ is the
-      interval $[\answer{0},\answer{1}]$.
-    \end{prompt}
+    \begin{question}
+      What is the range of $F$?
+      \begin{prompt}
+        The range is the set of all possible
+        \wordChoice{\choice{input}\choice[correct]{output}} values. The
+        square-root ensures that all output is $\geq \answer{0}$. Since
+        the $x$ and $y$ terms are squared, then subtracted, inside the
+        square-root, the largest output value comes at $x=\answer{0}$,
+        $y=\answer{0}$: $F(0,0) = \answer{1}$. Thus the range $R$ is the
+        interval $[\answer{0},\answer{1}]$.
+      \end{prompt}
+    \end{question}
   \end{question}
 \end{question}
+
+Now let's ponder functions of three variables, $F:\R^3\to\R$. 
+
+\begin{question}
+  Consider
+  \[
+  F(x,y,z) =  \frac{x^2+z+3\sin y}{x+2y-z},
+  \]
+  and compute $F(3,0,2)$.
+  \begin{prompt}
+    F(3,0,2)=\answer{11}
+  \end{prompt}
+  \begin{question}
+    What is the domain of $F$?
+    \begin{prompt}
+    The domain is all vectors $\vector{x,y,z}$ allowable as
+    \wordChoice{\choice[correct]{input}\choice{output}} for $F$.
+    Because of denominator in the expression representing $F$, we need
+    to find $\vector{x,y,z}$ such that
+    \[
+    \answer{x+2y-z} \ne 0
+    \]
+    We recognize that the set of all points in $\R^3$ that \textit{are
+      not} in $D$ form a
+    \wordChoice{\choice{line}\choice[correct]{plane}\choice{circle}}
+    in space that passes through the origin (with normal vector
+    \[
+    \vec{n} = \vector{\answer{1},\answer{2},\answer{-1}}
+    \]
+    \end{prompt}
+    \begin{question}
+      What is the range of $F$?
+      \begin{prompt}
+        The range $R$ is the set of all possible
+        \wordChoice{\choice{input}\choice[correct]{output}} values. It
+        happens to be \wordChoice{\choice[correct]{all of}\choice{a
+            proper subset of}} $\R$. There is no set way of
+        establishing this. Rather, to get numbers near $0$ we can let
+        $y=0$ and choose $z \approx -x^2$. To get numbers of
+        arbitrarily large magnitude, we can let $z\approx x+2y$.
+      \end{prompt}
+    \end{question}
+  \end{question}
+\end{question}
+
+
+
+
 
 
 \section{Visualizing functions of several variables}
@@ -569,98 +619,83 @@ If one example is good, two is better.
 \end{example}
 
 
-variable dimension plus 1
-
-to understand and master as it, combined with high-quality graphics,
-gives one great insight into the behavior of a function. This technique
-is known as sketching level curves.
-
-
-
-\begin{tikzpicture}
-  \begin{axis}
-	\addplot3[contour gnuplot,samples=100]
-		{exp(0-x^2-y^2)};
-	\end{axis}
-\end{tikzpicture}
-
-
 \subsection{Level surfaces}
 
 
-\noindent\textbf{\large Level Surfaces}\\
-
 It is very difficult to produce a meaningful graph of a function of
-three variables. A function of \textit{one} variable is a
-\textit{curve} drawn in \textit{two} dimensions; a function of
-\textit{two} variables is a \textit{surface} drawn in \textit{three}
-dimensions; a function of \textit{three} variables is a
-\textit{hypersurface} drawn in \textit{four} dimensions.
+three variables.
+\begin{itemize}
+  \item A function of \textbf{one} variable is a \textbf{curve} drawn
+    in \textbf{two} dimensions.
+  \item A function of \textbf{two} variables is a \textbf{surface}
+    drawn in \textbf{three} dimensions.
+  \item A function of \textbf{three} variables is a
+    \textbf{hypersurface} drawn in \textbf{four} dimensions.
+\end{itemize}
 
 There are a few techniques one can employ to try to ``picture'' a
 graph of three variables. One is an analogue of level curves:
 \dfn{level surfaces}. Given $w=f(x,y,z)$, the level surface at $w=c$
 is the surface in space formed by all points $(x,y,z)$ where
-$f(x,y,z)=c$. 
+$f(x,y,z)=c$. Time for an example.
+
 
 \begin{example}
   If a point source $S$ is radiating energy, the intensity $I$ at a
   given point $P$ in space is inversely proportional to the square of
   the distance between $S$ and $P$. That is, when $S=(0,0,0)$,
-  \[
-  I(x,y,z) = \frac{k}{x^2+y^2+z^2}
-  \]
+  \begin{align*}
+  I(x,y,z) &= \frac{\text{some constant}}{\text{distance squared}}\\
+  &=\frac{k}{x^2+y^2+z^2}
+  \end{align*}
   for some constant $k$.  Let $k=1$; find the level surfaces of $I$.
   \begin{explanation}
-    We can (mostly) answer this question using ``common sense.'' If energy
-    (say, in the form of light) is emanating from the origin, its
-    intensity will be the same all a points equidistant from the
-    origin. That is, at any point on the surface of a sphere centered at
-    the origin, the intensity should be the same. Therefore, the level
-    surfaces are spheres.
+    We can (mostly) answer this question using ``common sense.'' If
+    energy (say, in the form of light) is emanating from the origin,
+    its intensity will be the same all a points equidistant from the
+    origin. That is, at any point on the surface of a sphere centered
+    at the origin, the intensity should be the same. Therefore, the
+    level surfaces are spheres.
     
-    We now find this mathematically. The level surface at $I=c$ is defined by 
+    We now confirm this ``common sense'' mathematically. The level
+    surface at $I=c$ is defined by
     \[
     c = \frac{1}{x^2+y^2+z^2}.
     \]
     Algebra reveals
     \[
-    x^2+y^2+z^2 = \frac1c.
+    x^2+y^2+z^2 = \frac{1}{c}.
     \]
     Given an intensity $c$, the level surface $I=c$ is a sphere of
-    radius $1/\sqrt{c}$, centered at the origin.
-    
-    Here is a table of $c$ values and the corresponding radius $r$ of
-    the spheres of constant value.
-      \begin{tabular}{cc}
-        $c$ & $r$ \\ \hline
-        16. & 0.25 \\
-        8. & 0.35 \\
-        4. & 0.5 \\
-        2. & 0.71 \\
-        1. & 1. \\
-        0.5 & 1.41 \\
-        0.25 & 2. \\
-        0.125 & 2.83 \\
-        0.0625 & 4. \\
-      \end{tabular}
-    
-    Here we see table of the radii of the spheres for given $c$
-    values. Normally one would use equally spaced $c$ values, but
-    these values have been chosen purposefully. At a distance of
-    $0.25$ from the point source, the intensity is $16$; to move to a
-    point of half that intensity, one just moves out $0.1$ to $0.35$,
-    not much at all. To again halve the intensity, one moves $0.15$, a
-    little more than before.
- 
-    Note how each time the intensity if halved, the distance required
-    to move away grows. We conclude that the closer one is to the
-    source, the more rapidly the intensity changes.
+    radius $1/\sqrt{c}$, centered at the origin. Every point on each
+    sphere experiences the same intensity of the radiating energy.
+    \begin{onlineOnly}
+      For your viewing pleasure, we present the level surface of this
+      curve graphed by \sage. Here $c$ is the intensity. 
+\begin{sageCell}
+c=16;
+f(x,y,z) = x^2 + y^2 + z^2
+implicit_plot3d(f==1/c,(x,-1,1), (y,-1,1), (z,-1,1))
+\end{sageCell}
+\begin{question}
+  If the distance is doubled, is the intensity halved?
+  \begin{multipleChoice}
+    \choice{yes}
+    \choice[correct]{no}
+  \end{multipleChoice}
+  \begin{feedback}
+    Experiment with how the level surface changes when the intensity
+    is halved. We can see that that the closer one is to the source,
+    the more rapidly the intensity changes.
+  \end{feedback}
+\end{question}
+    \end{onlineOnly}
   \end{explanation}
 \end{example}
-
-
-
-
-
+%% \begin{tikzpicture}             
+%%   \begin{axis}
+%% 	\addplot3[contour gnuplot,samples=100]
+%% 		{exp(0-x^2-y^2)};
+%% 	\end{axis}
+%% \end{tikzpicture}
 \end{document}
