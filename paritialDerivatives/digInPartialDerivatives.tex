@@ -14,7 +14,7 @@
 \maketitle
 
 Given a function $F:\R^n \to \R$, it is often useful to differentiate
-with resepect to a single variable and hold the other varibles as
+with respect to a single variable and hold the other variables as
 constants. As a concrete example, let
 \[
 F(x,y) = x^2+2y^2
@@ -406,8 +406,153 @@ Let's do an example to make this more clear.
   \end{hint}
 \end{question}
 
-LEVEL CURVES ARE NEXT
+We can also estimate partial derivatives by looking at level curves.
 
-  \section{Combining partial derivatives}
+\begin{example}
+  Let $F:\R^2\to\R$ be described by the level curves below:
+    \begin{image}
+      \begin{tikzpicture}
+        \begin{axis}%
+          [tick label style={font=\scriptsize},axis on top,
+	    axis lines=center,
+	    %view={30}{30},
+	    %name=myplot,
+            %width=5in,
+	    xtick={0,1,...,6},
+            ytick={0,1,...,5},
+	    %ytick={5},
+	    %ztick={.7,-.7},
+	    ymin=-.2,ymax=5,
+	    xmin=-.2,xmax=6,
+            grid=major,%width=3in,height=3in,
+            grid style={dashed, gridColor},
+	    every axis x label/.style={at={(axis cs:\pgfkeysvalueof{/pgfplots/xmax},0,0)},xshift=5pt,yshift=0pt},
+	    xlabel={\scriptsize $x$},
+	    every axis y label/.style={at={(axis cs:0,\pgfkeysvalueof{/pgfplots/ymax},0)},xshift=4pt,yshift=2pt},
+	    ylabel={\scriptsize $y$},
+	  ]
+          \addplot[very thick, penColor,smooth] coordinates{
+            (0,0) (4,1) (5,2) (6,2.5)
+          };
+
+          \addplot[very thick, penColor,smooth] coordinates{
+            (0,1) (4,2) (6,3)
+          };
+
+          \addplot[very thick, penColor,smooth] coordinates{
+            (0,1.5) (1,2) (4,4) (6,5)
+            };
+
+          \node[penColor,fill=white] at (axis cs:2,.5) {$17$};
+          \node[penColor,fill=white] at (axis cs:2,1.5) {$13$};
+          \node[penColor,fill=white] at (axis cs:2,2.66) {$7$};
+
+          \addplot[color=black,fill=black,only marks,mark=*] coordinates{(4,2)};  %% closed hole          
+        \end{axis}
+      \end{tikzpicture}
+    \end{image}
+    The height of the level curve is marked on the curve, and we are
+    given a point $(4,2)$.  Estimate
+    \[
+    F^{(1,0)}(4,2)
+    \]
+  \begin{explanation}
+    To estimate $F^{(1,0)}(4,2)$ we examine the change between the
+    level curve that $\vec{p}$ is on, and the nearest level curve
+    found by traveling on a line parallel to the $x$-axis. Starting at
+    $\vec{p}$ and moving to the left, we see
+    \begin{align*}
+      \frac{F(4,2)-F(1,2)}{4-1}&= \frac{\answer[given]{13}-\answer[given]{7}}{4-1}\\
+      &=\answer[given]{2}
+    \end{align*}
+    We also should examine the change between the closest level curve on the right, 
+    \begin{align*}
+      \frac{F(5,2)-F(4,2)}{5-4}&= \frac{\answer[given]{17}-\answer[given]{13}}{5-4}\\
+      &=\answer[given]{4}
+    \end{align*}
+    Now if we average these values together, we see
+    \[
+    \eval{\pp{x} F(x,y)}_{(x,y)=(2,6)} \approx \answer[given]{3}
+    \]
+  \end{explanation}
+\end{example}
+
+
+
+\begin{question}
+  Let $F:\R^2\to\R$ be described by the level curves below:
+    \begin{image}
+      \begin{tikzpicture}
+        \begin{axis}%
+          [tick label style={font=\scriptsize},axis on top,
+	    axis lines=center,
+	    %view={30}{30},
+	    %name=myplot,
+            %width=5in,
+	    xtick={0,1,...,6},
+            ytick={0,1,...,5},
+	    %ytick={5},
+	    %ztick={.7,-.7},
+	    ymin=-.2,ymax=5,
+	    xmin=-.2,xmax=6,
+            grid=major,%width=3in,height=3in,
+            grid style={dashed, gridColor},
+	    every axis x label/.style={at={(axis cs:\pgfkeysvalueof{/pgfplots/xmax},0,0)},xshift=5pt,yshift=0pt},
+	    xlabel={\scriptsize $x$},
+	    every axis y label/.style={at={(axis cs:0,\pgfkeysvalueof{/pgfplots/ymax},0)},xshift=4pt,yshift=2pt},
+	    ylabel={\scriptsize $y$},
+	  ]
+          \addplot[very thick, penColor,smooth] coordinates{
+            (0,0) (4,1) (5,2) (6,2.5)
+          };
+
+          \addplot[very thick, penColor,smooth] coordinates{
+            (0,1) (4,2) (6,3)
+          };
+
+          \addplot[very thick, penColor,smooth] coordinates{
+            (0,1.5) (1,2) (4,4) (6,5)
+            };
+
+          \node[penColor,fill=white] at (axis cs:2,.5) {$17$};
+          \node[penColor,fill=white] at (axis cs:2,1.5) {$13$};
+          \node[penColor,fill=white] at (axis cs:2,2.66) {$7$};
+
+          \addplot[color=black,fill=black,only marks,mark=*] coordinates{(4,2)};  %% closed hole          
+        \end{axis}
+      \end{tikzpicture}
+    \end{image}
+    The height of the level curve is marked on the curve, and we are
+    given a point $(4,2)$.
+  Estimate
+  \[
+  F^{(0,1)}(4,2)
+  \begin{prompt}
+    \approx \answer{-3.5}
+  \end{prompt}
+  \]
+  \begin{hint}
+    Work as we did in the example above, finding two estimates and taking their averages. 
+  \end{hint}
+\end{question}
+
+
+\section{Combining partial derivatives}
+
+When you want to take the derivative more than once, we have a special
+way of writing it. Let $F:\R^3\to\R$ be a function and suppose you want to
+\begin{description}
+\item[First] take the derivative with respect to $x$.
+\item[Second] take the derivative with respect to $z$.
+\item[Third] Take the derivative with respect to $y$.
+\end{description}
+You could write
+\[
+\pp{y} \left(\pp{z}\left(\pp{x} F(x,y,z)\right)\right)
+\]
+
+
+\section{Differentiability}
+
 
 \end{document}
