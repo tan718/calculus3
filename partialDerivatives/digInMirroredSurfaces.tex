@@ -2,69 +2,52 @@
 
 \input{../preamble.tex}
 
-\title[Dig-In:]{Partial derivatives}
+\title[Dig-In:]{Mirrored surfaces}
 
 \begin{document}
 \begin{abstract}
-  We introduce partial derivatives and see an application.
+  We think about how to reflect light of off surfaces. 
 \end{abstract}
 \maketitle
 
-
-When given a function of several variables, we can 
-
-
-
-
-
-\section{Mirrored surfaces}
-
-
-
-
-
-  We have a parametrized surface 
-  \begin{multipleChoice}
-    \choice{$\vec{f}: \R \to \R^2$}
-    \choice{$F: \R^2 \to \R$}
-    \choice[correct]{$\vec{F}: \R^2 \to \R^3$}
-    \choice{$\vec{F}: \R^3 \to \R^2$}
-  \end{multipleChoice}
-  given by $(a,b) \mapsto (a, b, a^2 + b^2)$.  In this case, the surface is a 
-  \begin{multipleChoice}
-    \choice{sphere}
-    \choice[correct]{paraboloid}
-    \choice{hyperboloid}
-  \end{multipleChoice}
-  and we would like to understand how light would reflect off such an
-  object, if we were to build it as a physical object.
-
-  Suppose $\vec{\ell}(t)$ is an arbitrary (parametrized!) straight line, given by
-  \begin{multipleChoice}
-    \choice[correct]{$\vec{\ell}(t) = \vec{\ell}_0 + t \vec{v}$}
-    \choice{$\vec{\ell}(t) = t \vec{\ell}_0 + t \vec{v}$}
-    \choice{$\vec{\ell}(t) = \vec{\ell}_0 + \vec{v}$}
-  \end{multipleChoice}
-  and suppose the image of $\vec{\ell}(t)$ intersects the image of $\vec{F}$ at a point $(x,y,z)$.  
+Suppose you have a function $F:\R^2\to\R$ via
+\[
+F(x,y) = x^2 + y^2
+\]
+In this case, the surface is called a \dfn{paraboloid}.  and we would
+like to understand how light would reflect off such an object, if we
+were to build it as a physical object.  Suppose $\vec{\ell}(t)$ is an
+arbitrary (parametrized!) straight line, given by
+\[
+\vec{\ell}(t) = \vec{\ell}_0 + t \vec{v}
+\]
+and suppose the image of $\vec{\ell}(t)$ intersects the image of
+$\vec{F}$ at a point $(a,b,c)$.
 
 \begin{sageCell}
 # The purple surface
-a = var('a'); b = var('b')
-f = vector([a,b,a^2 + b^2])
+f(x,y) = x^2 + y^2
 
 # The red light beam
-t = var('t') ; ell0 = vector([0.85,0.5,1.5]) ; v = vector([-0.2,-0.1,-1])
+t = var('t')
+ell0 = vector([0.85,0.5,1.5])
+v = vector([-0.2,-0.1,-1])
 
-parametric_plot3d( f, (a,-1,1), (b,-1,1) ) + parametric_plot3d( ell0 + t * v, (t,-0.5,2), color="red", thickness=0.1)
+plot3d( f, (x,-1,1), (y,-1,1) ) + parametric_plot3d( ell0 + t * v, (t,-0.5,2), color="red", thickness=0.1)
 \end{sageCell}
 
-When we zoom in close enough to the point $(x,y,z)$ where the light ray hits the surface, we imagine that the mirrored surface is \wordChoice{\choice[correct]{a plane}\choice{a line}} through the point $(x,y,z)$ and orthogonal to the vector
-\begin{multipleChoice}
-  \choice{$\pp{x}\vec{F} + \pp{y}\vec{F}$}
-  \choice{$\pp{x}\vec{F} - \pp{y}\vec{F}$}
-  \choice[correct]{$\pp{x}\vec{F} \cross \pp{y}\vec{F}$}
-\end{multipleChoice}
 
+When we zoom in close enough to the point $(a,b,c)$ where the light
+ray hits the surface, we imagine that the mirrored surface is a plane.
+
+\begin{question}
+  What is the tangent plane to $F$ at the point $(a,b,c)$?
+  \begin{prompt}
+    \[
+    z = \answer{2a(x-a)+2b(y-b)}
+    \]
+  \end{prompt}
+\end{question}
 When the light ray hits the surface, it is heading in the direction
 \begin{multipleChoice}
   \choice{$\pp[x]{\vec{F}}$}
@@ -73,8 +56,8 @@ When the light ray hits the surface, it is heading in the direction
 \end{multipleChoice}
 This means that the reflected light will be heading in the direction
 \begin{multipleChoice}
-  \choice{$\vec{v} + 2 \proj_{\vec{v}} \pp{\vec{F}}{x} \cross \pp{\vec{F}}{y}$}
-  \choice{$\vec{v} - 2 \proj_{\vec{v}} \pp{\vec{F}}{x} \cross \pp{\vec{F}}{y}$}
+  \choice{$\vec{v} + 2 \proj_{\vec{v}}(\vec{n})}
+  \choice{$\vec{v} - 2 \proj_{\vec{v}}(\vec{n})}
   \choice{$\vec{v} + 2 \proj_{\pp{\vec{F}}{x} \cross \pp{\vec{F}}{y}}(\vec{v})$}
   \choice[correct]{$\vec{v} - 2 \proj_{\pp{x}{\vec{F}} \cross \pp{y}{\vec{F}}}( \vec{v})$}
 \end{multipleChoice}
