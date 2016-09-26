@@ -501,16 +501,16 @@ Now we give an example of where this decomposition is useful.
   Find the orthogonal decomposition of $\vec{g}$ in terms of $\vec{r}$.
   \begin{explanation}
     To find the force of gravity in the direction of the ramp, we
-    compute $\proj_\vec{g}(\vec r)$:
+    compute $\proj_\vec{r}(\vec g)$:
     \begin{align*}
-      \proj_\vec{g}(\vec{r}) &= \left(\frac{\vec{g}\dotp\vec{r}}{\vec{r}\dotp\vec{r}}\right)\vec r\\
+      \proj_\vec{r}(\vec{g}) &= \left(\frac{\vec{g}\dotp\vec{r}}{\vec{r}\dotp\vec{r}}\right)\vec r\\
       &=  \answer[given]{\frac{-250}{425}}\vector{20,5}\\
       &= \vector{\answer[given]{\frac{-200}{17}},\answer[given]{\frac{-50}{17}}}.
     \end{align*}
     To find the component $\vec z$ of gravity orthogonal to the ramp,
     write with me
     \begin{align*}
-      \vec z &= \vec g - \proj_\vec{g}(\vec{r}) \\
+      \vec z &= \vec g - \proj_\vec{r}(\vec{g}) \\
       &= \vector{\answer[given]{\frac{200}{17}},\answer[given]{\frac{-800}{17}}}.
     \end{align*}
     \begin{image}
@@ -522,7 +522,7 @@ Now we give an example of where this decomposition is useful.
 	\draw [thin] (10,2.5) -- (9.25,5.5) -- (12.25,6.25) -- (13,3.25); %box
 	\draw [very thick,->,penColor2] (11.125,4.375) -- (11.125,-3.625) node [below] {\scriptsize $\vec g$}; %g
 	\draw [penColor3,very thick,->] (11.125,4.375) -- (13,-3.15) node [right,pos=.4,penColor3] {\scriptsize $\vec z$};
-	\draw [penColor4,very thick,->] (13,-3.15) -- (11.125,-3.625)node [shift={(10pt,-5pt)} ,penColor4,pos=0] {\scriptsize $\proj_{\vec g}(\vec r)$};
+	\draw [penColor4,very thick,->] (13,-3.15) -- (11.125,-3.625)node [shift={(10pt,-5pt)} ,penColor4,pos=0] {\scriptsize $\proj_{\vec r}(\vec g)$};
       \end{scope}
     \end{tikzpicture}
     \end{image}

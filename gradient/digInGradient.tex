@@ -11,10 +11,118 @@ We inroduce the gradient vector.
 \end{abstract}
 \maketitle
 
+The gradient is a useful tool in vector calculus. In some sense, it
+has the role that the derivative has in single-variable calcululs.
+Let's state the definition:
+
+\begin{definition}
+  Let $F:\R^n\to \R$ be a differentiable function, the \dfn{gradient}
+  \[
+  \grad F = \vector{\pp[F]{x_1},\pp[F]{x_2},\dots,\pp[F]{x_n}}
+  \]
+  is a vector-valued function of $n$ variables. 
+\end{definition}
+
+Let's see if you get this:
+
+
+\begin{question}
+  Let $F(x,y) = \sin(x)\cos(y)$, compute:
+  \[
+  \grad F(x,y)
+  \begin{prompt}
+    = \vector{\answer{\cos(x)\cos(y)},\answer{-\sin(x)\sin(y)}}
+  \end{prompt}
+  \]
+  \begin{question}
+    Let $\vec{p}= \vector{\pi/3,\pi/3}$. Compute:
+    \[
+    \grad F(\vec{p})
+    \begin{prompt}
+      =\vector{\answer{1/4},\answer{-3/4}}
+    \end{prompt}
+    \]
+  \end{question}
+\end{question}
+
+And now in three variables:
+
+\begin{question}
+  Let $F(x,y) = ze^{-7xy}$, compute:
+  \[
+  \grad F(x,y)
+  \begin{prompt}
+    = \vector{\answer{z e^{-7xy} -7y},\answer{z e^{-7xy} -7x}, \answer{e^{-7xy}}}
+  \end{prompt}
+  \]
+  \begin{question}
+    Let $\vec{p}= \vector{1,0,1/7}$. Compute:
+    \[
+    \grad F(\vec{p})
+    \begin{prompt}
+      =\vector{\answer{0},\answer{-1},\answer{1}}
+    \end{prompt}
+    \]
+  \end{question}
+\end{question}
+
+Now that we can compute the gradient, let's see if we can figure out
+what it means.
+
+\section{The greatest initial increase}
+
+First recall what it means for a function to be \textit{differentiable}:
+\begin{quote}\index{tangent plane}%%BADBAD would like an image
+  Given a function $F:\R^\to\R$ and a vector $\vec{a}$ in the domain
+  of $F$, if one can ``zoom in'' on the graph at $(\vec{a}, F(\vec{a}))$
+  sufficiently so that it appears to be a plane, then the
+  function is \dfn{differentiable}, and that plane is the \dfn{tangent plane}
+  to $F$ at the point $(\vec{a},F(\vec{a}))$.
+\end{quote}
+
+Now let's imagine what the gradient is telling us about the
+plane. First let $\vec{p}=\vector{a,b}$ and set
 \[
-\grad F(x,y)= \vector{\pp[F]{x},\pp[F]{y}}
+\vector{m_1,m_2} = \grad F(\vec{p})
 \]
+Now the tangent plane is given by: 
+\[
+z = m_1 (x-a) + m_2 (y-b) + F(a,b)
+\]
+what happens if we leave the point $\vec{p}$ in the direction of
+\[
+\vector{m_1,m_2} = \grad F(\vec{p})?
+\]
+Well,
+\begin{itemize}
+  \item if a componet of $\grad F(\vec{p})$ is positive, travling in
+    its direction will ensure that you are ``traveling uphill,''
+    meaning you are raising the $z$-value (at least initially).
+\item if a componet of $\grad F(\vec{p})$ is negative, travling in its
+  (negative) direction will also ensure that you are ``traveling
+  uphill,'' meaning you are raising the $z$-value (at least
+  initially).
+\end{itemize}
+The componets of $\grad F(\vec{p})$ work together to ensure you are
+traveling in the direction of the greatest initial increase.
+\begin{onlineOnly}
+For your viewing pleasure, we have included a graph where you can see
+the $x$-component of the gradient and the $y$-component of the
+gradient combining to show the direction one should leave a point, and
+find the greatest initial increase in the function.
+\begin{sageCell}
+f(x,y) = 3*x+4*y
+vectorx=arrow3d((0,0,0),(3,0,0),7,color='blue');
+vectory=arrow3d((0,0,0),(0,4,0),7,color='blue');
+grad=arrow3d((0,0,0),(3,4,0),7,color='red');
+
+plot3d( f, (x,-3,3), (y,-3,3) ) + vectorx + vectory + grad
+\end{sageCell}
+\end{onlineOnly}
 
 
+\section{Perpendicularity and the gradient}
+
+\section{Formulas and the gradient}
 
 \end{document}
