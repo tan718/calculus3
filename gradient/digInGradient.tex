@@ -171,9 +171,9 @@ plot3d( f, (x,-3,3), (y,-3,3) ) + vectorx + vectory + grad
   \begin{explanation}
     Write with me
     \[
-    \nabla F(x,y) = \vector{\answer[given]{-2x+2},\answer[given]{-2y+2}}.
+    \grad F(x,y) = \vector{\answer[given]{-2x+2},\answer[given]{-2y+2}}.
     \]
-    However, we see $\nabla F(1,1) = \vector{\answer[given]{0},\answer[given]{0}}$.  Since there is no
+    However, we see $\grad F(1,1) = \vector{\answer[given]{0},\answer[given]{0}}$.  Since there is no
     initial direction of greatest increase, we must be at a local
     maximum for the function. Indeed we are, behold:
     \begin{image}
@@ -277,13 +277,13 @@ relax and enjoy.
     downhill in the initial steepest direction. Therefore, at any
     point on its path, it will be moving in the direction of
     \[
-    -\nabla F(x,y)
+    -\grad F(x,y)
     \]
     We'll ignore the physical effects of momentum on the water.  Thus
-    $\vec{w}(t)$ will be parallel to $\nabla F$. Ah! This means there
+    $\vec{w}(t)$ will be parallel to $\grad F$. Ah! This means there
     is some constant $c$ such that
     \[
-    c\nabla F(x(t),y(t)) = \vec{w}'(t) = \vector{x'(t), y'(t)}.
+    c\grad F(x(t),y(t)) = \vec{w}'(t) = \vector{x'(t), y'(t)}.
     \]
     Computing the gradient,
     \[
