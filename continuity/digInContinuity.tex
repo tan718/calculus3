@@ -297,9 +297,9 @@ plot3d(f(x,y),(x,-5,5),(y,-5,5))
     \cos(y) & x=0
   \end{cases}
   \]
-  Is $f$ continuous at $(0,0)$? Is $f$ continuous everywhere?
+  Is $F$ continuous at $(0,0)$? Is $F$ continuous everywhere?
   \begin{explanation}
-    To determine if $f$ is continuous at $(0,0)$, we need to compare
+    To determine if $F$ is continuous at $(0,0)$, we need to compare
     \[
     \lim_{\vector{x,y}\to\vector{0,0}} F(x,y)\quad\text{to}\quad F(0,0).
     \]
@@ -339,7 +339,7 @@ plot3d(f(x,y),(x,-5,5),(y,-5,5))
     \end{align*}
     
     We have found that $\lim_{\vector{x,y}\to\vector{0,0}} \frac{\cos(y)\sin(x)}{x} =
-    F(0,0)$, so $f$ is continuous at $(0,0)$.
+    F(0,0)$, so $F$ is continuous at $(0,0)$.
 
     A similar analysis shows that $F$ is continuous at all points in
     $\mathbb{R}^2$. As long as $x\neq0$, we can evaluate the limit
@@ -367,7 +367,7 @@ if and only if
 \[
 \lim_{x\to a^+}f(x) =L \quad\textbf{and}\quad \lim_{x\to a^-}f(x) =L.
 \]
-That is, the limit is $L$ if and only if $f$ approaches $L$ when
+That is, the limit is $L$ if and only if $F$ approaches $L$ when
 $x$ approaches $a$ from \textbf{either} direction.
 
 In $\R^n$ when $n>2$ there are \textbf{infinite paths} from which
@@ -450,7 +450,7 @@ plot3d(f(x,y),(x,-5,5),(y,-5,5))
     By applying L'H\^opital's Rule, we can show this limit is $0$
     \emph{except} when $m=-1$, that is, along the line $y=-x$. This
     line is not in the domain of $F$, so we have found the following
-    fact: along every line $y=mx$ in the domain of $f$,
+    fact: along every line $y=mx$ in the domain of $F$,
     \[
     \lim_{\vector{x,y}\to\vector{0,0}} F(x,y)=0.
     \]
