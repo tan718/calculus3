@@ -12,11 +12,190 @@
 \end{abstract}
 \maketitle
 
+\section{Differentiability and the Total Differential}\label{sec:total_differential}
+
+We've studied \textbf{differentials} in our previous courses: If
+$y=f(x)$ and $f$ is differentiable, then:
+\[
+\d y=f'(x)\d x
+\]
+Here $\d y$ and $\d x$ are two new variables that have been
+``cooked-up'' to ensure that
+\[
+\dd[y]{x} = f'(x).
+\]
+It is worthwhile to compare and contrast
+\[
+\Delta x, \ \d x \quad{and}\quad \Delta y,\  \d y.
+\]
+The values
+\[
+\Delta x \quad\text{and}\quad \Delta y
+\]
+are the \textit{change} $x$ and \textit{change} in $y$ when $x$ and
+$y$ are related. On the other hand, if $y=f(x)$, then
+\[
+\d x = \Delta x
+\]
+but $\d y$ is not necessarily equal to $\Delta y$. Instead $\d y$ is
+the value that satisfies this equation:
+\[
+\d y=f'(x)\d x
+\]
+When $\d x$ is small, $\d y\approx \Delta y$, the change in $y$
+resulting from the change in $x$. The key ideas is that as $\d x\to 0$
+\[
+(\Delta y - \d y) \to 0
+\]
+Another way of stating this is: as $\d x$ goes to $0$, the \textit{error}
+in approximating $\Delta y$ with $\d y$ goes to $0$.
+
+
+Let's extend this idea to functions of two variables. Let $z=F(x,y)$,
+and let $\Delta x = \d x$ and $\Delta y=\d y$ represent changes in $x$
+and $y$, respectively. Now
+\[
+\d z = F(x+\d x,y+\d y) - F(x,y)
+\]
+is the change in $z$ over the change in $x$ and $y$. Recalling that
+$F^{(1,0)}$ and $F^{(0,1)}$ give the instantaneous rates of $z$-change
+in the $x$ and $y$-directions respectively, we can approximate $\d z$ as
+\[
+\d z = F^{(1,0)}\d x+F^{(0,1)}\d y
+\]
+and setting $\vec{x}=\vector{x,y}$, we can rewrite this in terms of
+the dot product:
+\[
+\d z = \grad F \dotp \d \vec{x}
+\]
+
+in words, the total change in $z$ is approximately the
+change caused by changing $x$ plus the change caused by changing
+$y$. In a moment we give an indication of whether or not this
+approximation is any good. First we give a name to $\d z$.
+
+\begin{definition}
+Let $z=F(x,y)$ be continuous on an open set $S$. Let $\d x$ and $\d y$
+represent changes in $x$ and $y$, respectively. Where the partial
+derivatives $F^{(1,0)}$ and $f^{(0,1)}$ exist, the \dfn{total
+  differential} is
+\[
+\d z  = \grad F \dotp \d \vec{x}
+\]
+\end{definition}
+
+\end{document}
+
+
+\example{ex_total_diff_10}{Finding the total differential}{
+Let $z = x^4e^{3y}$. Find $dz$.}
+{We compute the partial derivatives: $f_x = 4x^3e^{3y}$ and $f_y = 3x^4e^{3y}$. Following Definition \ref{def:total_differential}, we have
+$$dz = 4x^3e^{3y}\d x+3x^4e^{3y}\d y.$$
+\vskip-1.5\baselineskip
+}\\
+
+We \textit{can} approximate $\ddz$ with $dz$, but as with all approximations, there is error involved. A good approximation is one in which the error is small. At a given point $(x_0,y_0)$, let $E_x$ and $E_y$ be functions of $\d x$ and $\d y$ such that $E_x\d x+E_y\d y$ describes this error. Then
+\begin{align*}
+\ddz &= dz + E_x\d x+ E_y\d y \\
+		&= f_x(x_0,y_0)\d x+f_y(x_0,y_0)\d y + E_x\d x+E_y\d y.
+\end{align*}
+If the approximation of $\ddz$ by $dz$ is good, then as $\d x$ and $\d y$ get small,  so does $E_x\d x+E_y\d y$. The approximation of $\ddz$ by $dz$ is even better if, as $\d x$ and $\d y$ go to 0, so do $E_x$ and $E_y$. This leads us to our definition of differentiability.
+
+
+\noindent\textbf{\large Approximating with the Total Differential}\\
+
+By the definition, when $f$ is differentiable $dz$ is a good approximation for $\ddz$ when $\d x$ and $\d y$ are small. We give some simple examples of how this is used here.\\
+
+\example{ex_totaldiff2}{Approximating with the total differential}
+{Let $z = \sqrt{x}\sin y$. Approximate $f(4.1,0.8)$.}
+{Recognizing that $\pi/4 \approx 0.785\approx 0.8$, we can approximate $f(4.1,0.8)$ using $f(4,\pi/4)$. We can easily compute $f(4,\pi/4) = \sqrt{4}\sin(\pi/4) = 2\left(\frac{\sqrt{2}}2\right) = \sqrt{2}\approx 1.414.$ Without calculus, this is the best approximation we could reasonably come up with. The total differential gives us a way of adjusting this initial approximation to hopefully get a more accurate answer.
+
+We let $\ddz = f(4.1,0.8) - f(4,\pi/4)$. The total differential $dz$ is approximately equal to $\ddz$, so
+\begin{equation}f(4.1,0.8) - f(4,\pi/4) \approx dz \quad \Rightarrow \quad f(4.1,0.8) \approx dz + f(4,\pi/4).\label{eq:totaldiff2}\end{equation}
+To find $dz$, we need $f_x$ and $f_y$.
+
+\begin{align*}
+f_x(x,y) &= \frac{\sin y}{2\sqrt{x}} \quad\Rightarrow&
+f_x(4,\pi/4) &= \frac{\sin \pi/4}{2\sqrt{4}} \\
+						& &&= \frac{\sqrt{2}/2}{4} = \sqrt{2}/8.\\
+f_y(x,y) &= \sqrt{x}\cos y \quad\Rightarrow&
+f_y(4,\pi/4) &= \sqrt{4}\frac{\sqrt{2}}2\\
+		& & &= \sqrt{2}.
+\end{align*}
+Approximating $4.1$ with 4 gives $\d x = 0.1$; approximating $0.8$ with $\pi/4$ gives $\d y \approx 0.015$. Thus
+\begin{align*}
+dz(4,\pi/4) &=  f_x(4,\pi/4)(0.1) + f_y(4,\pi/4)(0.015)\\
+				&= \frac{\sqrt{2}}8(0.1) + \sqrt{2}(0.015)\\
+				&\approx 0.039.
+\end{align*}
+Returning to Equation \eqref{eq:totaldiff2}, we have
+$$f(4.1,0.8) \approx 0.039 + 1.414 = 1.4531.$$
+We, of course, can compute the actual value of $f(4.1,0.8)$ with a calculator; the actual value, accurate to 5 places after the decimal, is $1.45254$. Obviously our approximation is quite good.
+}\\
+
+The point of the previous example was \textit{not} to develop an approximation method for known functions. After all, we can very easily compute $f(4.1,0.8)$ using readily available technology. Rather, it serves to illustrate how well this method of approximation works, and to reinforce the following concept:
+\begin{center}
+	``New position = old position $+$ amount of change,'' so\\
+	``New position $\approx$ old position + approximate amount of change.''
+\end{center}
+
+In the previous example, we could easily compute $f(4,\pi/4)$ and could approximate the amount of $z$-change when computing $f(4.1,0.8)$, letting us approximate the new $z$-value.
+
+It may be surprising to learn that it is not uncommon to know the values of $f$, $f_x$ and $f_y$ at a particular point without actually knowing $f$. The total differential gives a good method of approximating $f$ at nearby points.\\
+
+\example{ex_totaldiff3}{Approximating an unknown function}{
+Given that $f(2,-3) = 6$, $f_x(2,-3) = 1.3$ and $f_y(2,-3) = -0.6$, approximate $f(2.1,-3.03)$.}
+{The total differential approximates how much $f$ changes from the point $(2,-3)$ to the point $(2.1,-3.03)$. With $\d x = 0.1$ and $\d y = -0.03$, we have
+\begin{align*}
+dz &= f_x(2,-3)\d x + f_y(2,-3)\d y\\
+		&= 1.3(0.1) + (-0.6)(-0.03) \\
+		&= 0.148.
+\end{align*}
+The change in $z$ is approximately $0.148$, so we approximate $f(2.1,-3.03)\approx 6.148.$
+}\\
+
+\noindent\textbf{\large Error/Sensitivity Analysis}\\
+
+The total differential gives an approximation of the change in $z$
+given small changes in $x$ and $y$. We can use this to approximate
+error propagation; that is, if the input is a little off from what it
+should be, how far from correct will the output be? We demonstrate
+this in an example.  \index{sensitivity analysis}\index{total differential!sensitivity analysis}
+
+\begin{example}
+  A cylindrical steel storage tank is to be built that is
+  $10\unit{ft}$ tall and $4\unit{ft}$ across in diameter. It is known
+  that the steel will expand/contract with temperature changes; is the
+  overall volume of the tank more sensitive to changes in the diameter
+  or in the height of the tank?
+  \begin{explanation}
+    A cylindrical solid with height $h$ and radius $r$ has volume $V =
+    \pi r^2h$. We can view $V$ as a function of two variables, $r$ and
+    $h$. We can compute partial derivatives of $V$:
+    \[
+    \frac{\partial V}{\partial r} = V_r(r,h) = 2\pi rh \qquad \text{and}\qquad \frac{\partial V}{\partial h} = V_h(r,h) = \pi r^2.
+    \]
+    The total differential is $dV = (2\pi rh)dr + (\pi r^2)dh.$ When
+    $h = 10$ and $r = 2$, we have $dV = 40\pi dr + 4\pi dh$.  Note
+    that the coefficient of $dr$ is $40\pi\approx 125.7$; the
+    coefficient of $dh$ is a tenth of that, approximately $12.57$. A
+    small change in radius will be multiplied by 125.7, whereas a
+    small change in height will be multiplied by 12.57. Thus the
+    volume of the tank is more sensitive to changes in radius than in
+    height.
+  \end{explanation}
+\end{example}
+
+The previous example showed that the volume of a particular tank was more sensitive to changes in radius than in height. Keep in mind that this analysis only applies to a tank of those dimensions. A tank with a height of 1ft and radius of 5ft would be more sensitive to changes in height than in radius.
+
+One could make a chart of small changes in radius and height and find exact changes in volume given specific changes. While this provides exact numbers, it does not give as much insight as the error analysis using the total differential.\\
+
 
 
 
 \[
-\d z = F^{(1,0,0}(a,b,c)\d x + F^{(0,1,0}(a,b,c)\d y+ F^{(0,0,1}(a,b,c)\d z + F(a,b,c)
+\d z = F^{(1,0,0}(a,b,c)\d x + F^{(0,1,0}(a,b,c)\d y+
+F^{(0,0,1}(a,b,c)\d z + F(a,b,c)
 \]
 
 \[
