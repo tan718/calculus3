@@ -72,7 +72,7 @@ dot product:
 \[
 \d z = \grad F \dotp \d \vec{x}
 \]
-This leads us to our next definiton.
+This leads us to our next definition.
 \begin{definition}
   Let $\vec{x} = \vector{x_1,x_2,\dots,x_n}$ and $z=F(\vec{x})$ be
   continuous on an open set $S$. Let $\d \vec{x}$ represent changes in
@@ -93,74 +93,130 @@ This leads us to our next definiton.
 \end{question}
 
 We \textit{can} approximate $\Delta z$ with $\d z$, but as with all
-approximations, there is error involved. A good approximation is one
-in which the error is small. At a given point $(x_0,y_0)$, let $E_x$
-and $E_y$ be functions of $\d x$ and $\d y$ such that $E_x\d x+E_y\d
-y$ describes this error. Then
-\begin{align*}
-\d z &= dz + E_x\d x+ E_y\d y \\
-		&= f_x(x_0,y_0)\d x+f_y(x_0,y_0)\d y + E_x\d x+E_y\d y.
-\end{align*}
-If the approximation of $\Delta z$ by $\d z$ is good, then as $\d x$
-and $\d y$ get small, so does $E_x\d x+E_y\d y$. The approximation of
-$\Delta z$ by $\d z$ is even better if, as $\d x$ and $\d y$ go to
-$0$, so do $E_x$ and $E_y$. 
+approximations, there is error involved. Approximating $\Delta z$ with
+$\d z$ relies on the fact that if a function is differentiable, then
+we can ``zoom-in'' on our surface until at some point, the surface
+looks like a plane. Of course as we've learned, this property is
+called differentiability, meaning quite literally can we use
+differentials to describe this surface.
 
 
 \section{Approximating with the total differential}
 
-By the definition, when $F$ is differentiable $\d z$ is a good
-approximation for $\Delta z$ when $\d x$ and $\d y$ are small. We give
-some simple examples of how this is used here.
+Suppose you want to approximate $F(x,y)=\sqrt{x}\sin(y)$ at the point
+$(4.1,0.8)$. Without knowledge of calculus, your approximation might
+go like this:
+
+We try to find numbers near $4.1$ and $0.8$ where
+$F(x,y)=\sqrt{x}\sin(y)$ is easy to evaluate. For example, we know
+that $\sqrt{4}= 2$, so instead of looking at $x=4.1$, we'll use
+$x=4$. With a little more thinking, we need to think about angles
+whose sine we know. Checking a few angles, we see that $\pi/4\approx
+0.8$. Hence
+\begin{align*}
+  F(4.1,0.8) &\approx F(4,\pi/4) \\
+  &= \sqrt{4}\sin(\pi/4)\\
+  &= 2\left(\frac{\sqrt{2}}2\right)\\
+  &= \sqrt{2}.
+\end{align*}
+Without calculus, this is the best approximation we could
+reasonably come up with. The total differential gives us a way of
+adjusting this initial approximation to hopefully get a more
+accurate answer.
 
 \begin{example}
   Let $F(x,y)=\sqrt{x}\sin(y)$. Approximate $F(4.1,0.8)$.
   \begin{explanation}
-{Recognizing that $\pi/4 \approx 0.785\approx 0.8$, we can approximate $f(4.1,0.8)$ using $f(4,\pi/4)$. We can easily compute $f(4,\pi/4) = \sqrt{4}\sin(\pi/4) = 2\left(\frac{\sqrt{2}}2\right) = \sqrt{2}\approx 1.414.$ Without calculus, this is the best approximation we could reasonably come up with. The total differential gives us a way of adjusting this initial approximation to hopefully get a more accurate answer.
+    By the definition, when $F$ is differentiable $\d z$ is a good
+    approximation for $\Delta z$ when $\d x$ and $\d y$ are small.
 
-We let $\d z = f(4.1,0.8) - f(4,\pi/4)$. The total differential $dz$ is approximately equal to $\d z$, so
-\begin{equation}f(4.1,0.8) - f(4,\pi/4) \approx dz \quad \Rightarrow \quad f(4.1,0.8) \approx dz + f(4,\pi/4).\label{eq:totaldiff2}\end{equation}
-To find $dz$, we need $f_x$ and $f_y$.
-
-\begin{align*}
-f_x(x,y) &= \frac{\sin y}{2\sqrt{x}} \quad\Rightarrow&
-f_x(4,\pi/4) &= \frac{\sin \pi/4}{2\sqrt{4}} \\
-						& &&= \frac{\sqrt{2}/2}{4} = \sqrt{2}/8.\\
-f_y(x,y) &= \sqrt{x}\cos y \quad\Rightarrow&
-f_y(4,\pi/4) &= \sqrt{4}\frac{\sqrt{2}}2\\
-		& & &= \sqrt{2}.
-\end{align*}
-Approximating $4.1$ with 4 gives $\d x = 0.1$; approximating $0.8$ with $\pi/4$ gives $\d y \approx 0.015$. Thus
-\begin{align*}
-dz(4,\pi/4) &=  f_x(4,\pi/4)(0.1) + f_y(4,\pi/4)(0.015)\\
-				&= \frac{\sqrt{2}}8(0.1) + \sqrt{2}(0.015)\\
-				&\approx 0.039.
-\end{align*}
-Returning to Equation \eqref{eq:totaldiff2}, we have
-$$f(4.1,0.8) \approx 0.039 + 1.414 = 1.4531.$$
-We, of course, can compute the actual value of $f(4.1,0.8)$ with a calculator; the actual value, accurate to 5 places after the decimal, is $1.45254$. Obviously our approximation is quite good.
+    As before we will attempt to compute $F(4.1,0.8)$ using
+    $F(4,\pi/4)$. Recall from directly above
+    \[
+    F(4,\pi/4) = \sqrt{2}
+    \]
+    Now we will use the total differential to acquire a better
+    approximation.  Consider
+    \[
+    \Delta z = F(4.1,0.8) - F(4,\pi/4).
+    \]
+    Since $\Delta z\approx \d z$, we write
+    \begin{align*}
+      \d z &\approx F(4.1,0.8) - F(4,\pi/4)\\
+      F(4.1,0.8) &\approx F(4,\pi/4)+ \d z 
+    \end{align*}
+    To find $\d z$, we need $\grad F$, as
+    \begin{align*}
+      \d z &= \grad F \dotp \d\vec{x}\\
+      &=\vector{\frac{\sin (y)}{2\sqrt{x}}, \sqrt{x}\cos (y)}\dotp\vector{\d x,\d y}
+    \end{align*}
+    Evaluating at $(4,\pi/4)$ we find
+    \begin{align*}
+      \d z &= \grad F \dotp \d\vec{x}\\
+      &=\vector{\frac{\sin (\pi/4)}{2\sqrt{4}}, \sqrt{4}\cos (\pi/4)}\dotp\vector{\d x,\d y }\\
+      &=\vector{\frac{\sqrt{2}}{8}, \sqrt{2}}\dotp\vector{\d x,\d y }
+    \end{align*}
+    Now we need to know the change in $x$ and $y$:
+    \begin{align*}
+      \d x &= 4.1-4= 0.1\\
+    \d y &= 0.8 -\pi/4 \approx 0.015.\\
+    \end{align*}
+    Thus
+    \begin{align*}
+      \d z &=  \vector{\frac{\sqrt{2}}{8}, \sqrt{2}}\dotp\vector{0.1,0.015}\\ 
+      &= \frac{\sqrt{2}}8(0.1) + \sqrt{2}(0.015)\\
+    \end{align*}
+    So finally,
+    \begin{align*}
+    F(4.1,0.8) &\approx F(4,\pi/4) + \d z\\
+    F(4.1,0.8) &\approx \sqrt{2} + \frac{\sqrt{2}}8(0.1) + \sqrt{2}(0.015)
+    \end{align*}
   \end{explanation}
 \end{example}
+\begin{remark}
+  If we compare our estimates of $F(x,y) = \sqrt{x}\sin(y)$ at
+  $(4.1,0.8)$ we see that without knowledge of calculus we found
+  \[
+  F(4.1,0.8) \approx \sqrt{2},
+  \]
+  but with knowledge of calculus we found
+  \[
+  f(4.1,0.8) \approx \sqrt{2} + \frac{\sqrt{2}}8(0.1) + \sqrt{2}(0.015)
+  \]
+  We, of course, can compute the actual value of $f(4.1,0.8)$ with a
+  calculator; the actual value, accurate to $5$ places after the
+  decimal, is $1.45254$. Our approximation with calculus is quite
+  good.
+\end{remark}
 
-The point of the previous example was \textit{not} to develop an approximation method for known functions. After all, we can very easily compute $f(4.1,0.8)$ using readily available technology. Rather, it serves to illustrate how well this method of approximation works, and to reinforce the following concept:
-\begin{center}
-	``New position = old position $+$ amount of change,'' so\\
-	``New position $\approx$ old position + approximate amount of change.''
-\end{center}
+The point of the previous example was \textit{not} to develop an
+approximation method for known functions. After all, we can very
+easily compute $F(4.1,0.8)$ using readily available
+technology. Rather, it serves to illustrate how well this method of
+approximation works, and to reinforce the following concept:
+\begin{quote}
+  New position = old position $+$ amount of change, \\
+  New position $\approx$ old position + approximate amount of change.
+\end{quote}
 
-In the previous example, we could easily compute $f(4,\pi/4)$ and could approximate the amount of $z$-change when computing $f(4.1,0.8)$, letting us approximate the new $z$-value.
+In the previous example, we could easily compute $F(4,\pi/4)$ and
+could approximate the amount of $z$-change when computing
+$f(4.1,0.8)$, letting us approximate the new $z$-value.
 
-It may be surprising to learn that it is not uncommon to know the values of $f$, $f_x$ and $f_y$ at a particular point without actually knowing $f$. The total differential gives a good method of approximating $f$ at nearby points.\\
+It may be surprising to learn that it is not uncommon to know the
+values of $F$ and $\grad F$ at a particular point without actually
+knowing a formula for $F$. The total differential gives a good method
+of approximating $F$ by looking at nearby points.
 
 \begin{example}
-  Given that $F(2,-3) = 6$, $F^{(1,0)}(2,-3) = 1.3$ and
-  $F^{(0,1)}(2,-3) = -0.6$, approximate $F(2.1,-3.03)$.}
+  Given that $F(2,-3) = 6$, $\grad F(2,-3) = \vector{1.3,-0.6}$,
+  approximate $F(2.1,-3.03)$.
 \begin{explanation}
   The total differential approximates how much $F$ changes from the
   point $(2,-3)$ to the point $(2.1,-3.03)$. With $\d x = 0.1$ and $\d
   y = -0.03$, we have
   \begin{align*}
-    \d z &= F^{(1,0)}(2,-3)\d x + F^{(0,1)}(2,-3)\d y\\
+    \d z &= \grad F \dotp \d \vec{x}\\
     &= 1.3(0.1) + (-0.6)(-0.03) \\
     &= 0.148.
   \end{align*}
@@ -171,13 +227,14 @@ It may be surprising to learn that it is not uncommon to know the values of $f$,
 
 
 
-\noindent\textbf{\large Error/Sensitivity Analysis}\\
+\section{Error analysis}
 
 The total differential gives an approximation of the change in $z$
 given small changes in $x$ and $y$. We can use this to approximate
 error propagation; that is, if the input is a little off from what it
 should be, how far from correct will the output be? We demonstrate
-this in an example.  \index{sensitivity analysis}\index{total differential!sensitivity analysis}
+this in an example.  \index{sensitivity analysis}\index{total
+  differential!sensitivity analysis}
 
 \begin{example}
   A cylindrical steel storage tank is to be built that is
@@ -186,38 +243,42 @@ this in an example.  \index{sensitivity analysis}\index{total differential!sensi
   overall volume of the tank more sensitive to changes in the diameter
   or in the height of the tank?
   \begin{explanation}
-    A cylindrical solid with height $h$ and radius $r$ has volume $V =
-    \pi r^2h$. We can view $V$ as a function of two variables, $r$ and
-    $h$. We can compute partial derivatives of $V$:
+    A cylindrical solid with height $h$ and radius $r$ has volume
     \[
-    \frac{\partial V}{\partial r} = V_r(r,h) = 2\pi rh \qquad \text{and}\qquad \frac{\partial V}{\partial h} = V_h(r,h) = \pi r^2.
+    V = \pi r^2h.
     \]
-    The total differential is $dV = (2\pi rh)dr + (\pi r^2)dh.$ When
-    $h = 10$ and $r = 2$, we have $dV = 40\pi dr + 4\pi dh$.  Note
-    that the coefficient of $dr$ is $40\pi\approx 125.7$; the
-    coefficient of $dh$ is a tenth of that, approximately $12.57$. A
-    small change in radius will be multiplied by 125.7, whereas a
-    small change in height will be multiplied by 12.57. Thus the
+    We can view $V$ as a function of two variables, $r$ and $h$ (in
+    that order). We can compute $\grad V$
+    \[
+    \grad V  = \vector{2\pi rh,\pi r^2}.
+    \]
+    Setting $\vec{x}=\vector{r,h}$, the total differential is
+    \begin{align*}
+    \d V &=\grad V \dotp \d \vec{x}\\
+    &=\vector{2\pi rh, \pi r^2}\dotp\vector{\d r,\d h}
+    \end{align*}
+    When $h = 10$ and $r = 2$, we have
+    \[
+    \d V = 40\pi \d r + 4\pi \d h.
+    \]
+    Note that the coefficient of $\d r$ is $40\pi\approx 125.7$; the
+    coefficient of $\d h$ is a tenth of that, approximately $12.57$. A
+    small change in radius will be multiplied by $125.7$, whereas a
+    small change in height will be multiplied by $12.57$. Thus the
     volume of the tank is more sensitive to changes in radius than in
     height.
   \end{explanation}
 \end{example}
 
-The previous example showed that the volume of a particular tank was more sensitive to changes in radius than in height. Keep in mind that this analysis only applies to a tank of those dimensions. A tank with a height of 1ft and radius of 5ft would be more sensitive to changes in height than in radius.
+The previous example showed that the volume of a particular tank was
+more sensitive to changes in radius than in height. Keep in mind that
+this analysis only applies to a tank of the dimensions given in the
+problem. A tank with a height of $1$ft and radius of $5$ft would be
+more sensitive to changes in height than in radius.
 
-One could make a chart of small changes in radius and height and find exact changes in volume given specific changes. While this provides exact numbers, it does not give as much insight as the error analysis using the total differential.\\
-
-
-
-
-\[
-\d z = F^{(1,0,0}(a,b,c)\d x + F^{(0,1,0}(a,b,c)\d y+
-F^{(0,0,1}(a,b,c)\d z + F(a,b,c)
-\]
-
-\[
-\d z = \grad F(\vec{a}) \dotp \d \vec{x}
-\]
-
+One could make a chart of small changes in radius and height and find
+exact changes in volume given specific changes. While this provides
+exact numbers, it does not give as much insight as the error analysis
+using the total differential.
 
 \end{document}
