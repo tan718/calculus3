@@ -2,6 +2,13 @@
 
 \input{../preamble.tex}
 
+\outcome{View the chain rule in terms of the gradient.}
+
+\outcome{Compute the derivative of the compostion of a function of
+  several variables with a vector-valued function.}
+
+\outcome{Use the chain rule of several variables to implicitly differentiate a curve.}
+
 
 \title[Dig-In:]{The chain rule}
 
@@ -17,7 +24,7 @@ The chain rule states that
 \]
 If $t=g(x)$, we can express the chain rule as
 \[
-\frac{df}{dx} = \frac{df}{dt}\frac{dt}{dx}.
+\dd[f]{x} = \dd[f]{t}\dd[t]{x}.
 \]
 In this section we extend the chain rule to functions of more than one
 variable.
@@ -91,7 +98,7 @@ Now try your hand at the chain rule.
   Let $F(x,y)=x^2y+x$, where $x(t)=\sin(t)$ and $y(t)=e^{5t}$. Compute $\dd[F]{t}$.
   \begin{prompt}
   \[
-  \frac{dF}{dt} = \answer{(2\sin(t)e^{5t}+1)\cos(t)+5e^{5t}\sin^2(t)}.
+  \dd[F]{t} = \answer{(2\sin(t)e^{5t}+1)\cos(t)+5e^{5t}\sin^2(t)}.
   \]
   \end{prompt}
 \end{question}
@@ -143,6 +150,15 @@ and surfaces.
 \end{example}
 
 
+\section{New solutions for old problems}
+
+We can also use our new chain rule to revist problems from our
+previous studies of calculus. Our new tools allow for simplier
+solutions to these problems.
+
+\subsection{Differentiating integrals}
+
+The chain rule allows us to differentiate integrals.
 
 \begin{example}
   Compute:
@@ -158,59 +174,73 @@ and surfaces.
     \end{align*}
     Now,
     \[
-    \dd{t} F(t) = \grad F(x(t),y(t)) \dotp \vector{-\sin(t),\cos(t)}.
+    \dd{t} F(t) = \grad F(x(t),y(t)) \dotp \vector{\answer[given]{-\sin(t)},\answer[given]{\cos(t)}}.
     \]
     To compute the partials, we use the Fundamental Theorem of Calculus:
     \begin{align*}
     \pp[F]{x} &= \pp{x} \int_y^x e^{(s^2)} \d s\\
-    &= e^{(x^2)}
+    &= \answer[given]{e^{(x^2)}}
     \end{align*}
     And
     \begin{align*}
       \pp[F]{y} &= \pp{y} \int_y^x e^{(s^2)} \d s\\
       \pp[F]{y} &= \pp{y} -\int_x^y e^{(s^2)} \d s\\
-      &= -e^{(y^2)}
+      &= \answer[given]{-e^{(y^2)}}
     \end{align*}
     So
     \begin{align*}
       \dd{t} F(t) &= \vector{e^{\cos^2(t)},-e^{\sin^2(t)}}\dotp \vector{-\sin(t),\cos(t)}\\
-      &= -e^{\cos^2(t)}\sin(t)-e^{\sin^2(t)}\cos(t).
+      &= \answer[given]{-e^{\cos^2(t)}\sin(t)-e^{\sin^2(t)}\cos(t)}.
     \end{align*}
   \end{explanation}
 \end{example}
 
-\section{Implicit differentiation}
+
+\begin{question}
+  Compute:
+  \[
+  \dd{t} \int_{t^2}^{t^3} \frac{\sin(s)}{s} \d s
+  \begin{prompt}
+    = \answer{\frac{-2 t \sin(t^2)}{t^2}+\frac{3t^2\sin(t^3)}{t^3}}
+  \end{prompt}
+  \]
+\end{question}
+
+
+
+
+\subsection{Implicit differentiation}
 
 We've used implicit differentiation to compute $\dd[y]{x}$ when $y$ is
 given as an implicit function of $x$. Now we'll revisit this with the
 chain rule and give a new, simpler, method of finding $\dd[y]{x}$.
 
 For instance, consider the implicit function $x^2y-xy^3=3$. We learned
-to use the following steps to find $\frac{dy}{dx}$:
-\begin{align}
-\frac{d}{dx}\Big(x^2y-xy^3\big) &= \frac{d}{dx}\Big(3\Big) \notag\\
-2xy + x^2\frac{dy}{dx}-y^3-3xy^2\frac{dy}{dx} &= 0\notag \\
-\frac{dy}{dx} = -\frac{2xy-y^3}{x^2-3xy^2}.\label{eq:mchain2}
-\end{align}
-
+to use the following steps to find $\dd[y]{x}$:
+\begin{align*}
+\ddx\Big(x^2y-xy^3\big) &= \ddx\Big(3\Big) \\
+2xy + x^2\dd[y]{x}-y^3-3xy^2\dd[y]{x} &= 0\\
+\dd[y]{x} = -\frac{2xy-y^3}{x^2-3xy^2}.
+\end{align*}
+     
 Instead of using this method, consider $z=x^2y-xy^3$. The implicit
 function above describes the level curve $z=3$. Considering $x$ and
-$y$ as functions of $x$, the Multivariable Chain Rule states that
+$y$ as functions of $x$, the chain rule states that
 \[
-\frac{dz}{dx} = \frac{\partial z}{\partial x}\frac{dx}{dx}+\frac{\partial z}{\partial y}\frac{dy}{dx}.\label{eq:mchain1}
+\dd[z]{x} = \pp[z]{x}\dd[x]{x}+\pp[z]{y}\dd[y]{x}.
 \]
-Since $z$ is constant (in our example, $z=3$), $\frac{dz}{dx} = 0$. We
-also know $\frac{dx}{dx} = 1$. Equation \eqref{eq:mchain1} becomes
+Since $z$ is constant (in our example, $z=3$), $\dd[z]{x} = 0$. We
+also know $\dd[x]{x} = 1$. Write with me,
 \begin{align*}
-  0 &= \frac{\partial z}{\partial x}(1) + \frac{\partial z}{\partial
-    y}\frac{dy}{dx} \quad \Rightarrow\\[5pt] \frac{dy}{dx} &=
-  -\frac{\partial z}{\partial x}\Big/\frac{\partial z}{\partial
-    y}\\[5pt] &= -\frac{\,f_x\,}{f_y}.
+  0 &= \pp[z]{x}(1) + \pp[z]{y}\dd[y]{x} \\
+  \dd[y]{x} &= -\pp[z]{x}\Big/\pp[z]{y}\\
+  &= -\frac{F^{(1,0)}(x,y)}{F^{(0,1)}(x,y)}.
 \end{align*}
 
-Note how our solution for $\frac{dy}{dx}$ in Equation \eqref{eq:mchain2} is just the partial derivative of $z$, with respect to $x$, divided by the partial derivative of $z$ with respect to $y$.
-
-We state the above as a theorem.
+Note how our solution for $\dd[y]{x}$ above is just the partial
+derivative of $z$, with respect to $x$, divided by the partial
+derivative of $z$ with respect to $y$.  We state the above as a
+theorem.
 
 \begin{theorem}
   Let $F:\R^2\to\R$ be a differentiable function of $x$ and $y$, where
@@ -218,29 +248,25 @@ We state the above as a theorem.
   constant $c$. Then \index{derivative!implicit}\index{implicit
     differentiation}
   \[
-  \dd[y]{x} = -\frac{F^{(1,0)(x,y)}}{F^{(0,1)(x,y)}}.
+  \dd[y]{x} = -\frac{F^{(1,0)}(x,y)}{F^{(0,1)}(x,y)}.
   \]
 \end{theorem}
 
+Try your hand at this.
 
-We practice using Theorem \ref{thm:implicit_deriv_chain} by applying it to a problem from Section \ref{sec:imp_deriv}.\\
-
-\begin{example}
+\begin{question}
   Given the implicitly defined function $\sin(x^2y^2)+y^3=x+y$, find
-  $y'$. Note: this is the same problem as given in Example
-  \ref{ex_implicit5} of Section \ref{sec:imp_deriv}, where the
-  solution took about a full page to find.
-  \begin{explanation}
-    Let $f(x,y) = \sin(x^2y^2)+y^3-x-y$; the implicitly defined
-    function above is equivalent to $f(x,y)=0$. We find
-    $\frac{dy}{dx}$ by applying Theorem
-    \ref{thm:implicit_deriv_chain}. We find
-    $$f_x(x,y) = 2xy^2\cos(x^2y^2)-1\qquad \text{and}\qquad f_y(x,y) = 2x^2y\cos(x^2y^2)-1,$$
-    so 
-    $$\frac{dy}{dx} = -\frac{2xy^2\cos(x^2y^2)-1}{2x^2y\cos(x^2y^2)-1},$$
-    which matches our solution from Example \ref{ex_implicit5}.
-  \end{explanation}
-\end{example}
+  $y'$.
+  \begin{hint}
+    Consider $F(x,y) = \sin(x^2y^2)+y^3-x-y$, and find
+    $F^{(1,0)}x(x,y)$, and $F^{(0,1)}(x,y)$.
+  \end{hint}
+  \begin{prompt}
+  \[
+  \dd[y]{x} = \answer{\frac{-2xy^2\cos(x^2y^2)+1}{2x^2y\cos(x^2y^2)-1}}
+  \]
+  \end{prompt}
+\end{question}
 
 %\example{ex_implicit5}{Using Implicit Differentiation}{
 %Given the implicitly defined function $\sin(x^2y^2)+y^3=x+y$, find $y'$.}
