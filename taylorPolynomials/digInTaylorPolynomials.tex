@@ -1,0 +1,136 @@
+\documentclass{ximera}
+
+\input{../preamble.tex}
+
+
+\title[Dig-In:]{Taylor polynomials}
+
+\begin{document}
+\begin{abstract}
+  We introduce Taylor polynomials for functions of several variables.
+\end{abstract}
+\maketitle
+
+
+Recall the definition of a \textit{Taylor polynomial}:
+
+\begin{definition}
+  Let $f$ be a function whose first $d$ derivatives exist at $x=c$.
+  The \dfn{Taylor polynomial} of degree $d$ of $f$ at $x=c$ is
+  \begin{align*}
+    p_d(x) = \sum_{k=0}^d\frac{f^{(k)}(c)}{k!}(x-c)^k.
+  \end{align*}
+\end{definition}
+
+\begin{question}
+  Let $f(x) = \sin(x)$. Compute
+  \[
+  p_7(x)\begin{prompt}
+    = \answer{x-x^3/3!+x^5/5!-x^7/7!}
+  \end{prompt}
+  \]
+  \begin{question}
+  Let $f(x) = \cos(x)$. Compute
+  \[
+  p_7(x)\begin{prompt}
+    = \answer{1-x^2/2+x^4/4!-x^6/6!}
+  \end{prompt}
+  \]
+  \begin{question}
+    Let $f(x) = e^x$. Compute
+    \[
+    p_7(x)\begin{prompt}
+      = \answer{1 + x + x^2/2+ + x^3/3! + x^4/4!+ x^5/5! + x^6/6!+x^7/7!}
+    \end{prompt}
+    \]
+  \end{question}
+\end{question}
+\end{question}
+
+
+
+\[
+P_d(\vec{x}) = \sum_{k=0}^d \eval{\eval{\frac{(\vec{a}\dotp \grad)^k F(\vec{x})}{k!}}_{\vec{x}=\vec{c}}}_{\vec{a}=\vec{x}-\vec{c}}
+\]
+
+This will take some unpacking. Recall that tangent planes are given by
+
+\[
+P_1(\vec{x}) = F(\vec{c}) + \grad F(\vec{c})\dotp (\vec{x}-\vec{c}).
+\]
+
+
+\[
+\grad = \vector{\pp{x_1},\pp{x_2},\dots,\pp{x_n}}
+\]
+\[
+\vec{a} = \vector{a_1,a_2,\dots,a_n}
+\]
+\[
+\vec{a}\dotp\grad=a_1\pp{x_1}+a_2\pp{x_2}+\dots+a_n\pp{x_n}
+\]
+
+
+\section{Working in three dimensions}
+
+We'll mostly be working with functions of the form: $F:\R^2\to
+\R$. Recall that these can be viewed as surfaces in $\R^3$.
+
+\[
+(\vec{a}\dotp\grad)F = a_1 \pp[F]{x} + a_2 \pp[F]{y}
+\]
+
+\begin{align*}
+(\vec{a}\dotp\grad)^2F &=(\vec{a}\dotp\grad)(\vec{a}\dotp\grad)F\\
+  &= (\vec{a}\dotp\grad)\left(a_1 \pp[F]{x} + a_2 \pp[F]{y}\right)\\
+  &= \left(a_1 \pp[F]{x} + a_2 \pp[F]{y}\right)\left(a_1 \pp[F]{x} + a_2 \pp[F]{y}\right)
+\end{align*}
+Now we use the distributivity property and since we are assuming that
+all derivatives of $F$ exist, we have that
+\[
+\frac{\partial^2F}{\partial x\partial y}  = \frac{\partial^2F}{\partial y\partial x}
+\]
+so
+\[
+(\vec{a}\dotp\grad)^2F = a_1^2\frac{\partial^2F}{\partial x^2} + 2a_1
+a_2\frac{\partial^2F}{\partial x\partial y} +
+a_2^2\frac{\partial^2F}{\partial y^2}.
+\]
+In an entirely similar way, we could compute more of the polynomail,
+but we won't do that here.
+
+\section{Try it, you might like it}
+
+Examples:
+
+\[
+\sin(x+ y)
+\]
+
+\begin{example}
+  Compute the Taylor series for $f(x) = \sin(x)$ centered at $x=0$.
+  \begin{explanation}
+    We'll start by making a table of derivatives:
+    \[
+    \begin{array}{lcl}
+      f(x) = \sin(x) & \Rightarrow &f(0) = 0\\
+      f'(x) = \answer[given]{\cos(x)} & \Rightarrow & f'(0) = \answer[given]{1}\\
+      f''(x) = \answer[given]{-\sin(x)} &\Rightarrow &f''(0) = \answer[given]{0}\\
+      f'''(x) = \answer[given]{-\cos(x)} &\Rightarrow &f'''(0) = \answer[given]{-1}\\
+      f^{(4)}(x) = \answer[given]{\sin(x)} &\Rightarrow &f^{(4)}(0) = \answer[given]{0}\\
+      f^{(5)}(x) = \answer[given]{\cos(x)} &\Rightarrow &f^{(5)}(0) = \answer[given]{1}\\
+      f^{(6)}(x) = \answer[given]{-\sin(x)} &\Rightarrow &f^{(6)}(0) =\answer[given]{0}\\
+      f^{(7)}(x) = \answer[given]{-\cos(x)} &\Rightarrow &f^{(7)}(0) = \answer[given]{-1}\\
+      f^{(8)}(x) = \answer[given]{\sin(x)} &\Rightarrow &f^{(8)}(0) = \answer[given]{0}\\
+      f^{(9)}(x) = \answer[given]{\cos(x)} &\Rightarrow &f^{(9)}(0) = \answer[given]{1}\\
+    \end{array}
+    \]
+    Since a repeating pattern has emerged, we see that the Maclaurin
+    series for $\sin(x)$ is:
+    \[
+    x-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}+\cdots = \sum_{n=0}^\infty \frac{(-1)^{n+1}}{(2n+1)!} x^{2n+1}
+    \]
+  \end{explanation}
+\end{example}
+
+\end{document}
