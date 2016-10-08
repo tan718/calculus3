@@ -68,6 +68,15 @@ polynomial for $F$ at $\vec{x}=\vec{c}$ is just
 \[
 P_0(\vec{x})=F(\vec{c}).
 \]
+\begin{question}
+  Consider $F(x,y)= \sin(x+y)$. Compute the $0$th degree Taylor
+  polynomial for $F$ at $\vector{x,y} =\vector{\pi/4,\pi/4}$.
+  \begin{prompt}
+    \[
+    P_1(x,y) = \answer{1}
+    \]
+  \end{prompt}
+\end{question}
 Now let's look at the $1$st degree Taylor polynomial:
 \begin{align*}
   P_1(\vec{x})&= \sum_{k=0}^1 \eval{\eval{\frac{(\vec{a}\dotp \grad)^k F(\vec{x})}{k!}}_{\vec{x}=\vec{c}}}_{\vec{a}=\vec{x}-\vec{c}}\\
@@ -95,13 +104,14 @@ and this is the tangent ``plane'' for $F$ at $\vec{x}= \vec{c}$.
 
 To get our hands on the $2$nd degree Taylor polynomial, we will
 specialize to functions $F:\R^2\to\R$. Let $\vec{c}=\vector{c_1,c_2}$
-and let $\vec{x} = \vector{x,y}$.
-Write with me:
+and let $\vec{x} = \vector{x,y}$.  Write with me:
 \[
 P_2(\vec{x}) = F(\vec{c})
 + \grad F(\vec{c})\dotp (\vec{x}-\vec{c})
 +\eval{\eval{\frac{(\vec{a}\dotp \grad)^2 F(\vec{x})}{2!}}_{\vec{x}=\vec{c}}}_{\vec{a}=\vec{x}-\vec{c}}
 \]
+Now we ask ourselves, what is $(\vec{a}\dotp \grad)^2 F(\vec{x})$?
+
 In this case,
 \[
 (\vec{a}\dotp\grad)F = a_1 \pp[F]{x} + a_2 \pp[F]{y}
