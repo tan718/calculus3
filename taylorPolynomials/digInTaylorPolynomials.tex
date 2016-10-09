@@ -5,6 +5,9 @@
 
 \title[Dig-In:]{Taylor polynomials}
 
+\outcome{Compute Taylor polynomials of functions of several variables.} 
+\outcome{View the construction of a Taylor polynomial as an iterative process.} 
+
 \begin{document}
 \begin{abstract}
   We introduce Taylor polynomials for functions of several variables.
@@ -17,9 +20,9 @@ Recall the definition of a \textit{Taylor polynomial}:
 \begin{definition}
   Let $f:\R\to\R$ be a function whose first $d$ derivatives exist at $x=c$.
   The \dfn{Taylor polynomial} of degree $d$ of $f$ centered at $x=c$ is
-  \begin{align*}
-    p_d(x) = \sum_{k=0}^d\frac{f^{(k)}(c)}{k!}(x-c)^k.
-  \end{align*}
+  \[
+  p_d(x) = \sum_{k=0}^d\frac{f^{(k)}(c)}{k!}(x-c)^k.
+  \]
 \end{definition}
 
 \begin{question}
@@ -142,7 +145,7 @@ and
   &= (\vec{a}\dotp\grad)\left(a_1 \pp[F]{x} + a_2 \pp[F]{y}\right)\\
   &= \left(a_1 \pp[F]{x} + a_2 \pp[F]{y}\right)\left(a_1 \pp[F]{x} + a_2 \pp[F]{y}\right)
 \end{align*}
-Now we use the distributivity property and (since we are assuming that
+Now we use the distributively property and (since we are assuming that
 all derivatives of $F$ exist) we have that
 \[
 \frac{\partial^2F}{\partial x\partial y}  = \frac{\partial^2F}{\partial y\partial x}
@@ -186,7 +189,7 @@ Computing the Taylor polynomial is not so bad, you just need to get the hang of 
   \]
   centered at $(0,0)$.
   \begin{explanation}
-    We'll start by making a table of parital derivatives along with
+    We'll start by making a table of partial derivatives along with
     their value when evaluated at $(0,0)$:
     \[
     \begin{array}{lcl}
@@ -214,7 +217,7 @@ Computing the Taylor polynomial is not so bad, you just need to get the hang of 
   \]
   centered at $(-1,0)$.
   \begin{explanation}
-    We'll start by making a table of parital derivatives along with
+    We'll start by making a table of partial derivatives along with
     their value when evaluated at $(-1,0)$:
     \[
     \begin{array}{lcl}
@@ -242,7 +245,7 @@ Computing the Taylor polynomial is not so bad, you just need to get the hang of 
   \]
   centered at $(-1,2)$.
   \begin{explanation}
-    We'll start by making a table of parital derivatives along with
+    We'll start by making a table of partial derivatives along with
     their value when evaluated at $(-1,2)$:
     \[
     \begin{array}{lcl}
@@ -269,7 +272,7 @@ Computing the Taylor polynomial is not so bad, you just need to get the hang of 
   \]
   centered at $(0,0)$.
   \begin{hint}
-    Start by making a table of parital derivatives along with
+    Start by making a table of partial derivatives along with
     their value when evaluated at $(0,0)$.
   \end{hint}
     \begin{prompt}
@@ -286,7 +289,7 @@ Computing the Taylor polynomial is not so bad, you just need to get the hang of 
   \]
   centered at $(-1/2,1/8)$.
   \begin{hint}
-    Start by making a table of parital derivatives along with
+    Start by making a table of partial derivatives along with
     their value when evaluated at $(-1/2,1/8)$.
   \end{hint}
   \begin{prompt}
@@ -303,7 +306,7 @@ Computing the Taylor polynomial is not so bad, you just need to get the hang of 
   \]
   centered at $(1,2)$.
   \begin{hint}
-    Start by making a table of parital derivatives along with
+    Start by making a table of partial derivatives along with
     their value when evaluated at $(1,2)$.
   \end{hint}
   \begin{prompt}
@@ -313,5 +316,56 @@ Computing the Taylor polynomial is not so bad, you just need to get the hang of 
   \end{prompt}
 \end{question}
 
+\section{In other words}
+
+Now that we have a formula and we (hopefully!) can apply it. Let's
+finish by talking about what is really going on. Given a function
+$f:\R\to\R$, the Taylor polynomial 
+\[
+p_d(x) = \sum_{k=0}^d\frac{f^{(k)}(c)}{k!}(x-c)^k.
+\]
+is a polynomial ``cooked-up'' to share the value of the function,
+meaning
+\[
+p_d(c)=f(c),
+\]
+and share values of the first $d$ derivatives, meaning
+\[
+p_d^{(i)}(c) = f^{(i)}(c) 
+\]
+whenever $0\le i\le d$. The exact same idea is true for functions of
+several variables. Let's explain the construction of the Taylor polynomial as an iterative process. Given $F:\R^2\to\R$ (and similarly for functions
+$F:\R^n\to\R$) the degree zero Taylor polynomial is just the value of
+the function
+\[
+P_0(x,y) = F(c_1,c_2)
+\]
+where $\vec{c}=\vector{c_1,c_2}$ is the center of the Taylor
+polynomial.  The degree one Taylor polynomial is just the degree zero
+polynomial plus the first partial derivatives with respect to $x_i$
+multiplied by $(x_i-c_i)$
+\[
+P_1(x,y) = P_0(x) + F^{(1,0)}(\vec{c})(x-c_1) + F^{(0,1)}(\vec{c})(y-c_2).
+\]
+The degree two Taylor polynomial can be found by adding the degree one
+Taylor polynomial to one-half of all the second partial derivatives
+with respect to $x$ and $y$ multiplied by
+\begin{itemize}
+\item $(x-c_1)^2$ when taking the partial derivative with respect to
+  $x$,
+\item $(y-c_2)^2$ when taking the partial derivative with respect to
+  $y$, and
+\item $2(x-c_1)(y-c_2)$ when taking the partial derivative with respect
+  to $x$ and $y$.
+\end{itemize}
+Putting this together, we see
+\begin{align*}
+P_2(x,y) &= P_1(x,y) \\
+&+\frac{F^{(2,1)}(\vec{c})(x-c_1)^2 +
+2F^{(2,0)}(\vec{c})(x-c_1)(y-c_2)+F^{(0,2)}(\vec{c})(y-c_2)^2}{2}.
+\end{align*}
+The interested reader can (repeatedly) differentiate $P_2(x,y)$ to see
+that its value at $\vec{x}=\vec{c}$ and the values of the first two
+derivatives of $P_2(x,y)$ do indeed match those of $F(x,y)$.
 
 \end{document}
