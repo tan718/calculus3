@@ -206,4 +206,112 @@ Computing the Taylor polynomial is not so bad, you just need to get the hang of 
   \end{explanation}
 \end{example}
 
+
+\begin{example}
+  Compute the degree $2$ Taylor polynomial for:
+  \[
+  F(x,y)= x^2 y + y^2 + x y
+  \]
+  centered at $(-1,0)$.
+  \begin{explanation}
+    We'll start by making a table of parital derivatives along with
+    their value when evaluated at $(-1,0)$:
+    \[
+    \begin{array}{lcl}
+      F(x,y) = x^2y+y^2+xy & \Rightarrow &F(-1,0) = 0\\
+      F^{(1,0)}(x,y) = \answer[given]{2xy+y} & \Rightarrow & F^{(1,0)}(-1,0) = \answer[given]{0}\\
+      F^{(0,1)}(x,y) = \answer[given]{x^2+2y+x} &\Rightarrow  & F^{(0,1)}(-1,0) = \answer[given]{0}\\
+      F^{(2,0)}(x,y) = \answer[given]{2y} &\Rightarrow & F^{(2,0)}(-1,0) = \answer[given]{0}\\
+      F^{(0,2)}(x,y) = \answer[given]{2} &\Rightarrow & F^{(0,2)}(-1,0) = \answer[given]{2}\\
+      F^{(1,1)}(x,y) = \answer[given]{1+2x} &\Rightarrow & F^{(1,1)}(-1,0) = \answer[given]{-1}
+    \end{array}
+    \]
+    We see our polynomial is
+    \begin{align*}
+      P_2(x,y) &= (1/2)\left(\answer[given]{2}\cdot (y-0)^2 + 2 (\answer[given]{-1})(x-(-1))(y-0) \right)\\
+      &= \answer[given]{y^2-(x+1)y}.
+    \end{align*}
+  \end{explanation}
+\end{example}
+
+
+\begin{example}
+  Compute the degree $2$ Taylor polynomial for:
+  \[
+  F(x,y)= x^3-3x-y^2+4y
+  \]
+  centered at $(-1,2)$.
+  \begin{explanation}
+    We'll start by making a table of parital derivatives along with
+    their value when evaluated at $(-1,2)$:
+    \[
+    \begin{array}{lcl}
+      F(x,y) = x^3-3x-y^2+4y & \Rightarrow &F(-1,2) = 6\\
+      F^{(1,0)}(x,y) = \answer[given]{3x^2-3} & \Rightarrow & F^{(1,0)}(-1,2) = \answer[given]{0}\\
+      F^{(0,1)}(x,y) = \answer[given]{-2y+4} &\Rightarrow  & F^{(0,1)}(-1,2) = \answer[given]{0}\\
+      F^{(2,0)}(x,y) = \answer[given]{6x} &\Rightarrow & F^{(2,0)}(-1,2) = \answer[given]{-6}\\
+      F^{(0,2)}(x,y) = \answer[given]{-2} &\Rightarrow & F^{(0,2)}(-1,2) = \answer[given]{-2}\\
+      F^{(1,1)}(x,y) = \answer[given]{0} &\Rightarrow & F^{(1,1)}(-1,2) = \answer[given]{0}
+    \end{array}
+    \]
+    We see our polynomial is
+    \begin{align*}
+      P_2(x,y) &= 6 + (1/2)\left(\answer[given]{-6}\cdot (x-(-1))^2 +  (\answer[given]{-2})(y-2)^2 \right)\\
+      &= \answer[given]{6-3(x+1)^2-2(y-2)^2}.
+    \end{align*}
+  \end{explanation}
+\end{example}
+
+\begin{question}
+  Compute the degree $2$ Taylor polynomial for:
+  \[
+  F(x,y)=\cos(xy)
+  \]
+  centered at $(0,0)$.
+  \begin{hint}
+    Start by making a table of parital derivatives along with
+    their value when evaluated at $(0,0)$.
+  \end{hint}
+    \begin{prompt}
+    \[
+    P_2(x,y) = \answer{1}
+    \]
+  \end{prompt}
+\end{question}
+
+\begin{question}
+  Compute the degree $2$ Taylor polynomial for:
+  \[
+  F(x,y)= x^2 y + y^2 + x y
+  \]
+  centered at $(-1/2,1/8)$.
+  \begin{hint}
+    Start by making a table of parital derivatives along with
+    their value when evaluated at $(-1/2,1/8)$.
+  \end{hint}
+  \begin{prompt}
+    \[
+    P_2(x,y) = \answer{-1/64 + (1/8)(x+1/2)^2+(y-1/8)^2}
+    \]
+  \end{prompt}
+\end{question}
+
+\begin{question}
+  Compute the degree $2$ Taylor polynomial for:
+  \[
+  F(x,y)= x^3-3x-y^2+4y
+  \]
+  centered at $(1,2)$.
+  \begin{hint}
+    Start by making a table of parital derivatives along with
+    their value when evaluated at $(1,2)$.
+  \end{hint}
+  \begin{prompt}
+    \[
+    P_2(x,y) = \answer{2 + 3(x-1)^2 -(y-2)^2}
+    \]
+  \end{prompt}
+\end{question}
+
+
 \end{document}
