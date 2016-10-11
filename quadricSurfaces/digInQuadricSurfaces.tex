@@ -33,16 +33,15 @@ nonzero.
   these are different beasts entirely.
 \end{warning}
 
-We will be interested in a special class of quadric surfaces, those of
-the form:
-\[
-z = Ax^2 + By^2 + C xy + D
-\]
-Quadric surfaces of this form are those that arise naturally when
-computing the Taylor polynomial of a surface $z=F(x,y)$ at a point
-$\vec{c}$ where
+We will be interested in a special class of quadric surfaces, those
+that arise naturally when computing the Taylor polynomial of a surface
+$z=F(x,y)$ at a point $\vec{c}$ where:
 \[
 F^{(1,0)}(\vec{c}) = 0 = F^{(0,1)}(\vec{c})
+\]
+In this case, the quadric is of the form:
+\[
+z = F^{(2,0)}(\vec{c})(x-c_1)^2 + F^{(0,2)}(\vec{c})(y-c_2)^2 + F^{(1,1)}(\vec{c}) (x-c_1)(y-c_2) + F(\vec{c})
 \]
 Why are we doing this?
 \begin{quote}
@@ -208,44 +207,169 @@ and equation:
 z=\pm\frac{x^2}{a^2}\mp\frac{y^2}{b^2}
 \]
 To understand this surface better consider the trace when:
+\begin{itemize}
+  \item $x=d$, in this case we now have $z = \pm\frac{d^2}{a^2} \mp
+    \frac{y^2}{b^2}$, a parabola.
+  \item $y=d$, in this case we now have $z = \pm\frac{x^2}{a^2} \mp
+    \frac{d^2}{b^2}$, a parabola that opens the \textit{opposite}
+    direction as the previous one.
+  \item $z=d$, in thisi case we now have $d = \pm\frac{x^2}{a^2} \mp
+    \frac{y^2}{b^2}$, a hyperbola.
+\end{itemize}
+\begin{image}
+  \begin{tikzpicture}
+    \begin{axis}%
+      [width=175pt,tick label style={font=\scriptsize},axis on top,
+	axis lines=center,
+	view={155}{30},
+	name=myplot,
+	xtick=\empty,
+	ytick=\empty,
+	ztick=\empty,
+	ymin=-1.2,ymax=1.2,
+	xmin=-1.2,xmax=1.2,
+	zmin=-1.2, zmax=1.2,
+	every axis x label/.style={at={(axis cs:\pgfkeysvalueof{/pgfplots/xmax},0,0)},xshift=-3pt,yshift=-3pt},
+	xlabel={\scriptsize $x$},
+	every axis y label/.style={at={(axis cs:0,\pgfkeysvalueof{/pgfplots/ymax},0)},xshift=5pt,yshift=-2pt},
+	ylabel={\scriptsize $y$},
+	every axis z label/.style={at={(axis cs:0,0,\pgfkeysvalueof{/pgfplots/zmax})},xshift=0pt,yshift=4pt},
+	zlabel={\scriptsize $z$},colormap/cool
+      ]
+      
+      \addplot3[domain=-1:1,smooth,y domain=-1:1,mesh,samples=20,samples y=25,very thin,z buffer=sort] ({x},{y},{x^2-y^2});
 
-\end{document}
+      \addplot3[domain=-1:-.4,dashed,ultra thick,smooth,samples y=0,black!60,%surf,%fill=white,
+        samples=30,] ({0},{x},{-x^2});
+      
+      \addplot3[domain=-1:1,ultra thick,smooth,samples y=0,black,%surf,%fill=white,
+        samples=30,] ({x},{0},{x^2});
+      
+      \addplot3[domain=-.4:1,ultra thick,smooth,samples y=0,black,%surf,%fill=white,
+        samples=30,] ({0},{x},{-x^2});
+      
+      
+      \draw (axis cs:1.,0,1) node (A2) {};
+      \draw (axis cs:0,1,-1) node (B2) {};
+      %\draw (axis cs:0,1.5,0.3) node (C2) {};
+      
+    \end{axis}
+    
+    \draw (0,3) node [align=center](A1) {\scriptsize In plane\\[-4pt] \scriptsize $y=0$};
+    \draw (0,1.1) node [align=center](B1) {\scriptsize In plane\\[-4pt] \scriptsize $x=0$};
+    %
+    \draw [->](A1)--(A2.center);
+    \draw [->](B1)--(B2.center);
+    %\draw [->](C1)--(C2.center);
+  \end{tikzpicture}
+\end{image}
+We'll give an addtional graph to show the hyperbolas:
+\begin{image}
+  \begin{tikzpicture}
+\begin{axis}%
+  [width=175pt,tick label style={font=\scriptsize},axis on top,
+    axis lines=center,
+    view={155}{30},
+    name=myplot,
+    xtick=\empty,
+    ytick=\empty,
+    ztick=\empty,
+    ymin=-1.2,ymax=1.2,
+    xmin=-1.2,xmax=1.2,
+    zmin=-1.2, zmax=1.2,
+    every axis x label/.style={at={(axis cs:\pgfkeysvalueof{/pgfplots/xmax},0,0)},xshift=-3pt,yshift=-3pt},
+    xlabel={\scriptsize $x$},
+    every axis y label/.style={at={(axis cs:0,\pgfkeysvalueof{/pgfplots/ymax},0)},xshift=5pt,yshift=-2pt},
+    ylabel={\scriptsize $y$},
+    every axis z label/.style={at={(axis cs:0,0,\pgfkeysvalueof{/pgfplots/zmax})},xshift=0pt,yshift=4pt},
+    zlabel={\scriptsize $z$},
+    colormap/cool
+  ]
 
+  \addplot3[domain=-1:1,y domain=-1:1,mesh,samples=20,samples y=25,very thin,z buffer=sort] ({x},{y},{x^2-y^2});
+  
+  \addplot3[domain=-10:60,ultra thick,smooth,samples y=0,black,%surf,%fill=white,
+    samples=30,] ({.5*sec(x)},{.5*tan(x)},{.25});
+  \addplot3[domain=-35:-10,ultra thick,smooth,samples y=0,black!60,%surf,%fill=white,
+    samples=30,] ({.5*sec(x)},{.5*tan(x)},{.25});
+  \addplot3[domain=-60:-35,ultra thick,smooth,samples y=0,black,%surf,%fill=white,
+    samples=30,] ({.5*sec(x)},{.5*tan(x)},{.25});
+  
+  \addplot3[domain=-60:60,ultra thick,smooth,samples y=0,black,%surf,%fill=white,
+    samples=30,] ({-.5*sec(x)},{.5*tan(x)},{.25});
+  
+  
+  \addplot3[domain=-60:60,ultra thick,smooth,samples y=0,black,%surf,%fill=white,
+    samples=30,] ({.5*tan(x)},{.5*sec(x)},{-.25});
+  \addplot3[domain=40:60,ultra thick,smooth,samples y=0,black,%surf,%fill=white,
+    samples=30,] ({.5*tan(x)},{-.5*sec(x)},{-.25});
+  \addplot3[domain=-60:40,dashed,thick,smooth,samples y=0,black!60,%surf,%fill=white,
+    samples=30,] ({.5*tan(x)},{-.5*sec(x)},{-.25});
+
+  \draw (axis cs:.5,0,.25) node (A2) {};
+  \draw (axis cs:-.5,0,.25) node (A3) {};
+  \draw (axis cs:.866,1,-.25) node (B2) {};
+  \draw (axis cs:.866,-1,-.25) node (B3) {};
+  %\draw (axis cs:0,1.5,0.3) node (C2) {};
+\end{axis}
+\draw (0,3) node [align=center](A1) {\scriptsize In plane\\[-4pt] \scriptsize $z=d$\\[-4pt] \scriptsize $(d>0)$};
+\draw (0,1.1) node [align=center](B1) {\scriptsize In plane\\[-4pt] \scriptsize $z=d$\\[-4pt] \scriptsize $(d<0)$};
+%\draw (4.6,2) node [align=center](C1) {\scriptsize in plane\\[-4pt] \scriptsize $z=0$};
+
+\draw [->](A1)--(A2.center);
+\draw [->](A1)--(A3.center);
+\draw [->](B1)--(B2.center);
+\draw [->](B1)--(B3.center);
+%\draw [->](C1)--(C2.center);
+  \end{tikzpicture}
+\end{image}
 \[
 \begin{array}{ccc}
 \textbf{Plane}  & & \textbf{Trace} \\ \hline
-$x=d$ & & Parabola\\
-$y=d$ & & Parabola\\
-$z=d$ & & Hyperbola
+x=d & & \text{Parabola}\\
+y=d & & \text{Parabola}\\
+z=d & & \text{Hyperbola}
 \end{array}
 \]
 
-\myincludegraphics[scale=1.25,trim=1mm 5mm 3mm 2mm,clip]{figures/figquadric_hyp_parb}
-\end{minipage}
-\begin{minipage}[t]{.4\linewidth}
-\vskip0pt
-\myincludegraphics[scale=1.25,trim=1mm 5mm 3mm 2mm,clip]{figures/figquadric_hyp_parc}
-\end{minipage}
+\section{Identifying quadric surfaces}
 
-\vskip2\baselineskip
-\begin{minipage}[t]{.75\linewidth}
-The parabolic traces will open along the axis of the one variable that is raised to the first power.
-\index{quadric surface!gallery|)}\index{quadric surface!hyperbolic paraboloid}
+In this course, we will be looking at quadric surfaces of the form: 
+\[
+z = F^{(2,0)}(\vec{c})(x-c_1)^2 + F^{(0,2)}(\vec{c})(y-c_2)^2 + F^{(1,1)}(\vec{c}) (x-c_1)(y-c_2) + F(\vec{c})
+\]
+Without any loss of generality, we may assume that $\vec{c}
+=\vec{0}$. All this assumption does is ``move'' the quadric surface to
+the origin.
 
-\end{minipage}
-\end{minipage}
+\subsection{The mixed derivative is zero}
 
+If
+\[
+F^{(1,1)}(\vec{c}) =0
+\]
+then we only need to look at the signs of the second derivatives to
+identify the surface. Let
+\[
+\sign(x) =
+\begin{cases}
+  1  &\text{if $x>0$,}\\
+  -1 &\text{if $x<0$,}\\
+  0  &\text{if $x=0$.}
+\end{cases}
+\]
+Now if,
+\[
+\sign(F^{(2,0)}(\vec{c})) = \sign(F^{(0,2)}(\vec{c}))
+\]
+our surface is an elliptic paraboloid. On the otherhand if
+\[
+\sign(F^{(2,0)}(\vec{c})) = -\sign(F^{(0,2)}(\vec{c})),
+\]
+then our surface is a hyperbolic paraboloid.
 
-\begin{sageCell}
-var ('x y z')
-A = 3
-B = 4
-C = 1
-implicit_plot3d(A*x^2+B*y^2-C*z^2==1,
-                (x,-6,6), 
-                (y,-6,6), 
-                (z,-6, 6), 
-                axes="true")
-\end{sageCell}
+\subsection{The mixed derivative is nonzero}
+
 
 \end{document}
+
