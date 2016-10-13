@@ -40,20 +40,24 @@ $z=F(x,y)$ at a point $\vec{c}$ where:
 F^{(1,0)}(\vec{c}) = 0 = F^{(0,1)}(\vec{c})
 \]
 In this case, the quadric is of the form:
-\[
-z = F^{(2,0)}(\vec{c})(x-c_1)^2 + F^{(0,2)}(\vec{c})(y-c_2)^2 + F^{(1,1)}(\vec{c}) (x-c_1)(y-c_2) + F(\vec{c})
-\]
+\begin{align*}
+  z = &F^{(2,0)}(\vec{c})(x-c_1)^2 \\
+  &+ F^{(0,2)}(\vec{c})(y-c_2)^2 \\
+  &+ F^{(1,1)}(\vec{c}) (x-c_1)(y-c_2)\\
+  &+ F(\vec{c})
+\end{align*}
 Why are we doing this?
 \begin{quote}
-  \textbf{Understanding quadric surfaces will help us find extrema of surfaces.}
+  \textbf{Understanding quadric surfaces will help us find extrema of
+    surfaces.}
 \end{quote}
 
-In what follows, we will study each shape by considering the
-\textit{trace}.
+In what follows, we will study each shape by considering various
+\textit{sections} of the surface.
 
 \begin{definition}
-  The \dfn{trace} of a surface is the intersections of
-  a surface with a plane parallel to a coordinate plane.
+  The \dfn{section} of a surface is the intersections of
+  a surface with a plane.
 \end{definition}
 
 Let's get to it.
@@ -162,11 +166,11 @@ To understand this surface better consider the trace when:
   \end{tikzpicture}
 \end{image}
 \[
-\begin{array}{ccc}
-\textbf{Plane}  & & \textbf{Trace} \\ \hline
-x=d & & \text{Parabola} \\
-y=d & & \text{Parabola}\\
-z=d & & \text{Ellipse}
+\begin{array}{cc}
+\textbf{Plane} & \textbf{Section} \\ \hline
+x=d  & \text{Parabola} \\
+y=d  & \text{Parabola}\\
+z=d  & \text{Ellipse}
 \end{array}
 \]
 
@@ -324,25 +328,119 @@ We'll give an addtional graph to show the hyperbolas:
   \end{tikzpicture}
 \end{image}
 \[
-\begin{array}{ccc}
-\textbf{Plane}  & & \textbf{Trace} \\ \hline
-x=d & & \text{Parabola}\\
-y=d & & \text{Parabola}\\
-z=d & & \text{Hyperbola}
+\begin{array}{cc}
+\textbf{Plane}  & \textbf{Section} \\ \hline
+x=d & \text{Parabola}\\
+y=d & \text{Parabola}\\
+z=d & \text{Hyperbola}
 \end{array}
 \]
 
 \section{Identifying quadric surfaces}
 
 In this course, we will be looking at quadric surfaces of the form: 
+\begin{align*}
+  z = &F^{(2,0)}(\vec{c})(x-c_1)^2\\
+  &+ F^{(0,2)}(\vec{c})(y-c_2)^2 \\
+  &+ F^{(1,1)}(\vec{c}) (x-c_1)(y-c_2)\\
+  &+ F(\vec{c}).
+\end{align*}
+and trying to identify them as either a elliptic paraboloid, or a
+hyperboloic paraboloid. In what follows, let
 \[
-z = F^{(2,0)}(\vec{c})(x-c_1)^2 + F^{(0,2)}(\vec{c})(y-c_2)^2 + F^{(1,1)}(\vec{c}) (x-c_1)(y-c_2) + F(\vec{c})
+\sign(x) =
+\begin{cases}
+  1  &\text{if $x>0$,}\\
+  -1 &\text{if $x<0$,}\\
+  0  &\text{if $x=0$.}
+\end{cases}
 \]
-Without any loss of generality, we may assume that $\vec{c}
-=\vec{0}$. All this assumption does is ``move'' the quadric surface to
-the origin.
+This will aid in our analysis of the quadric surfaces.
 
-\subsection{The mixed derivative is zero}
+\subsection{The pure partials have opposite signs}
+If
+\[
+\sign(F^{(2,0)}(\vec{c})) = -\sign(F^{(0,2)}(\vec{c})),
+\]
+then we can examine the following sections:
+\[
+y= c_2 \quad\text{and}\quad x = c_1
+\]
+If $y=c_2$ then the surface
+\begin{align*}
+  z = &F^{(2,0)}(\vec{c})(x-c_1)^2\\
+  &+ F^{(0,2)}(\vec{c})(y-c_2)^2 \\
+  &+ F^{(1,1)}(\vec{c}) (x-c_1)(y-c_2)\\
+  &+ F(\vec{c}).
+\end{align*}
+becomes
+\[
+z = F^{(2,0)}(\vec{c})(x-c_1)^2 + F(\vec{c}),
+\]
+and this is a parabola that opens in the $z$ direction of the sign of
+$F^{(2,0)}(\vec{c})$.
+
+If $x=c_1$ then the suface becomes
+\[
+z = F^{(0,2)}(\vec{c})(y-c_2)^2 + F(\vec{c}),
+\]
+and this is a parabola that opens in the $z$ direction of the sign of
+$F^{(0,2)}(\vec{c})$. Since 
+\[
+\sign(F^{(2,0)}(\vec{c})) = -\sign(F^{(0,2)}(\vec{c})),
+\]
+we see that when the pure partials have opposite signs, then the
+quadric surface is a hyperbolic paraboloid.
+
+\subsection{The pure partials have the same sign}
+If 
+\[
+\sign(F^{(2,0)}(\vec{c})) = \sign(F^{(0,2)}(\vec{c})),
+\]
+then we start by examining the section
+\[
+y= c_2
+\]
+If $y=c_2$ then the surface
+\begin{align*}
+  z = &F^{(2,0)}(\vec{c})(x-c_1)^2\\
+  &+ F^{(0,2)}(\vec{c})(y-c_2)^2 \\
+  &+ F^{(1,1)}(\vec{c}) (x-c_1)(y-c_2)\\
+  &+ F(\vec{c}).
+\end{align*}
+becomes
+\[
+z = F^{(2,0)}(\vec{c})(x-c_1)^2 + F(\vec{c}).
+\]
+and this is a parabola that opens in the $z$ direction of the sign of
+$F^{(2,0)}(\vec{c})$.
+
+When can we find another parabola on this surface that opens in the
+opposite direction? Well, let's examine the section
+\[
+y -c_2 = K (x-c_1).
+\]
+Substituting this into the surface above, we find
+\begin{align*}
+  z = &F^{(2,0)}(\vec{c})(x-c_1)^2\\
+  &+ K^2 F^{(0,2)}(\vec{c})(x-c_1)^2\\
+  &+ K F^{(1,1)}(\vec{c}) (x-c_1)^2 \\
+  &+ F(\vec{c}).
+\end{align*}
+Factoring and rearranging, we find 
+\[
+z = (x-c_1)^2 \left(
+K^2 F^{(0,2)}(\vec{c})(x-c_1)^2 + K F^{(1,1)}(\vec{c}) + F^{(2,0)}(\vec{c})
+\right)+ F(\vec{c}).
+\]
+  and this is a parabola that opens in the $z$ direction of the sign of
+$F^{(2,0)}(\vec{c})$. Since 
+\[
+\sign(F^{(2,0)}(\vec{c})) = -\sign(F^{(0,2)}(\vec{c})),
+\]
+we see that when the pure partials have opposite signs, then the
+quadric surface is a hyperbolic paraboloid.
+
 
 If
 \[
