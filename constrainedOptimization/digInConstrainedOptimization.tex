@@ -143,25 +143,54 @@ examples.
     dashed line. Above it is the surface described by $F$.  We are
     interested in the portion of $F$ enclosed by the ``triangle'' on
     the surface.
+
+    Now that we know what we want, let's get to it. Start by computing:
+    \[
+    \grad F (x,y) =\vector{\answer[given]{2x}, \answer[given]{-2y}}
+    \]
+    It is not hard to see that there is only one critical point
+    \[
+    \vector{\answer[given]{0},\answer[given]{0}}
+    \]
+    Since we are working within a closed and bounded set $S$, we now
+    find the maximum and minimum values that $F$ attains along the
+    boundary of $S$. This means we find the extrema of $F$ along the
+    edges of the triangle.
+
+    Start with the bottom edge of the triangle, along the line
+    $y=\answer[given]{-2}$.
+    \[
+    F(x,\answer[given]{-2}) = \answer[given]{x^2+1}
+    \]
+    Now set
+    \[
+    f_{\mathrm{bottom}}(x) = x^2+1.
+    \]
+    then on the surface, we are considering points $f(x,-2)$; that is,
+    our function reduces to $f(x,-2) = x^2-(-2)^2+5 =
+    x^2+1=f_1(x)$. We want to maximize/minimize $f_1(x)=x^2+1$ on the
+    interval $[-1,2]$. To do so, we evaluate $f_1(x)$ at its critical
+    points and at the endpoints.
+    
+    The critical points of $f_1$ are found by setting its derivative equal to 0:
+    \begin{align*}
+      f_1'(x) &=0\\
+      \answer[given]{2x} &= 0
+    \end{align*}
+    So we see that $x= \answer[given]{0}$ is a critical point of
+    $f_1$. Evaluating $f_1$ at this critical point, and at the
+    endpoints of $[-1,1]$ gives:
+    \[
+    \begin{array}{lcl}
+      f_1(-1) = 2 &\Rightarrow & F(-1,-2) = 2\\
+      f_1(0) = 1 &\Rightarrow & F(0,-2) = 1\\
+      f_1(2) = 5 &\Rightarrow & F(2,-2) = 5.
+    \end{array}
+    \]
   \end{explanation}
 \end{example}
 \end{document}
-We begin by finding the critical points of $f$. With $f_x = 2x$ and $f_y = -2y$, we find only one critical point, at $(0,0)$. 
-
-We now find the maximum and minimum values that $f$ attains along the boundary of $S$, that is, along the edges of the triangle. In Figure \ref{fig:conopt1}(b) we see the triangle sketched in the plane with the equations of the lines forming its edges labeled. 
-
-Start with the bottom edge, along the line $y=-2$. If $y$ is $-2$, then on the surface, we are considering points $f(x,-2)$; that is, our function reduces to $f(x,-2) = x^2-(-2)^2+5 = x^2+1=f_1(x)$. We want to maximize/minimize $f_1(x)=x^2+1$ on the interval $[-1,2]$. To do so, we evaluate $f_1(x)$ at its critical points and at the endpoints.
-
-
-The critical points of $f_1$ are found by setting its derivative equal to 0:
-$$\fp_1(x)=0\qquad \Rightarrow x=0.$$
-Evaluating $f_1$ at this critical point, and at the endpoints of $[-1,1]$ gives:
-\begin{align*}
-f_1(-1) = 2 \qquad&\Rightarrow\qquad f(-1,-2) = 2\\
-f_1(0) = 1 \qquad&\Rightarrow \qquad f(0,-2) = 1\\
-f_1(2) = 5 \qquad&\Rightarrow \qquad f(2,-2) = 5.
-\end{align*}
-Notice how evaluating $f_1$ at a point is the same as evaluating $f$ at its corresponding point.
+    Notice how evaluating $f_1$ at a point is the same as evaluating $f$ at its corresponding point.
 
 We need to do this process twice more, for the other two edges of the triangle.
 
@@ -199,9 +228,19 @@ We have evaluated $f$ at a total of 7 different places, all shown in Figure \ref
 
   
 
-This portion of the text is entitled ``Constrained Optimization'' because we want to optimize a function (i.e., find its maximum and/or minimum values) subject to a \textit{constraint} -- some limit to what values the function can attain. In the previous example, we constrained ourselves to considering a function only within the boundary of a triangle. This was largely arbitrary; the function and the boundary were chosen just as an example, with no real ``meaning'' behind the function or the chosen constraint.
+This portion of the text is entitled ``Constrained Optimization''
+because we want to optimize a function (i.e., find its maximum and/or
+minimum values) subject to a \textit{constraint} -- some limit to what
+values the function can attain. In the previous example, we
+constrained ourselves to considering a function only within the
+boundary of a triangle. This was largely arbitrary; the function and
+the boundary were chosen just as an example, with no real ``meaning''
+behind the function or the chosen constraint.
 
-However, solving constrained optimization problems is a very important topic in applied mathematics. The techniques developed here are the basis for solving larger problems, where more than two variables are involved.
+However, solving constrained optimization problems is a very important
+topic in applied mathematics. The techniques developed here are the
+basis for solving larger problems, where more than two variables are
+involved.
 
 We illustrate the technique once more with a classic problem.\\ 
 
@@ -230,6 +269,9 @@ The volume function $V(w,\ell)$ is shown in Figure \ref{fig:conopt2} along with 
 It is hard to overemphasize the importance of optimization. In ``the real world,'' we routinely seek to make \textit{something} better. By expressing the \textit{something} as a mathematical function, ``making \textit{something} better'' means ``optimize \textit{some function.}'' 
 
 The techniques shown here are only the beginning of an incredibly important field. Many functions that we seek to optimize are incredibly complex, making the step of ``find the gradient and set it equal to $\vec 0$'' highly nontrivial. Mastery of the principles here are key to being able to tackle these more complicated problems.
+
+
+\section{Lagrange multipliers}
 
 
 
