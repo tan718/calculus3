@@ -16,19 +16,21 @@ $z$ takes on the largest or smallest values. For instance, if $z$
 represents a cost function, we would likely want to know what $(x,y)$
 values minimize the cost. If $z$ represents the ratio of a volume to
 surface area, we would likely want to know where $z$ is greatest. This
-leads to the following definition.
+leads to the following definition that we will state rather generally,
+but use mostly in the case of a function $F:\R^2\to\R$.
 
 \begin{definition}
-Let $z=F(x,y)$ be defined on a set $S$ containing the point $\vec{c}=\vector{c_1,c_2}$.
+Let $F:\R^n\to\R$ be defined on a set $S\subset\R^n$ containing the
+point $\vec{c}$ in $\R^n$.
 \index{maximum!local}\index{minimum!local}\index{extrema!absolute}\index{maximum!absolute}\index{minimum!absolute}
 \begin{itemize}
-\item If there is an open disk $D$ containing $\vec{c}$ such that
-  $F(\vec{c}) \geq F(x,y)$ for all $(x,y)$ in $D$, then $F$ has a
-  \dfn{local maximum} at $\vec{c}$; if $F(\vec{c}) \leq F(x,y)$ for all
-  $(x,y)$ in $D$, then $f$ has a \dfn{local minimum} at $\vec{c}$.
-\item If $F(\vec{c})\geq F(x,y)$ for all $(x,y)$ in $S$, then $F$ has
-  an \dfn{absolute maximum} at $\vec{c}$; if $F(\vec{c})\leq F(x,y)$ for
-  all $(x,y)$ in $S$, then $F$ has an \dfn{absolute minimum} at
+\item If there is an open disk $B$ containing $\vec{c}$ such that
+  $F(\vec{c}) \geq F(\vec{x})$ for all $\vec{x}$ in $B$, then $F$ has a
+  \dfn{local maximum} at $\vec{c}$; if $F(\vec{c}) \leq F(\vec{x})$ for all
+  $\vec{x}$ in $B$, then $F$ has a \dfn{local minimum} at $\vec{c}$.
+\item If $F(\vec{c})\geq F(\vec{x})$ for all $\vec{x}$ in $S$, then $F$ has
+  an \dfn{absolute maximum} at $\vec{c}$; if $F(\vec{c})\leq F(\vec{x})$ for
+  all $\vec{x}$ in $S$, then $F$ has an \dfn{absolute minimum} at
   $\vec{c}$.
 \item If $f$ has a local maximum or minimum at $\vec{c}$, then $F$ has a
   \dfn{local extrema} at $\vec{c}$; if $F$ has an absolute maximum or
@@ -36,7 +38,14 @@ Let $z=F(x,y)$ be defined on a set $S$ containing the point $\vec{c}=\vector{c_1
 \end{itemize}
 \end{definition}
 
-If $F$ has a local or absolute maximum at $\vec{c}=\vector{c_1,c_2}$, it means
+If $F$ has a local or absolute maximum at $\vec{c}$, it means the
+gradient will point ``nowhere'' since the gradient points in the
+inital direction of greatest increase. This means it is pointing in
+a ``direction'' whose components are either zero or undefined. In an
+entirely similar way, the gradient will be a vector whose components
+are either zero or undefinied at local minimums as well.
+
+
 every curve on the surface of $F$ through $\vec{c}$ will also have a
 local or absolute maximum at $\vec{c}$. Recalling what we learned in
 previous courses, the slopes of the tangent lines to these curves at
