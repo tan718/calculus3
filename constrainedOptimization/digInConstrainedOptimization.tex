@@ -1,0 +1,237 @@
+\documentclass{ximera}
+
+\input{../preamble.tex}
+
+\title[Dig-In:]{Constrained optimization}
+
+\begin{document}
+\begin{abstract}
+  We learn to optimize surfaces along and within given paths.
+\end{abstract}
+\maketitle
+
+When optimizing functions of one variable $f:\R\to\R$, we have the
+Extreme Value Theorem:
+
+\begin{theorem}[Extreme Value Theorem]\label{theorem:evt}\index{Extreme Value Theorem}
+If $f$ is a continuous function for all $x$ in the closed interval
+$[a,b]$, then there are points $c$ and $d$ in $[a,b]$, such that
+$(c,f(c))$ is a global maximum and $(d,f(d))$ is a global
+minimum on $[a, b]$.
+
+Below, we see a geometric interpretation of this theorem.
+\begin{image}
+\begin{tikzpicture}
+	\begin{axis}[
+            domain=0:6, xmin=0, xmax=6, ymin=0, ymax=2.5,
+            axis lines =left, xlabel=$x$, ylabel=$y$,
+            every axis y label/.style={at=(current axis.above origin),anchor=south},
+            every axis x label/.style={at=(current axis.right of origin),anchor=west},
+            xtick={1,2,4,5}, ytick={.2,2.2},
+            xticklabels={$a$,$c$,$d$,$b$}, yticklabels={$f(d)$,$f(c)$},
+            axis on top,
+          ]
+          \addplot [draw=none, fill=fill1, domain=(1:5)] {2.5} \closedcycle;
+
+          \addplot [textColor,dashed] plot coordinates {(0,2.2) (2,2.2)};
+          \addplot [textColor,dashed] plot coordinates {(0,.2) (4,.2)};
+          \addplot [textColor,dashed] plot coordinates {(2,0) (2,2.2)};
+          \addplot [textColor,dashed] plot coordinates {(4,0) (4,.2)};
+
+          \addplot [fill1,very thick] plot coordinates {(1,0) (1,2.5)};
+          \addplot [fill1,very thick] plot coordinates {(5,0) (5,2.5)};
+
+          \addplot [very thick,penColor, smooth,domain=(1.5:2.5)] {sin(deg(x*1.57-1.57)) + 1.2};%max
+          \addplot [very thick,penColor, smooth,domain=(3.5:4.5)] {sin(deg(x*1.57-1.57)) + 1.2};%min
+          \addplot [very thick,dashed,penColor!50!background, smooth,domain=(2.5:3.5)] {sin(deg(x*1.57 - 1.57)) + 1.2}; 
+          \addplot [very thick,dashed,penColor!50!background, smooth,domain=(1:1.5)] {sin(deg(x*1.57 - 1.57)) + 1.2}; 
+          \addplot [very thick,dashed,penColor!50!background, smooth,domain=(4.5:5)] {sin(deg(x*1.57 - 1.57)) + 1.2}; 
+          
+          \addplot [color=penColor,fill=penColor,only marks,mark=*] coordinates{(2,2.2)};  %% closed hole          
+          \addplot [color=penColor,fill=penColor,only marks,mark=*] coordinates{(4,.2)};  %% closed hole          
+        \end{axis}
+\end{tikzpicture}
+%% \caption{A geometric interpretation of the Extreme Value Theorem. A
+%%   continuous function $f(x)$ attains both an global maximum and an
+%%   global minimum on an interval $[a,b]$. Note, it may be the case
+%%   that $a=c$, $b=d$, or that $d<c$.}
+%% \label{figure:extreme-value}
+%% \end{marginfigure}
+\end{image}
+\end{theorem}
+
+A similar theorem applies to functions of two variables.
+
+\begin{theorem}[Extreme Value Theorem]\index{Extreme Value Theorem}
+  Let $F:\R^2\to\R$ be a continuous function on a closed, bounded set
+  $S$. Then $F$ has a maximum and minimum value on $S$.
+\end{theorem}
+
+We can find these values by evaluating the function at the critical
+values in the set and over the boundary of the set. Let's see some
+examples.
+
+\begin{example}
+  Let $F(x,y) = x^2-y^2+5$ and let $S$ be the triangle with vertices
+  $(-1,-2)$, $(0,1)$ and $(2,-2)$.
+  \begin{image}  
+    \begin{tikzpicture}
+      \begin{axis}[,tick label style={font=\scriptsize},axis y line=middle,axis x line=middle,name=myplot,%
+	  xtick={-2,2},% 
+	  minor x tick num=1,
+	  extra x ticks={-1,1},%
+	  ymin=-2.5,ymax=1.5,%
+	  xmin=-2.1,xmax=2.1%
+        ]
+
+        \draw [thick,penColor] (axis cs:-1,-2)-- node
+              [black,pos=.2,above,sloped] {\scriptsize $y=3x+1$} (axis
+              cs:0,1)--node [black,pos=.6,below,sloped] {\scriptsize
+                $y=-3/2x+1$} (axis cs:2,-2)--node
+              [black,pos=.5,below,sloped] {\scriptsize $y=-2$}(axis
+              cs:-1,-2);
+              
+        \fill[black,draw=black] (axis cs:-1,-2) circle (1.5pt);
+        \fill[black,draw=black] (axis cs:2,-2) circle (1.5pt);
+        \fill[black,draw=black] (axis cs:0,1) circle (1.5pt);
+        
+      \end{axis}
+      \node [right] at (myplot.right of origin) {\scriptsize $x$};
+      \node [above] at (myplot.above origin) {\scriptsize $y$};
+    \end{tikzpicture}
+  \end{image}
+  Find the maximum and minimum values of $F$ on $S$.
+  \begin{explanation}
+    Let's see a graph of $F$ along with the set $S$:
+    \begin{image}
+      \begin{tikzpicture}
+        \begin{axis}%
+          [width=175pt,tick label style={font=\scriptsize},axis on top,
+	    axis lines=center,
+	    view={55}{45},
+	    name=myplot,
+	    %xtick=\empty,
+	    %ytick={5},
+	    %ztick={.7,-.7},
+	    minor xtick=1,
+	    minor ytick=1,
+	    ymin=-2.5,ymax=2,
+	    xmin=-1.5,xmax=2.5,
+	    zmin=-1, zmax=8,
+	    every axis x label/.style={at={(axis cs:\pgfkeysvalueof{/pgfplots/xmax},0,0)},xshift=5pt,yshift=0pt},
+	    xlabel={\scriptsize $x$},
+	    every axis y label/.style={at={(axis cs:0,\pgfkeysvalueof{/pgfplots/ymax},0)},xshift=4pt,yshift=3pt},
+	    ylabel={\scriptsize $y$},
+	    every axis z label/.style={at={(axis cs:0,0,\pgfkeysvalueof{/pgfplots/zmax})},xshift=0pt,yshift=4pt},
+	    zlabel={\scriptsize $z$},colormap/cool
+	  ]
+          
+          \addplot3[domain=-1.4:2.4,,y domain=-2.5:2,mesh,samples=25,samples y=25,very thin,z buffer=sort] {x^2-y^2+5};
+          
+          \addplot3 [ultra thick,penColor, smooth,domain=-1:0,samples=10,samples y=0] ({x},{3*x+1},{x^2-(3*x+1)^2+5});
+          \addplot3 [ultra thick,penColor, smooth,domain=0:2,samples=10,samples y=0] ({x},{-1.5*x+1},{x^2-(-1.5*x+1)^2+5});
+          \addplot3 [ultra thick,penColor, smooth,domain=-1:2,samples=10,samples y=0] ({x},{-2},{x^2-4+5});
+          
+          \addplot3 [ultra thick,penColor, smooth,dashed,domain=-1:0,samples=10,samples y=0] ({x},{3*x+1},{0});
+          \addplot3 [ultra thick,penColor, smooth,dashed,domain=0:2,samples=10,samples y=0] ({x},{-1.5*x+1},{0});
+          \addplot3 [ultra thick,penColor, smooth,dashed,domain=-1:2,samples=10,samples y=0] ({x},{-2},{0});
+          
+        \end{axis}
+      \end{tikzpicture}
+    \end{image}
+    The triangle defining $S$ in the $(x,y)$-plane is drawn with a
+    dashed line. Above it is the surface described by $F$.  We are
+    interested in the portion of $F$ enclosed by the ``triangle'' on
+    the surface.
+  \end{explanation}
+\end{example}
+\end{document}
+We begin by finding the critical points of $f$. With $f_x = 2x$ and $f_y = -2y$, we find only one critical point, at $(0,0)$. 
+
+We now find the maximum and minimum values that $f$ attains along the boundary of $S$, that is, along the edges of the triangle. In Figure \ref{fig:conopt1}(b) we see the triangle sketched in the plane with the equations of the lines forming its edges labeled. 
+
+Start with the bottom edge, along the line $y=-2$. If $y$ is $-2$, then on the surface, we are considering points $f(x,-2)$; that is, our function reduces to $f(x,-2) = x^2-(-2)^2+5 = x^2+1=f_1(x)$. We want to maximize/minimize $f_1(x)=x^2+1$ on the interval $[-1,2]$. To do so, we evaluate $f_1(x)$ at its critical points and at the endpoints.
+
+
+The critical points of $f_1$ are found by setting its derivative equal to 0:
+$$\fp_1(x)=0\qquad \Rightarrow x=0.$$
+Evaluating $f_1$ at this critical point, and at the endpoints of $[-1,1]$ gives:
+\begin{align*}
+f_1(-1) = 2 \qquad&\Rightarrow\qquad f(-1,-2) = 2\\
+f_1(0) = 1 \qquad&\Rightarrow \qquad f(0,-2) = 1\\
+f_1(2) = 5 \qquad&\Rightarrow \qquad f(2,-2) = 5.
+\end{align*}
+Notice how evaluating $f_1$ at a point is the same as evaluating $f$ at its corresponding point.
+
+We need to do this process twice more, for the other two edges of the triangle.
+
+Along the left edge, along the line $y=3x+1$, we substitute $3x+1$ in for $y$ in $f(x,y)$:
+$$f(x,y) = f(x,3x+1) = x^2-(3x+1)^2+5 = -8x^2-6x+4 = f_2(x).$$
+We want the maximum and minimum values of $f_2$ on the interval $[-1,0]$, so we evaluate $f_2$ at its critical points and the endpoints of the interval. We find the critical points:
+$$\fp_2(x) = -16x-6=0 \qquad \Rightarrow \qquad x=-3/8.$$
+
+Evaluate $f_2$ at its critical point and the endpoints of $[-1,0]$:
+\begin{align*}
+f_2(-1) = 2 \qquad&\Rightarrow\qquad f(-1,-2) = 2\\
+f_2(-3/8) = 41/8=5.125  \qquad&\Rightarrow \qquad f(-3/8,-0.125) = 5.125\\
+f_2(0) = 1 \qquad&\Rightarrow \qquad f(0,1) = 4.
+\end{align*}
+
+Finally, we evaluate $f$ along the right edge of the triangle, where $y = -3/2x+1$. 
+$$f(x,y) = f(x,-3/2x+1) = x^2-(-3/2x+1)^2+5 = -\frac54x^2+3x+4=f_3(x).$$
+The critical points of $f_3(x)$ are:
+$$\fp_3(x) = 0 \qquad \Rightarrow \qquad x=6/5=1.2.$$
+We evaluate $f_3$ at this critical point and at the endpoints of the interval $[0,2]$:
+\begin{align*}
+f_3(0) = 4 \qquad&\Rightarrow\qquad f(0,1) = 4\\
+f_3(1.2) = 5.8  \qquad&\Rightarrow \qquad f(1.2,-0.8) = 5.8\\
+f_3(2) = 5 \qquad&\Rightarrow \qquad f(2,-2) = 5.
+\end{align*}
+One last point to test: the critical point of $f$, $(0,0)$. We find $f(0,0) = 5$.
+
+\mfigure[scale=1.25]{.7}{The surface of $f$ along with important points along the boundary of $S$ and the interior.}{fig:conopt1b}{figures/figconopt1c}
+We have evaluated $f$ at a total of 7 different places, all shown in Figure \ref{fig:conopt1b}. We checked each vertex of the triangle twice, as each showed up as the endpoint of an interval twice. Of all the $z$-values found, the maximum is 5.8, found at $(1.2,-0.8)$; the minimum is 1, found at $(0,-2)$. 
+
+
+  \end{explanation}
+\end{example}
+\end{document}
+
+  
+
+This portion of the text is entitled ``Constrained Optimization'' because we want to optimize a function (i.e., find its maximum and/or minimum values) subject to a \textit{constraint} -- some limit to what values the function can attain. In the previous example, we constrained ourselves to considering a function only within the boundary of a triangle. This was largely arbitrary; the function and the boundary were chosen just as an example, with no real ``meaning'' behind the function or the chosen constraint.
+
+However, solving constrained optimization problems is a very important topic in applied mathematics. The techniques developed here are the basis for solving larger problems, where more than two variables are involved.
+
+We illustrate the technique once more with a classic problem.\\ 
+
+\example{ex_conopt2}{Constrained Optimization}{
+The U.S. Postal Service states that the girth+length of Standard Post Package must not exceed 130''. Given a rectangular box, the ``length'' is the longest side, and the ``girth'' is twice the width+height.
+
+Given a rectangular box where the width and height are equal, what are the dimensions of the box that give the maximum volume subject to the constraint of the size of a Standard Post Package?}
+{Let $w$, $h$ and $\ell$ denote the width, height and length of a rectangular box; we assume here that $w=h$. The girth is then $2(w+h) = 4w$. The volume of the box is $V(w,\ell) = wh\ell = w^2\ell$. We wish to maximize this volume subject to the constraint $4w+\ell\leq 130$, or $\ell\leq 130-4w$. (Common sense also indicates that $\ell>0, w>0$.)
+
+We begin by finding the critical values of $V$. We find that $V_w = 2w\ell$ and $V_\ell = w^2$; these are simultaneously 0 only at $(0,0)$. This gives a volume of 0, so we can ignore this critical point. 
+
+We now consider the volume along the constraint $\ell=130-4w.$ Along this line, we have:
+$$V(w\ell) = V(w,130-4w) = w^2(130-4w) = 130w^2-4w^3 = V_1(w).$$
+The constraint is applicable on the $w$-interval $[0,32.5]$ as indicated in the figure. Thus we want to maximize $V_1$ on $[0,32.5]$. 
+
+Finding the critical values of $V_1$, we take the derivative and set it equal to 0:
+$$V\,'_1(w) = 260w-12w^2 = 0 \quad \Rightarrow \quad w(260-12w)= 0 \quad \Rightarrow \quad w=0,\frac{260}{12}\approx 21.67.$$
+
+We found two critical values: when $w=0$ and when $w=21.67$. We again ignore the $w=0$ solution; the maximum volume, subject to the constraint, comes at $w=h=21.67$, $\ell = 130-4(21.6) =43.33.$ This gives a volume of $V(21.67,43.33) \approx 19,408$in$^3$. 
+
+\mfigure[scale=1.25]{.75}{Graphing the volume of a box with girth $4w$ and length $\ell$, subject to a size constraint.}{fig:conopt2}{figures/figconopt2}
+
+The volume function $V(w,\ell)$ is shown in Figure \ref{fig:conopt2} along with the constraint $\ell = 130-4w$. As done previously, the constraint is drawn dashed in the $x$-$y$ plane and also along the surface of the function. The point where the volume is maximized is indicated.
+}\\
+
+It is hard to overemphasize the importance of optimization. In ``the real world,'' we routinely seek to make \textit{something} better. By expressing the \textit{something} as a mathematical function, ``making \textit{something} better'' means ``optimize \textit{some function.}'' 
+
+The techniques shown here are only the beginning of an incredibly important field. Many functions that we seek to optimize are incredibly complex, making the step of ``find the gradient and set it equal to $\vec 0$'' highly nontrivial. Mastery of the principles here are key to being able to tackle these more complicated problems.
+
+
+
+
+\end{document}
