@@ -177,7 +177,9 @@ and finally we see:
 \begin{align*}
 P_2(\vec{x})=F(\vec{c})
 &+ \grad F(\vec{c})\dotp (\vec{x}-\vec{c})\\
-&+\frac{F^{(2,0)}(\vec{c}) (x-c_1)^2 + 2F^{(1,1)}(\vec{c})(x-c_1)(y-c_2)  + F^{(0,2)}(\vec{c})(y-c_2)^2}{2}
+&+\left(\frac{1}{2}\right)F^{(2,0)}(\vec{c}) (x-c_1)^2 \\
+&+ F^{(1,1)}(\vec{c})(x-c_1)(y-c_2) \\
+&+ \left(\frac{1}{2}\right)F^{(0,2)}(\vec{c})(y-c_2)^2.
 \end{align*}
 
 
@@ -364,8 +366,9 @@ with respect to $x$ and $y$ multiplied by
 Putting this together, we see
 \begin{align*}
 P_2(x,y) &= P_1(x,y) \\
-&+\frac{F^{(2,1)}(\vec{c})(x-c_1)^2 +
-2F^{(2,0)}(\vec{c})(x-c_1)(y-c_2)+F^{(0,2)}(\vec{c})(y-c_2)^2}{2}.
+&+\left(\frac{1}{2}\right)F^{(2,0)}(\vec{c})(x-c_1)^2 \\
+&+F^{(1,1)}(\vec{c})(x-c_1)(y-c_2)\\
+&+\left(\frac{1}{2}\right)F^{(0,2)}(\vec{c})(y-c_2)^2.
 \end{align*}
 The interested reader can (repeatedly) differentiate $P_2(x,y)$ to see
 that its value at $\vec{x}=\vec{c}$ and the values of the first two
