@@ -11,17 +11,175 @@
 \end{abstract}
 \maketitle
 
-Explain that we had to previously either:
-\begin{itemize}
-\item Solve for $y$ in terms of $x$.
-\item Solve for $x$ in terms of $y$.
-\item Find a vector-valued function $\vec{p}(t)$ such that
+Through out this course, we hope it has become apparent that when
+given a problem:
+\begin{quote}
+  \textbf{There is more than one way to solve it.}
+\end{quote}
+Previously, we were finding extrema of functions $F:\R^n\to\R$ when
+constrained to some set $S$.
+
+\begin{example}
+  Let $F(x,y) = x^2+3y^2-4x-6y+7$ and let $S$ the set
   \[
-  G(\vec{p}(t)) = c.
+  S = \{(x,y):x^2 + y^2 \le 1\}
   \]
+  Discuss how to find the maximum and minimum values of $F$ on $S$.
+  \begin{explanation}
+    To do this we first find the critical points of $F$, that is where
+    the components of $\grad F(x,y)$ are zero or do not exist. If
+    these points are in $S$, they become candidates for the maxima and
+    minima.
+
+    Next we investigate the boundary of $S$. To do this we must
+    parametrize the boundary of $S$, or express the boundary either in
+    terms of $x$ or $y$. In this case, we can express the boundary
+    parametrically as
+    \[
+    \vec{p}(t) = \vector{\cos(t),\sin(t)},
+    \]
+    or we could set
+    \[
+    y = \pm \answer[given]{\sqrt{1-x^2}},
+    \]
+    or even
+    \[
+    x = \pm \answer[given]{\sqrt{1-y^2}}.
+    \]
+  \end{explanation}
+\end{example}
+
+Above we see that a crucial step in computing extrema when constrained
+to a set is finding an \textbf{explicit formula} for the boundary. This
+could be very difficult or even impossible! If our constraining set had been
+\[
+S = \{(x,y): x+y+\sin(xy) =0\}
+\]
+our previous method will not work, as we (at least this author!)
+cannot find an explicit formula describing the boundary (which in this
+case is the set) of the set above. Nevertheless, there is another
+way. It is called the method of \textit{Lagrange multipliers}. This
+method is named after the mathematician \link[Joesph-Louis
+  Lagrange]{http://en.wikipedia.org/wiki/Joseph-Louis_Lagrange}, which
+he first employed. This method relies on the \textit{gradient
+  vector}. Recall facts about the gradient vector:
+\begin{itemize}
+\item $\grad F = \vector{\pp[F]{x_1},\pp[F]{x_2},\dots,\pp[F]{x_n}}$.
+\item $\grad F(\vec{x})$ points in the direction that one must leave
+  $\vec{x}$ in order to see the initial greatest increase in $F$.
+\item $\grad F(\vec{x})$ points in the direction that is perpendicular
+  to any level surface of $F$.
 \end{itemize}
 
-To make the graphical questions:
+It is this last fact that we will look at now.  Below we see level
+curves for some function $F:\R^2\to\R$ along with a constraining curve
+that we will call $S$:
+\begin{image}
+  \begin{tikzpicture}
+    \begin{axis}%
+      [
+        unit vector ratio*=1 1 1,
+	ymin=-.2,ymax=4.5,
+        width=5in,
+	xmin=-4.5,xmax=4.5,
+        axis lines=none,
+      ]
+      \addplot[ultra thick, penColor,smooth,domain=0:180] ({cos(x)},{sin(x)});
+      \addplot[ultra thick, penColor,smooth,domain=0:180] ({2*cos(x)},{2*sin(x)});
+      \addplot[ultra thick, penColor,smooth,domain=0:180] ({3*cos(x)},{3*sin(x)});
+      \addplot[ultra thick, penColor,smooth,domain=0:180] ({4*cos(x)},{4*sin(x)});
+      
+      \addplot[ultra thick, penColor4,smooth] {x^2+1};      
+      
+      \node[penColor,fill=white] at (axis cs:-.7,.7) {$7$};
+      \node[penColor,fill=white] at (axis cs:-1.4,1.4) {$6$};
+      \node[penColor,fill=white] at (axis cs:-2.1,2.1) {$5$};
+      \node[penColor,fill=white] at (axis cs:-2.8,2.8) {$4$};
+
+      \node[penColor4] at (axis cs:2,4) {$S$};
+      \node[penColor] at (axis cs:-3.8,2) {$F$};
+    \end{axis}
+  \end{tikzpicture}
+\end{image}
+
+Let's add vectors to our graph that point in the direction of $\grad
+F(x,y)$. We can do this \textit{without} computation, since we
+understand the geometry of the gradient vector, the gradient vector is
+perpendicular to level curves:
+\begin{image}
+  \begin{tikzpicture}
+    \begin{axis}%
+      [
+        unit vector ratio*=1 1 1,
+	ymin=-.2,ymax=4.5,
+        width=5in,
+	xmin=-4.5,xmax=4.5,
+        axis lines=none,
+      ]
+      \addplot[ultra thick, penColor,smooth,domain=0:180] ({cos(x)},{sin(x)});
+      \addplot[ultra thick, penColor,smooth,domain=0:180] ({2*cos(x)},{2*sin(x)});
+      \addplot[ultra thick, penColor,smooth,domain=0:180] ({3*cos(x)},{3*sin(x)});
+      \addplot[ultra thick, penColor,smooth,domain=0:180] ({4*cos(x)},{4*sin(x)});
+      
+      \addplot[ultra thick, penColor4,smooth] {x^2+1};      
+      
+      \node[penColor,fill=white] at (axis cs:-.7,.7) {$7$};
+      \node[penColor,fill=white] at (axis cs:-1.4,1.4) {$6$};
+      \node[penColor,fill=white] at (axis cs:-2.1,2.1) {$5$};
+      \node[penColor,fill=white] at (axis cs:-2.8,2.8) {$4$};
+
+      \node[penColor4] at (axis cs:2,4) {$S$};
+      \node[penColor] at (axis cs:-3.8,2) {$F$};
+
+      \addplot[penColor2,ultra thick, ->] coordinates{(-1.63,3.65) (-1.22,2.74)};
+      \addplot[penColor2,ultra thick, ->] coordinates{(1.63,3.65) (2.04,4.56)};
+
+      \addplot[penColor2,ultra thick, ->] coordinates{(-1.3,2.7) (-.87,1.8)};
+      \addplot[penColor2,ultra thick, ->] coordinates{(1.3,2.7) (1.7,3.6)};
+      \addplot[penColor2,ultra thick, ->] coordinates{(-.9,1.8) (-.45,.91)};
+      \addplot[penColor2,ultra thick, ->] coordinates{(.9,1.8) (1.35,2.7)};
+      \addplot[penColor2,ultra thick, ->] coordinates{(0,1) (0,0)};
+    \end{axis}
+  \end{tikzpicture}
+\end{image}
+
+Now we can observe something interesting: If for some point $(x,y)$
+the gradient $\grad F(x,y)$ points in the ``general'' direction of
+$S$, then $(x,y)$ \textbf{cannot} give an extremal value of $F$, as
+moving along $S$ will either increase or decrease the value of
+$F$. Here's the upshot:
+\begin{quote}
+  \textbf{The only candidates for local extrema occur when the
+    gradient of $F$ is perpendicular to $S$.}
+\end{quote}
+How do we find these points? Now we will imagine that $S$ is a level
+curve for some other function $G:\R^2\to\R$, and define $S$ as:
+\[
+S = \{(x,y):G(x,y)= c\}
+\]
+now, the candidates for extrema of $F$ when constrained to a curve $S$
+are found by finding $(x,y)$ such that
+\[
+\grad F(x,y) =  \lambda \cdot \grad G(x,y)
+\]
+This is the essence of the method of Lagrange multipliers.
+
+\begin{theorem}[Lagrange Multipliers]
+  Let $F:\R^n\to\R$, $G:\R^n\to\R$, $\grad G(\vec{x}) \ne \vec{0}$,
+  and let $S$ be the level set
+  \[
+  S = \{\vec{x}: G(\vec{x}) = c\}
+  \]
+  If $F$ has extrema when constrained to $S$ at $\vec{x}$, then
+  \[
+  \grad F(\vec{x}) = \lambda \cdot \grad G(\vec{x})
+  \]
+  for some number $\lambda$.
+\end{theorem}
+
+
+\section{Working with geometry}
+
 
 1) Draw and label level curves in mathematica
 2) Provide a grid.
@@ -29,32 +187,41 @@ To make the graphical questions:
 4) Ask for coordinates of max/min value.
 
 
-
-IMPOSSIBLE
-
-Now give pictures
-
-Give motivation for saysing
+\section{Working with algebra}
 
 
-\begin{theorem}
-  If
-  \[
-  \grad F(x,y) = \lambda\cdot  \grad G(x,y)
-  \]
-\end{theorem}
 
-Geometric
 
-could be hard
-
-Computers
-
+\section{The Lagrangian}
 
 Lagrangian.
 \[
 \mathcal{L}(\vec{x},\lambda)
 \]
+
+
+
+For some interesting extra reading check out:
+\begin{itemize}
+\item \link[\textit{Lagrange Multipliers Can Fail to Determine
+    Extrema}, J.\ Nunemacher, College Math Journal, January
+  2003]{http://www.jstor.org/stable/3595848}.
+\item \link[\textit{An ``Extremely'' Cautionary Tale}, M.\ Krusemeyer, College Math Journal, March 2000]{http://www.jstor.org/stable/2687586}.
+\item \link[\textit{Unifying a Family of Extrema Problems},
+  W.\ Barnier and D.\ Martin, College Math Journal, November
+  1997]{http://www.jstor.org/stable/2687071}.
+\end{itemize}
+
+
+
+
+
+
+
+\end{document}
+
+
+
 
 
 
