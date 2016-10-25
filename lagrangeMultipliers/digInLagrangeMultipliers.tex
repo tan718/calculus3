@@ -144,16 +144,16 @@ perpendicular to level curves:
 \end{image}
 
 Now we can observe something interesting: If for some point $(x,y)$
-the gradient $\grad F(x,y)$ points in the ``general'' direction of
-$S$, then $(x,y)$ \textbf{cannot} give an extremal value of $F$, as
-moving along $S$ will either increase or decrease the value of
-$F$. Here's the upshot:
+the gradient $\grad F(x,y)$ points in the ``general'' direction of the
+tangent vectors of $S$, then $(x,y)$ \textbf{cannot} give an extremal
+value of $F$, as moving along $S$ will either increase or decrease the
+value of $F$. Here's the upshot:
 \begin{quote}
   \textbf{The only candidates for local extrema occur when the
     gradient of $F$ is perpendicular to $S$.}
 \end{quote}
-How do we find these points? Now we will imagine that $S$ is a level
-curve for some other function $G:\R^2\to\R$, and define $S$ as:
+How do we find these points? To do this, we will imagine that $S$ is a
+level curve for some other function $G:\R^2\to\R$, and define $S$ as:
 \[
 S = \{(x,y):G(x,y)= c\}
 \]
@@ -162,7 +162,9 @@ are found by finding $(x,y)$ such that
 \[
 \grad F(x,y) =  \lambda \cdot \grad G(x,y)
 \]
-This is the essence of the method of Lagrange multipliers.
+since $(x,y)$ that satisfy this equation are those where the gradient
+vectors of $F$ are perpendicular to the level curve $G(x,y)= c$. This
+is the essence of the method of Lagrange multipliers.
 
 \begin{theorem}[Lagrange Multipliers]
   Let $F:\R^n\to\R$, $G:\R^n\to\R$, $\grad G(\vec{x}) \ne \vec{0}$,
@@ -178,17 +180,83 @@ This is the essence of the method of Lagrange multipliers.
 \end{theorem}
 
 
+  
+
+
 \section{Working with geometry}
 
+Lagrange multipliers tell us that to maximize a function $F:\R^2\to\R$
+along a curve defined by $G(x,y) = c$, we need to find where $\grad F$
+is perpendicular to $G$. In essence we are detecting geometric
+behavior using the tools of calculus.
 
-1) Draw and label level curves in mathematica
-2) Provide a grid.
-3) add hand-drawn curve inkscape.
-4) Ask for coordinates of max/min value.
+\begin{example}
+  Below we have plotted a curve $G(x,y) = c$ along with $\grad F$.
+  \begin{image}
+    \includegraphics{curveVectors1.pdf}
+  \end{image}
+  Find the candidates for the maximum and minmum values for $F$ when
+  restricted to $G(x,y) = c$.
+  \begin{explanation}
+  \end{explanation}
+\end{example}
 
-
+\begin{example}
+  Below we have plotted a curve $G(x,y) = c$ along with $\grad F$.
+  \begin{image}
+    \includegraphics{curveVectors2.pdf}
+  \end{image}
+  Find the candidates for the maximum and minmum values for $F$ when
+  restricted to $G(x,y) = c$.
+  \begin{explanation}
+  \end{explanation}
+\end{example}
 \section{Working with algebra}
 
+Let's solve the first example above using Lagrange multipliers.
+
+\begin{example}
+  Let $F(x,y) = x^2+3y^2-4x-6y+7$ and let $S$ the set
+  \[
+  S = \{(x,y):x^2 + y^2 \le 1\}
+  \]
+  Find the maximum and minimum values of $F$ on $S$.
+  \begin{explanation}
+    To start, set $G(x,y) = x^2+y^2$ and compute $\grad F$ and $\grad
+    G$:
+    \begin{align*}
+      \grad F(x,y) &= \vector{\answer[given]{2x-4},\answer[given]{6y-6}}\\
+      \grad G(x,y) &= \vector{\answer[given]{2x},\answer[given]{2y}}
+    \end{align*}
+    so we need to find points $(x,y)$ such that
+    \begin{align*}
+      2x-4 &=\lambda \cdot 2x\\
+      6y-6 &=\lambda \cdot 2y.
+    \end{align*}
+    Note, we also know that if we are restricted to the boundary of
+    $S$, we also have that
+    \[
+    x^2 + y^2 = 1.
+    \]
+    Let's start by solving the first equation above for $x$
+    \begin{align*}
+      2x-4 &=\lambda \cdot 2x\\
+      x &= \frac{2}{1-\lambda}
+    \end{align*}
+    and
+    \begin{align*}
+      6y-6 &= \lambda\cdot 2y\\
+      y &= \frac{3}{3-\lambda}
+    \end{align*}
+    Plugging our expressions for $x$ and $y$ back into $x^2 + y^2 = 1$,
+    \begin{align*}
+    \left(\frac{2}{1-\lambda}\right)^2 + \left(\frac{3}{3-\lambda}\right)^2 &=1\\
+    \frac{4}{(1-\lambda)^2} + \frac{9}{(3-\lambda)^2} &=1\\
+    4(3-\lambda)^2 + 9(1-\lambda)^2 &= (1-\lambda)^2(3-\lambda)^2 
+    \end{align*}
+    Now expand both sides and write
+  \end{explanation}
+\end{example}
 
 
 
@@ -224,5 +292,3 @@ For some interesting extra reading check out:
 
 
 
-
-\end{document}
