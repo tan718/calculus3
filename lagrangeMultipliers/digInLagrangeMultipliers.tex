@@ -3,6 +3,15 @@
 \input{../preamble.tex}
 
 
+\outcome{Understand the geometric basis of the method of Lagrange
+  multipliers.}
+
+\outcome{Use Lagrange multipliers to solve constrained optimization
+  problems.}
+
+\outcome{Define the Lagrangian.}
+
+
 \title[Dig-In:]{Lagrange multipliers}
 
 \begin{document}
@@ -32,7 +41,7 @@ constrained to some set $S$.
     minima.
 
     Next we investigate the boundary of $S$. To do this we must
-    parametrize the boundary of $S$, or express the boundary either in
+    parameterize the boundary of $S$, or express the boundary either in
     terms of $x$ or $y$. In this case, we can express the boundary
     parametrically as
     \[
@@ -195,9 +204,22 @@ behavior using the tools of calculus.
   \begin{image}
     \includegraphics{curveVectors1.pdf}
   \end{image}
-  Find the candidates for the maximum and minmum values for $F$ when
+  Find the candidates for the maximum and minimum values for $F$ when
   restricted to $G(x,y) = c$.
   \begin{explanation}
+    At the candidates for the extrema, we know that the gradient
+    vector of $F$ must be
+    \wordChoice{\choice{parallel}\choice[correct]{perpendicular}} to
+    the curve $G(x,y) = c$. Hence we
+    see that the points
+    \[
+    (x,y) = (\answer[given]{2},2)
+    \]
+    and
+    \[
+    (x,y) = (-2,\answer[given]{-2})
+    \]
+    are our candidates for extrema.
   \end{explanation}
 \end{example}
 
@@ -206,55 +228,95 @@ behavior using the tools of calculus.
   \begin{image}
     \includegraphics{curveVectors2.pdf}
   \end{image}
-  Find the candidates for the maximum and minmum values for $F$ when
+  Find the candidates for the maximum and minimum values for $F$ when
   restricted to $G(x,y) = c$.
   \begin{explanation}
+    At the candidates for the extrema, we know that the gradient
+    vector of $F$ must be
+    \wordChoice{\choice{parallel}\choice[correct]{perpendicular}} to
+    the curve $G(x,y) = c$. Hence we see that the points
+    \[
+    (x,y)\approx(\answer[given,tolerance=.5]{2.5},\answer[given,tolerance=.5]{.9})
+    \]
+    and
+    \[
+    (x,y)\approx (-2.3,\answer[given]{-1.7})
+    \]
+    are our candidates for extrema.
   \end{explanation}
 \end{example}
+
+
 \section{Working with algebra}
 
-Let's solve the first example above using Lagrange multipliers.
+Let's work an example.
 
 \begin{example}
-  Let $F(x,y) = x^2+3y^2-4x-6y+7$ and let $S$ the set
+  Let $F(x,y,z) = (1+x^2)(1+y^2)(1+z^2)$ and let $S$ the set:
   \[
-  S = \{(x,y):x^2 + y^2 \le 1\}
+  S = \{(x,y):x+y+z=1,\text{ where }x\ge 0, y\ge 0,z\ge 0\}
   \]
-  Find the maximum and minimum values of $F$ on $S$.
+  Find the absolute maximum and minimum values of $F$ on $S$. This
+  problem was a problem posed in the April $2004$ issue of \textit{Math
+    Horizons}:
   \begin{explanation}
-    To start, set $G(x,y) = x^2+y^2$ and compute $\grad F$ and $\grad
-    G$:
-    \begin{align*}
-      \grad F(x,y) &= \vector{\answer[given]{2x-4},\answer[given]{6y-6}}\\
-      \grad G(x,y) &= \vector{\answer[given]{2x},\answer[given]{2y}}
-    \end{align*}
-    so we need to find points $(x,y)$ such that
-    \begin{align*}
-      2x-4 &=\lambda \cdot 2x\\
-      6y-6 &=\lambda \cdot 2y.
-    \end{align*}
-    Note, we also know that if we are restricted to the boundary of
-    $S$, we also have that
+    We'll check the critical points of $F$. First compute $\grad F$:
     \[
-    x^2 + y^2 = 1.
+    \grad F(x,y,z) = \vector{\answer[given]{2x(1+y^2)(1+z^2)},\answer[given]{2y(1+x^2)(1+z^2)},\answer[given]{2z(1+x^2)(1+y^2)}} 
     \]
-    Let's start by solving the first equation above for $x$
+    From this we see $\grad F = \vec{0}$ when
     \begin{align*}
-      2x-4 &=\lambda \cdot 2x\\
-      x &= \frac{2}{1-\lambda}
+      x &= \answer[given]{0}\\
+      y &= \answer[given]{0}\\
+      z &= \answer[given]{0}.
+    \end{align*}
+    Now we will set $G(x,y,z) = x+y+z$ and compute $\grad G$:
+    \[
+    \grad G(x,y,z) = \vector{\answer[given]{1},\answer[given]{1},\answer[given]{1}}
+    \]
+    We need to find points $(x,y,z)$ such that
+    \[
+    \grad F(x,y,z) = \lambda \cdot \grad G(x,y,z)
+    \]
+    for some number $\lambda$. Write with me
+    \begin{align*}
+      2x(1+y^2)(1+z^2) &=\lambda \cdot 1\\
+      2y(1+x^2)(1+z^2) &=\lambda \cdot 1\\
+      2z(1+x^2)(1+y^2) &=\lambda \cdot 1
     \end{align*}
     and
+    \[
+    x+y+z=1.
+    \]
+    Note the symmetry of the components of $\grad F$. From this we see that
+    \[
+    x = y = z.
+    \]
+    Hence
     \begin{align*}
-      6y-6 &= \lambda\cdot 2y\\
-      y &= \frac{3}{3-\lambda}
+    x+y+z&=1\\
+    \answer[given]{3}x &= 1\\
+    x &= \answer[given]{1/3}.
     \end{align*}
-    Plugging our expressions for $x$ and $y$ back into $x^2 + y^2 = 1$,
+    Thus to find extrema for $F$ when restricted to $S$, we check the
+    value of $F$ at the points:
+    \[
+    (0,0,0)\quad\text{and}\quad(1/3,1/3,1/3).
+    \]
+    Write with me
     \begin{align*}
-    \left(\frac{2}{1-\lambda}\right)^2 + \left(\frac{3}{3-\lambda}\right)^2 &=1\\
-    \frac{4}{(1-\lambda)^2} + \frac{9}{(3-\lambda)^2} &=1\\
-    4(3-\lambda)^2 + 9(1-\lambda)^2 &= (1-\lambda)^2(3-\lambda)^2 
+      F(0,0,0) &= \answer[given]{1}\\
+      F(1/3,1/3,1/3) &= \answer[given]{1000/729}
     \end{align*}
-    Now expand both sides and write
+    We now see, via the Extreme Value Theorem, that the absolute
+    maximum of $F$ when restricted to $S$ is given by
+    \[
+    (x,y,z) = (\answer[given]{1/3},\answer[given]{1/3},\answer[given]{1/3})
+    \]
+    and the absolute minimum is given by
+    \[
+    (x,y,z) = (\answer[given]{0},\answer[given]{0},\answer[given]{0}).
+    \]
   \end{explanation}
 \end{example}
 
@@ -262,12 +324,41 @@ Let's solve the first example above using Lagrange multipliers.
 
 \section{The Lagrangian}
 
-Lagrangian.
+Finally, we should point our that there are other ways to view
+Lagrange multipliers.
+
+\begin{definition}
+  Given functions $F:\R^n\to\R$ and $G:\R^n\to\R$ the \dfn{Lagrangian} is the function
+  \[
+  \mathcal{L}(\vec{x},\lambda) = F(\vec{x}) - \lambda \cdot G(\vec{x}).
+  \]
+\end{definition}
+
+Thus to check whether
 \[
-\mathcal{L}(\vec{x},\lambda)
+\grad F(\vec{x}) = \lambda \cdot \grad G(\vec{x})
 \]
-
-
+is equivalent to checking where
+\[
+\grad \mathcal{L}(\vec{x},\lambda) = \vec{0}
+\]
+or has undefined components. When working with constrained
+optimization problems by hand, the Lagrangian doesn't help much, since
+your next step is to look at 
+\[
+\grad \mathcal{L}(\vec{x},\lambda) = \vec{0}.
+\]
+However, there are certain advantages to working with the Lagrangian:
+\begin{itemize}
+\item If you are working with a computer, it might be better to work
+  in terms of the Lagrangian, as there are efficient algorithms for
+  checking when the gradient of the function is zero.
+\item Working with the Lagrangian gives a method for changing
+  ``constrained'' optimization to ``unconstrained'' optimization, as
+  we are simply finding the critical points of
+  $\mathcal{L}(\vec{x},\lambda)$.
+\item The Lagrangian shows us a symmetry between $F$ and $G$.
+\end{itemize}
 
 For some interesting extra reading check out:
 \begin{itemize}
