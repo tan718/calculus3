@@ -51,7 +51,14 @@ only considering simple regions.
       \pgfplotsinvokeforeach{-1,-.875,...,1}{
         \draw[gray] (axis cs: 0,#1,0) -- (axis cs: 2 ,#1,0);
       }
-           
+
+
+      %% \pgfplotsinvokeforeach{-1,-.875,...,1}{
+      %%   \addplot3[domain=0:2,y domain=-1:1,mesh,samples=13,samples
+      %%     y=17,very thin,z buffer=sort] {-.5*(x-1)^2-.5*(y)^2+2};
+      %%   }
+
+      
 
       %% Box vol
       \draw [gray,thick]
@@ -126,7 +133,7 @@ only considering simple regions.
 
 In the diagram above, the volume enclosed by the surface is
 \[
-
+A
 \]
 
 
