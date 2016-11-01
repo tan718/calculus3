@@ -394,6 +394,61 @@ Now let's work some examples:
   \end{explanation}
 \end{example}
 
+In our next example, we will see that it is sometimes easier to
+integrate with respect to one variable or the other.
+
+\begin{example}
+  Let $F(x,y) = xe^{xy}$. Find the signed volume under $F$ on the region
+  \[
+  R = \{(x,y):\text{$0\le x\le 1$ and $0\le y\le 1$}\}.
+  \]
+  \begin{image}
+    \begin{tikzpicture}
+      \begin{axis}%
+        [
+          tick label style={font=\scriptsize},%axis on top,
+	  axis lines=center,
+	  view={70}{20}, %% rotate around / up and down
+	  name=myplot,
+	  ymin=-.1,ymax=1.1,
+	  xmin=-.1,xmax=1.1,
+	  zmin=-.1, zmax=3,
+	  every axis x label/.style={at={(axis cs:\pgfkeysvalueof{/pgfplots/xmax},0,0)},xshift=-1pt,yshift=-4pt},
+	  xlabel={\scriptsize $x$},
+	  every axis y label/.style={at={(axis cs:0,\pgfkeysvalueof{/pgfplots/ymax},0)},xshift=5pt,yshift=-3pt},
+	  ylabel={\scriptsize $y$},
+	  every axis z label/.style={at={(axis cs:0,0,\pgfkeysvalueof{/pgfplots/zmax})},xshift=0pt,yshift=4pt},
+	  zlabel={\scriptsize $z$},
+          colormap/cool
+	]        
+        \draw [ultra thick,penColor] (axis cs: 0,0,0) -- (axis cs: 1,0,0) -- (axis cs: 1,1,0) -- (axis cs: 0,1,0) -- cycle;
+        
+        \node at (axis cs: .5,.5,0) {\scriptsize $R$};
+        
+        \addplot3[domain=0:1,,y domain=0:1,mesh,samples=13,samples y=18,very thin,z buffer=sort] {x*exp(x*y)};
+        
+        \addplot3[domain=0:1,%fill=white,
+          penColor2,very thick,samples=20,samples y=0] ({1},{x},{exp(x)});
+        
+        %% \addplot3[domain=0:1,%fill=white,
+        %%   penColor3,very thick,samples=20,samples y=0] ({1},{x},{x*exp(x)});
+        
+        %% \addplot3[domain=0:1,%fill=white,
+        %%   penColor4,very thick,samples=20,samples y=0] ({x},{1},{1*exp(x)});
+        
+        \addplot3[domain=0:1,%fill=white,
+          penColor5,very thick,samples=20,samples y=0] ({x},{1},{x*exp(x)});
+        
+        \draw [penColor,dashed,thin] 
+	(axis cs: 3,1,0) -- (axis cs: 3,1,5.7)
+	(axis cs: 3,2,0) -- (axis cs: 3,2,13.4)
+	(axis cs: 4,2,0) -- (axis cs: 4,2,15.4)
+	(axis cs: 4,1,0) -- (axis cs: 4,1,6.7);
+      \end{axis}
+    \end{tikzpicture}
+  \end{image}
+\end{example}
+
 
 
 
