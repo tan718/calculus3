@@ -2,8 +2,6 @@
 
 \input{../preamble.tex}
 
-\usepackage{pgffor}
-
 \title[Dig-In:]{Introduction to multiple integrals}
 
 \begin{document}
@@ -14,9 +12,14 @@ NO TITLE YET.
 
 
 Now we move on to finding \textit{volumes} under surfaces. We start by
-only considering simple regions, by this we mean rectangles.
+only considering simple regions, by this we mean rectangles and boxes.
 
 \section{Integrals over trivial regions}
+
+We will first discuss \textit{double integrals}, and next discuss
+\textit{triple integrals}.
+
+\subsection{Double integrals}
 
 Suppose you have a function $F:\R^2\to\R$. A graph of this function is
 a surface in $\R^3$. For example:
@@ -398,18 +401,32 @@ Now let's work some examples:
 
 
 
+\subsection{Triple integrals}
 
 
-
-
+\[
+\int_R F(x,y) \d A = \lim_{\substack{\l\to\infty\\ m\to\infty\\ n\to\infty}}\sum_{i=1}^\l\sum_{j=1}^m \sum_{k=1}^n F(x^*_i,y^*_j,z_k^*)\Delta x\Delta y\Delta z
+\]
 
 
 \section{Integrals with trivial integrands}
 
+Now we will allow the region we are integrating over to be complex,
+but in every case, our integrand, will be $1$.
+
+\subsection{Double integrals}
+
 
 \[
-\int_R \d A = \lim_{m\to \infty}\lim_{n\to\infty}\sum_{i=1}^m\sum_{j=1}^n \chi_{R}(x)\Delta A
+\int_R \d A = \lim_{\substack{m\to\infty\\ n\to\infty}}\sum_{i=1}^m\sum_{j=1}^n \chi_{R}(x,y)\Delta x \Delta y
 \]
+
+\subsection{Triple integrals}
+
+\[
+\int_R \d V = \lim_{\substack{\l\to\infty\\ m\to\infty\\ n\to\infty}}\sum_{i=1}^\l\sum_{j=1}^m \sum_{k=1}^n\chi_{R}(x,y,z)\Delta x\Delta y \Delta z
+\]
+
 
 
 \end{document}
