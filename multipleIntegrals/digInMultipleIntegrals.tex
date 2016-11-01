@@ -2,6 +2,8 @@
 
 \input{../preamble.tex}
 
+\usepackage{pgffor}
+
 \title[Dig-In:]{Introduction to multiple integrals}
 
 \begin{document}
@@ -10,14 +12,53 @@ NO TITLE YET.
 \end{abstract}
 \maketitle
 
-BY USING THE 3D PLOT WITH A RESTRICTED DOMAIN, A FOR LOOP CAN PRODUCE THE BOXES THAT APPROX INTEGRAL
-
 
 Now we move on to finding \textit{volumes} under surfaces. We start by
-only considering simple regions.
+only considering simple regions, by this we mean rectangles.
 
 \section{Integrals over trivial regions}
 
+Suppose you have a function $F:\R^2\to\R$. A graph of this function is
+a surface in $\R^3$, for example:
+\begin{image}
+  \begin{tikzpicture}
+    \begin{axis}%
+      [width=175pt,height=200pt,
+        tick label style={font=\scriptsize},axis on top,
+	axis lines=center,
+	view={110}{25},
+	name=myplot,
+	%xtick=\empty,
+	%ytick={5},
+	%ztick={.7,-.7},
+	minor xtick=1,
+	minor ytick=1,
+	ymin=-1.2,ymax=1.2,
+	xmin=-.5,xmax=2.5,
+	zmin=-.1, zmax=2.1,
+	every axis x label/.style={at={(axis cs:\pgfkeysvalueof{/pgfplots/xmax},0,0)},xshift=-1pt,yshift=-4pt},
+	xlabel={\scriptsize $x$},
+	every axis y label/.style={at={(axis cs:0,\pgfkeysvalueof{/pgfplots/ymax},0)},xshift=5pt,yshift=-3pt},
+	ylabel={\scriptsize $y$},
+	every axis z label/.style={at={(axis cs:0,0,\pgfkeysvalueof{/pgfplots/zmax})},xshift=0pt,yshift=4pt},
+	zlabel={\scriptsize $z$},
+        colormap/cool,
+      ]
+      %% Surface %% 12 x 16
+      \addplot3[domain=0:2,y domain=-1:1,mesh,samples=13,samples y=17,very thin,z buffer=sort] {-.5*(x-1)^2-.5*(y)^2+2};
+    \end{axis}
+  \end{tikzpicture}
+\end{image}
+
+If we want to compute the (signed) volume of this surface, over a
+rectangular region, say the rectangle defined by
+\[
+R = \{(x,y):\text{$a\le x\le b$ and $c\le y\le d$}\}
+\]
+we break $R$ in to arbitraryly small rectangles, say $m$ rectangles in
+the $x$-direction, and $n$ rectangles in the $y$-direction, and make a
+box of height $F(x_i*,y_j*)$ where $(x_i^*,y_j*)$ is a point in
+$(i,j)$-rectangle. Finally we sum the volumes of these boxes together:
 \begin{image}
   \begin{tikzpicture}
     \begin{axis}%
@@ -131,6 +172,66 @@ only considering simple regions.
   \end{tikzpicture}
 \end{image}
 
+Computing the volume of each of these boxes approximates the (signed) volume enclosed by the surface: 
+
+\begin{image}
+\begin{tikzpicture}
+    \begin{axis}%
+      [width=175pt,height=200pt,
+        tick label style={font=\scriptsize},axis on top,
+	axis lines=center,
+	view={110}{25},
+	name=myplot,
+	%xtick=\empty,
+	%ytick={5},
+	%ztick={.7,-.7},
+	minor xtick=1,
+	minor ytick=1,
+	ymin=-1.2,ymax=1.2,
+	xmin=-.5,xmax=2.5,
+	zmin=-.1, zmax=2.1,
+	every axis x label/.style={at={(axis cs:\pgfkeysvalueof{/pgfplots/xmax},0,0)},xshift=-1pt,yshift=-4pt},
+	xlabel={\scriptsize $x$},
+	every axis y label/.style={at={(axis cs:0,\pgfkeysvalueof{/pgfplots/ymax},0)},xshift=5pt,yshift=-3pt},
+	ylabel={\scriptsize $y$},
+	every axis z label/.style={at={(axis cs:0,0,\pgfkeysvalueof{/pgfplots/zmax})},xshift=0pt,yshift=4pt},
+	zlabel={\scriptsize $z$},
+        colormap/cool,
+      ]
+      \foreach \j in {0,.125,...,1.875}{
+       \foreach \i in {0,0.1667,...,1.8333}{        
+        %% RIGHT SIDE
+        \addplot3[opacity=1,surf,domain=0+\i:.1667+\i,y domain=0:{-.5*(((0+\i +.1667+\i )/2)-1)^2-.5*((-1+\j-.875+\j)/2)^2+2},samples=2,samples y=2,very thin,z buffer=sort] (x,-.875+\j,y);
+        %% FRONT
+        \addplot3[opacity=1,surf,domain=-1+\j:-.875+\j,y domain=0:{-.5*(((0+\i +.1667+\i )/2)-1)^2-.5*((-1+\j-.875+\j)/2)^2+2},samples=2,samples y=2,very thin,z buffer=sort] (.1667+\i,x,y);
+        %% TOP
+        \addplot3[opacity=1,surf,domain=0+\i:.1667+\i,y domain=-1+\j:-.875+\j,samples=2,samples y=2,very thin,z buffer=sort] (x,y, {-.5*(((0+\i +.1667+\i )/2)-1)^2-.5*((-1+\j-.875+\j)/2)^2+2});
+      }}
+    \end{axis}
+\end{tikzpicture}
+\end{image}
+
+Letting the number of rectangles in the $x$-direction and
+$y$-direction go to infinity, we find the exact volume enclosed by our
+surface when bounded by the region $R$.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 In the diagram above, the volume enclosed by the surface is
 \[
 A
@@ -148,6 +249,9 @@ A
 \section{Integrals with trivial integrands}
 
 
+\[
+\int_R \d A = \lim_{m\to \infty}\lim_{n\to\infty}\sum_{i=1}^m\sum_{j=1}^n \chi_{R}(x)\Delta A
+\]
 
 
 \end{document}
