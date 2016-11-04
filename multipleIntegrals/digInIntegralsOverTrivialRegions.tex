@@ -547,7 +547,7 @@ How do we compute a triple integral with calculus? We use Fubini's theorem again
   \]
   Then:
   \[
-  \int_R F(x,y,z) \d A  = \int_a^b\int_c^d\int_p^q F(x,y)\d z \d y\d x.
+  \int_R F(x,y,z) \d V  = \int_a^b\int_c^d\int_p^q F(x,y,z)\d z \d y\d x.
   \]
   As before, all \textit{six} combinations of orders of integration
   will work, provided that the bounds are changed appropriately. 
@@ -555,22 +555,23 @@ How do we compute a triple integral with calculus? We use Fubini's theorem again
 
 \begin{question}
   Let $F$ be a continuous function on the region $R$.
-  \[
-  \int_a^b\int_c^d\int_p^q F(x,y)\d z \d y\d x =
-  \int_{\answer{p}}^{\answer{q}}\int_a^{\answer{b}}
-  \int_{\answer{c}}^d F(x,y)\d \answer{y} \d \answer{x} \d \answer{z}
-  \]
+  \begin{align*}
+    \int_a^b\int_c^d\int_p^q &F(x,y,z)\d z \d y\d x \\
+    &= \int_{\answer{p}}^{\answer{q}}\int_a^{\answer{b}}
+    \int_{\answer{c}}^d F(x,y,z)\d \answer{y} \d \answer{x} \d \answer{z}
+  \end{align*}
   \begin{question}
     \begin{hint}
       \[
       \int_a^b f(x) \d x = - \int_b^a f(x) \d x
       \]
     \end{hint}
-    \[
-    \int_a^b\int_c^d\int_p^q F(x,y)\d z \d y\d x = \int_{\answer{c}}^{d}
+    \begin{align*}
+      \int_a^b\int_c^d\int_p^q &F(x,y,z)\d z \d y\d x \\
+      &= \int_{\answer{c}}^{d}
     \int_{\answer{b}}^{a}\int_{\answer{q}}^{\answer{p}}
-    F(x,y)\d \answer{z} \d \answer{x} \d \answer{y}
-    \]
+    F(x,y,z)\d \answer{z} \d \answer{x} \d \answer{y}
+    \end{align*}
   \end{question}
 \end{question}
 
