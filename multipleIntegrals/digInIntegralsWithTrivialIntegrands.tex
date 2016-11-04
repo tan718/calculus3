@@ -1,0 +1,38 @@
+\documentclass{ximera}
+
+\input{../preamble.tex}
+
+\outcom{Understand the definiton of a multiple integral.}
+
+\outcome{Use iterated integrals to compute multiple integrals.}
+
+\outcome{Apply Fubini's Theorem.}
+
+\title[Dig-In:]{Integrals with trivial integrands}
+
+\begin{document}
+\begin{abstract}
+  We study integrals over general regions, but simple integrands.
+\end{abstract}
+\maketitle
+
+
+Now we will allow the region we are integrating over to be complex,
+but in every case, our integrand, will be $1$.
+
+\subsection{Double integrals}
+
+
+\[
+\int_R \d A = \lim_{\substack{m\to\infty\\ n\to\infty}}\sum_{i=1}^m\sum_{j=1}^n \chi_{R}(x,y)\Delta x \Delta y
+\]
+
+\subsection{Triple integrals}
+
+\[
+\int_R \d V = \lim_{\substack{\l\to\infty\\ m\to\infty\\ n\to\infty}}\sum_{i=1}^\l\sum_{j=1}^m \sum_{k=1}^n\chi_{R}(x,y,z)\Delta x\Delta y \Delta z
+\]
+
+
+
+\end{document}
