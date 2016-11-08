@@ -14,7 +14,7 @@
 \maketitle
 
 Another way to generalize polar coordinates to three dimensions is
-with \textit{cylindrical} coordinates.
+with \textit{spherical} coordinates.
 
 \begin{definition}
   An ordered triple consisting of a radius, an angle, and a height
@@ -48,6 +48,8 @@ with \textit{cylindrical} coordinates.
         \addplot3[->,domain=0:45,samples y=0] ({.3*cos(x)},{.3*sin(x)},0); %% angle for theta
         \addplot3[->,domain=0:27,samples y=0] ({.3*cos(45)*sin(x)},{.3*sin(45)*sin(x)},{.3*cos(x)}); %% angle for phi
         \addplot3[domain=0:2.24,samples y=0] ({x*cos(45)*sin(27)},{x*sin(45)*sin(27)},{x*cos(27)}); %% line for rho
+
+        
         \addplot3[domain=0:1,samples y=0,dashed] ({x*cos(45)},{x*sin(45)},0); %% line for theta
         \addplot3[domain=0:2,samples y=0,dashed] ({1*cos(45)},{1*sin(45)},x); %% line for z
         \node at (axis cs:{.5*cos(22.5)},{.5*sin(22.5)},0) {$\theta$};
@@ -60,11 +62,11 @@ with \textit{cylindrical} coordinates.
       \end{axis}
     \end{tikzpicture}
   \end{image}
-  Coordinates of this type are called \dfn{cylindrical coordinates}.
+  Coordinates of this type are called \dfn{spherical coordinates}.
 \end{definition}
 
 \begin{question}
-  Conside the point $(2, \pi/3,5)$ in cylindrical coordinates. What is
+  Conside the point $(2, \pi/3,5)$ in spherical coordinates. What is
   this point when expressed in $(x,y,z)$-coordinates?
   \begin{prompt}
     \[
@@ -72,8 +74,8 @@ with \textit{cylindrical} coordinates.
     \]
   \end{prompt}
   \begin{question}
-    Conside the point $(1, -1,5)$ in $(x,y,z)$-coordinates. What is this
-    point when expressed in cylindrical coordinates?
+    Consider the point $(1, -1,5)$ in $(x,y,z)$-coordinates. What is this
+    point when expressed in spherical coordinates?
     \begin{prompt}
       \[
       (r,\theta,z) = (\answer{\sqrt{2}}, \answer{7\pi/4},\answer{5})
@@ -82,7 +84,7 @@ with \textit{cylindrical} coordinates.
   \end{question}
 \end{question}
 
-\section{Triple intgerals in cylindrical coordiantes}
+\section{Triple integrals in spherical coordinates}
 
 If you want to evaluate this integral
 \[
@@ -94,7 +96,7 @@ with some iterated integral:
 \[
 \int_a^b\int_c^d\int_p^q F(x,y,z) \d y \d x\d z
 \]
-Now consider representing a region $R$ with cylindrical coordinates
+Now consider representing a region $R$ in spherical coordinates
 and let's express $\d V$ in terms of $\d r$, $\d\theta$, and $\d z$. To do this, consider the diagram below:
   \begin{image}
     \begin{tikzpicture}
@@ -118,65 +120,81 @@ and let's express $\d V$ in terms of $\d r$, $\d\theta$, and $\d z$. To do this,
         colormap/cool,
         ]
         \filldraw [fill=fill1]
-        (axis cs:{1*cos(60)},{1*sin(60)},1.7)--
-        (axis cs:{1*cos(70)},{1*sin(70)},1.7)--
-        (axis cs:{1*cos(70)},{1*sin(70)},2)--
-        (axis cs:{.8*cos(70)},{.8*sin(70)},2)--
-        (axis cs:{.8*cos(60)},{.8*sin(60)},2)--
-        (axis cs:{.8*cos(60)},{.8*sin(60)},1.7);
+        (axis cs:{1.8*cos(60)*sin(30)},{1.8*sin(60)*sin(30)},{1.8*cos(30)})--
+        (axis cs:{1.8*cos(70)*sin(30)},{1.8*sin(70)*sin(30)},{1.8*cos(30)})--
+        (axis cs:{2.24*cos(70)*sin(30)},{2.24*sin(70)*sin(30)},{2.24*cos(30)})--
+        (axis cs:{2.24*cos(70)*sin(22)},{2.24*sin(70)*sin(22)},{2.24*cos(22)})--
+        (axis cs:{2.24*cos(60)*sin(22)},{2.24*sin(60)*sin(22)},{2.24*cos(22)})--
+        (axis cs:{1.8*cos(60)*sin(22)},{1.8*sin(60)*sin(22)},{1.8*cos(22)});
 
         \addplot3[->,domain=60:70,samples y=0] ({.3*cos(x)},{.3*sin(x)},0); %% dtheta
         \addplot3[domain=60:70,samples y=0,dashed] ({.8*cos(x)},{.8*sin(x)},0); %% dtheta
         \addplot3[domain=60:70,samples y=0] ({1*cos(x)},{1*sin(x)},0); %% dtheta
-        \addplot3[domain=60:70,samples y=0,dashed] ({.8*cos(x)},{.8*sin(x)},1.7); %% dtheta
-        \addplot3[domain=60:70,samples y=0] ({1*cos(x)},{1*sin(x)},1.7); %% dtheta
-        \addplot3[domain=60:70,samples y=0] ({.8*cos(x)},{.8*sin(x)},2); %% dtheta
-        \addplot3[domain=60:70,samples y=0] ({1*cos(x)},{1*sin(x)},2); %% dtheta
+        %% \addplot3[domain=60:70,samples y=0,dashed] ({.8*cos(x)},{.8*sin(x)},1.7); %% dtheta
+        %% \addplot3[domain=60:70,samples y=0] ({1*cos(x)},{1*sin(x)},1.7); %% dtheta
+        %% \addplot3[domain=60:70,samples y=0] ({.8*cos(x)},{.8*sin(x)},2); %% dtheta
+        %% \addplot3[domain=60:70,samples y=0] ({1*cos(x)},{1*sin(x)},2); %% dtheta
+
+        \addplot3[->,domain=22:30,samples y=0] ({.3*cos(60)*sin(x)},{.3*sin(60)*sin(x)},{.3*cos(x)}); %% angle for phi
+        \addplot3[domain=0:2.24,samples y=0] ({x*cos(60)*sin(22)},{x*sin(60)*sin(22)},{x*cos(22)}); %% line for rho
+        \addplot3[domain=0:2.24,samples y=0,dashed] ({x*cos(70)*sin(22)},{x*sin(70)*sin(22)},{x*cos(22)}); %% line for rho
+        \addplot3[domain=0:2.24,samples y=0] ({x*cos(60)*sin(30)},{x*sin(60)*sin(30)},{x*cos(30)}); %% line for rho
+        \addplot3[domain=0:2.24,samples y=0] ({x*cos(70)*sin(30)},{x*sin(70)*sin(30)},{x*cos(30)}); %% line for rho
+
+        \addplot3[domain=22:30,samples y=0] ({1.8*cos(60)*sin(x)},{1.8*sin(60)*sin(x)},{1.8*cos(x)}); %% angle for phi
+        \addplot3[domain=22:30,samples y=0,dashed] ({1.8*cos(70)*sin(x)},{1.8*sin(70)*sin(x)},{1.8*cos(x)}); %% angle for phi
+        \addplot3[domain=22:30,samples y=0] ({2.24*cos(60)*sin(x)},{2.24*sin(60)*sin(x)},{2.24*cos(x)}); %% angle for phi
+        \addplot3[domain=22:30,samples y=0] ({2.24*cos(70)*sin(x)},{2.24*sin(70)*sin(x)},{2.24*cos(x)}); %% angle for phi
+
+        \addplot3[domain=60:70,samples y=0] ({2.24*cos(x)*sin(22)},{2.24*sin(x)*sin(22)},{2.24*cos(22)}); %% angle for theta/box/top
+        \addplot3[domain=60:70,samples y=0] ({2.24*cos(x)*sin(30)},{2.24*sin(x)*sin(30)},{2.24*cos(30)}); %% angle for theta/box/top
+        \addplot3[domain=60:70,samples y=0] ({1.8*cos(x)*sin(30)},{1.8*sin(x)*sin(30)},{1.8*cos(30)}); %% angle for theta/box/top
+        \addplot3[domain=60:70,samples y=0,dashed] ({1.8*cos(x)*sin(22)},{1.8*sin(x)*sin(22)},{1.8*cos(22)}); %% angle for theta/box/top
+
+        
         \addplot3[domain=0:1,samples y=0] ({x*cos(60)},{x*sin(60)},0); %% r
         \addplot3[domain=0:1,samples y=0] ({x*cos(70)},{x*sin(70)},0); %% r
-        \addplot3[domain=.8:1,samples y=0,dashed] ({x*cos(70)},{x*sin(70)},1.7); %% dr
-        \addplot3[domain=.8:1,samples y=0] ({x*cos(60)},{x*sin(60)},1.7); %% dr
-        \addplot3[domain=.8:1,samples y=0] ({x*cos(60)},{x*sin(60)},2); %% dr
-        \addplot3[domain=.8:1,samples y=0] ({x*cos(70)},{x*sin(70)},2); %% dr
-        \addplot3[domain=0:2,samples y=0] ({.8*cos(60)},{.8*sin(60)},x); %% z and dz
-        \addplot3[domain=0:2,samples y=0,dashed] ({.8*cos(70)},{.8*sin(70)},x); %% z and dz
-        \addplot3[domain=0:2,samples y=0] ({1*cos(60)},{1*sin(60)},x); %% z and dz
-        \addplot3[domain=0:2,samples y=0] ({1*cos(70)},{1*sin(70)},x); %% z and dz
         
 
         \node[left] at (axis cs:{.3*cos(60)},{.3*sin(60)},0) {$\d\theta$};
-        \node[below left] at (axis cs:{.9*cos(62)},{.9*sin(62)},0) {$\d r$};
-        \node[below] at (axis cs:{1*cos(65)},{1*sin(65)},0) {$r\d\theta$};
-        \node[right] at (axis cs:{1*cos(70)},{1*sin(70)},1.85) {$\d z$};
-        \node[above,penColor] at (axis cs:{.9*cos(65)},{.9*sin(65)},2.2) {$\d V$};
+        \node[below] at (axis cs:{1.8*cos(65)*sin(35)},{1.8*sin(65)*sin(35)},{1.8*cos(35)}) {$\rho\sin(\varphi)\d\theta$};
+        \node[below right] at (axis cs:{2*cos(70)*sin(30)},{2*sin(70)*sin(30)},{2*cos(30)}) {$\d \rho$};
+        \node[right] at (axis cs:{2.24*cos(75)*sin(24)},{2.24*sin(75)*sin(24)},{2.24*cos(24}) {$\rho \d \varphi$};
+        \node[above,penColor] at (axis cs:{2.24*cos(65)*sin(22)},{2.24*sin(65)*sin(22)},{2.24*cos(22)}) {$\d V$};
+
+        \draw [->] (axis cs:{1.8*cos(60)*sin(35)},{1.8*sin(60)*sin(35)},{1.8*cos(35)})--(axis cs:{1.8*cos(65)*sin(30)},{1.8*sin(65)*sin(30)},{1.8*cos(30)});
+        \draw [->] (axis cs:{2*cos(70)*sin(32)},{2*sin(70)*sin(32)},{2*cos(32)})--(axis cs:{2*cos(70)*sin(30)},{2*sin(70)*sin(30)},{2*cos(30)});
+        \draw [->] (axis cs:{2.24*cos(73)*sin(26)},{2.24*sin(73)*sin(26)},{2.24*cos(26})--(axis cs:{2.24*cos(70)*sin(26)},{2.24*sin(70)*sin(26)},{2.24*cos(26});
+        
       \end{axis}
     \end{tikzpicture}
   \end{image}
 Here we see 
 \begin{align*}
-\d V &= \d r \cdot (r \d \theta)\cdot \d z \\
-&= \d z\ r \d r \d \theta.
+\d V &= (\rho\sin(\varphi)\d\theta)\cdot(\rho \d \varphi)\cdot (\d \rho)\\
+&= \rho^2 \sin(\varphi)\d\rho\d\varphi\d\theta.
 \end{align*}
+We may now state at theorem:
 \begin{theorem}
   Let $F:\R^3\to\R$ be continuous on the region
   \[
-  R=\{(r,\theta,z):\text{$\alpha\leq\theta\leq\beta$, $g_1(\theta)\leq r\leq g_2(\theta)$, $G_1(x,y)\le z\le G_2(x,y)$}\}
+  R=\{(\rho,\varphi,\theta):\text{$\alpha\leq\theta\leq\beta$, $a\leq \varphi\leq b$, $G_1(\varphi,\theta)\le \rho\le G_2(\varphi,\theta)$}\}
   \]
   Then: 
   \[
-  \int_R F(r,\theta,z)\d V = \int_\alpha^\beta\int_{g_1(\theta)}^{g_2(\theta)} \int_{G_1(r\cos(\theta),r\sin(\theta))}^{G_2(r\cos(\theta),r\sin(\theta))}F(r,\theta,z) \d z \ r\d r\d \theta.
+  \int_R F(\rho,\varphi,\theta)\d V = \int_\alpha^\beta\int_{a}^{b} \int_{G_1(\varphi,\theta)}^{G_2(\varphi,\theta)}F(\rho,\varphi,\theta) \rho^2 \sin(\varphi)\d\rho\d\varphi\d\theta.
   \]
 \end{theorem}
 
 \begin{question}
-  Write down a triple integral in cylindrical coordinates that will
-  compute the volume of a cylinder of radius $a$ and height $h$.
+  Write down a triple integral in spherical coordinates that will
+  compute the volume of a sphere of radius $a$.
   \begin{prompt}
   \[
-  \int_R \d V = \int_{\answer[given]{0}}^{\answer[given]{2\pi}}
-  \int_{\answer[given]{0}}^{\answer[given]{a}}
-  \int_{\answer[given]{0}}^{\answer[given]{h}}
-  \d z \ r \d r \d \theta 
+  \int_R \d V = \int_{\answer{0}}^{\answer{2\pi}}
+  \int_{\answer{0}}^{\answer{\pi}}
+  \int_{\answer{0}}^{\answer{a}}
+  \rho^2 \sin(\varphi)\d\rho\d\varphi\d\theta
   \]
   \end{prompt}
 \end{question}
@@ -188,7 +206,7 @@ Here we see
   \begin{image}
     dsfadf
   \end{image}
-  Use a triple integral in cylindrical coordiantes to compute the
+  Use a triple integral in spherical coordinates to compute the
   volume of this cone cone of height $h$ where the radius of the base is $a$.
 \end{example}
 
