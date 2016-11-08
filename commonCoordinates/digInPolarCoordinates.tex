@@ -35,11 +35,11 @@ parametric equations of this form, it is common to notate
 and state that we are working in \textit{polar coordinates}.
 
 \begin{definition}
-  An ordered pair consisting of a radius and and angle $(r,\theta)$
+  An ordered pair consisting of a radius and an angle $(r,\theta)$
   can be graphed as
   \begin{align*}
-    x = r\cdot \cos(\theta)\\
-    y = r\cdot \sin(\theta)
+    x &= r\cdot \cos(\theta)\\
+    y &= r\cdot \sin(\theta)
   \end{align*}
   meaning:
   \begin{image}[2in]
@@ -92,7 +92,7 @@ which can be interpreted as
 \end{quote}
 Of course if you want to evaluate the integral (and honestly, who
 doesn't?) you have to change $R$ to a region defined in $(x,y)$-coordinates,
-and change in $\d A$ to $\d x\d y$ or $\d y\d x$ leaving interated integrals
+and change $\d A$ to $\d x\d y$ or $\d y\d x$ leaving interated integrals
 \[
 \int_a^b\int_c^d F(x,y) \d y \d x\quad\text{and}\quad \int_c^d \int_a^b F(x,y) \d x\d y
 \]
@@ -217,7 +217,7 @@ $\alpha\leq\theta\leq\beta$ that describe $R$. Let's state this as a
 theorem:
 
 \begin{theorem}
-  Let $F$ be continuous on the region
+  Let $F:\R^2\to\R$ be continuous on the region
   \[
   R=\{(r,\theta):\text{$\alpha\leq\theta\leq\beta$ and $g_1(\theta)\leq r\leq g_2(\theta)$}\}
   \]
