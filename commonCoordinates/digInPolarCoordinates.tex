@@ -239,7 +239,8 @@ theorem:
 \end{question}
 
 \begin{question}
-  Consider the polar function described below:
+  Below we give the values of a function $F:\R^2\to \R$ on a polar
+  region. 
   \begin{image}
     \begin{tikzpicture}
       \begin{polaraxis}[width=5in,
@@ -275,7 +276,9 @@ theorem:
       \end{polaraxis}
     \end{tikzpicture}
   \end{image}
-  Let
+  Let $F(r,\theta)$ be determined by the ``outer-value'' of $r$ and
+  the ``larger-angle'' of $\theta$ for the region containing the value
+  for $F$. For example: $F(0.5,\pi/4) = 4$ and $F(1,\pi/4) = 2$.  Let
   \[
   R = \{(r,\theta): \text{$\pi/4 \le \theta \le 5\pi/4$ and $0\le r\le 1$}\}
   \]
@@ -283,7 +286,7 @@ theorem:
   \[
   \int_R F(r,\theta) \d A
   \begin{prompt}
-    = \answer{5}
+    = \answer{5\pi/8}
   \end{prompt}
   \]
   \begin{hint}
@@ -291,8 +294,6 @@ theorem:
     \[
     \int_R F(r,\theta)\d A = \int_{\pi/4}^{5\pi/4}\int_{0}^1 F(r,\theta) r\d r\d \theta.
     \]
-    Moreover, let $r$ be determined by the ``outer-value'' of $r$ for
-    the box containing the value for $F$.
   \end{hint}
 \end{question}
 
