@@ -13,38 +13,39 @@
 In this section we will continue to set-up (and sometimes compute)
 double and triple integrals and think about what these mean.
 
-\subsection{Triangles}
+\section{Triangles}
 
 \begin{example}
-  Let $T$ be the triangle with vertices $(0,0)$ and $(\pi,0)$ and $(\pi,\pi)$.  Then we can write $T$ as
+  Let $T$ be the triangle with vertices $(0,0)$ and $(\pi,0)$ and
+  $(\pi,\pi)$.  Then we can write $T$ as
   \[
-    T = \{ (x,y) \in \mathbb{R}^2 : 0 \leq y \leq \pi \mbox{ and } \answer[given]{y} \leq x \leq \answer[given]{\pi} \},
+  T = \{ (x,y)  : 0 \leq y \leq \pi \text{ and } \answer[given]{y} \leq x \leq \answer[given]{\pi} \},
   \]
   but we could also write
   \[
-    T = \{ (x,y) \in \mathbb{R}^2 : 0 \leq x \leq \pi \mbox{ and } \answer[given]{0} \leq y \leq \answer[given]{x} \}.
+    T = \{ (x,y)  : 0 \leq x \leq \pi \text{ and } \answer[given]{0} \leq y \leq \answer[given]{x} \}.
   \]
-  Which of these might be a better choice to show that $\displaystyle\int_T 2 \sin (x^2) \, dA = \answer[given]{1 - \cos(\pi^2)}$?
+  Which of these might be a better choice to show that $\displaystyle\int_T 2 \sin (x^2) \d A = \answer[given]{1 - \cos(\pi^2)}$?
   
   \begin{explanation}
     Based on these two different descriptions of $T$, we can evaluate
-    the double integral $\int_T 2 \sin (x^2) \, dA$ through two rather
+    the double integral $\int_T 2 \sin (x^2) \d A$ through two rather
     different looking iterated integrals.  To wit,
     \begin{align*}
-      \int_T 2 \sin (x^2) \, dA 
-      &= \int_{y = \answer{0}}^{\answer{\pi}} \int_{x = y}^\pi 2 \sin (x^2) \, dx \, dy \\
-      &= \int_{x = 0}^\pi \int_{y = \answer{0}}^{\answer{x}} 2 \sin (x^2) \, dy \, dx.
+      \int_T 2 \sin (x^2) \d A 
+      &= \int_{y = \answer{0}}^{\answer{\pi}} \int_{x = y}^\pi 2 \sin (x^2) \d x \d y \\
+      &= \int_{x = 0}^\pi \int_{y = \answer{0}}^{\answer{x}} 2 \sin (x^2) \d y \d x.
     \end{align*}
     If we were to use the first description of $T$, we might have
     trouble finding an $x$-antiderivative of $\sin (x^2)$, so let's
     try the second description.  In that case,
     \[
-      \int_T 2 \sin (x^2) \, dA = \int_{x = 0}^\pi 2 x \sin (x^2) \, dx,
+      \int_T 2 \sin (x^2) \d A = \int_{x = 0}^\pi 2 x \sin (x^2) \d x,
     \]
-    nd now let $u = x^2$ so $du = \answer{2x} \, dx$, so 
+    nd now let $u = x^2$ so $du = \answer{2x} \d x$, so 
     \begin{align*}
-      \int_T 2 \sin (x^2) \, dA 
-      &= \int_{u = 0}^{\pi^2} \sin u \, du \\
+      \int_T 2 \sin (x^2) \d A 
+      &= \int_{u = 0}^{\pi^2} \sin u \d u \\
       &= \left( \answer{- \cos u} \right)_{u=0}^{\pi^2} \\
       &= \answer{1 - \cos (\pi^2)}.
     \end{align*}
@@ -59,13 +60,13 @@ double and triple integrals and think about what these mean.
   $\answer{\pi}$, so the area of the region $T$ is $\answer{\pi^2/2}$
   which is about $5$ square units.  In other words,
   \[
-    \int_T 1 \, dA = \answer{\pi^2/2} \approx 5,
+    \int_T 1 \d A = \answer{\pi^2/2} \approx 5,
   \]
   which also means that
   \[
-    \int_T 2 \, dA = \answer{\pi^2} \approx 10.
+    \int_T 2 \d A = \answer{\pi^2} \approx 10.
   \]
-  We are claiming that $\int_T 2 \sin (x^2) \, dA$ equals
+  We are claiming that $\int_T 2 \sin (x^2) \d A$ equals
   $1 - \cos (\pi^2)$, which is about $1.9$.
 
   When $0 \leq x \leq \pi$, the value of $\sin (x^2)$ is sometimes
@@ -75,25 +76,25 @@ double and triple integrals and think about what these mean.
   \]
   and this inequality then implies that
   \[
-    \left| \int_T 2 \sin (x^2) \, dA \right| \leq \left| \int_T 2 \, dA \right| \answer{\pi^2}.
+    \left| \int_T 2 \sin (x^2) \d A \right| \leq \left| \int_T 2 \d A \right| \answer{\pi^2}.
   \]
   So $1.9$ is certainly in the ballpark of plausibility.
 \end{question}
 
-\subsection{Polar coordinates}
+\section{Polar coordinates}
 
 \begin{example}
-  Evaluate the integral $\int_Q \left(x + y\right) \, dA$ where $Q$ is the quarter circle,
+  Evaluate the integral $\int_Q \left(x + y\right) \d A$ where $Q$ is the quarter circle,
   \[
-    Q = \{ (x,y) \in \R^2 : x \geq 0,\hspace{1ex} y \geq 0,\hspace{1ex} x^2 + y^2 \leq 1 \}.
+    Q = \{ (x,y)  : x \geq 0,\hspace{1ex} y \geq 0,\hspace{1ex} x^2 + y^2 \leq 1 \}.
   \]
 
   \begin{explanation}
     We use \wordChoice{\choice{rectangular}\choice[correct]{polar}} coordinates.
     \begin{align*}
-      \int_Q \left(x + y\right) \, dA
-      &= \int_{\theta=\answer{0}}^{\answer{\pi/2}} \int_{r=0}^{1} (r \cos \theta + r \sin \theta) \, r \, dr \, d\theta \\  
-      &= \left( \int_{r=0}^{1} r^2 \, dr \right) \cdot \left( \int_{\theta=0}^{\pi/2} (\cos \theta + \sin \theta) \, d\theta \right) \\  
+      \int_Q \left(x + y\right) \d A
+      &= \int_{\theta=\answer{0}}^{\answer{\pi/2}} \int_{r=0}^{1} (r \cos \theta + r \sin \theta) \, r \d r \d \theta \\  
+      &= \left( \int_{r=0}^{1} r^2 \d r \right) \cdot \left( \int_{\theta=0}^{\pi/2} (\cos \theta + \sin \theta) \d \theta \right) \\  
       &= \frac{1}{3}  \cdot \left(\sin \theta - \cos \theta\right)_{\theta=0}^{\pi/2} \\
       &= \frac{1}{3} \cdot 2 = \answer{2/3}.
     \end{align*}
@@ -103,15 +104,15 @@ double and triple integrals and think about what these mean.
 \begin{question}
   Again consider the region
   \[
-    Q = \{ (x,y) \in \R^2 : x \geq 0,\hspace{1ex} y \geq 0,\hspace{1ex} x^2 + y^2 \leq 1 \}.
+    Q = \{ (x,y)  : x \geq 0,\hspace{1ex} y \geq 0,\hspace{1ex} x^2 + y^2 \leq 1 \}.
   \]
   How does
   \[
-    A = \int_Q x \, dA  
+    A = \int_Q x \d A  
   \]
   compare to 
   \[
-    B = \int_Q y \, dA?
+    B = \int_Q y \d A?
   \]
 
   \begin{multipleChoice}
@@ -123,30 +124,30 @@ double and triple integrals and think about what these mean.
   \begin{feedback}[correct]
     The region $Q$ is symmetric across the line $x = y$.  As a consequence of this, we might have computed that
     \[
-      A = \int_Q x \, dA = 1/3,
+      A = \int_Q x \d A = 1/3,
     \]
     and likewise $B = 1/3$.  Because of this---and the fact that the integral of a sum is the sum of integrals---we could have deduced
     \begin{align*}
       A + B &= (1/3) + (1/3) \\
-            &= \int_Q x \, dA + \int_Q y \, dA \\
-            &= \int_Q (x+y) \, dA = 2/3.
+            &= \int_Q x \d A + \int_Q y \d A \\
+            &= \int_Q (x+y) \d A = 2/3.
     \end{align*}
   \end{feedback}
 \end{question}
 
-\subsection{Spheres and hemispheres}
+\section{Spheres and hemispheres}
 
 \begin{example}
-  Let $B$ be the region $B = \{ (x,y,z) \in \mathbb{R}^3 : x^2 + y^2 + z^2 \leq 1\}$.
+  Let $B$ be the region $B = \{ (x,y,z)  : x^2 + y^2 + z^2 \leq 1\}$.
 
-  Explain why $\displaystyle\iiint_B z^3 \, dV = \answer[given]{0}$.
+  Explain why $\displaystyle\iiint_B z^3 \d V = \answer[given]{0}$.
 
   \begin{explanation}
     This integral vanishes because integral over the northern
     hemisphere of $B$ will cancel the contribution from the southern
     hemisphere of $B$.
 
-    Consider the function $f : \mathbb{R}^3 \to \mathbb{R}^3$ given by
+    Consider the function $f : \R^3 \to \R^3$ given by
     $f(x,y,z) = (x,y,-z)$.  This function exchanges the northern and
     southern hemispheres, but the effect of $f$ on the integrand is to
     negate it!
@@ -154,20 +155,20 @@ double and triple integrals and think about what these mean.
 \end{example}
 
 \begin{example}
-  Let $H$ be the region $H = \{ (x,y,z) \in \mathbb{R}^3 : x^2 + y^2 + z^2 \leq 1 \mbox{ and } z \geq 0 \}$.
+  Let $H$ be the region $H = \{ (x,y,z)  : x^2 + y^2 + z^2 \leq 1 \text{ and } z \geq 0 \}$.
 
-  Show that $\displaystyle\int_H z^3 \, dV = \answer[given]{\pi/12}$.
+  Show that $\displaystyle\int_H z^3 \d V = \answer[given]{\pi/12}$.
 
   \begin{explanation}
     Unlike the previous example, this does not vanish.
 
     We use \wordChoice{\choice{cylindrical}\choice[correct]{spherical}} coordinates.
     \begin{align*}
-      \int_D z^3 \, dV
-      &= \int_{\theta=0}^{2\pi} \int_{\varphi=0}^{\pi/2} \int_{r = 0}^1 (r \cos \varphi)^3 \, r^2 \sin \varphi \, dr \, d\varphi \, d\theta \\
-      &= \int_{\theta=0}^{2\pi} \int_{\varphi=0}^{\pi/2} \int_{r = 0}^1 r^5 \cos^3 \varphi \sin \varphi \, dr \, d\varphi \, d\theta \\
-      &= \left( \int_{\theta=0}^{2\pi} d\theta \right) \left(\int_{\varphi=0}^{\pi/2} \cos^3 \varphi \sin \varphi \, d\varphi \right) \left( \int_{r = 0}^1 r^5 \, dr \right) \\
-      &= 2 \pi \left(\int_{\varphi=0}^{1} u^3 \, du \right) \frac{1}{6} \\
+      \int_D z^3 \d V
+      &= \int_{\theta=0}^{2\pi} \int_{\varphi=0}^{\pi/2} \int_{r = 0}^1 (r \cos \varphi)^3 \, r^2 \sin \varphi \d r \d \varphi \d \theta \\
+      &= \int_{\theta=0}^{2\pi} \int_{\varphi=0}^{\pi/2} \int_{r = 0}^1 r^5 \cos^3 \varphi \sin \varphi \d r \d \varphi \d \theta \\
+      &= \left( \int_{\theta=0}^{2\pi} d\theta \right) \left(\int_{\varphi=0}^{\pi/2} \cos^3 \varphi \sin \varphi \d \varphi \right) \left( \int_{r = 0}^1 r^5 \d r \right) \\
+      &= 2 \pi \left(\int_{\varphi=0}^{1} u^3 \d u \right) \frac{1}{6} \\
       &= 2 \pi \frac{1}{4} \cdot \frac{1}{6} \\
       &= frac{\pi}{12}.
     \end{align*}
@@ -175,9 +176,10 @@ double and triple integrals and think about what these mean.
 \end{example}
 
 \begin{question}
-  Again let $H$ be the region $H = \{ (x,y,z) \in \mathbb{R}^3 : x^2 + y^2 + z^2 \leq 1 \mbox{ and } z \geq 0 \}$.
+  Again let $H$ be the region $H = \{ (x,y,z): \text{$x^2 + y^2 +
+  z^2 \leq 1$ and $z \geq 0 $}\}$.
 
-  Set $A = \displaystyle\int_H z^3 \, dV$ and $B = \displaystyle\int_H z^{10} \, dV$.  How does $A$ relate to $B$?
+  Set $A = \int_H z^3 \d V$ and $B = \displaystyle\int_H z^{10} \d V$.  How does $A$ relate to $B$?
 
   \begin{multipleChoice}
     \choice{$A < B$}
@@ -193,7 +195,7 @@ double and triple integrals and think about what these mean.
     integrals.
 
     This same kind of thinking can lend insight into the question of
-    what happens when $\displaystyle\int_H z^N \, dV$ when $N$ is very
+    what happens when $\displaystyle\int_H z^N \d V$ when $N$ is very
     large.
   \end{feedback}
 \end{question}
