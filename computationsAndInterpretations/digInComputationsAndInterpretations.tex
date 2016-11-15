@@ -25,29 +25,26 @@ double and triple integrals and think about what these mean.
   \[
     T = \{ (x,y)  : 0 \leq x \leq \pi \text{ and } \answer[given]{0} \leq y \leq \answer[given]{x} \}.
   \]
-  Which of these might be a better choice to show that $\displaystyle\int_T 2 \sin (x^2) \d A = \answer[given]{1 - \cos(\pi^2)}$?
-  
+  Which of these might be a better choice to compute
+  \[
+  \int_T 2 \sin(x^2) \d A?
+  \]
   \begin{explanation}
     Based on these two different descriptions of $T$, we can evaluate
     the double integral $\int_T 2 \sin (x^2) \d A$ through two rather
-    different looking iterated integrals.  To wit,
-    \begin{align*}
-      \int_T 2 \sin (x^2) \d A 
-      &= \int_{y = \answer{0}}^{\answer{\pi}} \int_{x = y}^\pi 2 \sin (x^2) \d x \d y \\
-      &= \int_{x = 0}^\pi \int_{y = \answer{0}}^{\answer{x}} 2 \sin (x^2) \d y \d x.
-    \end{align*}
+    different looking iterated integrals.  Write with me,
+    \[
+    \int_T 2 \sin (x^2) \d A =\begin{cases}
+    &= \int_{\answer{0}}^{\answer{\pi}} \int_{y}^\pi 2 \sin (x^2) \d x \d y \\
+    &= \int_{0}^\pi \int_{\answer{0}}^{\answer{x}} 2 \sin (x^2) \d y \d x.
+    \end{cases}
+    \]
     If we were to use the first description of $T$, we might have
     trouble finding an $x$-antiderivative of $\sin (x^2)$, so let's
     try the second description.  In that case,
-    \[
-      \int_T 2 \sin (x^2) \d A = \int_{x = 0}^\pi 2 x \sin (x^2) \d x,
-    \]
-    nd now let $u = x^2$ so $du = \answer{2x} \d x$, so 
     \begin{align*}
-      \int_T 2 \sin (x^2) \d A 
-      &= \int_{u = 0}^{\pi^2} \sin u \d u \\
-      &= \left( \answer{- \cos u} \right)_{u=0}^{\pi^2} \\
-      &= \answer{1 - \cos (\pi^2)}.
+    \int_T 2 \sin (x^2) \d A &= \int_{0}^\pi 2 x \sin (x^2) \d x\\
+    &= \answer[given]{1 - \cos (\pi^2)}.
     \end{align*}
   \end{explanation}
 \end{example}
@@ -60,11 +57,11 @@ double and triple integrals and think about what these mean.
   $\answer{\pi}$, so the area of the region $T$ is $\answer{\pi^2/2}$
   which is about $5$ square units.  In other words,
   \[
-    \int_T 1 \d A = \answer{\pi^2/2} \approx 5,
+  \int_T 1 \d A = \answer{\pi^2/2}
   \]
   which also means that
   \[
-    \int_T 2 \d A = \answer{\pi^2} \approx 10.
+  \int_T 2 \d A = \answer{\pi^2}.
   \]
   We are claiming that $\int_T 2 \sin (x^2) \d A$ equals
   $1 - \cos (\pi^2)$, which is about $1.9$.
@@ -72,11 +69,11 @@ double and triple integrals and think about what these mean.
   When $0 \leq x \leq \pi$, the value of $\sin (x^2)$ is sometimes
   positive, sometimes negative, but at least we know that
   \[
-    -2 \leq 2 \sin (x^2) \leq 2,
+  \answer{-2} \leq 2 \sin (x^2) \leq \answer{2},
   \]
   and this inequality then implies that
   \[
-    \left| \int_T 2 \sin (x^2) \d A \right| \leq \left| \int_T 2 \d A \right| \answer{\pi^2}.
+  \left| \int_T 2 \sin (x^2) \d A \right| \leq \left| \int_T 2 \d A \right| \answer{\pi^2}.
   \]
   So $1.9$ is certainly in the ballpark of plausibility.
 \end{question}
@@ -86,17 +83,17 @@ double and triple integrals and think about what these mean.
 \begin{example}
   Evaluate the integral $\int_Q \left(x + y\right) \d A$ where $Q$ is the quarter circle,
   \[
-    Q = \{ (x,y)  : x \geq 0,\hspace{1ex} y \geq 0,\hspace{1ex} x^2 + y^2 \leq 1 \}.
+  Q = \{ (x,y)  : \text{$x \geq 0$, $y \geq 0$, $x^2 + y^2 \leq 1$} \}.
   \]
-
+  
   \begin{explanation}
     We use \wordChoice{\choice{rectangular}\choice[correct]{polar}} coordinates.
     \begin{align*}
       \int_Q \left(x + y\right) \d A
-      &= \int_{\theta=\answer{0}}^{\answer{\pi/2}} \int_{r=0}^{1} (r \cos \theta + r \sin \theta) \, r \d r \d \theta \\  
-      &= \left( \int_{r=0}^{1} r^2 \d r \right) \cdot \left( \int_{\theta=0}^{\pi/2} (\cos \theta + \sin \theta) \d \theta \right) \\  
-      &= \frac{1}{3}  \cdot \left(\sin \theta - \cos \theta\right)_{\theta=0}^{\pi/2} \\
-      &= \frac{1}{3} \cdot 2 = \answer{2/3}.
+      &= \int_{\answer[given]{0}}^{\answer[given]{\pi/2}} \int_{0}^{1} (r \cos \theta + r \sin \theta) r \d r \d \theta \\
+      &= \int_{\answer[given]{0}}^{\answer[given]{\pi/2}} \eval{\answer[given]{\frac{r \cos \theta + r \sin \theta}{3}}}_0^1 \d r \d \theta \\  
+      &= \eval{\answer[given]{\frac{\sin \theta - \cos \theta}{3}}}_{0}^{\pi/2} \\
+      &= \answer[given]{2/3}.
     \end{align*}
   \end{explanation}
 \end{example}
