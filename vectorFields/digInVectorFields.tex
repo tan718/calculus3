@@ -2,6 +2,11 @@
 
 \input{../preamble.tex}
 
+\outcome{Define a vector field.}
+\outcome{Identify radial vector fields.}
+\outcome{Identify gradient vector fields.}
+\outcome{Find potential functions for gradient fields.}
+
 \title[Dig-In:]{Vector fields}
 
 \begin{document}
@@ -10,7 +15,10 @@
 \end{abstract}
 \maketitle
 
-Up to this point in our study of calculus, we have investigated functions
+\section{A review of functions}
+
+When we started on our journey exploring calculus, we investigated
+functions:
 \[
 f:\R \to \R
 \]
@@ -42,7 +50,7 @@ $(x,y)$-plane:
 %% \label{figure:sin-restricted}
 %% \end{figure*}
 \end{image}
-We've also studied vector valued functions
+We've also studied vector valued functions:
 \[
 \vec{f}:\R \to \R^n
 \]
@@ -115,9 +123,10 @@ Now we study vector-valued functions of several variables
 \]
 and we intererpert these as \textit{vector fields}, meaning for each
 point in the $(x,y)$-plane we have a vector.
-%%\begin{image}
-%% Need a graph
-%%\end{image}
+\begin{image}
+  \includegraphics{egField.png}
+\end{image}
+
 
 Let's be explicit
 \begin{definition}
@@ -129,7 +138,7 @@ Let's be explicit
 \end{definition}
 
 \begin{question}
-  Consider the following table describing a vector field:
+  Consider the following table describing a vector field $\vec{F}$:
   \begin{image}
     \begin{tikzpicture}[x=.75cm,y=.5cm]
       \draw (0,0) grid [step=1] (1,4);
@@ -182,24 +191,24 @@ Let's be explicit
       \node at (8,.5) {$-2\veci-2\vecj$};
     \end{tikzpicture}
   \end{image}
-  What is $F(1,7)$?
+  What is $\vec{F}(1,7)$?
   \begin{prompt}
     \[
-    F(1,7) = \vector{\answer{1},\answer{-1}}
+    \vec{F}(1,7) = \vector{\answer{1},\answer{-1}}
     \]
   \end{prompt}
   \begin{question}
-    What is $F(3,5)$?
+    What is $\vec{F}(3,5)$?
     \begin{prompt}
       \[
-      F(3,5) = \vector{\answer{0},\answer{2}}
+      \vec{F}(3,5) = \vector{\answer{0},\answer{2}}
       \]
     \end{prompt}
     \begin{question}
-      What is $F(2,6)$?
+      What is $\vec{F}(2,6)$?
       \begin{prompt}
         \[
-        F(2,6) = \vector{\answer{0},\answer{0}}
+        \vec{F}(2,6) = \vector{\answer{0},\answer{0}}
         \]
       \end{prompt}
     \end{question}
@@ -225,7 +234,7 @@ Let's be explicit
 
 
 
-Npw we give you a small taste of some important vector fields.
+Now we give you a small sampling of some important vector fields.
 
 
 \section{Radial fields}
@@ -244,7 +253,7 @@ Let's see some examples of radial vector fields:
 \begin{example}
   Here we see
   \[
-  \vec{G}(x,y) = \vector{\frac{-x}{x^2+y^2},\frac{-y}{(x^2+y^2)}}:
+  \vec{G}(x,y) = \vector{\frac{-x}{x^2+y^2},\frac{-y}{x^2+y^2}}:
   \]
   \begin{image}
     \includegraphics{radField2.png}
@@ -261,7 +270,7 @@ Let's see some examples of radial vector fields:
   \end{image}
 \end{example}
 
-Each of the vector fields above are \textit{radial} vector fields.
+Each of the vector fields above is a \textit{radial} vector field.
 
 \begin{definition}
   A \dfn{radial vector field} is a field of the form
@@ -292,7 +301,7 @@ Each of the vector fields above are \textit{radial} vector fields.
 
 \section{Rotational fields}
 
-Vector fields can easily exhbit what looks like ``rotation'' to the
+Vector fields can easily exhibit what looks like ``rotation'' to the
 human eye.
 \begin{example}
   Here we see
@@ -318,7 +327,7 @@ At this point, we're going to give some ``spoilers.'' It turns out
 that from a local perspective, meaning all points very very close each
 other, only the first example exhibits ``rotation.'' While the second
 example does look like it is ``rotating,'' as we will see, it does not
-exhibit local ``rotation.''
+exhibit ``local rotation.''
 
 
 \section{Gradient fields}
@@ -338,53 +347,117 @@ $\vec{G}$ is defined for all points in $\R^n$. This is important to
 note, as we will see.
 
 \begin{example}
-  fxn
-  grad field
-  show both
+  Consider $F(x,y) = \frac{\sin(3x)+\sin(2y)}{1+x^2+y^2}$. A plot of
+  this function looks like this:
+  \begin{image}
+    \includegraphics{surf1.png}
+  \end{image}
+  The gradient field of $F$ looks like this:
+  \begin{image}
+    \includegraphics{gradField1.png}
+  \end{image}
+  Note we can see the vector pointing in the initial direction of
+  greatest increase. Let's see a plot of both together:
+  \begin{image}
+    \includegraphics{gradSurf1.png}
+  \end{image}
 \end{example}
 
 \begin{question}
   What is the connection between gradient vectors and level curves?
+  \begin{prompt}
+    \begin{multipleChoice}
+      \choice[correct]{Gradient vectors are orthogonal to level curves.}
+      \choice{Gradient vectors point in the direction of level curves.}
+      \choice{Gradient vectors are independent of level curves.}
+    \end{multipleChoice}
+  \end{prompt}
 \end{question}
 
-Now consider 
 \begin{example}
-  Consider once more
-  \[
-  \vec{F}(x,y) = \vector{\frac{-y}{x^2+y^2},\frac{x}{x^2+y^2}}:
-  \]
-  \begin{image}
-    \includegraphics{rotFieldNot.png}
-  \end{image}
-\end{example}
-
-
-
-\begin{example}
-  Now consider a radial vector field.
+  Now consider $F(x,y) = \frac{1}{\sqrt{x^2+y^2}}$. A plot of this
+    function looks like this:
   \[
   \vec{F}(x,y) = \vector{\frac{-x}{(x^2+y^2)^{3/2}},\frac{-y}{(x^2+y^2)^{3/2}}}:
   \]
   \begin{image}
-    \includegraphics{gradAndSurf.png}
+    \includegraphics{surf2.png}
+  \end{image}
+  The gradient field of $F$ looks like this:
+  \begin{image}
+    \includegraphics{gradField2.png}
+  \end{image}
+  Note we can see the vector pointing in the initial direction of
+  greatest increase. Let's see a plot of both together:
+  \begin{image}
+    \includegraphics{gradSurf2.png}
   \end{image}
 \end{example}
 
-With a gradient field,
-
-vectors are all pointing in locally in the same direction, and globally, they do not cross. 
 
 
-\subsection{The Clairot gradient test} 
+
+\subsection{The Clairaut gradient test} 
 
 Now we give a method to determine if a field is a gradient field. 
 
-\begin{theorem}[Clairot]
-  A vector field $\vec{F}(x,y) = \vector{M(x,y),N(x,y)}$ with
-  continuous partial derivatives is a gradient field if and only if
+\begin{theorem}[Clairaut]
+  A vector field $\vec{F}(x,y) = \vector{M(x,y),N(x,y)}$, where $M$ and
+  $N$ have continuous partial derivatives, is a gradient field if and
+  only if
   \[
   \pp[N]{x} -\pp[M]{y} = \vec{0}  
   \]
+  for all $x$ and $y$.
 \end{theorem}
+
+
+\begin{definition}
+  If $\vec{G} = \grad F$, then $F$ is called a \dfn{potential
+    function} for $\vec{G}$.
+\end{definition}
+
+\begin{question}
+  Is $\vec{G} = \vector{2x+y^2,2y+x^2}$ a gradient field?
+  \begin{multipleChoice}
+    \choice{yes}
+    \choice[correct]{no}
+  \end{multipleChoice}
+\end{question}
+
+
+\begin{question}
+  Is $\vec{G} = \vector{x^3,-y^4}$ a gradient field?
+  \begin{multipleChoice}
+    \choice[correct]{yes}
+    \choice{no}
+  \end{multipleChoice}
+  \begin{question}
+    Find a potential function $F$ such that $F(\vec{0}) = 0$.
+    \begin{prompt}
+      \[
+      F(x,y) = \answer{x^4/4-y^5/5}.
+      \]
+    \end{prompt}
+  \end{question}
+\end{question}
+
+\begin{question}
+  Is $\vec{G} = \vector{y\cos(x),\sin(x)}$ a gradient field?
+  \begin{multipleChoice}
+    \choice[correct]{yes}
+    \choice{no}
+  \end{multipleChoice}
+  \begin{question}
+    Find a potential function $F$ such that $F(\vec{0}) = 0$.
+    \begin{prompt}
+      \[
+      F(x,y) = \answer{y\sin(x)}.
+      \]
+    \end{prompt}
+  \end{question}
+\end{question}
+
+
 
 \end{document}
