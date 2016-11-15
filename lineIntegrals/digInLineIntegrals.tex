@@ -6,16 +6,47 @@
 
 \begin{document}
 \begin{abstract}
+We accumulate vectors along a path.
 \end{abstract}
 \maketitle
 
+In this section we introduce a new type of integrals, \textit{line integrals} also known as \textit{path integrals}.
 
+\section{Line integrals}
+
+\begin{definition}
+Let $\vec{F}:\R^2\to\R^2$ be a vector field, $\vec{p}:\R\to\R^2$ be a
+vector valued function,
 \begin{align*}
-  \int_C \vec{F}\dotp \d \vec{p} &= \int_C \vector{F_x,F_y}\dotp\vector{\d p_x,\d p_y}\\
+  \vec{F} &= \vector{F_x(x,y), F_y(x,y)}\\
+  \vec{p} &= \vector{p_x(t),p_y(t)}.
+\end{align*}
+\[
+\int_C \vec{F}\dotp \d \vec{p} = \int_C \vector{F_x,F_y}\dotp\vector{\d p_x,\d p_y}
+\]
+Now noting that $\d x = p_x'(t)\d t$ and $\d y = p_y'(t)\d t$  
+\begin{align*}
   &= \int_C F_x\cdot \d p_x + F_y\cdot \d p_y\\
   &= \int_C F_x(p_x(t))\cdot p'_x(t) \d t + F_y(p_y(t))\cdot  p'_y(t) \d t\\
   &= \int_C F_x\cdot \d x  + F_y\cdot  \d y
 \end{align*}
+\end{definition}
+
+
+
+\section{The fundamental theorems of calculus}
+
+
+
+We now come to the first of three important theorems that extend the
+Fundamental Theorem of Calculus to higher dimensions. (The Fundamental
+Theorem of Line Integrals has already done this in one way, but in
+that case we were still dealing with an essentially one-dimensional
+integral.) They all share with the Fundamental Theorem the following
+rather vague description: To compute a certain sort of integral over a
+region, we may do a computation on the boundary of the region that
+involves one fewer integrations.
+
 
 
 \[
