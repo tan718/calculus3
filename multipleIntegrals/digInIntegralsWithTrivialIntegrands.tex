@@ -324,11 +324,13 @@ volumes.
   \begin{explanation}
     First note that 
     \[
-    R=\{(x,y,z):\text{$-1\leq x\leq 1$, $-\sqrt{1-x^2}\leq y\leq \sqrt{1-x^2}$, and $\sqrt{x^2+y^2}\leq z \leq 1$}\}
+    R=\{(x,y,z):\text{$-1\leq x\leq 1$, $-\sqrt{1-x^2}\leq y\leq \sqrt{1-x^2}$, and $0\leq z \leq 1-\sqrt{x^2+y^2}$}\}
     \]
     Hence, the volume of this region is given by
     \[
-    \int_{\answer[given]{-1}}^{\answer[given]{1}} \int_{\answer[given]{-\sqrt{1-x^2}}}^{\answer[given]{\sqrt{1-x^2}}} \int_{\answer[given]{\sqrt{x^2+y^2}}}^{\answer[given]{1}}\d z \d y\d x.
+    \int_{\answer[given]{-1}}^{\answer[given]{1}}
+    \int_{\answer[given]{-\sqrt{1-x^2}}}^{\answer[given]{\sqrt{1-x^2}}}
+    \int_{\answer[given]{0}}^{\answer[given]{1-\sqrt{x^2+y^2}}}\d z \d y\d x.
     \]
     \end{explanation}
 \end{example}
@@ -339,7 +341,11 @@ volumes.
   that integrates with respect to $x$, then $y$, then $z$.
   \begin{prompt}
     \[
-    \int_R \d V = \int_{\answer{0}}^{\answer{2}}\int_{\answer{-z}}^{\answer{z}} \int_{\answer{-\sqrt{z^2-y^2}}}^{\answer{\sqrt{z^2-y^2}}} \d x \d y \d z
+    \int_R \d V =
+    \int_{\answer{0}}^{\answer{1}}
+    \int_{\answer{-1+z}}^{\answer{1-z}}
+    \int_{\answer{-\sqrt{z^2-y^2}}}^{\answer{\sqrt{z^2-y^2}}}
+    \d x \d y \d z
     \]
   \end{prompt}
 \end{question}
