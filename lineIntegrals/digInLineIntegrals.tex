@@ -1,0 +1,21 @@
+\documentclass{ximera}
+
+\input{../preamble.tex}
+
+\title[Dig-In:]{Line integrals}
+
+\begin{document}
+\begin{abstract}
+\end{abstract}
+\maketitle
+
+
+\begin{align*}
+  \int_C \vec{F}\dotp \d \vec{p} &= \int_C \vector{F_x,F_y}\dotp\vector{\d p_x,\d p_y}\\
+  &= \int_C F_x\cdot \d p_x + F_y\cdot \d p_y\\
+  &= \int_C F_x(p_x(t))\cdot p'_x(t) \d t + F_y(p_y(t))\cdot  p'_y(t) \d t\\
+  &= \int_C F_x\cdot \d x  + F_y\cdot  \d y
+\end{align*}
+
+
+\end{document}
