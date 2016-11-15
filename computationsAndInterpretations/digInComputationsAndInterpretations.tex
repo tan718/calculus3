@@ -2,6 +2,10 @@
 
 \input{../preamble.tex}
 
+\outcome{Work with double integrals in rectangular coordinates.}
+\outcome{Work with double integrals in polar coordinates.}
+\outcome{Work with triple integrals in spherical cooridnates.}
+
 \title[Dig-In:]{Computations and interpretations}
 
 \begin{document}
@@ -117,17 +121,19 @@ double and triple integrals and think about what these mean.
     \choice[correct]{$A = B$}
     \choice{$A > B$}
   \end{multipleChoice}
-
+  
   \begin{feedback}[correct]
-    The region $Q$ is symmetric across the line $x = y$.  As a consequence of this, we might have computed that
+    The region $Q$ is symmetric across the line $x = y$.  As a
+    consequence of this, we might have computed that
     \[
-      A = \int_Q x \d A = 1/3,
+    A = \int_Q x \d A = 1/3,
     \]
-    and likewise $B = 1/3$.  Because of this---and the fact that the integral of a sum is the sum of integrals---we could have deduced
+    and likewise $B = 1/3$.  Because of this, and the fact that the
+    integral of a sum is the sum of integrals, we could have deduced
     \begin{align*}
       A + B &= (1/3) + (1/3) \\
-            &= \int_Q x \d A + \int_Q y \d A \\
-            &= \int_Q (x+y) \d A = 2/3.
+      &= \int_Q x \d A + \int_Q y \d A \\
+      &= \int_Q (x+y) \d A = 2/3.
     \end{align*}
   \end{feedback}
 \end{question}
@@ -136,47 +142,48 @@ double and triple integrals and think about what these mean.
 
 \begin{example}
   Let $B$ be the region $B = \{ (x,y,z)  : x^2 + y^2 + z^2 \leq 1\}$.
-
-  Explain why $\displaystyle\iiint_B z^3 \d V = \answer[given]{0}$.
-
+  
+  Explain why $\int_B z^3 \d V = \answer[given]{0}$.
+  
   \begin{explanation}
     This integral vanishes because integral over the northern
     hemisphere of $B$ will cancel the contribution from the southern
     hemisphere of $B$.
-
-    Consider the function $f : \R^3 \to \R^3$ given by
-    $f(x,y,z) = (x,y,-z)$.  This function exchanges the northern and
-    southern hemispheres, but the effect of $f$ on the integrand is to
-    negate it!
   \end{explanation}
 \end{example}
 
 \begin{example}
-  Let $H$ be the region $H = \{ (x,y,z)  : x^2 + y^2 + z^2 \leq 1 \text{ and } z \geq 0 \}$.
+  Let $H$ be the region
+  \[
+  H = \{ (x,y,z) : x^2 + y^2 + z^2 \leq 1 \text{ and } z \geq 0 \}.
+  \]
 
-  Show that $\displaystyle\int_H z^3 \d V = \answer[given]{\pi/12}$.
+  Show that $\int_H z^3 \d V = \answer[given]{\pi/12}$.
 
   \begin{explanation}
     Unlike the previous example, this does not vanish.
-
+    
     We use \wordChoice{\choice{cylindrical}\choice[correct]{spherical}} coordinates.
     \begin{align*}
       \int_D z^3 \d V
-      &= \int_{\theta=0}^{2\pi} \int_{\varphi=0}^{\pi/2} \int_{r = 0}^1 (r \cos \varphi)^3 \, r^2 \sin \varphi \d r \d \varphi \d \theta \\
-      &= \int_{\theta=0}^{2\pi} \int_{\varphi=0}^{\pi/2} \int_{r = 0}^1 r^5 \cos^3 \varphi \sin \varphi \d r \d \varphi \d \theta \\
-      &= \left( \int_{\theta=0}^{2\pi} d\theta \right) \left(\int_{\varphi=0}^{\pi/2} \cos^3 \varphi \sin \varphi \d \varphi \right) \left( \int_{r = 0}^1 r^5 \d r \right) \\
-      &= 2 \pi \left(\int_{\varphi=0}^{1} u^3 \d u \right) \frac{1}{6} \\
-      &= 2 \pi \frac{1}{4} \cdot \frac{1}{6} \\
-      &= frac{\pi}{12}.
+      &= \int_{0}^{2\pi} \int_{0}^{\pi/2} \int_{0}^1 (\rho \cos \varphi)^3 \rho^2 \sin \varphi \d \rho \d \varphi \d \theta \\
+      &= \int_{0}^{2\pi} \int_{0}^{\pi/2} \int_{0}^1 \rho^5 \cos^3 \varphi \sin \varphi \d \rho \d \varphi \d \theta \\
+      &= \int_{0}^{2\pi} \int_{0}^{\pi/2} \eval{\answer[given]{\frac{\rho^6 \cos^3 \varphi \sin \varphi}{6}}}_0^1 \d \varphi \d \theta \\
+      &= \int_{0}^{2\pi} \int_{0}^{\pi/2} \answer[given]{\frac{\cos^3 \varphi \sin \varphi}{6}} \d \varphi \d \theta \\
+      &= \int_{0}^{2\pi} \eval{\answer[given]{\frac{-\cos^4 \varphi}{24}}}_{0}^{\pi/2} \d \theta \\
+      &= \int_{0}^{2\pi} \answer[given]{\frac{1}{24}} \d \theta \\
+      &= \answer[given]{\frac{\pi}{12}}.
     \end{align*}
   \end{explanation}
 \end{example}
 
 \begin{question}
-  Again let $H$ be the region $H = \{ (x,y,z): \text{$x^2 + y^2 +
-  z^2 \leq 1$ and $z \geq 0 $}\}$.
-
-  Set $A = \int_H z^3 \d V$ and $B = \displaystyle\int_H z^{10} \d V$.  How does $A$ relate to $B$?
+  Again let $H$ be the region
+  \[
+  H = \{ (x,y,z): \text{$x^2 + y^2 +
+    z^2 \leq 1$ and $z \geq 0 $}\}.
+  \]
+  Set $A = \int_H z^3 \d V$ and $B = \int_H z^{10} \d V$.  How does $A$ relate to $B$?
 
   \begin{multipleChoice}
     \choice{$A < B$}
@@ -192,7 +199,7 @@ double and triple integrals and think about what these mean.
     integrals.
 
     This same kind of thinking can lend insight into the question of
-    what happens when $\displaystyle\int_H z^N \d V$ when $N$ is very
+    what happens when $\int_H z^N \d V$ when $N$ is very
     large.
   \end{feedback}
 \end{question}
