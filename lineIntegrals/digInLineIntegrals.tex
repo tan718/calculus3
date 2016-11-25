@@ -160,33 +160,33 @@ direction of the path, we use the dot product:
 \begin{question}
 When the direction of the field and the direction of the path are in
 alignment, the dot product is\dots
-\begin{onlineOnly}
+\begin{prompt}
   \begin{multipleChoice}
     \choice[correct]{positive}
     \choice{zero}
     \choice{negative}
   \end{multipleChoice}
-\end{onlineOnly}
+\end{prompt}
 \begin{question}
   When the direction of the
   field and the direction of the path are orthogonal, the dot product is\dots
-  \begin{onlineOnly}
+  \begin{prompt}
   \begin{multipleChoice}
     \choice{positive}
     \choice[correct]{zero}
     \choice{negative}
   \end{multipleChoice}
-\end{onlineOnly}
+\end{prompt}
 \begin{question}
   When the direction of the field and the direction of the path are in
   opposite direction, the dot product is\dots
-  \begin{onlineOnly}
+  \begin{prompt}
   \begin{multipleChoice}
     \choice{positive}
     \choice{zero}
     \choice[correct]{negative}
   \end{multipleChoice}
-  \end{onlineOnly}
+  \end{prompt}
 \end{question}
 \end{question}
 \end{question}
@@ -261,7 +261,7 @@ the value is negative, then the flow is against the path.
   \int_C \vec{F}\dotp \d \vec{p} 
   \]
   to be positive, zero, or negative?
-  \begin{onlineOnly}
+  \begin{prompt}
   \begin{multipleChoice}
     \choice[correct]{positive}
     \choice{zero}
@@ -341,7 +341,7 @@ the value is negative, then the flow is against the path.
       that flowed with $C_1$. So this contributes a small negative
       value to our integral.
   \end{hint}
-  \end{onlineOnly}
+  \end{prompt}
 \end{question}
 
 
@@ -407,7 +407,7 @@ the value is negative, then the flow is against the path.
   \int_C \vec{F}\dotp \d \vec{p} 
   \]
   to be positive, zero, or negative?
-  \begin{onlineOnly}
+  \begin{prompt}
   \begin{multipleChoice}
     \choice{positive}
     \choice{zero}
@@ -485,7 +485,7 @@ the value is negative, then the flow is against the path.
     The field vectors are again orthogonal to the direction of the
     path $C_3$. So this part contributes nothing to the integral.
   \end{hint}
-  \end{onlineOnly}
+  \end{prompt}
 \end{question}
 
 
@@ -546,7 +546,7 @@ the value is negative, then the flow is against the path.
   \int_C \vec{F}\dotp \d \vec{p} 
   \]
   to be positive, zero, or negative?
-  \begin{onlineOnly}
+  \begin{prompt}
   \begin{multipleChoice}
     \choice[correct]{positive}
     \choice{zero}
@@ -557,7 +557,7 @@ the value is negative, then the flow is against the path.
     look like, and whether they point with the field or against the
     field.
   \end{hint}
-  \end{onlineOnly}
+  \end{prompt}
 \end{question}
 
 
@@ -614,7 +614,7 @@ the value is negative, then the flow is against the path.
   \int_C \vec{F}\dotp \d \vec{p} 
   \]
   to be positive, zero, or negative?
-  \begin{onlineOnly}
+  \begin{prompt}
   \begin{multipleChoice}
     \choice{positive}
     \choice[correct]{zero}
@@ -625,7 +625,7 @@ the value is negative, then the flow is against the path.
     look like, and whether they point with the field or against the
     field.
   \end{hint}
-  \end{onlineOnly}
+  \end{prompt}
 \end{question}
 
 
@@ -666,7 +666,7 @@ be quite easy to integrate. Check out our next example.
   Let $\vec{F}(x,y) = \vector{0,x}$ and let $C$ be the polygonal path
   below parameteized in a counterclockwise direction:
   \begin{image}
-    \begin{tikzpicture}
+          \begin{tikzpicture}
       \begin{axis}%
         [
 	  ymin=-.5,ymax=2.5,
@@ -684,7 +684,7 @@ be quite easy to integrate. Check out our next example.
           };
 
       \end{axis}
-    \end{tikzpicture}    
+          \end{tikzpicture}
   \end{image}
   Compute
   \[
@@ -695,13 +695,79 @@ be quite easy to integrate. Check out our next example.
     direction. We'll break it into four line segments each parametrized
     as $t$ runs from $0$ to $1$.
     \begin{image}
-      NEED AN IMAGE
+    \begin{tikzpicture}
+      \begin{axis}%
+        [
+	  ymin=-.5,ymax=2.5,
+	  xmin=-.5,xmax=4.5,
+          axis lines =middle, xlabel=$x$, ylabel=$y$,
+          every axis y label/.style={at=(current axis.above origin),anchor=south},
+          every axis x label/.style={at=(current axis.right of origin),anchor=west},
+          grid=both,
+          grid style={dashed, gridColor},
+         % xtick={-2,...,4},
+         % ytick={-3,...,3},
+	]
+        \addplot[penColor,ultra thick] coordinates{
+            (0,0) (1,2) 
+        };
+        \addplot[penColor,->,ultra thick] coordinates{
+            (1,2) (.5,1) 
+        };
+        
+        \addplot[penColor2,ultra thick] coordinates{
+            (1,2) (3,2) 
+        };
+        \addplot[penColor2,ultra thick,->] coordinates{
+            (3,2) (2,2) 
+        };
+        
+        \addplot[penColor4,ultra thick] coordinates{
+            (3,2) (4,0) 
+        };
+        \addplot[penColor4,ultra thick,->] coordinates{
+            (4,0) (3.5,1) 
+        };
+        
+        \addplot[penColor5,ultra thick] coordinates{
+            (4,0) (0,0) 
+        };
+        \addplot[penColor5,ultra thick,->] coordinates{
+            (0,0) (2,0) 
+        };
+        
+        \node[above,penColor5] at (axis cs: 2,0) {$\vecl_1$};
+        \node[penColor4] at (axis cs: 3.2,1) {$\vecl_2$};
+        \node[below,penColor5] at (axis cs: 2,2) {$\vecl_3$};
+        \node[penColor] at (axis cs: .8,1) {$\vecl_4$};
+
+      \end{axis}
+    \end{tikzpicture}    
     \end{image}
+    Where:
     \begin{align*}
       \vecl_1(t) &= \vector{4t,0}\\
       \vecl_2(t) &= \vector{4-t,2t}\\
       \vecl_3(t) &= \vector{3-2t,2}\\
       \vecl_4(t) &= \vector{1-t,2-2t}
+    \end{align*}
+    Write:
+    \begin{align*}
+    \int_C \vec{F}\dotp\d\vec{p} = \int_0^1 &\vec{F}(\vecl_1(t))\dotp \vecl_1'(t) \d t
+    + \int_0^1 \vec{F}(\vecl_2(t))\dotp \vecl_2'(t) \d t\\
+    &+ \int_0^1 \vec{F}(\vecl_3(t))\dotp \vecl_3'(t) \d t
+    + \int_0^1 \vec{F}(\vecl_4(t))\dotp \vecl_4'(t) \d t
+    \end{align*}
+    For each of the integrands above, say $\vecl{t} =
+    \vector{x(t),y(t)}$, we will write
+    \[
+    \vec{F}(\vecl(t))\dotp \vecl'(t) = \vector{0,x(t)} \dotp \vector{x'(t),y'(t)}
+    \]
+    and combine them into a single intgeral. Write with me
+    \begin{align*}
+      \int_C \vec{F}\dotp\d\vec{p} &= \int_0^1 \left(2(4-t) -2(1-t) \right)\d t\\
+      &= \eval{6}_0^1\\
+      &= 6. 
     \end{align*}
   \end{explanation}
 \end{example}
@@ -711,7 +777,7 @@ be quite easy to integrate. Check out our next example.
 \section{The fundamental theorems of calculus}
 
 
-We will soon see that there are many ``fundamental theorems of
+We will soon see that there are many ``Fundamental Theorems of
 calculus.'' What makes them similar is that they all share the
 following rather vague description:
 \begin{quote}
@@ -720,23 +786,19 @@ following rather vague description:
   integrations.
 \end{quote}
 
-EXPLAIN WHAT THIS MEANS
-
-
-
-We now come to the first of three important theorems that extend the
-Fundamental Theorem of Calculus to higher dimensions. The Fundamental
-Theorem of Line Integrals has already done this in one way, but in
-that case we were still dealing with an essentially one-dimensional
-integral.
-
-They all share with the Fundamental Theorem the following
-rather vague description:
-
-To compute a certain sort of integral over a
-region, we may do a computation on the boundary of the region that
-involves one fewer integrations.
-
+Each version of the Fundamental Theorem of calculus makes the
+``vague'' statement above precise. For example, when working with a
+single variable, the Fundamental Theorem concludes:
+\[
+\int_a^b f'(x) \d x = f(b) - f(a)
+\]
+In this case we are doing an integral over the ``region'' $[a,b]$, and
+the ``computation'' that allows ``one fewer integrations'' is
+antidifferentiation. This is the only Fundamental Theorem you have
+known so far in your studies.  However with additional dimensions,
+there come \textit{additional derivatives}. When working with function
+$F:\R^n\to\R$ we have the gradient as a ``derivative.'' This brings us
+to our first of several new fundamental theorems.
 
 \begin{theorem}[Fundamental Theorem for Line Integrals]
   If $C$ is a curve that starts at $\vec{a}$ and ends at $\vec{b}$
@@ -746,6 +808,14 @@ involves one fewer integrations.
 \end{theorem}
 
 \begin{question}
+  Suppose that $C$ is a closed curve, one that starts and stops at the
+  same location. Compute:
+  \[
+  \int_C \grad F\dotp \d \vec{p}
+  \begin{prompt}
+    = \answer{0}
+  \end{prompt}
+  \]
 \end{question}
 
 \begin{example}
