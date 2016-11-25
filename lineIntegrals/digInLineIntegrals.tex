@@ -628,6 +628,61 @@ the value is negative, then the flow is against the path.
   \end{prompt}
 \end{question}
 
+Let's attempt to solve a discrete problem.
+
+\begin{example}
+Words
+  \begin{image}
+    \begin{tikzpicture}
+      \begin{axis}%
+        [
+	  ymin=-4.5,ymax=4.5,
+	  xmin=-6.5,xmax=6.5,
+          axis lines =middle, xlabel=$x$, ylabel=$y$,
+          every axis y label/.style={at=(current axis.above origin),anchor=south},
+          every axis x label/.style={at=(current axis.right of origin),anchor=west},
+          grid=both,
+          grid style={dashed, gridColor},
+          xtick={-8,...,8},
+          ytick={-6,...,6},
+	]
+        \addplot[penColor,thick,->] coordinates{
+          (6,2) (6,4) 
+        };
+        \addplot[penColor,thick,->] coordinates{
+          (4,1) (3,3) 
+        };
+        \addplot[penColor,thick,->] coordinates{
+          (2,0) (0,1) 
+        };
+        \addplot[penColor,thick,->] coordinates{
+          (0,-1) (-3,-1) 
+        };
+        \addplot[penColor,thick,->] coordinates{
+          (-2,-2) (-3,-3) 
+        };
+        \addplot[penColor,thick,->] coordinates{
+          (-4,-3) (-4,-4) 
+        };
+
+
+        
+        \addplot[penColor2,ultra thick] coordinates{
+          (6,2) (-6,-4) 
+        };
+        \addplot[penColor2,ultra thick,->] coordinates{
+          (6,2) (0,-1) 
+        };
+        
+      \end{axis}
+    \end{tikzpicture}
+  \end{image}
+\end{example}
+
+
+
+
+
 
 \section{Computations with line integrals}
 
@@ -666,7 +721,7 @@ be quite easy to integrate. Check out our next example.
   Let $\vec{F}(x,y) = \vector{0,x}$ and let $C$ be the polygonal path
   below parameteized in a counterclockwise direction:
   \begin{image}
-          \begin{tikzpicture}
+    \begin{tikzpicture}
       \begin{axis}%
         [
 	  ymin=-.5,ymax=2.5,
@@ -758,7 +813,7 @@ be quite easy to integrate. Check out our next example.
     &+ \int_0^1 \vec{F}(\vecl_3(t))\dotp \vecl_3'(t) \d t
     + \int_0^1 \vec{F}(\vecl_4(t))\dotp \vecl_4'(t) \d t
     \end{align*}
-    For each of the integrands above, say $\vecl{t} =
+    For each of the integrands above, say $\vecl(t) =
     \vector{x(t),y(t)}$, we will write
     \[
     \vec{F}(\vecl(t))\dotp \vecl'(t) = \vector{0,x(t)} \dotp \vector{x'(t),y'(t)}
@@ -815,13 +870,17 @@ to our first of several new fundamental theorems.
   \]
   \end{prompt}
   \begin{question}
-    Now let $\vec{G}(x,y) = \vector{\cos(xy) -y\sin(xy), -x\sin(xy)}$
+    Now let:
+    \[
+    \vec{G}(x,y) = \vector{\cos(xy) -y\sin(xy), -x\sin(xy)}
+    \]
+    Compute
     \[
     \int_C \vec G \dotp \d \vec{p}
     \]
-    where $C$ is shown below
-      \begin{image}
-    \begin{tikzpicture}
+    where $C$ is shown below:
+    \begin{image}
+      \begin{tikzpicture}
       \begin{axis}%
         [
 	  ymin=-.5,ymax=2.5,
@@ -918,7 +977,30 @@ happens.
 \end{example}
 
 
-
+\begin{example}
+LAST EXAMPLE - BREAK INTO 2 with grad
+  \begin{image}
+    \begin{tikzpicture}
+      \begin{axis}%
+        [
+	  ymin=-6,ymax=6,
+	  xmin=-10,xmax=4,
+          axis lines =middle, xlabel=$x$, ylabel=$y$,
+          every axis y label/.style={at=(current axis.above origin),anchor=south},
+          every axis x label/.style={at=(current axis.right of origin),anchor=west},
+          grid=both,
+          grid style={dashed, gridColor},
+          xtick={-10,...,4},
+          ytick={-6,...,6},
+	]
+        \addplot[penColor2,ultra thick] coordinates{
+          (3,3) (-5,3) (-9,-5)
+        };
+        
+      \end{axis}
+    \end{tikzpicture}
+  \end{image}
+\end{example}
 
 
 \end{document}
