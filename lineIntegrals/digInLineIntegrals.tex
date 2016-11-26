@@ -24,13 +24,14 @@ runs from $a$ to $b$,
   \vec{p}(t) &= \vector{x(t),y(t)}.
 \end{align*}
 A \dfn{line integral} is an integral of the form:
-\[
-\int_C \vec{F}\dotp \d \vec{p} = \int_C \vector{M,N}\dotp\vector{\d x,\d y}
-\]
-Since $\d x = x'(t)\d t$ and $\d y = y'(t)\d t$, we may write  
 \begin{align*}
-  &= \int_C M\d x + N\d y\\
-  &= \int_a^b M(x(t))\cdot x'(t) \d t + N(y(t))\cdot  y'(t) \d t
+\int_C \vec{F}\dotp \d \vec{p} &= \int_C \vector{M,N}\dotp\vector{\d x,\d y}\\
+&= \int_C M(x,y)\d x + N(x,y)\d y
+\end{align*}
+Since $\d x = x'(t)\d t$ and $\d y = y'(t)\d t$, we may write
+\begin{align*}
+&= \int_a^b M(x(t),y(t))\cdot x'(t) \d t + N(x(t),y(t))\cdot  y'(t) \d t\\
+&= \int_a^b \vector{M(x(t),y(t)),N(x(t),y(t))}\dotp\vector{x'(t), y'(t)} \d t
 \end{align*}
 \end{definition}
 
@@ -631,7 +632,8 @@ the value is negative, then the flow is against the path.
 Let's attempt to solve a discrete problem.
 
 \begin{example}
-Words
+  Below we have a very simple directed curve $C$ (it's a line) along
+  with field vectors from a vector field $\vec{F}$. 
   \begin{image}
     \begin{tikzpicture}
       \begin{axis}%
@@ -677,6 +679,44 @@ Words
       \end{axis}
     \end{tikzpicture}
   \end{image}
+  Setting $\d x= -2$, estimate:
+  \[
+  \int_C \vec{F}\dotp\d\vec{p}
+  \]
+  \begin{explanation}
+    If $\vec{F}(x,y) = \vector{M(x,y),N(x,y)}$, we have that
+    \[
+    \int_C \vec{F}\dotp\d\vec{p} = \int_C M(x,y) \d x + N(x,y)\d y.
+    \]
+    We know that $\d x= -2$ and
+    \[
+    \d y = y'(x) \d x
+    \]
+    Since $C$ is a line of slope $1/2$, 
+    \[
+    \d y = -1.
+    \]
+    Since we want to estimate
+    \[
+    \int_C M(x,y) \d x + N(x,y)\d y.
+    \]
+    We will compute:
+    \[
+    \sum \left(M(x,y) \d x + N(x,y) \d y\right)
+    \]
+    Write with me
+    \begin{align*}
+    0\cdot (-2) &+ 2 \cdot (-1) \\
+    &+ (-1) \cdot (-2)  + 2 \cdot (-1) \\
+    &+ (-2)\cdot (-2) + 1 \cdot (-1) \\
+    &+ (-3)\cdot (-2) + 0\cdot (-1) \\
+    &+ (-1)\cdot (-2) + (-1)\cdot (-1)\\ 
+    &+ (0)\cdot (-2) + (-1)\cdot (-1)
+    \end{align*}
+    \[
+    = \answer[given]{11}.
+    \]
+  \end{explanation}
 \end{example}
 
 
@@ -978,7 +1018,8 @@ happens.
 
 
 \begin{example}
-LAST EXAMPLE - BREAK INTO 2 with grad
+  Below we see a directed curve with some field vectors
+  attached.
   \begin{image}
     \begin{tikzpicture}
       \begin{axis}%
@@ -993,13 +1034,81 @@ LAST EXAMPLE - BREAK INTO 2 with grad
           xtick={-10,...,4},
           ytick={-6,...,6},
 	]
+
+        \addplot[penColor,thick,->] coordinates{
+          (3,3) (2,4) 
+        };
+        \addplot[penColor,thick,->] coordinates{
+          (2,3) (1,4) 
+        };
+        \addplot[penColor,thick,->] coordinates{
+          (1,3) (0,4) 
+        };
+        \addplot[penColor,thick,->] coordinates{
+          (0,3) (-1,4) 
+        };
+        \addplot[penColor,thick,->] coordinates{
+          (-1,3) (-2,4) 
+        };
+        \addplot[penColor,thick,->] coordinates{
+          (-2,3) (-3,4) 
+        };
+        \addplot[penColor,thick,->] coordinates{
+          (-3,3) (-4,4) 
+        };
+        \addplot[penColor,thick,->] coordinates{
+          (-4,3) (-5,4) 
+        };
+
+        \addplot[penColor,thick,->] coordinates{
+          (-5.5,2) (-4.5,1) 
+        };
+        \addplot[penColor,thick,->] coordinates{
+          (-6,1) (-5,0) 
+        };
+        \addplot[penColor,thick,->] coordinates{
+          (-6.5,0) (-5.5,-1) 
+        };
+        \addplot[penColor,thick,->] coordinates{
+          (-7,-1) (-6,-2) 
+        };
+        \addplot[penColor,thick,->] coordinates{
+          (-7.5,-2) (-6.5,-3) 
+        };
+        \addplot[penColor,thick,->] coordinates{
+          (-8,-3) (-7,-4) 
+        };
+        \addplot[penColor,thick,->] coordinates{
+          (-8.5,-4) (-7.5,-5) 
+        };
+        \addplot[penColor,thick,->] coordinates{
+          (-9,-5) (-8,-6) 
+        };
+
+        
+
         \addplot[penColor2,ultra thick] coordinates{
           (3,3) (-5,3) (-9,-5)
         };
-        
+
+        \addplot[penColor2,ultra thick,->] coordinates{
+          (3,3) (-1,3) 
+        };
+
+        \addplot[penColor2,ultra thick,->] coordinates{
+          (-5,3) (-7,-1) 
+        };
       \end{axis}
     \end{tikzpicture}
   \end{image}
+  Assuming that the field vectors are constant along each ``side'' of
+  our polygonal path, compute:
+  \[
+  \int_C\vec{F}\dotp\d\vec{p}
+  \]
+  \begin{explanation}
+    This problem would be easier if our field was a gradient field.
+  \end{explanation}
 \end{example}
 
 
