@@ -2,6 +2,13 @@
 
 \input{../preamble.tex}
 
+\outcome{Identify a line integral.}
+\outcome{Reason about the sign of a line integral.}
+\outcome{Compute line integrals.}
+\outcome{State the Fundamental Theorem of calculus for line integrals.}
+\outcome{Use the Fundamental Theorem of calculus to simplify computation.}
+\outcome{Identify conservative fields to compute integrals.}
+
 \title[Dig-In:]{Line integrals}
 
 \begin{document}
@@ -332,7 +339,7 @@ the value is negative, then the flow is against the path.
       \end{image}
       We can see that the vectors are flowing with the direction of
       $C_1$. Note that the the magnitude of these vectors is large, so
-      this contributs a large postive value to our integral.
+      this contributes a large positive value to our integral.
 
       The field vectors are orthogonal to the direction of the path
       $C_2$. So this part contributes nothing to the integral.
@@ -688,13 +695,13 @@ Let's attempt to solve a discrete problem.
     \[
     \int_C \vec{F}\dotp\d\vec{p} = \int_C M(x,y) \d x + N(x,y)\d y.
     \]
-    We know that $\d x= -2$ and
+    We know that $\d x= \answer[given]{-2}$ and
     \[
     \d y = y'(x) \d x
     \]
-    Since $C$ is a line of slope $1/2$, 
+    Since $C$ is a line of slope $\answer[given]{1/2}$, 
     \[
-    \d y = -1.
+    \d y = \answer[given]{-1}.
     \]
     Since we want to estimate
     \[
@@ -706,7 +713,7 @@ Let's attempt to solve a discrete problem.
     \]
     Write with me
     \begin{align*}
-    0\cdot (-2) &+ 2 \cdot (-1) \\
+    \answer[given]{0}\cdot (-2) &+ \answer[given]{2} \cdot (-1) \\
     &+ (-1) \cdot (-2)  + 2 \cdot (-1) \\
     &+ (-2)\cdot (-2) + 1 \cdot (-1) \\
     &+ (-3)\cdot (-2) + 0\cdot (-1) \\
@@ -744,12 +751,12 @@ Let's attempt to solve a discrete problem.
     with $0\le \theta\le 2\pi$. To compute the integral, write with me
     \begin{align*}
       \int_C \vec{F}\dotp d\vec{p} &= \int_0^{2\pi} F(x(\theta),y(\theta))\dotp \vector{x'(\theta),y'(\theta)}\d \theta\\
-      &= \int_0^{2\pi} \vector{-\sin(\theta),\cos(\theta)}\dotp \vector{-\sin(\theta),\cos(\theta)}\d \theta\\
+      &= \int_0^{2\pi} \vector{\answer[given]{-\sin(\theta)},\answer[given]{\cos(\theta)}}\dotp \vector{\answer[given]{-\sin(\theta)},\answer[given]{\cos(\theta)}}\d \theta\\
       &= \int_0^{2\pi}\left(\sin^2(\theta)+\cos^2(\theta)\right)\d \theta\\
       &= \int_0^{2\pi} 1\d \theta\\
-      &=2\pi.
+      &=\answer[given]{2\pi}.
     \end{align*}
-    Later we'll understand how to interpert this result using
+    Later we'll understand how to interpret this result using
     \textit{Green's Theorem}.
   \end{explanation}
 \end{example}
@@ -759,7 +766,7 @@ be quite easy to integrate. Check out our next example.
 
 \begin{example}
   Let $\vec{F}(x,y) = \vector{0,x}$ and let $C$ be the polygonal path
-  below parameteized in a counterclockwise direction:
+  below parameterized in a counterclockwise direction:
   \begin{image}
     \begin{tikzpicture}
       \begin{axis}%
@@ -787,7 +794,7 @@ be quite easy to integrate. Check out our next example.
   \]
   \begin{explanation}
     We need to parameterize our paths in a counterclockwise
-    direction. We'll break it into four line segments each parametrized
+    direction. We'll break it into four line segments each parameterized
     as $t$ runs from $0$ to $1$.
     \begin{image}
     \begin{tikzpicture}
@@ -841,12 +848,12 @@ be quite easy to integrate. Check out our next example.
     \end{image}
     Where:
     \begin{align*}
-      \vecl_1(t) &= \vector{4t,0}\\
-      \vecl_2(t) &= \vector{4-t,2t}\\
-      \vecl_3(t) &= \vector{3-2t,2}\\
-      \vecl_4(t) &= \vector{1-t,2-2t}
+      \vecl_1(t) &= \vector{4t,\answer[given]{0}}\\
+      \vecl_2(t) &= \vector{\answer[given]{4-t},2t}\\
+      \vecl_3(t) &= \vector{3-2t,\answer[given]{2}}\\
+      \vecl_4(t) &= \vector{\answer[given]{1-t},2-2t}
     \end{align*}
-    Write:
+    and each draws the line as $t$ runs from $0$ to $1$.  Write:
     \begin{align*}
     \int_C \vec{F}\dotp\d\vec{p} = \int_0^1 &\vec{F}(\vecl_1(t))\dotp \vecl_1'(t) \d t
     + \int_0^1 \vec{F}(\vecl_2(t))\dotp \vecl_2'(t) \d t\\
@@ -858,11 +865,11 @@ be quite easy to integrate. Check out our next example.
     \[
     \vec{F}(\vecl(t))\dotp \vecl'(t) = \vector{0,x(t)} \dotp \vector{x'(t),y'(t)}
     \]
-    and combine them into a single intgeral. Write with me
+    and combine them into a single integral. Write with me
     \begin{align*}
-      \int_C \vec{F}\dotp\d\vec{p} &= \int_0^1 \left(2(4-t) -2(1-t) \right)\d t\\
-      &= \eval{6}_0^1\\
-      &= 6. 
+      \int_C \vec{F}\dotp\d\vec{p} &= \int_0^1 \left(\answer[given]{2(4-t) -2(1-t)} \right)\d t\\
+      &= \eval{\answer[given]{6t}}_0^1\\
+      &=\answer[given]{6}. 
     \end{align*}
   \end{explanation}
 \end{example}
@@ -954,7 +961,7 @@ to our first of several new fundamental theorems.
 \end{question}
 
 
-\subsection{Consertative fields}
+\subsection{Conservative fields}
 
 When dealing with gradient fields and closed curve something very nice
 happens.
@@ -971,10 +978,19 @@ happens.
   \]
 \end{question}
 
+This leads us to our definition:
+\begin{definition}
+  A \dfn{conservative field} is just another name for a gradient
+  field.
+\end{definition}
+
+If it is special enough to be named twice, we ought to do some more
+examples.
+
+
 \begin{example}
-  Let $\vec{F}(x,y) = \vector{-y,-x}$. Let $C$ be given bylet $C$ be
-  the polygonal path below parameteized in a counterclockwise
-  direction:
+  Let $\vec{F}(x,y) = \vector{-y,-x}$. Let $C$ be the polygonal path
+  below parameterized in a counterclockwise direction:
   \begin{image}
     \begin{tikzpicture}
       \begin{axis}%
@@ -1004,14 +1020,13 @@ happens.
     In light of the Fundamental Theorem for line integrals, we should
     check to see if our field is a gradient field using the Clairaut
     gradient test:
-    \begin{align*}
-      \pp{x}(-x)-\pp{y}(-y) &= -1-(-1)\\
-      &= 0.
-    \end{align*}
+    \[
+    \pp{x}(-x)-\pp{y}(-y) = \answer[given]{0}.
+    \]
     Since our field is a gradient field, and our curve is closed, we
     see that
     \[
-    \int_C \vec{F}\dotp d\vec{p} = 0.
+    \int_C \vec{F}\dotp d\vec{p} = \answer[given]{0}.
     \]
   \end{explanation}
 \end{example}
@@ -1107,7 +1122,139 @@ happens.
   \int_C\vec{F}\dotp\d\vec{p}
   \]
   \begin{explanation}
-    This problem would be easier if our field was a gradient field.
+    This problem would be easier if our field was a gradient field,
+    and while it surely isn't, the field is constant along two paths
+    that together make up all of $C$:
+      \begin{image}
+    \begin{tikzpicture}
+      \begin{axis}%
+        [
+	  ymin=-6,ymax=6,
+	  xmin=-10,xmax=4,
+          axis lines =middle, xlabel=$x$, ylabel=$y$,
+          every axis y label/.style={at=(current axis.above origin),anchor=south},
+          every axis x label/.style={at=(current axis.right of origin),anchor=west},
+          grid=both,
+          grid style={dashed, gridColor},
+          xtick={-10,...,4},
+          ytick={-6,...,6},
+	]
+
+        \addplot[penColor,thick,->] coordinates{
+          (3,3) (2,4) 
+        };
+        \addplot[penColor,thick,->] coordinates{
+          (2,3) (1,4) 
+        };
+        \addplot[penColor,thick,->] coordinates{
+          (1,3) (0,4) 
+        };
+        \addplot[penColor,thick,->] coordinates{
+          (0,3) (-1,4) 
+        };
+        \addplot[penColor,thick,->] coordinates{
+          (-1,3) (-2,4) 
+        };
+        \addplot[penColor,thick,->] coordinates{
+          (-2,3) (-3,4) 
+        };
+        \addplot[penColor,thick,->] coordinates{
+          (-3,3) (-4,4) 
+        };
+        \addplot[penColor,thick,->] coordinates{
+          (-4,3) (-5,4) 
+        };
+
+        \addplot[penColor,thick,->] coordinates{
+          (-5.5,2) (-4.5,1) 
+        };
+        \addplot[penColor,thick,->] coordinates{
+          (-6,1) (-5,0) 
+        };
+        \addplot[penColor,thick,->] coordinates{
+          (-6.5,0) (-5.5,-1) 
+        };
+        \addplot[penColor,thick,->] coordinates{
+          (-7,-1) (-6,-2) 
+        };
+        \addplot[penColor,thick,->] coordinates{
+          (-7.5,-2) (-6.5,-3) 
+        };
+        \addplot[penColor,thick,->] coordinates{
+          (-8,-3) (-7,-4) 
+        };
+        \addplot[penColor,thick,->] coordinates{
+          (-8.5,-4) (-7.5,-5) 
+        };
+        \addplot[penColor,thick,->] coordinates{
+          (-9,-5) (-8,-6) 
+        };
+
+        
+
+        \addplot[penColor4,ultra thick] coordinates{
+          (3,3) (-5,3) 
+        };
+
+
+        \addplot[penColor5,ultra thick] coordinates{
+          (-5,3) (-9,-5)
+        };
+
+        \addplot[penColor4,ultra thick,->] coordinates{
+          (3,3) (-1,3) 
+        };
+
+        \addplot[penColor5,ultra thick,->] coordinates{
+          (-5,3) (-7,-1) 
+        };
+
+        \node[below,penColor4] at (axis cs: -2,3) {$C_1$};
+
+        \node[penColor5] at (axis cs: -7,1) {$C_2$};
+      \end{axis}
+    \end{tikzpicture}
+      \end{image}
+      So now we see that
+      \[
+      \int_C \vec{F}\dotp\d\vec{p} = \int_{C_1} \vec{F}\dotp\d\vec{p}+\int_{C_2} \vec{F}\dotp\d\vec{p}.
+      \]
+      so we have that
+      \[
+      \vec{F}(x,y) =
+      \begin{cases}
+        \vector{-1,1} &\text{on $C_1$,}\\
+        \vector{1,-1} &\text{on $C_2$.}
+      \end{cases}
+      \]
+      Using the Clairaut gradient test we see that $\vec{F}$
+      \wordChoice{\choice[correct]{is}\choice{is not}} a gradient
+      field when restricted to either part of $C$. Let $F$ be a
+      potential function for $\vec{F}$. One candidate for the the
+      potential function is
+      \[
+      F(x,y) =
+      \begin{cases}
+        -x+y  &\text{on $C_1$,}\\
+        x-y  &\text{on $C_2$.}
+      \end{cases}
+      \]
+      By the Fundamental Theorem for Line Integrals,
+      \begin{align*}
+        \int_{C_1} \vec{F}\dotp\d\vec{p}
+        &= \eval{-x+y}_{\vector{3,1}}^{\vector{-5,3}}\\
+        &= \answer[given]{10},
+      \end{align*}
+      and
+      \begin{align*}
+        \int_{C_2} \vec{F}\dotp\d\vec{p}
+        &= \eval{x-y}_{\vector{-5,3}}^{\vector{-9,-5}}\\
+        &= \answer[given]{4}.
+      \end{align*}
+      So
+      \[
+      \int_{C} \vec{F}\dotp\d\vec{p} = \answer[given]{14}.
+      \]
   \end{explanation}
 \end{example}
 
