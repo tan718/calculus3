@@ -10,6 +10,136 @@ Green's Theorem is a fundamental theorem of calculus.
 \end{abstract}
 \maketitle
 
+In this section we will learn the \textit{fundamental derivative} for
+vector fields, as well as a new fundamental theorem of calculus.
+
+
+\section{The curl of a vector field}
+
+Calculus has taught us that knowing the derivative of a function
+$f:\R\to\R$ can tell us important information about the function.  In
+a similar way we have that seen that if we wish to understand a
+function of several variables $F:\R^n\to\R$, then the gradient, $\grad
+F$, contains similar useful information. But what if you have a vector
+field
+\[
+\vec{F}:\R^n\to\R^n
+\]
+what is the natural analogue of a derivative in this setting? We will
+give the answer when the vector field is two or three dimensional. You
+can take another course to learn more about deritivatives of
+$n$-dimensional vector fields.
+
+
+\begin{definition}
+  In two-dimensions, given a vector field $\vec{F}:\R^2\to \R^2$, where
+  \[
+  \vec{F}(x,y) = \vector{M(x,y),N(x,y)}
+  \]
+  the \dfn{curl} is given by
+  \[
+  \curl \vec F = \pp[N]{x}-\pp[M]{y}.
+  \]
+  In three-dimensions, given a vector field $\vec{F}:\R^3\to\R^3$< where
+  \[
+  \vec{F}(x,y,z) = \vector{U(x,y,z)),V(x,y,z)),W(x,y,z)}
+  \]
+  the \dfn{curl} is given by
+  \begin{align*}
+  \curl \vec F &= \det
+  \begin{bmatrix}
+    \veci & \vecj & \veck \\
+    \pp{x} & \pp{y} & \pp{z}\\
+    U & V & W
+  \end{bmatrix}\\
+  &= \veci\left(\pp[W]{y}-\pp[V]{z}\right)-
+  \vecj\left(\pp[W]{x}-\pp[U]{z}\right)+
+  \veck\left(\pp[V]{x}-\pp[U]{y}\right).
+  \end{align*}
+\end{definition}
+
+\begin{question}
+  In two dimensions $\curl\vec{F}$ is a
+  \begin{multipleChoice}
+    \choice[correct]{number.}
+    \choice{vector.}
+  \end{multipleChoice}
+  \begin{question}
+    In three dimensions $\curl\vec{F}$ is a
+    \begin{multipleChoice}
+      \choice{number.}
+      \choice[correct]{vector.}
+    \end{multipleChoice}
+  \end{question}
+\end{question}
+
+
+\begin{question}
+  Consider the vector field $\vec{F}(x,y) = \vector{-y,x}$. Compute:
+  \[
+  \curl\vec{F}(x,y) \begin{prompt}= \answer{2}\end{prompt}
+  \]
+  \begin{question}
+    Consider the vector field $\vec{F}(x,y,z) = \vector{-z,x,y}$. Compute:
+    \[
+    \curl\vec{F}(x,y,z)   \begin{prompt}
+      = \vector{\answer{1},\answer{1},\answer{1}}
+    \end{prompt}
+    \]
+  \end{question}
+\end{question}
+
+Now for something you've seen before, but in a different form.
+
+\begin{question}
+  Let $F:\R^2\to\R$. Compute:
+  \[
+  \curl\grad F(x,y) \begin{prompt}= \answer{0}\end{prompt}
+  \]
+  \begin{question}
+    Let $F:\R^3\to\R$. Compute:
+    \[
+    \curl\grad F(x,y,z) \begin{prompt}= \vector{\answer{0},\answer{0},\answer{0}}\end{prompt}
+    \] 
+  \end{question}
+\end{question}
+
+\begin{question}
+  When $\curl\vec{F} = \vec{0}$, then you know:
+  \begin{selectAll}
+    \choice[correct]{$\vec{F}$ is a gradient field.}
+    \choice[correct]{$\vec{F}$ is a conserttive field.}
+    \choice[correct]{$\vec{F}:\R^3\to\R^3$.}
+  \end{selectAll}
+  \begin{feedback}
+    You can be assured that $\vec{F}:\R^3\to\R^3$, since $\vec{0}$ is
+    a vector. We only know a definition for curl in two and three
+    dimensions; however, the two dimensional definition is a scalar,
+    not a vector. So if $\curl\vec{F} = \vec{0}$, then $\vec{F}:\R^3\to\R^3$.
+  \end{feedback}
+\end{question}
+
+
+\subsection{What does the curl measure?}
+
+
+The curl of a vector field measures the rate that the direction of
+field vectors ``twist'' as $x$ and $y$ change. Unfortunately, while we
+can sometimes identify curl from a graph.
+
+beachball?
+
+
+\begin{question}
+  Discrete example use field $\vector{0,x}$
+\end{question}
+
+
+
+\[
+\{F:\R^2 \to \R\} \lto^{\grad} \{\vec{F}: \R^2 \to \R^2\} \lto^{\curl}
+\{F:\R^2 \to \R\} 
+\]
 
 
 
