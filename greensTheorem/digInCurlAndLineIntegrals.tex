@@ -23,12 +23,11 @@ function of several variables $F:\R^n\to\R$, then the gradient, $\grad
 F$, contains similar useful information. But what if you have a vector
 field
 \[
-\vec{F}:\R^n\to\R^n
+\vec{F}:\R^n\to\R^n,
 \]
-what is the natural analogue of a derivative in this setting? We will
-give the answer when the vector field is two or three dimensional. You
-can take another course to learn more about derivatives of
-$n$-dimensional vector fields.
+what is the natural analogue of a derivative in this setting? When the
+vector field is two or three dimensional, the \textit{curl} is the
+analogue of the derivative that we are looking for:
 
 
 \begin{definition}
@@ -57,6 +56,7 @@ $n$-dimensional vector fields.
   \veck\left(\pp[V]{x}-\pp[U]{y}\right).
   \end{align*}
 \end{definition}
+
 
 \begin{question}
   In two dimensions $\curl\vec{F}$ is a
@@ -108,7 +108,7 @@ Now for something you've seen before, but in a different form.
   When $\curl\vec{F} = \vec{0}$, then you know:
   \begin{selectAll}
     \choice[correct]{$\vec{F}$ is a gradient field.}
-    \choice[correct]{$\vec{F}$ is a conserttive field.}
+    \choice[correct]{$\vec{F}$ is a conservative field.}
     \choice[correct]{$\vec{F}:\R^3\to\R^3$.}
   \end{selectAll}
   \begin{feedback}
@@ -133,42 +133,43 @@ rotating in a clockwise direction. Zero curl means that the
 ``beach-ball'' would not be rotating. Below we see our ``beach-ball''
 with two field vectors. If $\vec{F}(x,y) = \vector{M(x,y),N(x,y)}$
 \begin{image}
-  \begin{tikzpicture}
+  \begin{tikzpicture}%[framed]
     \begin{axis}[
         hide axis,
         width=2in,
         height=2in,
-	ymin=-1,ymax=1,
-	xmin=-1,xmax=1,
+	ymin=-.9,ymax=.7,
+	xmin=-.8,xmax=.8,
       ]
        \addplot[penColor2,thick,->] coordinates{
                 (-.6,0) (-.6,.3) 
        };
        \addplot[penColor2,thick,->] coordinates{
                 (.6,0) (.6,.7) 
-            };
+       };
 
 
       \addplot[penColor, ultra thick, domain=0:360,smooth] ({.5*cos(x)},{.5*sin(x)});
       \draw[penColor, ultra thick,->] (axis cs: .49,-.1) -- (axis cs: .5,.1) ;
+      \node[inner sep=0pt,text width=6cm,scale=.5] at (axis cs: 0,-.7) {
+
+        \footnotesize Since the length of the field vector increases
+        as we increase $x$, we see that $\pp[N]{x} > 0$.};
+
     \end{axis}
   \end{tikzpicture}
 \end{image}
 we see that the right field vector is larger than the left, thus
-giving the ``beach-ball'' a counterclockwise rotation. Since the
-length of the vector increases as we increase $x$, we also see that
-\[
-\pp[N]{x} > 0.
-\]
-In an entirely similar way, if we have
+giving the ``beach-ball'' a counterclockwise rotation.  In an entirely
+similar way, if we have
 \begin{image}
-  \begin{tikzpicture}
+  \begin{tikzpicture}%[framed]
     \begin{axis}[
         hide axis,
         width=2in,
         height=2in,
-	ymin=-1,ymax=1,
-	xmin=-1,xmax=1,
+	ymin=-.9,ymax=.7,
+	xmin=-.8,xmax=.8,
       ]
        \addplot[penColor2,thick,->] coordinates{
                 (0,.6) (.3,.6) 
@@ -180,27 +181,28 @@ In an entirely similar way, if we have
 
       \addplot[penColor, ultra thick, domain=0:360,smooth] ({.5*cos(x)},{.5*sin(x)});
       \draw[penColor, ultra thick,->] (axis cs: .49,-.1) -- (axis cs: .5,.1) ;
+      \node[inner sep=0pt,text width=6cm,scale=.5] at (axis cs: 0,-.75) {
+
+        \footnotesize Since the length of the field vector decreases
+        as we increase $y$, we see that $-\pp[M]{y} > 0$.};
     \end{axis}
   \end{tikzpicture}
 \end{image}
 we see that the bottom field vector is larger than the top, thus
-giving the ``beach-ball'' a counterclockwise rotation. Since the
-length of the vector decreases as we increase $y$, we also see that
-\[
--\pp[M]{y} > 0
-\]
-Thus the curl combines $\pp[N]{x}$ and $-\pp[M]{y}$
+giving the ``beach-ball'' a counterclockwise rotation. Thus the curl
+combines $\pp[N]{x}$ and $-\pp[M]{y}$
 \[
 \curl\vec{F} = \pp[N]{x} - \pp[M]{y}
 \]
-to obtain the infintesimal rotatation of the field. The most obvious
+to obtain the infinitesimal rotation of the field. The most obvious
 example of a vector field with nonzero curl is $\vec{F}(x,y) =
-(-y,x)$.
+\vector{-y,x}$.
 \begin{image}
   \includegraphics{rotField.png}
 \end{image}
 Unfortunately, while we can sometimes identify nonzero curl from a
-graph, it can be difficult.
+graph, it can be difficult. In our next example, we see a field that
+does not have global rotation but does have local rotation.
 
 \begin{example}
   Consider the following vector field $\vec{F}$:
@@ -283,49 +285,155 @@ graph, it can be difficult.
         To estimate $\pp[M]{y}$, we examine the change in $M(2,y)$
         between $y=0$ and $y=1$:
         \[
-        \frac{M(2,1) - N(2,0)}{1-0} = \answer[given]{0}
+        \frac{M(2,1) - M(2,0)}{1-0} = \answer[given]{0}
         \]
         and we should also check the change of $M(2,y)$ between $y=1$
         and $y=2$:
         \[
-        \frac{M(2,2) - N(2,1)}{2-1} = \answer[given]{0}
+        \frac{M(2,2) - M(2,1)}{2-1} = \answer[given]{0}
         \]
         Averaging these values together we find
         \[
-        \pp[N]{x} \approx \answer[given]{0}
+        \pp[M]{y} \approx \answer[given]{0}
         \]
         So we approximate
         \[
         \curl\vec{F}(\vec{a})\approx\answer[given]{1}.
         \]
+        So field above example does not have global rotation, but it
+        does have local rotation.
       \end{explanation}
 \end{example}
 
-The field in the example does not have global rotation, but it does
-have local rotation.
+Now we'll show you a field that has global rotation but no local rotation!
 
-Now let's see an example where the field has global rotation, but no
-local rotation.
+\begin{example}
+  Consider the vector field
+  \[
+  \vec{F}(x,y) = \vector{\frac{-y}{x^2+y^2},\frac{x}{x^2+y^2}}
+  \]
+  \begin{image}
+    \includegraphics{rotFieldNot.png}
+  \end{image}
+  Compute:
+  \[
+  \curl\vec{F}(x,y)
+  \]
+  \begin{explanation}
+    In this case, $\curl\vec{F}(x,y) =\answer[given]{0}$ when
+    $\vector{x,y}\ne \vec{0}$. At $\vec{0}$, the curl of the vector
+    field is
+    \wordChoice{\choice{zero}\choice{infinity}\choice[correct]{undefined}}.
+    This field has global rotation, but it does not have local
+    rotation.
+  \end{explanation}
+\end{example}
 
+Finally, we'll show you a field that has global rotation with local
+rotation in the \textit{opposite} direction!
+\begin{example}
+  Consider the vector field
+  \[
+  \vec{F}(x,y) = \vector{\frac{-y}{(x^2+y^2)^{3/2}},\frac{x}{(x^2+y^2)^{3/2}}}
+  \]
+  \begin{image}
+    \includegraphics{oppoRotField.png}
+  \end{image}
+  Compute:
+  \[
+  \curl\vec{F}(x,y)
+  \]
+  \begin{explanation}
+    In this case,
+    \[
+    \curl\vec{F}(x,y) =\answer[given]{\frac{-1}{(x^2+y^2)^{3/2}}}
+    \]
+    when $\vector{x,y}\ne \vec{0}$. Note, this is
+    \wordChoice{\choice{positive}\choice[correct]{negative}} for all
+    values of $x$ and $y$. This corresponds to local rotation in the
+    \wordChoice{\choice[correct]{clockwise}\choice{counterclockwise}}
+    direction.  This field has global rotation in the
+    \wordChoice{\choice{clockwise}\choice[correct]{counterclockwise}}
+    direction, but has local rotation in the
+    \wordChoice{\choice[correct]{clockwise}\choice{counterclockwise}}
+    direction.
+  \end{explanation}
+\end{example}
 
-\[
-\{F:\R^2 \to \R\} \lto^{\grad} \{\vec{F}: \R^2 \to \R^2\} \lto^{\curl}
-\{F:\R^2 \to \R\} 
-\]
-
-
-
-Recall,
+At this point we only know how to take the derivative (via the curl)
+of a vector field of two or three dimensions.  You can take another
+course to learn more about derivatives of $n$-dimensional vector
+fields.
 
 \section{A new fundamental theorem of calculus}
 
-\begin{theorem}[Green's Theorem]
-  If $\vec{F}:\R^2\to\R^2$ has continuous partial derivatives and $C$ is a
-  boundray of a closed region $R$ and $\vec{p}(t)$ paramaterizes $C$
-  in a counterclockwise direction with the interior on the left, then
+Recall that a fundamental theorem of calculus says something like:
+\begin{quote}
+  To compute a certain sort of integral over a region, we may do a
+  computation on the boundary of the region that involves one fewer
+  integrations.
+\end{quote}
+In the single variable case we have:
+\begin{image}
+  \begin{tikzpicture}
+    \node[inner sep=0pt] at (0,0) {$\int_a^b f'(x) \d x = f(b) - f(a)$};
+
+    \node at (-1.1,-.7) {$\underbrace{\hspace{5.8em}}$};
+
+    \node at (1.1,-.7) {$\underbrace{\hspace{5.5em}}$};
+
+    \node[below,inner sep=0pt,text width=4cm,scale=.5] at (-1.25,-1) {To compute the signed area between $f'$ and the $x$-axis on the interval $[a,b]$,};
+
+    \node[below,inner sep=0pt,text width=4cm,scale=.5] at (1.25,-1) {we can compute the difference in the values of $f$ when evaluated on the boundry.};
+  \end{tikzpicture}
+\end{image}
+With line integrals we have:
+\begin{image}
+  \begin{tikzpicture}
+    \node[inner sep=0pt] at (0,0) {$\int_C \grad F \dotp  \d \vec{p} = F(\vec{b}) - F(\vec{a})$};
+
+    \node at (-1.1,-.7) {$\underbrace{\hspace{5.5em}}$};
+
+    \node at (1,-.7) {$\underbrace{\hspace{5.5em}}$};
+
+    \node[below,inner sep=0pt,text width=4cm,scale=.5] at (-1.1,-1)
+         {To compute the accumulation of $\grad F$ along a curve $C$
+           starting at $\vec{a}$ and ending at $\vec{b}$,};
+
+    \node[below,inner sep=0pt,text width=4cm,scale=.5] at (1.1,-1) {we can compute the difference in the values of $F$ when evaluated on the boundry.};
+  \end{tikzpicture}
+\end{image}
+We now introduce a new fundamental theorem of calculus involving the
+curl. It's called \textit{Green's Theorem}:
+
+\begin{theorem}[Green's Theorem]\index{Green's Theorem}
+  If the components of $\vec{F}:\R^2\to\R^2$ have continuous partial
+  derivatives and $C$ is a boundary of a closed region $R$ and
+  $\vec{p}(t)$ parameterizes $C$ in a counterclockwise direction with
+  the interior on the left, then
   \[
-  \int_R \curl\vec{F}\d A = \int_C \vec{F}\dotp\d\vec{p} 
+  \iint_R \curl\vec{F}\d A = \int_C \vec{F}\dotp\d\vec{p} 
   \]
 \end{theorem}
+
+How is this a fundamental theorem of calculus? Well consider this:
+\begin{image}
+  \begin{tikzpicture}
+    \node[inner sep=0pt] at (0,0) {$\iint_R \curl\vec{F}\d A = \int_C \vec{F}\dotp\d\vec{p}$};
+
+    \node at (-.9,-.7) {$\underbrace{\hspace{5.7em}}$};
+
+    \node at (1.1,-.7) {$\underbrace{\hspace{5em}}$};
+
+    \node[below,inner sep=0pt,text width=4cm,scale=.5] at (-1.2,-1)
+         {To compute the double intgeral of $\curl \vec{F}$ over a
+           region $R\subseteq\R^2$ with boundry $C$, };
+
+    \node[below,inner sep=0pt,text width=4cm,scale=.5] at (1.25,-1) {we can compute the accumulation of $\vec{F}$ along a boundry curve $C$.};
+  \end{tikzpicture}
+\end{image}
+
+
+
 
 \end{document}
