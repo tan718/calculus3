@@ -65,7 +65,7 @@ and state that we are working in \textit{polar coordinates}.
   \end{prompt}
   \begin{question}
     Conside the point $(-1, -5)$ in $(x,y)$-coordinates. What is this
-    point when expressed in polar coordinates?
+    point when expressed in polar coordinates with $0\le\theta<2\pi$?
     \begin{prompt}
       \[
       (r,\theta) = (\answer{\sqrt{26}}, \answer{\arctan(5)-\pi})
@@ -348,7 +348,7 @@ in polar coordinates.
     \begin{align*}
       2\int_R\sqrt{a^2-x^2-y^2}\d A &= 2\int_{\answer[given]{0}}^{\answer[given]{2\pi}}\int_{\answer[given]{0}}^{\answer[given]{a}}\sqrt{a^2-(r\cos\theta)^2-(r\sin\theta)^2}r\d r\d\theta\\
       &=2\int_{\answer[given]{0}}^{\answer[given]{2\pi}}\int_{\answer[given]{0}}^{\answer[given]{a}}r\sqrt{a^2-r^2}\d r\d\theta\\
-      &=\int_{\answer[given]{0}}^{\answer[given]{2\pi}}\eval{\answer[given]{\frac{-2}{6}(a^2-r^2)^{3/2}}}_{0}^a d\theta\\
+      &=2\int_{\answer[given]{0}}^{\answer[given]{2\pi}}\eval{\answer[given]{\frac{-2}{6}(a^2-r^2)^{3/2}}}_{0}^a d\theta\\
       &= \int_{\answer[given]{0}}^{\answer[given]{2\pi}}\left(\answer[given]{\frac{2}{3}a^3}\right)\d \theta\\
       &=\eval{\answer[given]{\frac{2}{3}a^3\theta}}_{\answer[given]{0}}^{\answer[given]{2\pi}}\\
       &=\answer[given]{\frac{4}{3}\pi a^3}.
