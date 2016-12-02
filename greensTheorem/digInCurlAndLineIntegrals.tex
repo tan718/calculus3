@@ -1,5 +1,7 @@
 \documentclass{ximera}
 
+\usepackage{stix}
+
 \input{../preamble.tex}
 
 \title[Dig-In:]{Curl and line integrals}
@@ -376,31 +378,31 @@ Recall that a fundamental theorem of calculus says something like:
 In the single variable case we have:
 \begin{image}
   \begin{tikzpicture}
-    \node[inner sep=0pt] at (0,0) {$\int_a^b f'(x) \d x = f(b) - f(a)$};
+    \node[inner sep=0pt] at (0,0) {$\int_a^b f'(x) \d x \quad = \quad f(b) - f(a)$};
 
-    \node at (-1.1,-.7) {$\underbrace{\hspace{5.8em}}$};
+    \node at (-1.5,-.7) {$\underbrace{\hspace{5.8em}}$};
 
-    \node at (1.1,-.7) {$\underbrace{\hspace{5.5em}}$};
+    \node at (1.5,-.7) {$\underbrace{\hspace{5.5em}}$};
 
-    \node[below,inner sep=0pt,text width=4cm,scale=.5] at (-1.25,-1) {To compute the signed area between $f'$ and the $x$-axis on the interval $[a,b]$,};
+    \node[below,inner sep=0pt,text width=4cm,scale=.5] at (-1.65,-1) {To compute the signed area between $f'$ and the $x$-axis on the interval $[a,b]$,};
 
-    \node[below,inner sep=0pt,text width=4cm,scale=.5] at (1.25,-1) {we can compute the difference in the values of $f$ when evaluated on the boundry.};
+    \node[below,inner sep=0pt,text width=4cm,scale=.5] at (1.65,-1) {we can compute the difference in the values of $f$ when evaluated on the boundry.};
   \end{tikzpicture}
 \end{image}
 With line integrals we have:
 \begin{image}
   \begin{tikzpicture}
-    \node[inner sep=0pt] at (0,0) {$\int_C \grad F \dotp  \d \vec{p} = F(\vec{b}) - F(\vec{a})$};
+    \node[inner sep=0pt] at (0,0) {$\int_C \grad F \dotp  \d \vec{p}\quad= \quad F(\vec{b}) - F(\vec{a})$};
 
-    \node at (-1.1,-.7) {$\underbrace{\hspace{5.5em}}$};
+    \node at (-1.5,-.7) {$\underbrace{\hspace{5.5em}}$};
 
-    \node at (1,-.7) {$\underbrace{\hspace{5.5em}}$};
+    \node at (1.4,-.7) {$\underbrace{\hspace{5.5em}}$};
 
-    \node[below,inner sep=0pt,text width=4cm,scale=.5] at (-1.1,-1)
+    \node[below,inner sep=0pt,text width=4cm,scale=.5] at (-1.5,-1)
          {To compute the accumulation of $\grad F$ along a curve $C$
            starting at $\vec{a}$ and ending at $\vec{b}$,};
 
-    \node[below,inner sep=0pt,text width=4cm,scale=.5] at (1.1,-1) {we can compute the difference in the values of $F$ when evaluated on the boundry.};
+    \node[below,inner sep=0pt,text width=4cm,scale=.5] at (1.5,-1) {we can compute the difference in the values of $F$ when evaluated on the boundry.};
   \end{tikzpicture}
 \end{image}
 We now introduce a new fundamental theorem of calculus involving the
@@ -419,17 +421,17 @@ curl. It's called \textit{Green's Theorem}:
 How is this a fundamental theorem of calculus? Well consider this:
 \begin{image}
   \begin{tikzpicture}
-    \node[inner sep=0pt] at (0,0) {$\iint_R \curl\vec{F}\d A = \int_C \vec{F}\dotp\d\vec{p}$};
+    \node[inner sep=0pt] at (0,0) {$\iint_R \curl\vec{F}\d A\quad =\quad \int_C \vec{F}\dotp\d\vec{p}$};
 
-    \node at (-.9,-.7) {$\underbrace{\hspace{5.7em}}$};
+    \node at (-1.3,-.7) {$\underbrace{\hspace{5.7em}}$};
 
-    \node at (1.1,-.7) {$\underbrace{\hspace{5em}}$};
+    \node at (1.7,-.7) {$\underbrace{\hspace{5em}}$};
 
-    \node[below,inner sep=0pt,text width=4cm,scale=.5] at (-1.2,-1)
+    \node[below,inner sep=0pt,text width=4cm,scale=.5] at (-1.3,-1)
          {To compute the double intgeral of $\curl \vec{F}$ over a
            region $R\subseteq\R^2$ with boundry $C$, };
 
-    \node[below,inner sep=0pt,text width=4cm,scale=.5] at (1.25,-1) {we can compute the accumulation of $\vec{F}$ along a boundry curve $C$.};
+    \node[below,inner sep=0pt,text width=4cm,scale=.5] at (1.8,-1) {we can compute the accumulation of $\vec{F}$ along a boundry curve $C$.};
   \end{tikzpicture}
 \end{image}
 
