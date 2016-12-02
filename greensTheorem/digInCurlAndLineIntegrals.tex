@@ -1,8 +1,15 @@
 \documentclass{ximera}
 
-\usepackage{stix}
-
 \input{../preamble.tex}
+
+\outcome{State the definition of the curl of a vector field in two dimensions.}
+\outcome{State the definition of the curl of a vector field in three dimensions.}
+\outcome{Understand how curl measures local rotation in two dimensions.}
+\outcome{Understand that curl need not measure gobal rotation.}
+\outcome{State Green's Theorem.}
+\outcome{View Green's Theorem as a fundamental theorem of calculus.}
+
+
 
 \title[Dig-In:]{Curl and line integrals}
 
@@ -386,7 +393,7 @@ In the single variable case we have:
 
     \node[below,inner sep=0pt,text width=4cm,scale=.5] at (-1.65,-1) {To compute the signed area between $f'$ and the $x$-axis on the interval $[a,b]$,};
 
-    \node[below,inner sep=0pt,text width=4cm,scale=.5] at (1.65,-1) {we can compute the difference in the values of $f$ when evaluated on the boundry.};
+    \node[below,inner sep=0pt,text width=4cm,scale=.5] at (1.65,-1) {we can compute the difference in the values of $f$ when evaluated on the boundary.};
   \end{tikzpicture}
 \end{image}
 With line integrals we have:
@@ -402,7 +409,7 @@ With line integrals we have:
          {To compute the accumulation of $\grad F$ along a curve $C$
            starting at $\vec{a}$ and ending at $\vec{b}$,};
 
-    \node[below,inner sep=0pt,text width=4cm,scale=.5] at (1.5,-1) {we can compute the difference in the values of $F$ when evaluated on the boundry.};
+    \node[below,inner sep=0pt,text width=4cm,scale=.5] at (1.5,-1) {we can compute the difference in the values of $F$ when evaluated on the boundary.};
   \end{tikzpicture}
 \end{image}
 We now introduce a new fundamental theorem of calculus involving the
@@ -418,7 +425,67 @@ curl. It's called \textit{Green's Theorem}:
   \]
 \end{theorem}
 
-How is this a fundamental theorem of calculus? Well consider this:
+\begin{question}
+  Suppose that the curl of a vector field $\vec{F}:\R^2\to\R^2$ is
+  constant, $\curl\vec{F} = 3$.
+  \begin{image}
+    \begin{tikzpicture}
+      \begin{axis}%
+        [
+	  ymin=-3,ymax=5,
+	  xmin=-8,xmax=4,
+          axis lines =middle, xlabel=$x$, ylabel=$y$,
+          every axis y label/.style={at=(current axis.above origin),anchor=south},
+          every axis x label/.style={at=(current axis.right of origin),anchor=west},
+          grid=both,
+          grid style={dashed, gridColor},
+          xtick={-10,...,4},
+          ytick={-6,...,6},
+	]
+        \addplot[penColor2,ultra thick,smooth] coordinates{
+          (-6,3) (-1,3) (-1,1) (2,1) (2,-1)
+        };
+
+        \addplot[penColor4,ultra thick,smooth] coordinates{
+          (2,-1) (-4,-1) (-4,1) (-6,1) (-6,3)
+        };
+
+        \addplot[penColor2,ultra thick,->] coordinates{
+          (-1.05,1.5) (-1,1.7) 
+        };
+
+        \addplot[penColor4,ultra thick,->] coordinates{
+          (-4,.6) (-4.1,.4) 
+        };
+
+        \fill[black,draw=black] (axis cs:-6,3) circle (2.5pt);
+
+        \fill[black,draw=black] (axis cs:2,-1) circle (2.5pt);
+        \node[above,penColor2] at (axis cs:-3,3) {$C_1$};
+        \node[below,penColor4] at (axis cs:-2,-1.05) {$C_2$};
+        
+      \end{axis}
+    \end{tikzpicture}
+  \end{image}
+  If
+  \[
+  \int_{C_1} \vec{F} \dotp\d \vec{p} = 20
+  \]
+  estimate
+  \[
+  \int_{C_2} \vec{F}\dotp\d\vec{p}
+  \begin{prompt}
+    = \answer{46}
+  \end{prompt}
+  \]
+  \begin{hint}
+    Use Green's Theorem.
+  \end{hint}
+\end{question}
+
+
+How is Green's Theorem a fundamental theorem of calculus? Well
+consider this:
 \begin{image}
   \begin{tikzpicture}
     \node[inner sep=0pt] at (0,0) {$\iint_R \curl\vec{F}\d A\quad =\quad \int_C \vec{F}\dotp\d\vec{p}$};
@@ -428,13 +495,15 @@ How is this a fundamental theorem of calculus? Well consider this:
     \node at (1.7,-.7) {$\underbrace{\hspace{5em}}$};
 
     \node[below,inner sep=0pt,text width=4cm,scale=.5] at (-1.3,-1)
-         {To compute the double intgeral of $\curl \vec{F}$ over a
-           region $R\subseteq\R^2$ with boundry $C$, };
+         {To compute the double integral of $\curl \vec{F}$ over a
+           region $R\subseteq\R^2$ with boundary $C$, };
 
-    \node[below,inner sep=0pt,text width=4cm,scale=.5] at (1.8,-1) {we can compute the accumulation of $\vec{F}$ along a boundry curve $C$.};
+    \node[below,inner sep=0pt,text width=4cm,scale=.5] at (1.8,-1) {we can compute the accumulation of $\vec{F}$ along a boundary curve $C$.};
   \end{tikzpicture}
 \end{image}
 
+
+Are there more fundamental theorems of calculus? Absolutely, read on young mathematician!
 
 
 
