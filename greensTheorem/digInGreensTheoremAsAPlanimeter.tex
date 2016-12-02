@@ -6,18 +6,97 @@
 
 \begin{document}
 \begin{abstract}
+  A planimeter computes the area of a region by tracing the boundry.
 \end{abstract}
 \maketitle
 
-
 Green's theorem may seem rather abstract, but as we will see, it is a
-fantastic tool for computing the areas of arbitrary bounded regions.
+fantastic tool for computing the areas of arbitrary bounded
+regions. In particular, Green's Theorem is a theoritical
+\link[planimeter]{http://en.wikipedia.org/wiki/Planimeter}.
 
-\section{What is a planimeter}
+A \dfn{planimeter} is a ``device'' used for measuring the area of a
+region. Ideally, one would ``trace'' the border of a region, and the
+planimeter would tell you the area of the region. 
+
 
 \section{How is Green's theorem a planimeter?}
 
+Recall Green's Theorem:
+\begin{theorem}[Green's Theorem]\index{Green's Theorem}
+  If the components of $\vec{F}:\R^2\to\R^2$ have continuous partial
+  derivatives and $C$ is a boundary of a closed region $R$ and
+  $\vec{p}(t)$ parameterizes $C$ in a counterclockwise direction with
+  the interior on the left, then
+  \[
+  \iint_R \curl\vec{F}\d A = \int_C \vec{F}\dotp\d\vec{p} 
+  \]
+\end{theorem}
+
+Given a vector field $\vec{F}:\R^2\to\R^2$, if $\curl\vec{F} = 1$,
+then the left-hand side of the conclusion of Green's Theorem gives the
+area of the region $R$:
+\[
+\iint_R \curl\vec{F}\d A = \iint_R \d A
+\]
+
+So now the question becomes, which vector fields have $\curl\vec{F} =
+1$?
+
+Here are three basic candidates:
+\begin{itemize}
+\item $\vec{F}(x,y) = \vector{0,x}$
+\item $\vec{F}(x,y) = \vector{-y,0}$
+\item $\vec{F}(x,y) = \vector{-y/2,x/2}$
+\end{itemize}
+\begin{question}
+  The key idea that connects the three vector fields above is:
+  \begin{selectAll}
+    \choice[correct]{Their curl is $1$.}
+    \choice{They are conservative fields.}
+    \choice{They are gradient fields.}
+    \choice[correct]{When used in combination with Green's Theorem, they help compute area.}
+  \end{selectAll}
+\end{question}
+
+Once we have a vector field whose curl is $1$, we may then apply
+Green's Theorem to use a line integral to compute the area.
+
+\begin{warning}
+  You must parameterize $C$ with $\vec{p}(t)$ for $a\le t\le b$ such that:
+  \begin{itemize}
+    \item $C$ is drawn in a counterclockwise direction.
+    \item $C$ is drawn exactly once.
+    \item The interior of $R$ is to the right of the direction of
+      $\vec{p}'(t)$.
+  \end{itemize}
+\end{warning}
+
+
+
+
 \section{Computing areas with Green's Theorem}
+
+Now let's do some examples.
+
+\begin{example}
+  Compute the area of an $a\times b$ rectangle using Green's Theorem.
+  \begin{explanation}
+    In this case, set $F(x,y) = \vector{0,x}$. Since $\curl\vec{F} =
+    1$, Green's Theorem says:
+    \[
+    \iint_R \d A  = \int_C \vector{0,x}\dotp\d\vec{p}
+    \]
+    Parameterizing the boundry of the region (an $a\times b$
+    rectangle)
+    \begin{image}
+      rect
+    \end{image}
+    we see that 
+    
+  \end{explanation}
+\end{example}
+
 
 1) rectangle
 
